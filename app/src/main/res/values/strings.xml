@@ -1,0 +1,117 @@
+<resources>
+
+    <!-- APP INFO -->
+    <string name="app_name">Midas</string>
+    <string name="app_version">1.0</string>
+    <string name="developer">Bhyte</string>
+    <string name="slogan">Explore your limits</string>
+    <!-- APP INFO -->
+
+    <!-- IMAGEVIEW CONTENT DESCRIPTION -->
+    <string name="bhyte_text_logo">Bhyte text logo</string>
+    <string name="slider_image">Slider Image</string>
+    <string name="sign_up_complete_image">Sign up complete image</string>
+    <string name="verify_identity_image">Verify identity image</string>
+    <!-- APP INFO -->
+
+    <!-- ONBOARDING -->
+
+    <!-- Titles -->
+    <string name="onboarding_title_one">Create Virtual Credit Cards</string>
+    <string name="onboarding_title_two">Buy &amp; Sell Gift Cards</string>
+    <string name="onboarding_title_three">Manage Cards</string>
+    <string name="onboarding_title_four">Top Up Easily</string>
+    <string name="onboarding_title_five">Accepted on 100+ Platforms</string>
+    <!-- Titles -->
+
+    <!-- Descriptions -->
+    <string name="onboarding_description_one">Midas allows you to create virtual cards that can be used online to make purchases and complete payments</string>
+    <string name="onboarding_description_two">Trade gift cards from most stores around the world</string>
+    <string name="onboarding_description_three">Set limits and cancel subscriptions made with your virtual cards</string>
+    <string name="onboarding_description_four">Add money to your card easily using various methods like mobile money transfer</string>
+    <string name="onboarding_description_five">Cards created with Midas can be used on over 100 platforms and websites</string>
+    <!-- Descriptions -->
+
+    <!-- Others -->
+    <string name="get_started">Get Started</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <!-- Others -->
+
+    <!-- ONBOARDING -->
+
+    <!-- ACCOUNT CREATION -->
+
+    <!-- Get started -->
+    <string name="get_started_title">Lets Get Started!</string>
+    <string name="growing_community">Join The Growing Community</string>
+    <string name="get_started_description">Join Midas now and enjoy all the perks that come with it</string>
+    <!-- Get started -->
+
+    <!-- Common -->
+    <string name="create_account">Create Account</string>
+    <string name="sign_in">Sign In</string>
+    <!-- Common -->
+
+    <!-- Sign Up -->
+    <string name="sign_up">Sign Up</string>
+    <string name="get_code">Get Code</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="enter_number">Enter your mobile number to receive a verification code</string>
+    <!-- Sign Up -->
+
+    <!-- Fingerprint -->
+    <string name="fingerprint">Fingerprint</string>
+    <string name="go">Continue</string>
+    <string name="fingerprint_description">Continue to fingerprint registration screen</string>
+    <string name="skip_step">Skip This Step</string>
+    <!-- Fingerprint -->
+
+
+    <!-- Welcome -->
+    <string name="welcome">Welcome</string>
+    <string name="hooray">Hooray!</string>
+    <string name="welcome_description">Well you have thus come this far! Thanks for choosing us enjoy your experience!</string>
+    <!-- Welcome -->
+
+    <!-- Verify Identity -->
+    <string name="identity">Identity</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="national">National</string>
+    <string name="passport">Passport</string>
+    <string name="recommended">Recommended</string>
+    <string name="done">Done</string>
+    <string name="national_description">National ID or Driver\'s licence for citizens of the country mainly </string>
+    <string name="passport_description">Required passport for non citizens</string>
+    <string name="identity_description">We need to verify your identity (Required)</string>
+    <!-- Verify Identity -->
+
+    <!-- ACCOUNT CREATION -->
+
+    <!-- USER -->
+    <string name="profile">Profile</string>
+    <string name="preferences">Preferences</string>
+    <string name="language">Language</string>
+    <string name="invite_friends">Invite friends (Get Paid)</string>
+    <string name="rate_midas">Rate Midas</string>
+    <string name="rate">Rate</string>
+    <string name="rate_midas_description">Are you sure you want to rate the app? You would be redirected to the Play Store</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="profile_default_name">John Doe</string>
+    <string name="profile_default_email">johndoe@gmail.com</string>
+    <string name="change_password">Change Password</string>
+    <string name="log_out">Logout</string>
+    <string name="cancel">Cancel</string>
+    <string name="sign_out_title">Sign out from app</string>
+    <string name="logout_confirmation">Are you sure you would like to sign out of your account?</string>
+    <!-- USER -->
+
+    <!-- BOTTOM NAVIGATION -->
+    <string name="home">Home</string>
+    <string name="transaction">Transactions</string>
+    <string name="cards">Cards</string>
+    <string name="settings">Settings</string>
+    <!-- BOTTOM NAVIGATION -->
+
+</resources>

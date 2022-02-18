@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_height="match_parent"
+    tools:context=".AccountCreation.SignUpComplete">
+
+    <ImageView
+        android:contentDescription="@string/sign_up_complete_image"
+        android:padding="@dimen/dimen_20"
+        android:src="@drawable/sign_up_complete_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_marginTop="-280dp"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/welcome"
+        android:textColor="@color/black"
+        android:textSize="27sp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:fontFamily="@font/roboto_medium"
+        android:padding="5dp"
+        android:text="@string/welcome_description"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="@dimen/dimen_25"
+        android:layout_marginTop="@dimen/dimen_90"
+        android:layout_marginEnd="@dimen/dimen_25"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/hooray"
+        android:textAllCaps="false"
+        app:cornerRadius="35dp" />
+
+
+</LinearLayout>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".User.Profile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/blue_200"
+            android:elevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_20">
+
+                <ImageView
+                    android:id="@+id/menu_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/back_icon"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dimen_20"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/profile"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-60dp"
+            android:background="@drawable/top_round_corner_overlay"
+            android:elevation="10dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/dimen_105"
+                    android:layout_height="@dimen/dimen_105"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dimen_30"
+                    android:src="@drawable/profile_picture_default" />
+
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:text="@string/profile_default_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dimen_5"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/profile_default_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_gravity="center_horizontal"
+                    android:paddingStart="@dimen/dimen_25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:drawableEnd="@drawable/ic_navigate_next"
+                    android:layout_marginStart="@dimen/dimen_25"
+                    android:layout_marginTop="@dimen/dimen_15"
+                    android:layout_marginEnd="@dimen/dimen_25"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/edit_profile"
+                    android:textAllCaps="false"
+                    app:cornerRadius="35dp" />
+
+                <TextView
+                    android:layout_margin="@dimen/dimen_25"
+                    android:gravity="left"
+                    android:textColor="@color/blue_200"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textAllCaps="true"
+                    android:text="@string/preferences"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <RelativeLayout
+                    android:padding="@dimen/dimen_20"
+                    android:layout_marginEnd="@dimen/dimen_25"
+                    android:layout_marginStart="@dimen/dimen_25"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/top_block"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:id="@+id/language"
+                        android:src="@drawable/language_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/dimen_20"
+                        android:layout_toEndOf="@id/language"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/language"
+                        android:textColor="@color/blue_200"
+                        android:textSize="18sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/dimen_5"
+                    android:padding="@dimen/dimen_20"
+                    android:layout_marginEnd="@dimen/dimen_25"
+                    android:layout_marginStart="@dimen/dimen_25"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/normal_block"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:id="@+id/invite"
+                        android:src="@drawable/invite_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/dimen_20"
+                        android:layout_toEndOf="@id/invite"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/invite_friends"
+                        android:textColor="@color/blue_200"
+                        android:textSize="18sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/dimen_5"
+                    android:padding="@dimen/dimen_20"
+                    android:layout_marginEnd="@dimen/dimen_25"
+                    android:layout_marginStart="@dimen/dimen_25"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bottom_block"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:id="@+id/rate"
+                        android:src="@drawable/language_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/dimen_20"
+                        android:layout_toEndOf="@id/rate"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/rate_midas"
+                        android:textColor="@color/blue_200"
+                        android:textSize="18sp" />
+
+                </RelativeLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    app:icon="@drawable/lock_image"
+                    app:iconGravity="textEnd"
+                    android:layout_marginStart="@dimen/dimen_25"
+                    android:layout_marginTop="@dimen/dimen_50"
+                    android:layout_marginEnd="@dimen/dimen_25"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/change_password"
+                    android:textAllCaps="false"
+                    app:cornerRadius="35dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_marginBottom="@dimen/dimen_50"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:backgroundTint="@color/red"
+                    app:iconGravity="textEnd"
+                    android:layout_height="60dp"
+                    app:icon="@drawable/logout_image"
+                    android:layout_marginStart="@dimen/dimen_25"
+                    android:layout_marginTop="@dimen/dimen_5"
+                    android:layout_marginEnd="@dimen/dimen_25"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/log_out"
+                    android:textAllCaps="false"
+                    app:cornerRadius="35dp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+</LinearLayout>

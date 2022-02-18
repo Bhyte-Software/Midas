@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".AccountCreation.SignUpEnableFingerprint">
+
+    <ImageView
+        android:src="@drawable/security_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/fingerprint"
+        android:textColor="@color/black"
+        android:textSize="27sp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:padding="5dp"
+        android:text="@string/fingerprint_description"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:layout_marginTop="@dimen/dimen_30"
+        android:src="@drawable/red_fingerprint_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_marginEnd="@dimen/dimen_25"
+        android:layout_marginStart="@dimen/dimen_25"
+        android:layout_marginTop="@dimen/dimen_30"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/cancel"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/go"
+        android:textAllCaps="false"
+        app:cornerRadius="35dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/skip_button"
+        app:iconTint="@color/blue_200"
+        app:iconGravity="textEnd"
+        android:layout_marginTop="@dimen/dimen_20"
+        app:icon="@drawable/skip_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:background="@color/transparent"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/skip_step"
+        android:textAllCaps="false"
+        android:textColor="@color/blue_200"
+        android:visibility="visible" />
+
+</LinearLayout>

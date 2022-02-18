@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="@drawable/background_gradient"
+    android:gravity="center_horizontal"
+    android:layout_height="match_parent"
+    tools:context=".AccountCreation.GetStarted">
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:padding="@dimen/dimen_15"
+        android:layout_width="match_parent"
+        android:src="@drawable/onboarding_image_one"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/get_started_title"
+        android:textColor="@color/black"
+        android:textSize="27sp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/get_started_description"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_marginStart="@dimen/dimen_25"
+        android:layout_marginEnd="@dimen/dimen_25"
+        android:layout_width="match_parent"
+        android:onClick="callSignUpEnterNumber"
+        android:layout_height="60dp"
+        android:layout_marginTop="@dimen/dimen_90"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/create_account"
+        android:textAllCaps="false"
+        app:cornerRadius="35dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_marginStart="@dimen/dimen_25"
+        android:layout_marginEnd="@dimen/dimen_25"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/white"
+        android:onClick="callVerifyIdentity"
+        app:strokeColor="@color/blue_200"
+        android:textColor="@color/blue_200"
+        app:strokeWidth="2dp"
+        android:layout_marginTop="@dimen/dimen_5"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/sign_in"
+        android:textAllCaps="false"
+        app:cornerRadius="35dp" />
+
+</LinearLayout>

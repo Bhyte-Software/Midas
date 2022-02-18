@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rate_popup"
+    android:layout_marginEnd="20dp"
+    android:layout_marginStart="@dimen/dimen_20"
+    android:layout_width="match_parent"
+    android:padding="20dp"
+    android:layout_height="350dp"
+    android:layout_gravity="center"
+    android:elevation="8dp"
+    android:background="@drawable/rate_popup_border"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/rate_image" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/warning"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="10dp"
+            android:text="@string/rate_midas"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/roboto_regular"
+            android:padding="10dp"
+            android:text="@string/rate_midas_description"
+            android:textAlignment="center" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/message"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dimen_20">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancel"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="@dimen/dimen_5"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/cancel"
+                android:textAllCaps="false"
+                app:cornerRadius="35dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="150dp"
+                android:layout_alignParentEnd="true"
+                android:layout_height="60dp"
+                android:layout_gravity="end"
+                android:backgroundTint="@color/gold"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/rate"
+                android:textAllCaps="false"
+                app:cornerRadius="35dp" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

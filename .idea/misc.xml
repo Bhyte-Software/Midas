@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable-ldpi/green_circle.xml" value="0.17263513513513515" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/background_gradient.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/bottom_block.xml" value="0.17263513513513515" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/bottom_nav_background.xml" value="0.11458333333333333" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/light_green.xml" value="0.17263513513513515" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/light_green_circle.xml" value="0.17263513513513515" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/logout_popup_border.xml" value="0.17263513513513515" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/normal_block.xml" value="0.17263513513513515" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/rate_popup_border.xml" value="0.17263513513513515" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/round_box.xml" value="0.17560137457044672" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/round_button.xml" value="0.17743055555555556" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/top_block.xml" value="0.17263513513513515" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/top_round_corner_overlay.xml" value="0.17263513513513515" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/top_round_overlay.xml" value="1.596875" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_get_started.xml" value="0.152" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_main_dashboard.xml" value="0.2" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_on_board.xml" value="0.1" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_on_boarding.xml" value="0.152" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_profile.xml" value="0.176" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_in.xml" value="0.16216216216216217" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_complete.xml" value="0.16" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_credentials.xml" value="0.152" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_enable_fingerprint.xml" value="0.2" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_enter_number.xml" value="0.152" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_verify_identity.xml" value="0.176" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_splash_screen.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/fragment_onboarding_five.xml" value="0.12" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/fragment_onboarding_four.xml" value="0.1" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/fragment_onboarding_one.xml" value="0.1" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/fragment_onboarding_three.xml" value="0.1" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/fragment_onboarding_two.xml" value="0.1" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/logout_popup.xml" value="0.152" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/rate_popup.xml" value="0.2" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/slides_layout.xml" value="0.12" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

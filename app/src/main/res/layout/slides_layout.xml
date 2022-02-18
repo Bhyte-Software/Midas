@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:padding="@dimen/dimen_25"
+        android:id="@+id/slider_image"
+        android:contentDescription="@string/slider_image"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/onboarding_image_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/slider_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/slider_image"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/onboarding_title_one"
+        android:textColor="@color/black"
+        android:textSize="27sp" />
+
+
+    <TextView
+        android:id="@+id/slider_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_below="@id/slider_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/get_started"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+
+</RelativeLayout>
