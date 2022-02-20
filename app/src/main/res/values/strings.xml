@@ -87,6 +87,13 @@
     <string name="identity_description">We need to verify your identity (Required)</string>
     <!-- Verify Identity -->
 
+    <!-- Enter OTP -->
+    <string name="verification">Verification</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="verify">Verify</string>
+    <string name="verification_description">Enter a 4 digit number that \nwas sent to </string>
+    <!-- Enter OTP -->
+
     <!-- ACCOUNT CREATION -->
 
     <!-- USER -->
@@ -102,6 +109,9 @@
     <string name="profile_default_email">johndoe@gmail.com</string>
     <string name="change_password">Change Password</string>
     <string name="log_out">Logout</string>
+    <string name="take_picture">Take a picture</string>
+    <string name="choose_picture">Choose picture from gallery</string>
+    <string name="remove_picture">Remove picture</string>
     <string name="cancel">Cancel</string>
     <string name="sign_out_title">Sign out from app</string>
     <string name="logout_confirmation">Are you sure you would like to sign out of your account?</string>
@@ -113,5 +123,41 @@
     <string name="cards">Cards</string>
     <string name="settings">Settings</string>
     <!-- BOTTOM NAVIGATION -->
+
+    <!-- SETTINGS -->
+    <string name="signed_in">Signed in as</string>
+    <string name="sign_out">Sign out</string>
+    <string name="placeholder_name">john doe</string>
+    <string name="personalize">Personalize</string>
+    <string name="light_theme">Light theme</string>
+    <string name="dark_theme">Dark theme</string>
+    <string name="advanced">Advanced</string>
+    <string name="download_statement">Download my account statement</string>
+    <string name="help">Help</string>
+    <string name="about">About</string>
+    <string name="faq">FAQ</string>
+    <string name="contact_support">Contact support</string>
+    <string name="terms_and_conditions">Terms &amp; Conditions</string>
+    <!-- SETTINGS -->
+
+
+    <!-- FRAGMENT -->
+
+    <!-- Cards -->
+    <string name="no_cards">You currently have no cards!</string>
+    <string name="no_cards_description">Create a new card to start exploring your boundaries with Midas</string>
+    <string name="create_new_card">Create New Card</string>
+    <string name="virtual_card">Virtual Card</string>
+    <string name="gift_card">Gift Card</string>
+    <string name="create_virtual_card">Create Virtual Card</string>
+    <string name="create_gift_card">Create Gift Card</string>
+    <!-- Cards -->
+
+    <!-- Transactions -->
+    <string name="no_transactions">You currently have no transactions!</string>
+    <string name="no_transactions_description">You have not made any transactions yet when you do they will appear here</string>
+    <!-- Transactions -->
+
+    <!-- FRAGMENT -->
 
 </resources>

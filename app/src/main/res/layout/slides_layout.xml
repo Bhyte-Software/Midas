@@ -5,13 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:padding="@dimen/dimen_25"
         android:id="@+id/slider_image"
-        android:contentDescription="@string/slider_image"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/onboarding_image_one"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/slider_image"
+        android:src="@drawable/onboarding_image_one" />
 
     <TextView
         android:id="@+id/slider_title"

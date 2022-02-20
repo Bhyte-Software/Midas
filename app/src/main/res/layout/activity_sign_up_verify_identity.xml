@@ -7,9 +7,9 @@
     tools:context=".AccountCreation.SignUpVerifyIdentity">
 
     <ScrollView
-        android:scrollbars="none"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,13 +21,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/sign_up_complete_image"
-                android:padding="@dimen/dimen_20"
                 android:src="@drawable/verify_identity_image" />
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="-20dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/identity"
                 android:textColor="@color/black"
@@ -104,7 +104,8 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_regular"
                             android:text="@string/recommended"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
 
                     </RelativeLayout>
 
@@ -125,12 +126,12 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_marginBottom="@dimen/dimen_50"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:layout_marginStart="@dimen/dimen_20"
                 android:layout_marginTop="@dimen/dimen_20"
                 android:layout_marginEnd="@dimen/dimen_20"
+                android:layout_marginBottom="@dimen/dimen_50"
                 android:background="@drawable/round_box"
                 android:elevation="@dimen/dimen_5"
                 android:padding="@dimen/dimen_20">

@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_container"
     android:background="@drawable/background_gradient"
     tools:context=".Common.MainDashboard">
 
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:layout_width="match_parent"
+        android:id="@+id/bottom_nav_menu"
         android:theme="@style/Theme.Midas.BottomNavTheme"
         android:layout_height="wrap_content"
         android:background="#EBEBEB"

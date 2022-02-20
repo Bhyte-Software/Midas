@@ -24,6 +24,7 @@
                 android:padding="@dimen/dimen_20">
 
                 <ImageView
+                    android:onClick="callUserMain"
                     android:id="@+id/menu_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -60,6 +61,7 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="@dimen/dimen_105"
+                    android:id="@+id/profile_picture"
                     android:layout_height="@dimen/dimen_105"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/dimen_30"
@@ -77,7 +79,6 @@
 
                 <TextView
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/dimen_5"
                     android:fontFamily="@font/roboto_regular"
                     android:text="@string/profile_default_email"
                     android:layout_width="wrap_content"
@@ -98,7 +99,9 @@
                     app:cornerRadius="35dp" />
 
                 <TextView
-                    android:layout_margin="@dimen/dimen_25"
+                    android:layout_marginBottom="@dimen/dimen_15"
+                    android:layout_marginTop="@dimen/dimen_25"
+                    android:layout_marginStart="@dimen/dimen_25"
                     android:gravity="left"
                     android:textColor="@color/blue_200"
                     android:fontFamily="@font/roboto_medium"
@@ -174,11 +177,11 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:layout_centerVertical="true"
                         android:id="@+id/rate"
-                        android:src="@drawable/language_icon"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/rate_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -200,7 +203,7 @@
                     app:icon="@drawable/lock_image"
                     app:iconGravity="textEnd"
                     android:layout_marginStart="@dimen/dimen_25"
-                    android:layout_marginTop="@dimen/dimen_50"
+                    android:layout_marginTop="@dimen/dimen_30"
                     android:layout_marginEnd="@dimen/dimen_25"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/change_password"
@@ -208,15 +211,15 @@
                     app:cornerRadius="35dp" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:layout_marginBottom="@dimen/dimen_50"
+                    android:layout_marginBottom="@dimen/dimen_70"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="match_parent"
                     android:backgroundTint="@color/red"
                     app:iconGravity="textEnd"
                     android:layout_height="60dp"
+                    android:id="@+id/logout_button"
                     app:icon="@drawable/logout_image"
                     android:layout_marginStart="@dimen/dimen_25"
-                    android:layout_marginTop="@dimen/dimen_5"
                     android:layout_marginEnd="@dimen/dimen_25"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/log_out"

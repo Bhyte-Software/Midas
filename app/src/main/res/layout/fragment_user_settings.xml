@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/background_gradient"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".User.UserSettingsFragment">
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:elevation="@dimen/dimen_5"
+                android:padding="@dimen/dimen_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/settings"
+                    android:textColor="@color/black"
+                    android:textSize="26sp" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:textColor="@color/blue_200"
+                android:fontFamily="@font/roboto_medium"
+                android:textAllCaps="true"
+                android:text="@string/profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:id="@+id/profile_layout"
+                android:clickable="true"
+                android:padding="@dimen/dimen_20"
+                android:layout_marginEnd="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:background="@drawable/top_block"
+                android:layout_height="@dimen/dimen_60">
+
+                <ImageView
+                    android:id="@+id/language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/profile_icon" />
+
+                <TextView
+                    android:id="@+id/signed_in_as"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_20"
+                    android:layout_toEndOf="@id/language"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/signed_in"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_5"
+                    android:layout_toEndOf="@id/signed_in_as"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/placeholder_name"
+                    android:textColor="@color/blue_200"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/sign_out_layout"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:padding="@dimen/dimen_20"
+                android:layout_marginEnd="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:layout_width="match_parent"
+                android:background="@drawable/bottom_block"
+                android:layout_height="@dimen/dimen_60">
+
+                <ImageView
+                    android:id="@+id/rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/logout_image"
+                    app:tint="@color/red" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_20"
+                    android:layout_toEndOf="@id/rate"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/sign_out"
+                    android:textColor="@color/red"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_marginTop="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:textColor="@color/blue_200"
+                android:fontFamily="@font/roboto_medium"
+                android:textAllCaps="true"
+                android:text="@string/personalize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_marginTop="@dimen/dimen_15"
+                android:paddingStart="@dimen/dimen_20"
+                android:paddingEnd="@dimen/dimen_20"
+                android:layout_marginEnd="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:layout_width="match_parent"
+                android:background="@drawable/round_block"
+                android:layout_height="60dp">
+
+                <ImageView
+                    android:id="@+id/theme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/sun_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_20"
+                    android:layout_toEndOf="@id/theme"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/light_theme"
+                    android:textColor="@color/blue_200"
+                    android:textSize="18sp" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:theme="@style/CustomSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_marginTop="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:textColor="@color/blue_200"
+                android:fontFamily="@font/roboto_medium"
+                android:textAllCaps="true"
+                android:text="@string/advanced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_marginTop="@dimen/dimen_15"
+                android:padding="@dimen/dimen_20"
+                android:layout_marginEnd="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:layout_width="match_parent"
+                android:background="@drawable/round_block"
+                android:layout_height="@dimen/dimen_60">
+
+                <ImageView
+                    android:id="@+id/download"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/downlaod_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_20"
+                    android:layout_toEndOf="@id/download"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/download_statement"
+                    android:textColor="@color/blue_200"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:tint="@color/blue_200"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_navigate_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_marginTop="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:textColor="@color/blue_200"
+                android:fontFamily="@font/roboto_medium"
+                android:textAllCaps="true"
+                android:text="@string/help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_marginTop="@dimen/dimen_15"
+                android:padding="@dimen/dimen_20"
+                android:layout_marginEnd="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:layout_width="match_parent"
+                android:background="@drawable/top_block"
+                android:layout_height="@dimen/dimen_60">
+
+                <ImageView
+                    android:id="@+id/faq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/faq_image" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_20"
+                    android:layout_toEndOf="@id/faq"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/faq"
+                    android:textColor="@color/blue_200"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/contact_support"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:padding="@dimen/dimen_20"
+                android:layout_marginEnd="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:layout_width="match_parent"
+                android:background="@drawable/normal_block"
+                android:layout_height="@dimen/dimen_60">
+
+                <ImageView
+                    android:id="@+id/support"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/contact_support_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_20"
+                    android:layout_toEndOf="@id/support"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/contact_support"
+                    android:textColor="@color/blue_200"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="@dimen/dimen_5"
+                android:padding="@dimen/dimen_20"
+                android:layout_marginEnd="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:layout_width="match_parent"
+                android:background="@drawable/normal_block"
+                android:layout_height="@dimen/dimen_60">
+
+                <ImageView
+                    android:id="@+id/terms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/terms_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_20"
+                    android:layout_toEndOf="@id/terms"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/terms_and_conditions"
+                    android:textColor="@color/blue_200"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginBottom="@dimen/dimen_105"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:padding="@dimen/dimen_20"
+                android:layout_marginEnd="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:layout_width="match_parent"
+                android:background="@drawable/bottom_block"
+                android:layout_height="@dimen/dimen_60">
+
+                <ImageView
+                    android:id="@+id/about"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/about_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_20"
+                    android:layout_toEndOf="@id/about"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/about"
+                    android:textColor="@color/blue_200"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

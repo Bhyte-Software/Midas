@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/background_gradient"
     android:layout_height="match_parent"
     tools:context=".AccountCreation.SignUpEnterNumber">
 
@@ -10,7 +11,6 @@
         android:id="@+id/register_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/dimen_20"
         android:src="@drawable/registration_image" />
 
     <TextView
@@ -20,7 +20,7 @@
         android:layout_below="@id/register_image"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/roboto_bold"
-        android:text="@string/sign_up"
+        android:text="Registration"
         android:textColor="@color/black"
         android:textSize="27sp" />
 
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/dimen_10"
+
         android:fontFamily="@font/roboto_medium"
         android:padding="5dp"
         android:text="@string/enter_number"
@@ -38,13 +38,14 @@
         android:textSize="20sp" />
 
     <RelativeLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/dimen_20"
-        android:layout_marginTop="@dimen/dimen_20"
         android:layout_marginEnd="@dimen/dimen_20"
-        android:layout_marginBottom="@dimen/dimen_40"
+        android:layout_marginBottom="@dimen/dimen_20"
         android:background="@drawable/round_box"
         android:elevation="@dimen/dimen_5"
         android:paddingStart="@dimen/dimen_20"
@@ -53,28 +54,40 @@
         android:paddingBottom="@dimen/dimen_40">
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:id="@+id/input_number_field"
+            style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="@dimen/dimen_15"
-            android:layout_marginEnd="@dimen/dimen_15"
-            android:textColorHint="@color/black"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_marginEnd="@dimen/dimen_10"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/blue_200"
             app:boxStrokeWidth="2dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:hintTextColor="@color/black"
-            app:placeholderTextColor="@color/black"
-            app:prefixText="@string/enter_number">
+            app:boxStrokeWidthFocused="2dp"
+            app:counterEnabled="false"
+            app:endIconTint="@null"
+            app:placeholderText="+ (233) Enter phone number"
+            app:placeholderTextColor="@color/blue_200"
+            app:startIconTint="@null">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:inputType="text"
-                android:textColor="@color/black" />
+                android:layout_gravity="center_vertical"
+                android:focusedByDefault="true"
+                android:drawableStart="@drawable/ghana_icon"
+                android:drawablePadding="@dimen/dimen_10"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center_vertical"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColor="@color/blue_200"
+                android:textSize="18sp"
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,6 +99,7 @@
             android:layout_marginTop="@dimen/dimen_90"
             android:layout_marginEnd="@dimen/dimen_25"
             android:fontFamily="@font/roboto_medium"
+            android:onClick="getCode"
             android:text="@string/get_code"
             android:textAllCaps="false"
             app:cornerRadius="35dp" />

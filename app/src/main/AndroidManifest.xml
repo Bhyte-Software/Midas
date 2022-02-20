@@ -10,6 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Midas">
         <activity
+            android:name=".User.GiftCardChooseDesign"
+            android:exported="false" />
+        <activity
+            android:name=".User.VirtualCardChooseDesign"
+            android:exported="false" />
+        <activity
+            android:name=".User.CreateCard"
+            android:exported="false" />
+        <activity
+            android:name=".AccountCreation.SignUpEnterOTP"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Common.ContactSupport"
+            android:exported="false" />
+        <activity
             android:name=".Common.MainDashboard"
             android:exported="false" />
         <activity
@@ -32,15 +48,13 @@
             android:exported="false" />
         <activity
             android:name=".AccountCreation.SignUpEnterNumber"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".AccountCreation.GetStarted"
             android:exported="false" />
         <activity
             android:name=".Common.OnBoarding"
-            android:exported="false" />
-        <activity
-            android:name=".OnBoard"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"

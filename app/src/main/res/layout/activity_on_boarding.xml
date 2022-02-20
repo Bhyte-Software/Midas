@@ -54,7 +54,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:background="@color/transparent"
-            android:fontFamily="@font/roboto_light"
+            android:fontFamily="@font/roboto_medium"
             android:onClick="skip"
             android:text="@string/skip"
             android:textAllCaps="false"

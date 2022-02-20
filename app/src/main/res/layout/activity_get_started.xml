@@ -10,8 +10,7 @@
     android:layout_height="match_parent"
     tools:context=".AccountCreation.GetStarted">
 
-    <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:padding="@dimen/dimen_15"
+    <ImageView
         android:layout_width="match_parent"
         android:src="@drawable/onboarding_image_one"
         android:layout_height="wrap_content"/>
@@ -55,7 +54,7 @@
         android:onClick="callVerifyIdentity"
         app:strokeColor="@color/blue_200"
         android:textColor="@color/blue_200"
-        app:strokeWidth="2dp"
+        app:strokeWidth="1dp"
         android:layout_marginTop="@dimen/dimen_5"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/sign_in"
