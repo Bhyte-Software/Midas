@@ -40,7 +40,7 @@
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/profile"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -115,7 +115,8 @@
                     android:layout_marginEnd="@dimen/dimen_25"
                     android:layout_marginStart="@dimen/dimen_25"
                     android:layout_width="match_parent"
-                    android:background="@drawable/top_block"
+                    android:clickable="true"
+                    android:background="@drawable/ripple_top_block"
                     android:layout_height="wrap_content">
 
                     <ImageView
@@ -131,7 +132,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dimen_20"
                         android:layout_toEndOf="@id/language"
-                        android:fontFamily="@font/roboto_medium"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="@string/language"
                         android:textColor="@color/blue_200"
                         android:textSize="18sp" />
@@ -141,10 +142,12 @@
                 <RelativeLayout
                     android:layout_marginTop="@dimen/dimen_5"
                     android:padding="@dimen/dimen_20"
+                    android:clickable="true"
+                    android:id="@+id/invite_friends"
                     android:layout_marginEnd="@dimen/dimen_25"
                     android:layout_marginStart="@dimen/dimen_25"
                     android:layout_width="match_parent"
-                    android:background="@drawable/normal_block"
+                    android:background="@drawable/ripple_normal_block"
                     android:layout_height="wrap_content">
 
                     <ImageView
@@ -160,7 +163,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dimen_20"
                         android:layout_toEndOf="@id/invite"
-                        android:fontFamily="@font/roboto_medium"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="@string/invite_friends"
                         android:textColor="@color/blue_200"
                         android:textSize="18sp" />
@@ -170,10 +173,12 @@
                 <RelativeLayout
                     android:layout_marginTop="@dimen/dimen_5"
                     android:padding="@dimen/dimen_20"
+                    android:id="@+id/rate_midas"
+                    android:clickable="true"
                     android:layout_marginEnd="@dimen/dimen_25"
                     android:layout_marginStart="@dimen/dimen_25"
                     android:layout_width="match_parent"
-                    android:background="@drawable/bottom_block"
+                    android:background="@drawable/ripple_bottom_block"
                     android:layout_height="wrap_content">
 
                     <ImageView
@@ -189,7 +194,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dimen_20"
                         android:layout_toEndOf="@id/rate"
-                        android:fontFamily="@font/roboto_medium"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="@string/rate_midas"
                         android:textColor="@color/blue_200"
                         android:textSize="18sp" />

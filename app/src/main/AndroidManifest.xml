@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bhyte.midas">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.bhyte.midas"
+    tools:ignore="LockedOrientationActivity">
 
     <application
         android:allowBackup="true"
@@ -10,55 +12,86 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Midas">
         <activity
-            android:name=".User.GiftCardChooseDesign"
+            android:name=".User.ProcessingCardCreation"
             android:exported="false" />
+        <activity
+            android:name=".User.CreateCardFinal"
+            android:exported="false" />
+        <activity
+            android:name=".Common.NoInternet"
+            android:exported="false" />
+        <activity
+            android:name=".User.VirtualCardFundCard"
+            android:exported="false" />
+        <activity
+            android:name=".User.VirtualCardChooseLabel"
+            android:exported="false" />
+        <activity
+            android:name=".User.GiftCardChooseDesign"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".User.VirtualCardChooseDesign"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".User.CreateCard"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AccountCreation.SignUpEnterOTP"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Common.ContactSupport"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Common.MainDashboard"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".User.Profile"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AccountCreation.SignIn"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AccountCreation.SignUpCredentials"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AccountCreation.SignUpEnableFingerprint"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AccountCreation.SignUpComplete"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AccountCreation.SignUpVerifyIdentity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AccountCreation.SignUpEnterNumber"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".AccountCreation.GetStarted"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Common.OnBoarding"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SplashScreen"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -45,15 +45,16 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_20"
                 android:layout_marginTop="@dimen/dimen_30"
                 android:layout_marginEnd="@dimen/dimen_20"
-                android:background="@drawable/round_box"
+                android:background="@drawable/ripple_round_box"
+                android:clickable="true"
                 android:elevation="@dimen/dimen_5"
                 android:padding="@dimen/dimen_20">
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/linear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -82,6 +83,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="@dimen/dimen_10"
+                        android:layout_toEndOf="@id/counter"
                         android:fontFamily="@font/roboto_medium"
                         android:text="@string/national"
                         android:textColor="@color/black"
@@ -91,7 +93,7 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimen_105"
+                        android:layout_alignParentEnd="true"
                         android:background="@drawable/light_green_circle"
                         android:backgroundTint="@color/red"
                         android:paddingStart="@dimen/dimen_10"
@@ -109,7 +111,7 @@
 
                     </RelativeLayout>
 
-                </LinearLayout>
+                </RelativeLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -126,13 +128,14 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:clickable="true"
+                android:background="@drawable/ripple_round_box"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:layout_marginStart="@dimen/dimen_20"
                 android:layout_marginTop="@dimen/dimen_20"
                 android:layout_marginEnd="@dimen/dimen_20"
                 android:layout_marginBottom="@dimen/dimen_50"
-                android:background="@drawable/round_box"
                 android:elevation="@dimen/dimen_5"
                 android:padding="@dimen/dimen_20">
 

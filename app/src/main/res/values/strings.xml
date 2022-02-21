@@ -156,6 +156,18 @@
     <!-- Transactions -->
     <string name="no_transactions">You currently have no transactions!</string>
     <string name="no_transactions_description">You have not made any transactions yet when you do they will appear here</string>
+    <string name="yes">Yes</string>
+    <string name="are_you_sure">Are you sure about this?</string>
+    <string name="choose_card_design">Choose card design</string>
+    <string name="card_design">Card design</string>
+    <string name="choose_card_label">Choose card label</string>
+    <string name="card_lable_title">What would you like to label your card as?</string>
+    <string name="card_label_description">A card label will allow you to identify your cards easily, when you have a couple of them</string>
+    <string name="go_to_settings">Go to settings</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="by_creating_this_card_you_agree_to">By creating this card, you agree to</string>
+    <string name="our_terms_amp_conditions"><![CDATA[Our Terms & Conditions]]></string>
+    <string name="processing">Processing...</string>
     <!-- Transactions -->
 
     <!-- FRAGMENT -->

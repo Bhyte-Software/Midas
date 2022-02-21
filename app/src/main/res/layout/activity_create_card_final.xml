@@ -1,9 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    android:orientation="vertical"
     tools:context=".User.CreateCardFinal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/menu_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/dimen_5"
+        android:padding="@dimen/dimen_15">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:onClick="callBack"
+            android:src="@drawable/back_icon"
+            app:tint="@color/blue_200"
+            tools:ignore="ContentDescription" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/menu_bar"
+        android:background="@drawable/black_card">
+
+    </RelativeLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/create_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_above="@id/txt1"
+        android:layout_marginStart="@dimen/dimen_25"
+        android:layout_marginTop="@dimen/dimen_25"
+        android:layout_marginEnd="@dimen/dimen_25"
+        android:layout_marginBottom="@dimen/dimen_25"
+        android:onClick="callProcessingCardCreation"
+        android:text="@string/create_virtual_card"
+        android:textAllCaps="false"
+        app:cornerRadius="35dp" />
+
+    <LinearLayout
+        android:onClick="callTermsConditions"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:id="@+id/txt1"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textAlignment="center"
+            android:gravity="center"
+            android:text="@string/by_creating_this_card_you_agree_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_10"
+            android:gravity="center"
+            android:text="@string/our_terms_amp_conditions"
+            android:textAlignment="center"
+            android:textColor="@color/blue_200" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

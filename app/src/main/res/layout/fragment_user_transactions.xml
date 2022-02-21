@@ -13,9 +13,10 @@
         android:orientation="vertical">
 
         <ImageView
+            android:padding="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/no_transaction_image" />
+            android:src="@drawable/no_cards_image" />
 
         <TextView
             android:gravity="center"
