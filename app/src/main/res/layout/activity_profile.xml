@@ -140,6 +140,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:onClick="callInviteFriends"
                     android:layout_marginTop="@dimen/dimen_5"
                     android:padding="@dimen/dimen_20"
                     android:clickable="true"

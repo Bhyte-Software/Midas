@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.bhyte.midas.Common.TermsOfService;
 import com.bhyte.midas.R;
 
 public class CreateCardFinal extends AppCompatActivity {
@@ -25,6 +26,6 @@ public class CreateCardFinal extends AppCompatActivity {
     }
 
     public void callTermsConditions(View view) {
-        // TODO TERMS AND CONDITIONS
+        startActivity(new Intent(getApplicationContext(), TermsOfService.class));
     }
 }

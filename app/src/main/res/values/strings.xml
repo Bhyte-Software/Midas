@@ -2,7 +2,7 @@
 
     <!-- APP INFO -->
     <string name="app_name">Midas</string>
-    <string name="app_version">1.0</string>
+    <string name="app_version">V 1.0.2</string>
     <string name="developer">Bhyte</string>
     <string name="slogan">Explore your limits</string>
     <!-- APP INFO -->
@@ -100,7 +100,7 @@
     <string name="profile">Profile</string>
     <string name="preferences">Preferences</string>
     <string name="language">Language</string>
-    <string name="invite_friends">Invite friends (Get Paid)</string>
+    <string name="invite_friends">Invite friends</string>
     <string name="rate_midas">Rate Midas</string>
     <string name="rate">Rate</string>
     <string name="rate_midas_description">Are you sure you want to rate the app? You would be redirected to the Play Store</string>
@@ -168,6 +168,8 @@
     <string name="by_creating_this_card_you_agree_to">By creating this card, you agree to</string>
     <string name="our_terms_amp_conditions"><![CDATA[Our Terms & Conditions]]></string>
     <string name="processing">Processing...</string>
+    <string name="about_tagline">Create virtual credit cards for use on various platforms in your gadget with this app</string>
+    <string name="dummy_text">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?</string>
     <!-- Transactions -->
 
     <!-- FRAGMENT -->

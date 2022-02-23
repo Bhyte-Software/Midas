@@ -8,6 +8,13 @@
     android:layout_height="match_parent"
     tools:context=".SplashScreen">
 
+<ImageView
+    android:layout_marginTop="@dimen/dimen_105"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:src="@drawable/midas_logo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
 
   <com.airbnb.lottie.LottieAnimationView
       android:id="@+id/loading_animation"

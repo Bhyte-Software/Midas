@@ -57,7 +57,10 @@ dependencies {
     implementation 'com.ismaeldivita.chipnavigation:chip-navigation-bar:1.3.4'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.5.31'
 
-    //OTP PIN VIEW DESIGN
+    // OTP PIN VIEW DESIGN
     implementation 'com.chaos.view:pinview:1.4.3'
+
+    // Stylable Toast
+    implementation 'com.muddzdev:styleabletoast:2.0.1'
 
 }

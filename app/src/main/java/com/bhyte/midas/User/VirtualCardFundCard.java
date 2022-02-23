@@ -20,7 +20,7 @@ public class VirtualCardFundCard extends AppCompatActivity {
         finish();
     }
 
-    public void callProcessingCardCreation(View view) {
-        startActivity(new Intent(getApplicationContext(), ProcessingCardCreation.class));
+    public void callCreateCardFinal(View view) {
+        startActivity(new Intent(getApplicationContext(), CreateCardFinal.class));
     }
 }

@@ -194,20 +194,12 @@ public class Profile extends AppCompatActivity {
         negative = dialog.findViewById(R.id.cancel);
 
         // Click Listeners
-        positive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Set profile to default
-                dialog.dismiss();
-                profilePicture.setImageResource(R.drawable.profile_picture_default);
-            }
+        positive.setOnClickListener(v -> {
+            // Set profile to default
+            dialog.dismiss();
+            profilePicture.setImageResource(R.drawable.profile_picture_default);
         });
-        negative.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        negative.setOnClickListener(v -> dialog.dismiss());
     }
 
     public void callUserMain(View view) {
@@ -215,4 +207,13 @@ public class Profile extends AppCompatActivity {
     }
 
 
+    public void callInviteFriends(View view) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        String Body = "Download Midas";
+        String Sub = "https://play.google.com";
+        intent.putExtra(Intent.EXTRA_TEXT, Body);
+        intent.putExtra(Intent.EXTRA_TEXT, Sub);
+        startActivity(Intent.createChooser(intent, "Share midas using"));
+    }
 }

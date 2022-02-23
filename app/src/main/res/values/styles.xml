@@ -32,4 +32,12 @@
         <item name="android:colorForeground">#42221f1f</item>
     </style>
 
+    <!-- Custom User Toast -->
+    <style name="customToastWarning">
+        <item name="colorBackground">@color/red_light</item>
+        <item name="textColor">@color/white</item>
+        <item name="iconLeft">@drawable/ic_warning</item>
+    </style>
+    <!-- End Custom Toast -->
+
 </resources>

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.bhyte.midas.Common.AcceptTermsOfService;
 import com.bhyte.midas.Common.MainDashboard;
 import com.bhyte.midas.R;
 
@@ -23,5 +24,9 @@ public class GetStarted extends AppCompatActivity {
 
     public void callVerifyIdentity(View view) {
         startActivity(new Intent(getApplicationContext(), MainDashboard.class));
+    }
+
+    public void callAcceptTerms(View view) {
+        startActivity(new Intent(getApplicationContext(), AcceptTermsOfService.class));
     }
 }

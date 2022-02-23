@@ -38,7 +38,6 @@
 
     </RelativeLayout>
 
-
     <RelativeLayout
         android:id="@+id/card"
         android:layout_width="wrap_content"
@@ -119,8 +118,8 @@
         android:layout_marginTop="@dimen/dimen_25"
         android:layout_marginEnd="@dimen/dimen_25"
         android:layout_marginBottom="@dimen/dimen_25"
+        android:onClick="callCreateCardFinal"
         android:text="Continue"
-        android:onClick="callProcessingCardCreation"
         android:textAllCaps="false"
         app:cornerRadius="35dp" />
 

@@ -23,7 +23,19 @@
             android:onClick="callBack"
             android:src="@drawable/back_icon"
             app:tint="@color/blue_200"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dimen_15"
+            android:layout_toEndOf="@id/back"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Confirm card creation"
+            android:textColor="@color/blue_200"
+            android:textSize="26sp" />
 
     </RelativeLayout>
 
@@ -45,28 +57,29 @@
         android:layout_marginStart="@dimen/dimen_25"
         android:layout_marginTop="@dimen/dimen_25"
         android:layout_marginEnd="@dimen/dimen_25"
-        android:layout_marginBottom="@dimen/dimen_25"
+        android:layout_marginBottom="@dimen/dimen_50"
         android:onClick="callProcessingCardCreation"
         android:text="@string/create_virtual_card"
         android:textAllCaps="false"
         app:cornerRadius="35dp" />
 
     <LinearLayout
-        android:onClick="callTermsConditions"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
         android:id="@+id/txt1"
-        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dimen_15"
+        android:gravity="center"
+        android:onClick="callTermsConditions"
+        android:orientation="vertical">
 
         <TextView
-            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/by_creating_this_card_you_agree_to"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textAlignment="center" />
 
         <TextView
             android:layout_width="wrap_content"
