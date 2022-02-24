@@ -10,7 +10,6 @@
 
     <ImageView
         android:contentDescription="@string/sign_up_complete_image"
-        android:padding="@dimen/dimen_20"
         android:src="@drawable/sign_up_complete_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

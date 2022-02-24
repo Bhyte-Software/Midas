@@ -27,6 +27,6 @@ public class GetStarted extends AppCompatActivity {
     }
 
     public void callAcceptTerms(View view) {
-        startActivity(new Intent(getApplicationContext(), AcceptTermsOfService.class));
+        startActivity(new Intent(getApplicationContext(), SignUpCredentials.class));
     }
 }

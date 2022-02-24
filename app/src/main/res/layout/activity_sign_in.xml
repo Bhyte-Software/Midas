@@ -1,9 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_25"
     android:layout_height="match_parent"
     tools:context=".AccountCreation.SignIn">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:textSize="14sp"
+        android:paddingStart="15dp"
+        android:inputType="textNoSuggestions"
+        android:hint="@string/full_name"
+        android:drawablePadding="15dp"
+        android:drawableStart="@drawable/custom_user_icon"
+        android:background="@drawable/custom_input"
+        android:ems="10"
+        android:textColor="@color/blue_200"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_60"/>
+
+    <EditText
+        android:layout_marginTop="10dp"
+        android:textSize="14sp"
+        android:inputType="textNoSuggestions"
+        android:hint="@string/email"
+        android:paddingStart="15dp"
+        android:textColor="@color/blue_200"
+        android:drawablePadding="15dp"
+        android:drawableStart="@drawable/custom_email_icon"
+        android:background="@drawable/custom_input"
+        android:ems="10"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_60"/>
+
+    <EditText
+        android:layout_marginTop="10dp"
+        android:paddingStart="15dp"
+        android:textSize="14sp"
+        android:textColor="@color/blue_200"
+        android:inputType="textPassword"
+        android:hint="@string/password"
+        android:drawablePadding="15dp"
+        android:drawableStart="@drawable/custom_password_icon"
+        android:background="@drawable/custom_input"
+        android:ems="10"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_60"/>
+
+</LinearLayout>

@@ -10,6 +10,10 @@
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/bottom_nav_background.xml" value="0.11458333333333333" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.2212962962962963" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/bottom_sheet_handle.xml" value="0.2212962962962963" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/custom_email_icon.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/custom_input.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/custom_password_icon.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/custom_user_icon.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/light_green.xml" value="0.17263513513513515" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/light_green_circle.xml" value="0.17263513513513515" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/drawable/logout_popup_border.xml" value="0.17263513513513515" />
@@ -42,11 +46,11 @@
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_on_boarding.xml" value="0.2" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_processing_card_creation.xml" value="0.25" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_profile.xml" value="0.264" />
-        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_in.xml" value="0.16216216216216217" />
-        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_complete.xml" value="0.16" />
-        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_credentials.xml" value="0.152" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_in.xml" value="0.4" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_complete.xml" value="0.264" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_credentials.xml" value="0.4" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_enable_fingerprint.xml" value="0.264" />
-        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_enter_number.xml" value="0.264" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_enter_number.xml" value="0.4" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_enter_otp.xml" value="0.264" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_verify_identity.xml" value="0.4" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_splash_screen.xml" value="0.16666666666666666" />

@@ -2,6 +2,7 @@ package com.bhyte.midas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.WindowManager;
 import com.bhyte.midas.AccountCreation.GetStarted;
 import com.bhyte.midas.Common.OnBoarding;
 
+@SuppressLint("CustomSplashScreen")
 public class SplashScreen extends AppCompatActivity {
     private static final int SPLASH_TIMER = 4000;
 
@@ -32,17 +34,16 @@ public class SplashScreen extends AppCompatActivity {
 
                 SharedPreferences.Editor editor = onBoardingScreen.edit();
                 editor.putBoolean("firstTime", false);
-                editor.commit();
+                editor.apply();
 
                 Intent intent = new Intent(getApplicationContext(), OnBoarding.class);
                 startActivity(intent);
-                finish();
 
             } else {
                 Intent intent = new Intent(getApplicationContext(), GetStarted.class);
                 startActivity(intent);
-                finish();
             }
+            finish();
         }, SPLASH_TIMER);
 
     }

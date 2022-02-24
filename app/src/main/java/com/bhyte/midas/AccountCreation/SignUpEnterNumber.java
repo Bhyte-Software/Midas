@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +18,7 @@ import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 public class SignUpEnterNumber extends AppCompatActivity {
 
-    TextInputLayout enterNumberLayout;
+    EditText enterNumberLayout;
     public String countryCode;
     public String phoneNumber;
     public int lengthOfVal;
@@ -41,14 +42,13 @@ public class SignUpEnterNumber extends AppCompatActivity {
 
     public void checkInputLayout() {
 
-        phoneNumber = enterNumberLayout.getEditText().getText().toString().trim();
+        phoneNumber = enterNumberLayout.getText().toString().trim();
         lengthOfVal = phoneNumber.length();
 
         if (lengthOfVal == 10) {
-            enterNumberLayout.setEndIconMode(TextInputLayout.END_ICON_CUSTOM);
-            enterNumberLayout.setEndIconDrawable(R.drawable.green_tick);
+            enterNumberLayout.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ghana_icon, 0, R.drawable.green_tick, 0);
         } else {
-            enterNumberLayout.setEndIconMode(TextInputLayout.END_ICON_NONE);
+            enterNumberLayout.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ghana_icon, 0, 0, 0);
         }
     }
 
