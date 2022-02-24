@@ -8,7 +8,7 @@
     tools:context=".Common.AcceptTermsOfService">
 
     <LinearLayout
-        android:paddingTop="@dimen/dimen_10"
+        android:elevation="@dimen/dimen_5"
         android:id="@+id/menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,13 +34,12 @@
                     android:textSize="26sp" />
 
                 <ImageView
-                    android:layout_centerVertical="true"
-                    android:paddingEnd="15dp"
-                    android:paddingStart="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="@dimen/dimen_40"
+                    android:layout_centerVertical="true"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
                     android:src="@drawable/microphone"
                     app:tint="@color/blue_200" />
 

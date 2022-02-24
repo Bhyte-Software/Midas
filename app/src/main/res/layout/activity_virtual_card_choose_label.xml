@@ -40,11 +40,48 @@
 
 
     <RelativeLayout
+        android:layout_marginTop="-10dp"
         android:id="@+id/card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/menu_bar"
         android:background="@drawable/black_card">
+
+        <TextView
+            android:id="@+id/card_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_80"
+            android:layout_marginTop="@dimen/dimen_105"
+            android:fontFamily="@font/roboto_black"
+            android:text="3672 8229 3829 0372"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card_number"
+            android:layout_marginStart="@dimen/dimen_50"
+            android:layout_marginTop="@dimen/dimen_40"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Date"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/card_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card_number"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/dimen_40"
+            android:layout_marginEnd="@dimen/dimen_50"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Name"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 
@@ -59,61 +96,39 @@
         android:textColor="@color/blue_200"
         android:textSize="22sp" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_name_field"
-        style="@style/TextInputLayoutStyle"
+    <EditText
+        android:id="@+id/name_input_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dimen_60"
         android:layout_below="@id/title"
         android:layout_marginStart="@dimen/dimen_15"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/dimen_10"
         android:layout_marginEnd="@dimen/dimen_15"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopEnd="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        app:boxStrokeColor="@color/blue_200"
-        app:boxStrokeWidth="2dp"
-        app:boxStrokeWidthFocused="2dp"
-        app:counterEnabled="false"
-        app:endIconTint="@null"
-        app:placeholderText="Enter full name"
-        app:placeholderTextColor="@color/blue_200"
-        app:startIconTint="@null">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:backgroundTint="@color/white"
-            android:drawableStart="@drawable/user_icon"
-            android:drawablePadding="@dimen/dimen_10"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:fontFamily="@font/roboto_medium"
-            android:gravity="center_vertical"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:maxLength="50"
-            android:textColor="@color/blue_200"
-            android:textSize="18sp"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_user_icon"
+        android:drawablePadding="15dp"
+        android:ems="10"
+        android:fontFamily="@font/roboto_medium"
+        android:hint="@string/full_name"
+        android:inputType="textPersonName|textFilter"
+        android:paddingStart="15dp"
+        android:paddingEnd="@dimen/dimen_15"
+        android:textColor="@color/blue_200"
+        android:textSize="18sp" />
 
     <TextView
-        android:layout_margin="@dimen/dimen_15"
-        android:layout_below="@id/input_name_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/name_input_layout"
+        android:layout_margin="@dimen/dimen_15"
         android:text="@string/card_label_description" />
 
     <com.google.android.material.button.MaterialButton
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:onClick="callFundVirtualCard"
         android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/dimen_25"
+        android:onClick="callFundVirtualCard"
         android:text="Continue"
         android:textAllCaps="false"
         app:cornerRadius="35dp" />

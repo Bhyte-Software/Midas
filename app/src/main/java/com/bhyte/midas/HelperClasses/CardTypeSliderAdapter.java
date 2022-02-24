@@ -33,6 +33,10 @@ public class CardTypeSliderAdapter extends PagerAdapter {
             R.string.gift_card
     };
 
+    int descriptions[] = {
+            R.string.creation_fee_virtual_card,
+            R.string.creation_fee_gift_card
+    };
 
     @Override
     public int getCount() {
@@ -54,10 +58,13 @@ public class CardTypeSliderAdapter extends PagerAdapter {
         // Hooks
         ImageView cardTypeImage = view.findViewById(R.id.card_type_image);
         TextView title = view.findViewById(R.id.card_type);
+        TextView creationFee = view.findViewById(R.id.card_creation_fee);
 
         // Set
         cardTypeImage.setImageResource(images[position]);
         title.setText(headings[position]);
+        creationFee.setText(descriptions[position]);
+
 
         container.addView(view);
 

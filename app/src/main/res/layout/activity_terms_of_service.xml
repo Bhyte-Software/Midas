@@ -8,7 +8,7 @@
     tools:context=".Common.TermsOfService">
 
     <LinearLayout
-        android:paddingTop="@dimen/dimen_10"
+        android:elevation="@dimen/dimen_5"
         android:id="@+id/menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

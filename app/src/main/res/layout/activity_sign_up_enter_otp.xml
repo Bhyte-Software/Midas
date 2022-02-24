@@ -33,7 +33,7 @@
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/roboto_medium"
         android:padding="5dp"
-        android:text="Enter a 6 digit number that \n was sent to"
+        android:text="Enter a 6 digit code that was sent to"
         android:textAlignment="center"
         android:textSize="20sp" />
 
@@ -43,8 +43,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/dimen_20"
         android:layout_marginEnd="@dimen/dimen_20"
+        android:clickable="true"
         android:layout_marginBottom="@dimen/dimen_70"
-        android:background="@drawable/round_box"
+        android:background="@drawable/ripple_round_box"
         android:elevation="@dimen/dimen_5"
         android:paddingStart="@dimen/dimen_20"
         android:paddingTop="@dimen/dimen_40"

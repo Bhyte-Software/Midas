@@ -176,6 +176,9 @@
     <string name="full_name">Full Name</string>
     <string name="password">Password</string>
     <string name="_233_phone_number">+ (233) Phone Number</string>
+    <string name="enter_amount">Enter amount</string>
+    <string name="creation_fee_virtual_card">$1.00 creation fee</string>
+    <string name="creation_fee_gift_card">$2.00 creation fee</string>
     <!-- Transactions -->
 
     <!-- FRAGMENT -->

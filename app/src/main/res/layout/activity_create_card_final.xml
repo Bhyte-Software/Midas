@@ -41,11 +41,50 @@
 
 
     <RelativeLayout
+        android:layout_marginTop="-10dp"
         android:id="@+id/card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/menu_bar"
         android:background="@drawable/black_card">
+
+
+        <TextView
+            android:id="@+id/card_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_80"
+            android:layout_marginTop="@dimen/dimen_105"
+            android:fontFamily="@font/roboto_medium"
+            android:text="3672 8229 3829 0372"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card_number"
+            android:layout_marginStart="@dimen/dimen_50"
+            android:layout_marginTop="@dimen/dimen_40"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Date"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/card_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card_number"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/dimen_40"
+            android:layout_marginEnd="@dimen/dimen_50"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Name"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
 
     </RelativeLayout>
 
