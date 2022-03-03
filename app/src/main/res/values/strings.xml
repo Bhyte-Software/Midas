@@ -228,6 +228,7 @@
     <string name="mobile_transfers">Mobile Transfers</string>
     <string name="mtn_mobile_money">MTN Mobile Money</string>
     <string name="_0_00">0.00</string>
+    <string name="john_doe">John Doe 👋</string>
     <!-- HOME -->
 
 </resources>
