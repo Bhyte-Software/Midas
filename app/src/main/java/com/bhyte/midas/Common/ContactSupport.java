@@ -20,4 +20,24 @@ public class ContactSupport extends AppCompatActivity {
     public void callClose(View view) {
         startActivity(new Intent(getApplicationContext(), MainDashboard.class));
     }
+
+    public void callCLose(View view) {
+        finish();
+    }
+
+    public void callEmail(View view) {
+        String to, subject, message;
+        to = "midas@gmail.com";
+        message = "Please enter what you need help with";
+        subject = "Need Help With Midas";
+        Intent email = new Intent(Intent.ACTION_SEND);
+        email.putExtra(Intent.EXTRA_EMAIL, new String[]{to});
+        email.putExtra(Intent.EXTRA_SUBJECT, subject);
+        email.putExtra(Intent.EXTRA_TEXT, message);
+
+        //need this to prompts email client only
+        email.setType("message/rfc822");
+
+        startActivity(Intent.createChooser(email, "Choose an Email client :"));
+    }
 }

@@ -1,15 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_gradient"
+    android:orientation="vertical"
     tools:context=".User.UserHomeFragment">
 
-    <TextView
-        android:gravity="center"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/home" />
+        android:layout_height="400dp"
+        android:background="@drawable/gradient"
+        android:paddingStart="@dimen/dimen_25"
+        android:paddingTop="10dp"
+        android:paddingEnd="@dimen/dimen_25">
 
-</FrameLayout>
+        <RelativeLayout
+            android:id="@+id/home_title_icons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/search" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_picture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/home_profile_default" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_marginTop="@dimen/dimen_10"
+            android:id="@+id/greetings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/home_title_icons"
+            android:fontFamily="@font/roboto_black"
+            android:text="@string/good_morning"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/greetings"
+            android:fontFamily="@font/roboto_medium"
+            android:text="John Doe 👋"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            android:layout_below="@id/username"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:background="@drawable/ripple_round_box"
+            android:clickable="true"
+            android:paddingStart="@dimen/dimen_20"
+            android:paddingTop="@dimen/dimen_15"
+            android:paddingEnd="@dimen/dimen_20"
+            android:paddingBottom="@dimen/dimen_15">
+
+            <RelativeLayout
+                android:id="@+id/assets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/total_assets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/total_assets_ghc" />
+
+                <RelativeLayout
+                    android:id="@+id/currency_view"
+                    android:layout_width="@dimen/dimen_70"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/light_green_circle"
+                    android:padding="@dimen/dimen_5">
+
+                    <TextView
+                        android:id="@+id/currency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="GH₵"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/assets">
+
+                <TextView
+                    android:id="@+id/account_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/_0_00"
+                    android:textColor="@color/black"
+                    android:textSize="35sp"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/toggle_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_10"
+                    android:layout_toEndOf="@id/account_balance"
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/toggle_balance" />
+
+            </RelativeLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/add_money_button"
+                android:layout_width="150dp"
+                android:layout_height="@dimen/dimen_55"
+                android:layout_below="@id/balance"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:text="@string/add_money"
+                android:textAllCaps="false"
+                app:cornerRadius="35dp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-80dp"
+        android:background="@drawable/bottom_sheet_background"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_50"
+                android:padding="@dimen/dimen_20"
+                android:text="@string/dummy_text" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -49,7 +49,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="-60dp"
+            android:layout_marginTop="-50dp"
             android:background="@drawable/top_round_corner_overlay"
             android:elevation="10dp"
             android:scrollbars="none">
@@ -60,11 +60,11 @@
                 android:orientation="vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="@dimen/dimen_105"
+                    android:layout_width="@dimen/dimen_120"
                     android:id="@+id/profile_picture"
-                    android:layout_height="@dimen/dimen_105"
+                    android:layout_height="@dimen/dimen_120"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/dimen_30"
+                    android:layout_marginTop="@dimen/dimen_50"
                     android:src="@drawable/profile_picture_default" />
 
                 <TextView
@@ -207,6 +207,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     app:icon="@drawable/lock_image"
+                    android:onClick="callChangePassword"
                     app:iconGravity="textEnd"
                     android:layout_marginStart="@dimen/dimen_25"
                     android:layout_marginTop="@dimen/dimen_30"
@@ -237,4 +238,5 @@
         </ScrollView>
 
     </LinearLayout>
+
 </LinearLayout>

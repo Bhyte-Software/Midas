@@ -216,4 +216,8 @@ public class Profile extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_TEXT, Sub);
         startActivity(Intent.createChooser(intent, "Share midas using"));
     }
+
+    public void callChangePassword(View view) {
+        startActivity(new Intent(getApplicationContext(), ChangePasswordEnterEmail.class));
+    }
 }

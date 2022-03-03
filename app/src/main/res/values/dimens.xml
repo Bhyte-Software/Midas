@@ -13,4 +13,6 @@
     <dimen name="dimen_80">80dp</dimen>
     <dimen name="dimen_90">90dp</dimen>
     <dimen name="dimen_105">105dp</dimen>
+    <dimen name="dimen_120">120dp</dimen>
+    <dimen name="dimen_55">55dp</dimen>
 </resources>

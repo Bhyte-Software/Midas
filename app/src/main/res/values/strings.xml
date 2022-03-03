@@ -65,6 +65,10 @@
     <string name="go">Continue</string>
     <string name="fingerprint_description">Continue to fingerprint registration screen</string>
     <string name="skip_step">Skip This Step</string>
+    <string name="try_fingerprint">Try Fingerprint</string>
+    <string name="try_fingerprint_description">Touch fingerprint sensor to sign into your account</string>
+    <string name="just_use_pass">or just use password instead</string>
+    <string name="having_problems">Having problems? Click Here</string>
     <!-- Fingerprint -->
 
 
@@ -182,5 +186,48 @@
     <!-- Transactions -->
 
     <!-- FRAGMENT -->
+
+    <!-- CARD DETAILS -->
+    <string name="card_holder">Cardholder Name</string>
+    <string name="card_number">Card Number</string>
+    <string name="card_cvv">CVV</string>
+    <string name="delete_card">Delete Card</string>
+    <string name="card_details">Card Details</string>
+    <!-- CARD DETAILS -->
+
+    <!-- CHANGE PASSWORD -->
+    <string name="check_mail">Check your mail</string>
+    <string name="check_mail_description">We have sent password recovery instructions to your email</string>
+    <string name="open_email_app">Open Email App</string>
+    <string name="skip_confirm_later">Skip, I\'ll confirm later</string>
+    <string name="help_bottom">Did not receive the email? Check your spam filter,</string>
+    <string name="help_bottom2">or try another email address</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="send_instructions">Send Instructions</string>
+    <string name="reset_password_description">Enter the email associated with your account and we\'ll send an email with instructions to reset your password</string>
+    <!-- CHANGE PASSWORD -->
+
+    <!-- HOME -->
+    <string name="good_morning">Good Morning,</string>
+    <string name="good_afternoon">Good Afternoon,</string>
+    <string name="good_evening">Good Evening,</string>
+    <string name="total_assets_ghc">Total assets (GH₵)</string>
+    <string name="total_assets_dollar">Total assets ($)</string>
+    <string name="add_money">Add Money</string>
+    <string name="us_dollar">US Dollar</string>
+    <string name="cedi">GH₵</string>
+    <string name="dollar">$</string>
+    <string name="ghana_cedi">Ghana Cedi</string>
+    <string name="phone">Phone</string>
+    <string name="midas_gmail_com">midas@gmail.com</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="recovery_code">Recovery code</string>
+    <string name="successful">Successful!</string>
+    <string name="password_change_successful_description">You have successfully changed your password,go ahead and sign in to your account with the new password</string>
+    <string name="choose_a_method">Choose a method</string>
+    <string name="mobile_transfers">Mobile Transfers</string>
+    <string name="mtn_mobile_money">MTN Mobile Money</string>
+    <string name="_0_00">0.00</string>
+    <!-- HOME -->
 
 </resources>

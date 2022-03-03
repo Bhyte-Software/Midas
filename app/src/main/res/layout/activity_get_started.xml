@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:backgroundTint="@color/white"
-        android:onClick="callVerifyIdentity"
+        android:onClick="callSignIn"
         app:strokeColor="@color/blue_200"
         android:textColor="@color/blue_200"
         app:strokeWidth="1dp"

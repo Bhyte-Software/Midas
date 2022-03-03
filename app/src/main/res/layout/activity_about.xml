@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dimen_15"
+            android:layout_marginStart="@dimen/dimen_20"
             android:layout_toEndOf="@id/back"
             android:fontFamily="@font/roboto_bold"
             android:text="About"
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:textAllCaps="true"
             android:textSize="30sp"
             android:fontFamily="@font/roboto_bold"

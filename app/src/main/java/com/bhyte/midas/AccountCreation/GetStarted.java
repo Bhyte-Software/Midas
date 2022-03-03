@@ -8,7 +8,9 @@ import android.view.View;
 
 import com.bhyte.midas.Common.AcceptTermsOfService;
 import com.bhyte.midas.Common.MainDashboard;
+import com.bhyte.midas.Common.NoInternet;
 import com.bhyte.midas.R;
+import com.bhyte.midas.User.VirtualCardDetails;
 
 public class GetStarted extends AppCompatActivity {
 
@@ -22,11 +24,11 @@ public class GetStarted extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), SignUpEnterNumber.class));
     }
 
-    public void callVerifyIdentity(View view) {
-        startActivity(new Intent(getApplicationContext(), MainDashboard.class));
+    public void callAcceptTerms(View view) {
+        startActivity(new Intent(getApplicationContext(), NoInternet.class));
     }
 
-    public void callAcceptTerms(View view) {
-        startActivity(new Intent(getApplicationContext(), SignUpCredentials.class));
+    public void callSignIn(View view) {
+        startActivity(new Intent(getApplicationContext(), SignIn.class));
     }
 }

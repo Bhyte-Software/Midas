@@ -84,6 +84,7 @@
 
 
             <TextView
+                android:id="@+id/txt1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dummy_text" />
@@ -111,6 +112,7 @@
         android:padding="@dimen/dimen_15">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/read_button"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginStart="@dimen/dimen_10"
