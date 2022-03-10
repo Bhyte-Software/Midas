@@ -13,8 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bhyte.midas.R;
+import com.chaos.view.PinView;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.PhoneAuthProvider;
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
+
+import java.util.concurrent.TimeUnit;
 
 public class SignUpEnterNumber extends AppCompatActivity {
 
@@ -32,6 +36,18 @@ public class SignUpEnterNumber extends AppCompatActivity {
 
         // Hooks
         enterNumberLayout = findViewById(R.id.input_number_field);
+
+        // Data
+        countryCode = "233";
+        completeNumber = phoneNumber.substring(1);
+        fullPhoneNumber = "+" + countryCode + completeNumber;
+
+        sendVerificationCode(fullPhoneNumber);
+
+    }
+
+    private void sendVerificationCode(String fullPhoneNumber) {
+        //TODO
     }
 
     @Override
@@ -55,11 +71,6 @@ public class SignUpEnterNumber extends AppCompatActivity {
     public void getCode(View view) {
 
         if (lengthOfVal == 10) {
-
-            countryCode = "233";
-            completeNumber = phoneNumber.substring(1);
-            fullPhoneNumber = "+" + countryCode + completeNumber;
-
             Intent otpIntent = new Intent(getApplicationContext(), SignUpEnterOTP.class);
             startActivity(otpIntent);
             finish();

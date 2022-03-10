@@ -1,41 +1,65 @@
 package com.bhyte.midas.HelperClasses;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.bhyte.midas.Common.AcceptTermsOfService;
 import com.bhyte.midas.R;
+import com.bhyte.midas.User.CreateCard;
 import com.google.android.material.button.MaterialButton;
 
 public class CardTypeSliderAdapter extends PagerAdapter {
 
     Context context;
+    Dialog infoDialog;
+    MaterialButton cancelButton;
     LayoutInflater layoutInflater;
 
     public CardTypeSliderAdapter(Context context) {
         this.context = context;
     }
 
-    int images[] = {
+    int[] images = {
             R.drawable.virtual_card,
             R.drawable.gift_card
     };
 
-    int headings[] = {
+    int[] headings = {
             R.string.virtual_card,
             R.string.gift_card
     };
 
-    int descriptions[] = {
+    int[] descriptions = {
             R.string.creation_fee_virtual_card,
             R.string.creation_fee_gift_card
+    };
+
+    int[] feature_one = {
+            R.string.virtual_card_feature_one,
+            R.string.gift_card_feature_one
+    };
+
+    int[] feature_two = {
+            R.string.virtual_card_feature_two,
+            R.string.gift_card_feature_two
+    };
+
+    int[] feature_three = {
+            R.string.virtual_card_feature_three,
+            R.string.gift_card_feature_three
     };
 
     @Override
@@ -52,19 +76,51 @@ public class CardTypeSliderAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
+        TextView featureOne, featureTwo, featureThree;
+
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.card_type_slides_layout, container, false);
 
         // Hooks
         ImageView cardTypeImage = view.findViewById(R.id.card_type_image);
+        ImageView cardCreationFeeInfo = view.findViewById(R.id.card_creation_fee_info);
         TextView title = view.findViewById(R.id.card_type);
         TextView creationFee = view.findViewById(R.id.card_creation_fee);
+        featureOne = view.findViewById(R.id.feature_one);
+        featureTwo = view.findViewById(R.id.feature_two);
+        featureThree = view.findViewById(R.id.feature_three);
+
+        int pageCount = headings.length;
 
         // Set
         cardTypeImage.setImageResource(images[position]);
         title.setText(headings[position]);
         creationFee.setText(descriptions[position]);
+        featureOne.setText(feature_one[position]);
+        featureTwo.setText(feature_two[position]);
+        featureThree.setText(feature_three[position]);
 
+        // Click Listeners
+        cardCreationFeeInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Show Info Dialog Popup
+                infoDialog = new Dialog(v.getContext(), R.style.BottomSheetTheme);
+
+                View dialogView = LayoutInflater.from(context.getApplicationContext()).inflate(R.layout.card_creation_info, view.findViewById(R.id.card_creation_info));
+
+                infoDialog.setContentView(dialogView);
+                infoDialog.show();
+
+                // Hooks
+                cancelButton = infoDialog.findViewById(R.id.cancel);
+
+                // Click Listeners
+                cancelButton.setOnClickListener(view1 -> {
+                    infoDialog.dismiss();
+                });
+            }
+        });
 
         container.addView(view);
 

@@ -185,6 +185,16 @@
     <string name="creation_fee_gift_card">$2.00 creation fee</string>
     <!-- Transactions -->
 
+    <!-- Card Features -->
+    <string name="virtual_card_feature_one">• Make purchases online</string>
+    <string name="virtual_card_feature_two">• Reminders on your subscriptions</string>
+    <string name="virtual_card_feature_three">• Control how you spend</string>
+
+    <string name="gift_card_feature_one">• Gift friends with virtual cards</string>
+    <string name="gift_card_feature_two">• Delivered instantly by email</string>
+    <string name="gift_card_feature_three">• Redeemable for online purchases</string>
+    <!-- Card Features -->
+
     <!-- FRAGMENT -->
 
     <!-- CARD DETAILS -->
@@ -229,6 +239,11 @@
     <string name="mtn_mobile_money">MTN Mobile Money</string>
     <string name="_0_00">0.00</string>
     <string name="john_doe">John Doe 👋</string>
+    <string name="okay">Okay</string>
+    <string name="morning">Good Morning,</string>
+    <string name="afternoon">Good Afternoon,</string>
+    <string name="evening">Good Evening,</string>
+    <string name="night">Good Night,</string>
     <!-- HOME -->
 
 </resources>

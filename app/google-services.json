@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "945619515981",
+    "project_id": "midas-2020",
+    "storage_bucket": "midas-2020.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945619515981:android:697f5800f303a8b45b3a04",
+        "android_client_info": {
+          "package_name": "com.bhyte.midas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "945619515981-fi8b1ncmt6hu2sjp9l0oh7qbm5hqm2d7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdRXAbyDZ-aSpo32Qq7KpFkpVKqqTRAGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "945619515981-fi8b1ncmt6hu2sjp9l0oh7qbm5hqm2d7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

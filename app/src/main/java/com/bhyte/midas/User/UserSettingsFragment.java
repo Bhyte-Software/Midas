@@ -15,12 +15,13 @@ import android.widget.RelativeLayout;
 
 import com.bhyte.midas.Common.About;
 import com.bhyte.midas.Common.ContactSupport;
+import com.bhyte.midas.Common.FAQ;
 import com.bhyte.midas.Common.TermsOfService;
 import com.bhyte.midas.R;
 
 public class UserSettingsFragment extends Fragment {
 
-    RelativeLayout profile, signOut, contactSupport, aboutLayout, termsLayout;
+    RelativeLayout profile, signOut, contactSupport, aboutLayout, termsLayout, faqLayout;
     Dialog logoutDialog;
     Button positive, negative;
 
@@ -36,16 +37,14 @@ public class UserSettingsFragment extends Fragment {
         contactSupport = root.findViewById(R.id.contact_support);
         aboutLayout = root.findViewById(R.id.about_layout);
         termsLayout = root.findViewById(R.id.terms_and_conditions);
+        faqLayout = root.findViewById(R.id.faq);
 
         // Click Listeners
         aboutLayout.setOnClickListener(v -> startActivity(new Intent(getContext(), About.class)));
 
-        termsLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getContext(), TermsOfService.class));
-            }
-        });
+        termsLayout.setOnClickListener(v -> startActivity(new Intent(getContext(), TermsOfService.class)));
+
+        faqLayout.setOnClickListener(v -> startActivity(new Intent(getContext(), FAQ.class)));
 
         profile.setOnClickListener(v -> startActivity(new Intent(getActivity(), Profile.class)));
         signOut.setOnClickListener(v -> {

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background_gradient"
+    tools:context=".Common.FAQ">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/dimen_5"
+        android:padding="@dimen/dimen_15">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:onClick="callBack"
+            android:src="@drawable/back_icon"
+            app:tint="@color/blue_200"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dimen_20"
+            android:layout_toEndOf="@id/back"
+            android:fontFamily="@font/roboto_bold"
+            android:text="FAQ"
+            android:textColor="@color/blue_200"
+            android:textSize="26sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_15">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/square_bracket_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Hi John, How can we \n help you?"
+            android:textAlignment="center"
+            android:textSize="26sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/square_bracket_right" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:layout_margin="@dimen/dimen_15"
+        android:id="@+id/input_number_field"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_60"
+        android:autofillHints="none"
+        android:background="@drawable/custom_input"
+        android:ems="10"
+        android:fontFamily="@font/roboto_medium"
+        android:hint="Ask a question"
+        android:inputType="numberDecimal"
+        android:maxLength="10"
+        android:paddingStart="20dp"
+        android:textColor="@color/blue_200"
+        android:textSize="18sp"
+        tools:ignore="RtlSymmetry" />
+
+</LinearLayout>

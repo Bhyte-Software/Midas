@@ -19,6 +19,7 @@ import com.bhyte.midas.Transactions.AddMoneyChooseMethod;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 
+import java.util.Calendar;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -31,7 +32,7 @@ public class UserHomeFragment extends Fragment {
     RelativeLayout currencyView;
     MaterialButton addMoney;
     ImageView toggleIcon;
-    TextView currency, totalAssets, accountBalance;
+    TextView currency, totalAssets, accountBalance, greetingText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,7 +48,10 @@ public class UserHomeFragment extends Fragment {
         toggleIcon = root.findViewById(R.id.toggle_icon);
         totalAssets = root.findViewById(R.id.total_assets);
         profilePicture = root.findViewById(R.id.profile_picture);
+        greetingText = root.findViewById(R.id.greetings);
 
+        // Greeting
+        greetUser();
 
         profilePicture.setOnClickListener(v -> startActivity(new Intent(getContext(), Profile.class)));
 
@@ -77,6 +81,28 @@ public class UserHomeFragment extends Fragment {
         });
 
         return root;
+    }
+
+    private void greetUser() {
+
+        Calendar calendar = Calendar.getInstance();
+        int timeOfDay;
+        timeOfDay = calendar.get(Calendar.HOUR_OF_DAY);
+
+        if (timeOfDay < 12){
+            greetingText.setText(R.string.morning);
+            // Set animation
+        }
+        else if (timeOfDay < 16){
+            greetingText.setText(R.string.afternoon);
+        }
+        else if (timeOfDay < 21){
+            greetingText.setText(R.string.evening);
+        }
+        else {
+            greetingText.setText(R.string.night);
+        }
+
     }
 
 }
