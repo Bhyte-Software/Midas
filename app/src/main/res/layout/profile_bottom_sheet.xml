@@ -28,8 +28,8 @@
 
         <ImageView
             android:id="@+id/camera"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:src="@drawable/take_photo" />
 
@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="@dimen/dimen_15"
             android:layout_toEndOf="@id/camera"
             android:text="@string/take_picture"
             android:textColor="@color/black"
@@ -58,8 +58,8 @@
 
         <ImageView
             android:id="@+id/gallery"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:src="@drawable/choose_from_gallery" />
 
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="15dp"
             android:layout_toEndOf="@id/gallery"
             android:text="@string/choose_picture"
             android:textColor="@color/black"
@@ -88,20 +88,20 @@
 
         <ImageView
             android:id="@+id/remove"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:src="@drawable/remove_image" />
 
         <TextView
-            android:textColor="@color/black"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@id/remove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@id/remove"
             android:text="@string/remove_picture"
-            android:textSize="20sp"/>
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
     </RelativeLayout>
 

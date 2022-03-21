@@ -1,0 +1,12 @@
+Variant: release
+Config: none
+----------
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\Braimah Abiola\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 47:91:EA:EA:B7:1D:09:06:EB:66:F9:49:83:DF:58:F7
+SHA1: AC:98:DC:A3:3E:37:B4:AC:C2:AB:1F:00:D3:0E:3B:68:4D:DF:F2:DB
+SHA-256: 7E:1A:9D:D8:9A:4D:5B:F8:86:92:66:23:C4:AB:2D:06:FC:47:5A:55:DD:32:4B:B7:4C:96:64:7C:85:05:E4:A0
+Valid until: Sunday, December 24, 2051
+----------

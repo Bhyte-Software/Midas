@@ -13,8 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bhyte.midas.R;
-import com.chaos.view.PinView;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
@@ -36,18 +39,6 @@ public class SignUpEnterNumber extends AppCompatActivity {
 
         // Hooks
         enterNumberLayout = findViewById(R.id.input_number_field);
-
-        // Data
-        countryCode = "233";
-        completeNumber = phoneNumber.substring(1);
-        fullPhoneNumber = "+" + countryCode + completeNumber;
-
-        sendVerificationCode(fullPhoneNumber);
-
-    }
-
-    private void sendVerificationCode(String fullPhoneNumber) {
-        //TODO
     }
 
     @Override
@@ -71,9 +62,14 @@ public class SignUpEnterNumber extends AppCompatActivity {
     public void getCode(View view) {
 
         if (lengthOfVal == 10) {
-            Intent otpIntent = new Intent(getApplicationContext(), SignUpEnterOTP.class);
-            startActivity(otpIntent);
+
+            countryCode = "233";
+            completeNumber = phoneNumber.substring(1);
+            fullPhoneNumber = "+" + countryCode + completeNumber;
+
+            startActivity(new Intent(getApplicationContext(), SignUpEnterOTP.class));
             finish();
+
         } else if (lengthOfVal == 0) {
             Toast toast = Toast.makeText(SignUpEnterNumber.this, "Please enter your number to continue", Toast.LENGTH_SHORT);
             View view1 = toast.getView();
@@ -103,4 +99,5 @@ public class SignUpEnterNumber extends AppCompatActivity {
             toast.show();
         }
     }
+
 }

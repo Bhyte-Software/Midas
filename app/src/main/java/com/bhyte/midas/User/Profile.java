@@ -7,13 +7,16 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bhyte.midas.Common.MainDashboard;
@@ -112,7 +115,18 @@ public class Profile extends AppCompatActivity {
                         if (profilePicture.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.profile_picture_default).getConstantState()) {
                             // Default
                             bottomSheetDialog.dismiss();
-                            Toast.makeText(Profile.this, "Sorry, you cannot remove default profile picture", Toast.LENGTH_SHORT).show();
+                            Toast toast = Toast.makeText(Profile.this, "Sorry, you cannot remove default profile picture", Toast.LENGTH_SHORT);
+                            View view1 = toast.getView();
+
+                            //Gets the actual oval background of the Toast then sets the colour filter
+                            view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+
+                            //Gets the TextView from the Toast so it can be edited
+                            TextView text = view1.findViewById(android.R.id.message);
+                            text.setTextColor(getResources().getColor(R.color.white));
+
+                            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 90);
+                            toast.show();
                         } else {
                             // New Image
                             showConfirmationDialog();

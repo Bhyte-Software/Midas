@@ -3,11 +3,13 @@ package com.bhyte.midas.Common;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.bhyte.midas.AccountCreation.SignIn;
 import com.bhyte.midas.R;
 import com.google.android.material.button.MaterialButton;
 
@@ -41,5 +43,9 @@ public class AcceptTermsOfService extends AppCompatActivity {
         cancelButton.setOnClickListener(v -> {
             acceptTermsDialog.dismiss();
         });
+    }
+
+    public void callSignIn(View view) {
+        startActivity(new Intent(getApplicationContext(), SignIn.class));
     }
 }

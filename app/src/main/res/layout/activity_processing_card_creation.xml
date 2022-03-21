@@ -17,9 +17,18 @@
             app:lottie_loop="true"
             android:layout_gravity="center"
             app:lottie_rawRes="@raw/loading_liquid"
-            android:layout_width="150dp"
-            android:layout_height="150dp"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
 
+        <TextView
+            android:layout_marginTop="@dimen/dimen_50"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/processing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </RelativeLayout>

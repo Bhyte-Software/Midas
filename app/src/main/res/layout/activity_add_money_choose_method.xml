@@ -146,13 +146,14 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:layout_alignParentBottom="true"
-        app:cornerRadius="35dp"
-        android:textAllCaps="false"
-        android:text="Add payment method"
-        android:layout_marginBottom="@dimen/dimen_25"
-        android:layout_marginStart="@dimen/dimen_25"
-        android:layout_marginEnd="@dimen/dimen_25"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_60"/>
+        android:layout_height="@dimen/dimen_60"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/dimen_25"
+        android:onClick="addPaymentMethod"
+        android:layout_marginEnd="@dimen/dimen_25"
+        android:layout_marginBottom="@dimen/dimen_25"
+        android:text="Add payment method"
+        android:textAllCaps="false"
+        app:cornerRadius="35dp" />
 </RelativeLayout>

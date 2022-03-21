@@ -6,13 +6,23 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.bhyte.midas.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class VirtualCardChooseLabel extends AppCompatActivity {
 
     public String chosenColor;
+    public static String userFullName;
+    EditText nameInputLayout;
+    String fullName;
+    TextView date;
+    public static String dateToday;
     RelativeLayout cardLayout;
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -23,9 +33,14 @@ public class VirtualCardChooseLabel extends AppCompatActivity {
 
         // Hooks
         cardLayout = findViewById(R.id.card);
+        date = findViewById(R.id.date);
+        nameInputLayout = findViewById(R.id.name_input_layout);
 
         // Data from Previous Activity
         chosenColor = VirtualCardChooseDesign.chosenColor;
+
+        // Update Date
+        updateDate();
 
         // Update Card Background
         switch (chosenColor) {
@@ -45,11 +60,64 @@ public class VirtualCardChooseLabel extends AppCompatActivity {
 
     }
 
+    private void updateDate() {
+        Calendar calendar = Calendar.getInstance();
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+        String currentDate = sdf.format(calendar.getTime());
+
+        date.setText(currentDate);
+        dateToday = currentDate;
+    }
+
+    @Override
+    public void onUserInteraction() {
+        super.onUserInteraction();
+        checkInputLayout();
+    }
+
+    private void checkInputLayout() {
+
+        // Display check icon at end of EditText if user inputs whitespace
+        if (!fullName.matches("\\S+")){
+            nameInputLayout.setCompoundDrawablesWithIntrinsicBounds(R.drawable.user_icon, 0, R.drawable.green_tick, 0);
+        }
+
+    }
+
     public void callBack(View view) {
         finish();
     }
 
     public void callFundVirtualCard(View view) {
+
+        if(!validateFullName()){
+            return;
+        }
+
+        // Get Data from EditText
+        fullName = nameInputLayout.getText().toString();
+        userFullName = fullName;
+
         startActivity(new Intent(getApplicationContext(), VirtualCardFundCard.class));
+        finish();
+    }
+
+    private boolean validateFullName() {
+        String val = nameInputLayout.getText().toString().trim();
+        String check_spaces = "\\A\\w{1,20}\\z";
+
+        if (val.isEmpty()) {
+
+            nameInputLayout.setError("Field cannot be empty!");
+            return false;
+
+        } else if (val.matches(check_spaces)) {
+            nameInputLayout.setError("Enter your full name!");
+            return false;
+        } else {
+            nameInputLayout.setError(null);
+            //fullNameField.setErrorEnabled(false);
+            return true;
+        }
     }
 }

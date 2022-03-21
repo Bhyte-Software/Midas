@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/background_gradient"
     android:layout_height="match_parent"
     tools:context=".AccountCreation.SignUpVerifyIdentity">
 
@@ -37,7 +38,7 @@
                 android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_medium"
+                android:fontFamily="@font/roboto_regular"
                 android:padding="5dp"
                 android:text="@string/identity_description"
                 android:textAlignment="center"
@@ -135,7 +136,7 @@
                 android:layout_marginStart="@dimen/dimen_20"
                 android:layout_marginTop="@dimen/dimen_20"
                 android:layout_marginEnd="@dimen/dimen_20"
-                android:layout_marginBottom="@dimen/dimen_50"
+                android:layout_marginBottom="@dimen/dimen_30"
                 android:elevation="@dimen/dimen_5"
                 android:padding="@dimen/dimen_20">
 
@@ -188,6 +189,23 @@
                     android:textSize="16sp" />
 
             </RelativeLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/skip_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:background="@color/transparent"
+                android:fontFamily="@font/roboto_regular"
+                android:onClick="callSkip"
+                android:text="@string/skip_step"
+                android:textAllCaps="false"
+                android:textColor="@color/blue_200"
+                android:textSize="16sp"
+                android:visibility="visible"
+                app:icon="@drawable/skip_image"
+                app:iconGravity="textEnd"
+                app:iconTint="@color/blue_200" />
 
         </LinearLayout>
 

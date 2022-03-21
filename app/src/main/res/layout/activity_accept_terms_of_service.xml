@@ -137,6 +137,7 @@
                     android:layout_marginStart="@dimen/dimen_10"
                     android:layout_weight="1"
                     android:text="Accept"
+                    android:onClick="callSignIn"
                     android:textAllCaps="false"
                     app:cornerRadius="35dp" />
 

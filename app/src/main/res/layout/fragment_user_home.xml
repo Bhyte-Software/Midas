@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/home_title_icons"
-            android:layout_marginTop="@dimen/dimen_10">
+            android:layout_marginTop="@dimen/dimen_5">
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animation"
@@ -55,10 +55,10 @@
                 app:lottie_rawRes="@raw/day" />
 
             <LinearLayout
-                android:layout_marginStart="@dimen/dimen_10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dimen_10"
                 android:layout_toEndOf="@id/animation"
                 android:orientation="vertical">
 
@@ -76,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="@string/john_doe"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
@@ -189,11 +189,156 @@
             android:orientation="vertical">
 
             <TextView
+                android:textSize="20sp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="@dimen/dimen_25"
+                android:textColor="@color/black"
+                android:text="Quick actions"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dimen_50"
-                android:padding="@dimen/dimen_20"
-                android:text="@string/dummy_text" />
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:paddingTop="@dimen/dimen_20"
+                android:paddingBottom="@dimen/dimen_20"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:clickable="true"
+                    android:layout_marginStart="@dimen/dimen_25"
+                    android:background="@drawable/quick_actions_border_ripple"
+                    android:layout_width="@dimen/dimen_120"
+                    android:layout_height="150dp">
+
+                    <ImageView
+                        android:id="@+id/rec"
+                        android:layout_width="@dimen/dimen_90"
+                        android:layout_height="@dimen/dimen_80"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        android:src="@drawable/quick_action" />
+
+                    <ImageView
+                        android:layout_marginTop="@dimen/dimen_40"
+                        android:src="@drawable/money"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="@dimen/dimen_15"
+                        android:padding="@dimen/dimen_5"
+                        android:text="Add Money"
+                        android:textColor="@color/black" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:clickable="true"
+                    android:layout_marginStart="@dimen/dimen_15"
+                    android:background="@drawable/quick_actions_border_ripple"
+                    android:layout_width="@dimen/dimen_120"
+                    android:layout_height="150dp">
+
+                    <ImageView
+                        android:id="@+id/rec2"
+                        android:layout_width="@dimen/dimen_90"
+                        android:layout_height="@dimen/dimen_80"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        android:src="@drawable/quick_action" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/dimen_40"
+                        android:src="@drawable/credit_card" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="@dimen/dimen_15"
+                        android:padding="@dimen/dimen_5"
+                        android:text="Virtual Card"
+                        android:textColor="@color/black" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/verification_status"
+                android:clickable="true"
+                android:background="@drawable/not_verified_rec_ripple"
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:layout_marginEnd="@dimen/dimen_25"
+                android:layout_marginBottom="@dimen/dimen_20"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_height="65dp">
+
+                <LinearLayout
+                    android:layout_marginStart="@dimen/dimen_15"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:fontFamily="@font/roboto_medium"
+                        android:id="@+id/title"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:text="@string/not_verified"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/start_verification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:textSize="20sp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginStart="25dp"
+                android:textColor="@color/black"
+                android:text="Recommended for you"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_marginBottom="@dimen/dimen_90"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:layout_marginEnd="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:background="@drawable/quick_actions_border_ripple"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+
+            </LinearLayout>
 
         </LinearLayout>
 

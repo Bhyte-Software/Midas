@@ -2,6 +2,7 @@ package com.bhyte.midas.Transactions;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -17,5 +18,9 @@ public class AddMoneyChooseMethod extends AppCompatActivity {
 
     public void callBack(View view) {
         finish();
+    }
+
+    public void addPaymentMethod(View view) {
+        startActivity(new Intent(getApplicationContext(), AddPaymentMethod.class));
     }
 }

@@ -10,6 +10,8 @@ import com.bhyte.midas.R;
 
 public class SignUpEnableFingerprint extends AppCompatActivity {
 
+    public static String fingerprintStatus;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,5 +20,12 @@ public class SignUpEnableFingerprint extends AppCompatActivity {
 
     public void callVerifyIdentity(View view) {
         startActivity(new Intent(getApplicationContext(), SignUpVerifyIdentity.class));
+        fingerprintStatus = "fingerprint not registered";
+    }
+
+    public void callContinue(View view) {
+        // Continue to fingerprint registration screen
+        fingerprintStatus = "fingerprint registered";
+        startActivity(new Intent(getApplicationContext(), FingerprintRegistration.class));
     }
 }

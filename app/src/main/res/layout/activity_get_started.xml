@@ -24,12 +24,11 @@
         android:textColor="@color/black"
         android:textSize="27sp" />
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:fontFamily="@font/roboto_medium"
+        android:fontFamily="@font/roboto_regular"
         android:text="@string/get_started_description"
         android:textAlignment="center"
         android:textSize="20sp" />

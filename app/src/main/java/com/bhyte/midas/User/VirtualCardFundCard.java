@@ -6,12 +6,19 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.bhyte.midas.R;
 
 public class VirtualCardFundCard extends AppCompatActivity {
 
+    Animation animation;
+
+    String fullName, currentDate;
+    TextView cardName, date;
     public String chosenColor;
     RelativeLayout cardLayout;
 
@@ -23,9 +30,23 @@ public class VirtualCardFundCard extends AppCompatActivity {
 
         // Hooks
         cardLayout = findViewById(R.id.card);
+        date = findViewById(R.id.date);
+        currentDate = VirtualCardChooseLabel.dateToday;
+        cardName = findViewById(R.id.card_name);
+        fullName = VirtualCardChooseLabel.userFullName;
 
         // Data from Previous Activity
         chosenColor = VirtualCardChooseDesign.chosenColor;
+
+        // Update CardHolderName
+        cardName.setText(fullName);
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_animation);
+        cardName.setAnimation(animation);
+
+        // Update Date
+        date.setText(currentDate);
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_animation);
+        date.setAnimation(animation);
 
         // Update Card Background
         switch (chosenColor) {

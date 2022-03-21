@@ -4,6 +4,9 @@
     package="com.bhyte.midas"
     tools:ignore="LockedOrientationActivity">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
@@ -13,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Midas"
         tools:ignore="AllowBackup">
+        <activity
+            android:name=".AccountCreation.FingerprintRegistration"
+            android:exported="false" />
+        <activity
+            android:name=".Transactions.AddPaymentMethod"
+            android:exported="false" />
         <activity
             android:name=".Common.FAQ"
             android:exported="false" />

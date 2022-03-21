@@ -3,12 +3,15 @@ package com.bhyte.midas.User;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bhyte.midas.R;
@@ -81,7 +84,18 @@ public class VirtualCardChooseDesign extends AppCompatActivity {
 
     private boolean validateColor() {
         if (radioGroup.getCheckedRadioButtonId() == -1) {
-            Toast.makeText(VirtualCardChooseDesign.this, "Please choose a card design", Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(VirtualCardChooseDesign.this, "Please choose a card design", Toast.LENGTH_SHORT);
+            View view1 = toast.getView();
+
+            //Gets the actual oval background of the Toast then sets the colour filter
+            view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+
+            //Gets the TextView from the Toast so it can be edited
+            TextView text = view1.findViewById(android.R.id.message);
+            text.setTextColor(getResources().getColor(R.color.white));
+
+            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+            toast.show();
             return false;
         } else {
             return true;

@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.bhyte.midas.AccountCreation.GetStarted;
 import com.bhyte.midas.R;
+import com.bhyte.midas.User.ProcessingCardCreation;
 import com.bhyte.midas.User.UserCardsFragment;
 import com.bhyte.midas.User.UserHomeFragment;
 import com.bhyte.midas.User.UserSettingsFragment;
@@ -16,6 +19,7 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 public class MainDashboard extends AppCompatActivity {
 
     ChipNavigationBar chipNavigationBar;
+    String keyOne;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +29,23 @@ public class MainDashboard extends AppCompatActivity {
         // Hooks
         chipNavigationBar = findViewById(R.id.bottom_nav_menu);
         chipNavigationBar.setItemSelected(R.id.bottom_nav_home, true);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UserHomeFragment()).commit();
+        keyOne = ProcessingCardCreation.keyOne;
+
+        // Show UserCardsFragment after successful card creation
+        if (keyOne.equals("Cards")) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UserCardsFragment()).commit();
+        } else {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UserHomeFragment()).commit();
+        }
+
         bottomNavMenu();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), GetStarted.class));
     }
 
     private void bottomNavMenu() {

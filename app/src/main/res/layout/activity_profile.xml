@@ -70,7 +70,7 @@
                 <TextView
                     android:layout_gravity="center_horizontal"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/roboto_bold"
+                    android:fontFamily="@font/roboto_medium"
                     android:textSize="20sp"
                     android:layout_marginTop="@dimen/dimen_10"
                     android:text="@string/profile_default_name"
@@ -78,6 +78,7 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
+                    android:textSize="18sp"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/roboto_regular"
                     android:text="@string/profile_default_email"
@@ -91,26 +92,15 @@
                     android:layout_height="60dp"
                     android:drawableEnd="@drawable/ic_navigate_next"
                     android:layout_marginStart="@dimen/dimen_25"
-                    android:layout_marginTop="@dimen/dimen_15"
+                    android:layout_marginTop="@dimen/dimen_20"
                     android:layout_marginEnd="@dimen/dimen_25"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/edit_profile"
                     android:textAllCaps="false"
                     app:cornerRadius="35dp" />
 
-                <TextView
-                    android:layout_marginBottom="@dimen/dimen_15"
-                    android:layout_marginTop="@dimen/dimen_25"
-                    android:layout_marginStart="@dimen/dimen_25"
-                    android:gravity="left"
-                    android:textColor="@color/blue_200"
-                    android:fontFamily="@font/roboto_medium"
-                    android:textAllCaps="true"
-                    android:text="@string/preferences"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
                 <RelativeLayout
+                    android:layout_marginTop="@dimen/dimen_25"
                     android:padding="@dimen/dimen_20"
                     android:layout_marginEnd="@dimen/dimen_25"
                     android:layout_marginStart="@dimen/dimen_25"
