@@ -67,6 +67,7 @@
                     android:layout_height="@dimen/dimen_120"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/dimen_50"
+                    app:civ_circle_background_color="@color/white"
                     android:src="@drawable/profile_picture_default" />
 
                 <TextView

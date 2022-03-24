@@ -1,19 +1,15 @@
 package com.bhyte.midas.User;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +19,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bhyte.midas.Common.MainDashboard;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bhyte.midas.R;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -192,7 +191,7 @@ public class Profile extends AppCompatActivity {
         intent.setType("image/*");
 
         if(intent.resolveActivity(getPackageManager()) != null){
-            startActivityForResult(intent, TAKE_IMAGE_CODE);
+            startActivityForResult(intent, PICK_IMAGE_CODE);
         }
     }
 
@@ -286,6 +285,7 @@ public class Profile extends AppCompatActivity {
                 }
                 assert bitmap != null;
                 handleUpload(bitmap);
+
             }
         }
 
@@ -350,7 +350,7 @@ public class Profile extends AppCompatActivity {
                         TextView text = view1.findViewById(android.R.id.message);
                         text.setTextColor(getResources().getColor(R.color.white));
 
-                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 90);
                         toast.show();
                     }
                 })
@@ -367,7 +367,7 @@ public class Profile extends AppCompatActivity {
                         TextView text = view1.findViewById(android.R.id.message);
                         text.setTextColor(getResources().getColor(R.color.white));
 
-                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 90);
                         toast.show();
                     }
                 });
@@ -392,7 +392,11 @@ public class Profile extends AppCompatActivity {
         positive.setOnClickListener(v -> {
             // Set profile to default
             dialog.dismiss();
+
+            Bitmap bitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.profile_picture_default);
             profilePicture.setImageResource(R.drawable.profile_picture_default);
+            handleUpload(bitmap);
+
         });
         negative.setOnClickListener(v -> dialog.dismiss());
     }

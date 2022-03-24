@@ -40,7 +40,7 @@ public class UserHomeFragment extends Fragment {
     FirebaseUser firebaseUser;
 
     public static String key;
-    public static String usernameS, emailS;
+    public static String usernameS;
 
     String val = "visible";
     CircleImageView profilePicture;
@@ -76,13 +76,18 @@ public class UserHomeFragment extends Fragment {
 
         // Set Profile Picture
         assert firebaseUser != null;
-        if (firebaseUser.getPhotoUrl() != null){
+        if (firebaseUser.getPhotoUrl() != null) {
             Glide.with(this)
                     .load(firebaseUser.getPhotoUrl())
                     .into(profilePicture);
         }
 
         database = FirebaseDatabase.getInstance();
+
+        // Greeting
+        greetUser();
+        getName();
+
 
         profilePicture.setOnClickListener(v -> startActivity(new Intent(getContext(), Profile.class)));
 
@@ -119,11 +124,6 @@ public class UserHomeFragment extends Fragment {
             }
         });
 
-        // Greeting
-        greetUser();
-
-        getName();
-
         return root;
     }
 
@@ -137,7 +137,7 @@ public class UserHomeFragment extends Fragment {
                 fullName = snapshot.getValue(String.class);
                 setName();
 
-                if(!(fullName == null)){
+                if (!(fullName == null)) {
                     usernameS = fullName;
                 }
             }
@@ -152,11 +152,10 @@ public class UserHomeFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     private void setName() {
         username.setText(fullName + " 👋");
-        if(username != null){
+        if (username != null) {
             animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
             username.setAnimation(animation);
-        }
-        else {
+        } else {
             return;
         }
     }
@@ -167,25 +166,22 @@ public class UserHomeFragment extends Fragment {
         int timeOfDay;
         timeOfDay = calendar.get(Calendar.HOUR_OF_DAY);
 
-        if (timeOfDay < 12){
+        if (timeOfDay < 12) {
             greetingText.setText(R.string.morning);
             // Set animation
             animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
             greetingText.setAnimation(animation);
-        }
-        else if (timeOfDay < 16){
+        } else if (timeOfDay < 16) {
             greetingText.setText(R.string.afternoon);
             // Set Animation
             animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
             greetingText.setAnimation(animation);
-        }
-        else if (timeOfDay < 21){
+        } else if (timeOfDay < 21) {
             greetingText.setText(R.string.evening);
             // Set Animation
             animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
             greetingText.setAnimation(animation);
-        }
-        else {
+        } else {
             greetingText.setText(R.string.night);
             // Set Animation
             animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
