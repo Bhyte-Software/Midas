@@ -26,7 +26,10 @@ public class SignUpVerifyIdentity extends AppCompatActivity {
         key = UserHomeFragment.key;
         skipButton = findViewById(R.id.skip_button);
 
-        if(key.equals("no skip")){
+        if(key == null){
+            skipButton.setVisibility(View.VISIBLE);
+        }
+        else if (key.equals("no skip")){
             skipButton.setVisibility(View.GONE);
         }
 

@@ -31,6 +31,7 @@ public class UserSettingsFragment extends Fragment {
     RelativeLayout profile, signOut, contactSupport, aboutLayout, termsLayout, faqLayout, downloadLayout;
     Dialog logoutDialog;
     Button positive, negative;
+    String userFullName;
     TextView username;
 
     FirebaseAuth firebaseAuth;
@@ -51,8 +52,13 @@ public class UserSettingsFragment extends Fragment {
         username = root.findViewById(R.id.user_name);
         downloadLayout = root.findViewById(R.id.download_layout);
 
+        // Get Data
+        userFullName = UserHomeFragment.usernameS;
+
         // Firebase Instance
         firebaseAuth = FirebaseAuth.getInstance();
+
+        username.setText(userFullName);
 
         // Click Listeners
         aboutLayout.setOnClickListener(v -> startActivity(new Intent(getContext(), About.class)));

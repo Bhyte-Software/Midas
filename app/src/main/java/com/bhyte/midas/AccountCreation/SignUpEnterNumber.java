@@ -1,27 +1,19 @@
 package com.bhyte.midas.AccountCreation;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bhyte.midas.R;
-import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthOptions;
-import com.google.firebase.auth.PhoneAuthProvider;
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.concurrent.TimeUnit;
+import com.bhyte.midas.R;
+import com.bhyte.midas.Util.Common;
 
 public class SignUpEnterNumber extends AppCompatActivity {
 
@@ -39,6 +31,7 @@ public class SignUpEnterNumber extends AppCompatActivity {
 
         // Hooks
         enterNumberLayout = findViewById(R.id.input_number_field);
+
     }
 
     @Override
@@ -48,14 +41,17 @@ public class SignUpEnterNumber extends AppCompatActivity {
     }
 
     public void checkInputLayout() {
-
         phoneNumber = enterNumberLayout.getText().toString().trim();
         lengthOfVal = phoneNumber.length();
 
         if (lengthOfVal == 10) {
             enterNumberLayout.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ghana_icon, 0, R.drawable.green_tick, 0);
+            // Hide Keyboard
+            Common.hideKeyboard(SignUpEnterNumber.this);
         } else {
             enterNumberLayout.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ghana_icon, 0, 0, 0);
+            // Show Keyboard
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
     }
 

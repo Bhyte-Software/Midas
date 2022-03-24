@@ -5,7 +5,14 @@ import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bhyte.midas.AccountCreation.GetStarted;
 import com.bhyte.midas.R;
@@ -28,24 +35,52 @@ public class MainDashboard extends AppCompatActivity {
 
         // Hooks
         chipNavigationBar = findViewById(R.id.bottom_nav_menu);
-        chipNavigationBar.setItemSelected(R.id.bottom_nav_home, true);
         keyOne = ProcessingCardCreation.keyOne;
 
         // Show UserCardsFragment after successful card creation
-        if (keyOne.equals("Cards")) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UserCardsFragment()).commit();
-        } else {
+        if (keyOne == null) {
+            chipNavigationBar.setItemSelected(R.id.bottom_nav_home, true);
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UserHomeFragment()).commit();
+        } else {
+            chipNavigationBar.setItemSelected(R.id.bottom_nav_cards, true);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UserCardsFragment()).commit();
         }
 
         bottomNavMenu();
     }
 
 
+    boolean doubleBackToExitPressedOnce = false;
+
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        startActivity(new Intent(getApplicationContext(), GetStarted.class));
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            startActivity(new Intent(getApplicationContext(), GetStarted.class));
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast toast = Toast.makeText(MainDashboard.this, "Please press back again to exit midas", Toast.LENGTH_SHORT);
+        View view1 = toast.getView();
+
+        //Gets the actual oval background of the Toast then sets the colour filter
+        view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+
+        //Gets the TextView from the Toast so it can be edited
+        TextView text = view1.findViewById(android.R.id.message);
+        text.setTextColor(getResources().getColor(R.color.white));
+
+        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+        toast.show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 
     private void bottomNavMenu() {

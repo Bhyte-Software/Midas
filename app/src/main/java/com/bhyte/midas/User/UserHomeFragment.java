@@ -3,10 +3,6 @@ package com.bhyte.midas.User;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +11,18 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bhyte.midas.AccountCreation.SignUpCredentials;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.bhyte.midas.AccountCreation.SignUpVerifyIdentity;
 import com.bhyte.midas.R;
 import com.bhyte.midas.Transactions.AddMoneyChooseMethod;
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,15 +30,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
-import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserHomeFragment extends Fragment {
 
     FirebaseDatabase database;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
     public static String key;
+    public static String usernameS, emailS;
 
     String val = "visible";
     CircleImageView profilePicture;
@@ -46,7 +48,7 @@ public class UserHomeFragment extends Fragment {
     RelativeLayout currencyView, verificationStatus;
     MaterialButton addMoney;
     ImageView toggleIcon;
-    String fullName;
+    String fullName, fullEmail;
     Animation animation;
     TextView currency, username, totalAssets, accountBalance, greetingText;
 
@@ -56,6 +58,10 @@ public class UserHomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_user_home, container, false);
 
+        // Instance of FirebaseAuth
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
         // Hooks
         username = root.findViewById(R.id.username);
         currencyView = root.findViewById(R.id.currency_view);
@@ -64,10 +70,17 @@ public class UserHomeFragment extends Fragment {
         accountBalance = root.findViewById(R.id.account_balance);
         toggleIcon = root.findViewById(R.id.toggle_icon);
         verificationStatus = root.findViewById(R.id.verification_status);
-        fullName = SignUpCredentials.fullNameS;
         totalAssets = root.findViewById(R.id.total_assets);
         profilePicture = root.findViewById(R.id.profile_picture);
         greetingText = root.findViewById(R.id.greetings);
+
+        // Set Profile Picture
+        assert firebaseUser != null;
+        if (firebaseUser.getPhotoUrl() != null){
+            Glide.with(this)
+                    .load(firebaseUser.getPhotoUrl())
+                    .into(profilePicture);
+        }
 
         database = FirebaseDatabase.getInstance();
 
@@ -115,19 +128,23 @@ public class UserHomeFragment extends Fragment {
     }
 
     private void getName() {
-        DatabaseReference myRef2 = database.getReference("User Full Name");
-        myRef2.addValueEventListener(new ValueEventListener() {
+
+        firebaseUser = firebaseAuth.getCurrentUser();
+        DatabaseReference databaseReference = database.getReference("Users").child(firebaseUser.getUid()).child("name");
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
                 fullName = snapshot.getValue(String.class);
                 setName();
+
+                if(!(fullName == null)){
+                    usernameS = fullName;
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Failed to read value
+
             }
         });
     }
@@ -153,15 +170,26 @@ public class UserHomeFragment extends Fragment {
         if (timeOfDay < 12){
             greetingText.setText(R.string.morning);
             // Set animation
+            animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
+            greetingText.setAnimation(animation);
         }
         else if (timeOfDay < 16){
             greetingText.setText(R.string.afternoon);
+            // Set Animation
+            animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
+            greetingText.setAnimation(animation);
         }
         else if (timeOfDay < 21){
             greetingText.setText(R.string.evening);
+            // Set Animation
+            animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
+            greetingText.setAnimation(animation);
         }
         else {
             greetingText.setText(R.string.night);
+            // Set Animation
+            animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
+            greetingText.setAnimation(animation);
         }
 
     }

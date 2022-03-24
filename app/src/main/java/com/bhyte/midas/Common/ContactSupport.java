@@ -3,18 +3,31 @@ package com.bhyte.midas.Common;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.bhyte.midas.R;
 import com.bhyte.midas.User.UserSettingsFragment;
 
 public class ContactSupport extends AppCompatActivity {
 
+    RelativeLayout phoneLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_support);
+
+        // Hooks
+        phoneLayout = findViewById(R.id.phone_layout);
+
+        phoneLayout.setOnClickListener(v -> callPhone());
+
+    }
+
+    private void callPhone() {
     }
 
     public void callClose(View view) {

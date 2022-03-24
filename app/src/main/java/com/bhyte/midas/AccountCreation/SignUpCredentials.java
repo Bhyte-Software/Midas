@@ -1,28 +1,29 @@
 package com.bhyte.midas.AccountCreation;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bhyte.midas.Common.AcceptTermsOfService;
+import com.bhyte.midas.Database.ReadWriteUserDetails;
 import com.bhyte.midas.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpCredentials extends AppCompatActivity {
 
-    public static String fullNameS;
-    TextView signIn;
     String fullName, email, password;
     EditText fullNameField, emailField, passwordField;
 
-    FirebaseDatabase database;
     FirebaseAuth firebaseAuth;
 
     @Override
@@ -32,15 +33,11 @@ public class SignUpCredentials extends AppCompatActivity {
 
         // Instance of FirebaseAuth
         firebaseAuth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance();
 
         // Hooks
         fullNameField = findViewById(R.id.name_input_layout);
         emailField = findViewById(R.id.email_input_layout);
         passwordField = findViewById(R.id.password_input_layout);
-        signIn = findViewById(R.id.sign_in);
-
-        signIn.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), SignIn.class)));
 
     }
 
@@ -49,7 +46,7 @@ public class SignUpCredentials extends AppCompatActivity {
     }
 
     public void callAuthentication(View view) {
-        if (!validateFullName() | !validateEmail() | validatePassword()){
+        if (!validateFullName() | !validateEmail() | validatePassword()) {
         }
 
         // Get Data from Edit Text Fields
@@ -67,17 +64,29 @@ public class SignUpCredentials extends AppCompatActivity {
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             // Go to next page
             saveData();
-            startActivity(new Intent(getApplicationContext(), AcceptTermsOfService.class));
-            finish();
         }).addOnFailureListener(e -> Toast.makeText(SignUpCredentials.this, "Oops!, Something went wrong please try again", Toast.LENGTH_SHORT).show());
     }
 
     private void saveData() {
-        DatabaseReference myRef2 = database.getReference("User Full Name");
-        myRef2.setValue(fullName);
+
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(fullName, email);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        databaseReference.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    startActivity(new Intent(getApplicationContext(), AcceptTermsOfService.class));
+                    finish();
+                } else {
+                    Toast.makeText(SignUpCredentials.this, "User registration failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
-    private  boolean validateFullName(){
+    private boolean validateFullName() {
         String val = fullNameField.getText().toString().trim();
         String check_spaces = "\\A\\w{1,20}\\z";
 
@@ -96,7 +105,7 @@ public class SignUpCredentials extends AppCompatActivity {
         }
     }
 
-    private  boolean validateEmail(){
+    private boolean validateEmail() {
         String val = emailField.getText().toString().trim();
         String check_email = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
@@ -112,7 +121,7 @@ public class SignUpCredentials extends AppCompatActivity {
         }
     }
 
-    private boolean validatePassword(){
+    private boolean validatePassword() {
         String val = passwordField.getText().toString().trim();
         String check_password = "^" +
                 //"(?=.*[0-9])" +   // at least 1 digit

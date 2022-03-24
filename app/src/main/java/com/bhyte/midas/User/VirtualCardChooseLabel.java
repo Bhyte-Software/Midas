@@ -78,7 +78,7 @@ public class VirtualCardChooseLabel extends AppCompatActivity {
     private void checkInputLayout() {
 
         // Display check icon at end of EditText if user inputs whitespace
-        if (!fullName.matches("\\S+")){
+        if (!nameInputLayout.getText().toString().matches("\\S+")){
             nameInputLayout.setCompoundDrawablesWithIntrinsicBounds(R.drawable.user_icon, 0, R.drawable.green_tick, 0);
         }
 

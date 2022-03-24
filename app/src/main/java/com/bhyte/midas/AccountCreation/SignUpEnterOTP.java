@@ -69,11 +69,10 @@ public class SignUpEnterOTP extends AppCompatActivity {
         verifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (pinView.getText() == null){
+                if (pinView.getText() == null) {
                     // Error Message
                     Toast.makeText(SignUpEnterOTP.this, "Please enter SMS code sent to your number", Toast.LENGTH_SHORT).show();
-                }
-                else if (pinView.length() == 6) {
+                } else if (pinView.length() == 6) {
                     // Verify Code
                     String code = pinView.getText().toString().trim();
                     verifyCode(code);
@@ -88,10 +87,10 @@ public class SignUpEnterOTP extends AppCompatActivity {
         // OTP on user phone number.
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(firebaseAuth)
-                        .setPhoneNumber(smsNumber)		 // Phone number to verify
+                        .setPhoneNumber(smsNumber)         // Phone number to verify
                         .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                        .setActivity(this)				 // Activity (for callback binding)
-                        .setCallbacks(mCallBack)		 // OnVerificationStateChangedCallbacks
+                        .setActivity(this)                 // Activity (for callback binding)
+                        .setCallbacks(mCallBack)         // OnVerificationStateChangedCallbacks
                         .build();
         PhoneAuthProvider.verifyPhoneNumber(options);
     }
@@ -106,7 +105,7 @@ public class SignUpEnterOTP extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // if the code is correct and the task is successful
                             // we are sending our user to new activity.
-                            Intent i = new Intent(SignUpEnterOTP.this, SignUpEnableFingerprint.class);
+                            Intent i = new Intent(SignUpEnterOTP.this, SignUpBirthdate.class);
                             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(i);
                             finish();
@@ -194,8 +193,6 @@ public class SignUpEnterOTP extends AppCompatActivity {
         // calling sign in method.
         signInWithCredential(credential);
     }
-
-
 }
 
 

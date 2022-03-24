@@ -1,5 +1,6 @@
 package com.bhyte.midas.User;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,9 +8,12 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,18 +25,44 @@ import android.widget.Toast;
 
 import com.bhyte.midas.Common.MainDashboard;
 import com.bhyte.midas.R;
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Profile extends AppCompatActivity {
+
+    FirebaseDatabase database;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+
+    int TAKE_IMAGE_CODE = 1001;
+    int PICK_IMAGE_CODE = 1002;
 
     Dialog logoutDialog, dialog, rateDialog;
     private BottomSheetDialog bottomSheetDialog;
     RelativeLayout takePhoto, choosePhoto, removePhoto, rateMidas;
     CircleImageView profilePicture;
     Button positive, negative;
+    TextView userName, userEmail;
+    String fullName, email;
     MaterialButton logoutButton;
 
     @Override
@@ -41,9 +71,32 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         // Hooks
+        fullName = UserHomeFragment.usernameS;
         logoutButton = findViewById(R.id.logout_button);
+        userName = findViewById(R.id.user_name);
         profilePicture = findViewById(R.id.profile_picture);
         rateMidas = findViewById(R.id.rate_midas);
+        userEmail = findViewById(R.id.user_email);
+
+        // Instance of FirebaseAuth
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        // Set Profile Picture
+        assert firebaseUser != null;
+        if (firebaseUser.getPhotoUrl() != null){
+            Glide.with(this)
+                    .load(firebaseUser.getPhotoUrl())
+                    .into(profilePicture);
+        }
+
+        database = FirebaseDatabase.getInstance();
+
+        getName();
+        setTextView();
+
+        // Get Data
+        fullName = UserHomeFragment.usernameS;
 
         // Click Listeners
         rateMidas.setOnClickListener(new View.OnClickListener() {
@@ -88,20 +141,13 @@ public class Profile extends AppCompatActivity {
 
                 takePhoto.setOnClickListener(v1 -> {
                     takePicture();
+                    bottomSheetDialog.dismiss();
                 });
 
                 choosePhoto.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // Open Gallery and choose photo
-                        Intent galleryIntent = new Intent();
-                        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-                        galleryIntent.setType("image/*");
-                        startActivityForResult(galleryIntent, 2);
-
-                        // Upload & Save
-                        saveProfilePicture();
-
+                        choosePhoto();
                         bottomSheetDialog.dismiss();
                     }
                 });
@@ -139,6 +185,43 @@ public class Profile extends AppCompatActivity {
 
     }
 
+    private void choosePhoto() {
+        // Open Gallery and choose photo
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+
+        if(intent.resolveActivity(getPackageManager()) != null){
+            startActivityForResult(intent, TAKE_IMAGE_CODE);
+        }
+    }
+
+    private void getName() {
+
+        firebaseUser = firebaseAuth.getCurrentUser();
+        DatabaseReference databaseReference = database.getReference("Users").child(firebaseUser.getUid()).child("mail");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                email = snapshot.getValue(String.class);
+
+                if (!(email == null)) {
+                    userEmail.setText(email);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    private void setTextView() {
+        userName.setText(fullName);
+    }
+
     private void rateMidasPopup() {
         rateDialog = new Dialog(Profile.this, R.style.BottomSheetTheme);
 
@@ -172,24 +255,122 @@ public class Profile extends AppCompatActivity {
         }
     }
 
-    private void saveProfilePicture() {
-        // TODO SAVE PICTURE
-    }
-
     private void takePicture() {
-        // TODO TAKE PICTURE
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, TAKE_IMAGE_CODE);
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 2 && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri mImageUri = data.getData();
+        if (requestCode == TAKE_IMAGE_CODE) {
+            if (resultCode == RESULT_OK) {
+                Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                profilePicture.setImageBitmap(bitmap);
+                handleUpload(bitmap);
+            }
+        }
+        else if (requestCode == PICK_IMAGE_CODE) {
+            if (resultCode == RESULT_OK) {
+                Uri mImageUri = data.getData();
+                profilePicture.setImageURI(mImageUri);
 
-            profilePicture.setImageURI(mImageUri);
+                Bitmap bitmap = null;
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), mImageUri);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                assert bitmap != null;
+                handleUpload(bitmap);
+            }
         }
 
+    }
+
+    // Upload Image to Firebase
+
+    private void handleUpload(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference()
+                .child("Profile Images")
+                .child(uid + ".jpeg");
+
+        storageReference.putBytes(byteArrayOutputStream.toByteArray())
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        getDownloadUrl(storageReference);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // TODO
+                    }
+                });
+    }
+
+    private void getDownloadUrl(StorageReference reference){
+        reference.getDownloadUrl()
+                .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                       // TODO
+                        setUserProfileUrl(uri);
+                    }
+                });
+    }
+
+    private void setUserProfileUrl(Uri uri){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
+                .setPhotoUri(uri)
+                .build();
+
+        user.updateProfile(request)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast toast = Toast.makeText(Profile.this, "Profile image updated successfully", Toast.LENGTH_SHORT);
+                        View view1 = toast.getView();
+
+                        //Gets the actual oval background of the Toast then sets the colour filter
+                        view1.getBackground().setColorFilter(getResources().getColor(R.color.light_green), PorterDuff.Mode.SRC_IN);
+
+                        //Gets the TextView from the Toast so it can be edited
+                        TextView text = view1.findViewById(android.R.id.message);
+                        text.setTextColor(getResources().getColor(R.color.white));
+
+                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                        toast.show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast toast = Toast.makeText(Profile.this, "Failed to update profile image...", Toast.LENGTH_SHORT);
+                        View view1 = toast.getView();
+
+                        //Gets the actual oval background of the Toast then sets the colour filter
+                        view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+
+                        //Gets the TextView from the Toast so it can be edited
+                        TextView text = view1.findViewById(android.R.id.message);
+                        text.setTextColor(getResources().getColor(R.color.white));
+
+                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                        toast.show();
+                    }
+                });
     }
 
     private void showConfirmationDialog() {

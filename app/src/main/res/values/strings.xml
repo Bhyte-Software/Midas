@@ -247,6 +247,8 @@
     <string name="not_verified">Your account is not yet verified</string>
     <string name="start_verification">Click here to start account verification process</string>
     <string name="already_have_an_account_sign_in">Already have an account? Sign In</string>
+    <string name="select_birthdate">Please select your correct birthday from the field below</string>
+    <string name="registration">Registration</string>
     <!-- HOME -->
 
 </resources>

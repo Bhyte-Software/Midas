@@ -5,11 +5,10 @@
     android:layout_width="match_parent"
     android:background="@drawable/background_gradient"
     android:layout_height="match_parent"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    tools:context=".AccountCreation.SignUpEnterNumber">
+    tools:context=".AccountCreation.SignUpBirthdate">
 
     <ImageView
+        android:layout_marginTop="-25dp"
         android:id="@+id/register_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,8 +20,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/register_image"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="-30dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="Registration"
+        android:text="@string/registration"
         android:textColor="@color/black"
         android:textSize="27sp" />
 
@@ -34,11 +34,12 @@
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/roboto_regular"
         android:padding="5dp"
-        android:text="@string/enter_number"
+        android:text="@string/select_birthdate"
         android:textAlignment="center"
         android:textSize="20sp" />
 
     <RelativeLayout
+        android:paddingTop="@dimen/dimen_10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -48,43 +49,36 @@
         android:background="@drawable/ripple_round_box"
         android:clickable="true"
         android:elevation="@dimen/dimen_5"
+        android:paddingBottom="@dimen/dimen_20"
         android:paddingStart="@dimen/dimen_20"
-        android:paddingTop="@dimen/dimen_40"
-        android:paddingEnd="@dimen/dimen_20"
-        android:paddingBottom="@dimen/dimen_40">
+        android:paddingEnd="@dimen/dimen_20">
 
-        <EditText
-            android:id="@+id/input_number_field"
+
+        <DatePicker
+            android:id="@+id/birthday_picker"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_60"
-            android:autofillHints="none"
-            android:background="@drawable/custom_input"
-            android:drawableStart="@drawable/ghana_icon"
-            android:drawablePadding="15dp"
-            android:ems="10"
-            android:fontFamily="@font/roboto_medium"
-            android:hint="@string/_233_phone_number"
-            android:inputType="numberDecimal"
-            android:maxLength="10"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:textColor="@color/blue_200"
-            android:textSize="18sp"
-            tools:ignore="RtlSymmetry" />
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:calendarTextColor="@color/black"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            android:hapticFeedbackEnabled="true"
+            android:spinnersShown="true" />
 
 
         <com.google.android.material.button.MaterialButton
+            android:layout_centerHorizontal="true"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_below="@id/birthday_picker"
             android:layout_marginStart="@dimen/dimen_25"
-            android:layout_marginTop="@dimen/dimen_90"
             android:layout_marginEnd="@dimen/dimen_25"
             android:fontFamily="@font/roboto_medium"
-            android:onClick="getCode"
-            android:text="@string/get_code"
+            android:onClick="callNext"
+            android:text="Next"
             android:textAllCaps="false"
             app:cornerRadius="35dp" />
-
 
     </RelativeLayout>
 

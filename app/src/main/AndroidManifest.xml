@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Midas"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".AccountCreation.SignUpBirthdate"
+            android:exported="false" />
+        <activity
             android:name=".AccountCreation.FingerprintRegistration"
             android:exported="false" />
         <activity

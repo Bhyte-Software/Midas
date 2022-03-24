@@ -58,7 +58,6 @@
             android:fontFamily="@font/roboto_medium"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:maxLength="10"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:textColor="@color/blue_200"
