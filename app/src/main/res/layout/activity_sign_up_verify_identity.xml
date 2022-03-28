@@ -45,6 +45,7 @@
                 android:textSize="20sp" />
 
             <RelativeLayout
+                android:id="@+id/national_relative_layout"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:layout_marginStart="@dimen/dimen_20"
@@ -129,6 +130,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/passport_relative_layout"
                 android:clickable="true"
                 android:background="@drawable/ripple_round_box"
                 android:layout_width="match_parent"

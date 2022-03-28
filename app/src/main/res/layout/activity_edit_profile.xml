@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".User.EditProfile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/blue_200"
+            android:elevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_20">
+
+                <ImageView
+                    android:id="@+id/menu_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:onClick="callUserProfile"
+                    android:src="@drawable/back_icon"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dimen_20"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Edit Profile"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:paddingStart="@dimen/dimen_20"
+            android:paddingEnd="@dimen/dimen_20"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-50dp"
+            android:background="@drawable/top_round_corner_overlay"
+            android:elevation="10dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_picture"
+                        android:layout_width="@dimen/dimen_105"
+                        android:layout_height="@dimen/dimen_105"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/dimen_25"
+                        android:src="@drawable/profile_picture_default"
+                        app:civ_border_color="@color/white"
+                        app:civ_border_width="3dp"
+                        app:civ_circle_background_color="@color/white" />
+
+                    <ImageView
+                        android:elevation="@dimen/dimen_5"
+                        android:layout_marginStart="-32dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_toEndOf="@id/profile_picture"
+                        android:layout_gravity="center"
+                        android:src="@drawable/camera"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_marginTop="@dimen/dimen_25"
+                    android:text="Full Name"
+                    android:fontFamily="@font/roboto_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_60"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/custom_user_icon"
+                    android:drawablePadding="15dp"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto_medium"
+                    android:inputType="textPersonName|textFilter"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="@dimen/dimen_15"
+                    android:textColor="@color/blue_200"
+                    android:textSize="18sp" />
+
+
+                <TextView
+                    android:layout_marginTop="@dimen/dimen_25"
+                    android:text="Date of Birth"
+                    android:fontFamily="@font/roboto_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:id="@+id/name_input_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_60"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/custom_user_icon"
+                    android:drawablePadding="15dp"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto_medium"
+                    android:inputType="textPersonName|textFilter"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="@dimen/dimen_15"
+                    android:textColor="@color/blue_200"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

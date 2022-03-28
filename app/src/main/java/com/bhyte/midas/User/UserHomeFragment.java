@@ -46,9 +46,9 @@ public class UserHomeFragment extends Fragment {
     CircleImageView profilePicture;
     BottomSheetDialog bottomSheetDialog;
     RelativeLayout currencyView, verificationStatus;
-    MaterialButton addMoney;
+    MaterialButton addMoney, continueButton;
     ImageView toggleIcon;
-    String fullName, fullEmail;
+    String fullName;
     Animation animation;
     TextView currency, username, totalAssets, accountBalance, greetingText;
 
@@ -91,12 +91,9 @@ public class UserHomeFragment extends Fragment {
 
         profilePicture.setOnClickListener(v -> startActivity(new Intent(getContext(), Profile.class)));
 
-        verificationStatus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), SignUpVerifyIdentity.class));
-                key = "no skip";
-            }
+        verificationStatus.setOnClickListener(v -> {
+            startActivity(new Intent(getActivity(), SignUpVerifyIdentity.class));
+            key = "no skip";
         });
 
         currencyView.setOnClickListener(v -> {
@@ -110,7 +107,27 @@ public class UserHomeFragment extends Fragment {
 
         });
 
-        addMoney.setOnClickListener(v -> startActivity(new Intent(getActivity(), AddMoneyChooseMethod.class)));
+        addMoney.setOnClickListener(v -> {
+            bottomSheetDialog = new BottomSheetDialog(requireContext(), R.style.BottomSheetTheme);
+
+            View sheetView = LayoutInflater.from(getActivity()).inflate(R.layout.enter_amount_bottom_sheet,
+                    root.findViewById(R.id.amount_sheet));
+
+            bottomSheetDialog.setContentView(sheetView);
+            bottomSheetDialog.show();
+
+            // Hooks
+            continueButton = bottomSheetDialog.findViewById(R.id.continue_button);
+
+            // Click Listeners
+            continueButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    checkInput();
+                    startActivity(new Intent(getActivity(), AddMoneyChooseMethod.class));
+                }
+            });
+        });
 
         toggleIcon.setOnClickListener(v -> {
             if (val.equals("visible")) {
@@ -125,6 +142,10 @@ public class UserHomeFragment extends Fragment {
         });
 
         return root;
+    }
+
+    private void checkInput() {
+        //TODO CHECK USER INPUT AMOUNT
     }
 
     private void getName() {

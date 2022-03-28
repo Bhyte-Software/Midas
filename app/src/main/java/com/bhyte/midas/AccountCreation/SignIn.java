@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bhyte.midas.Common.MainDashboard;
 import com.bhyte.midas.R;
+import com.bhyte.midas.User.ChangePasswordEnterEmail;
+import com.bhyte.midas.User.SignInWithFingerprint;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
@@ -106,5 +108,13 @@ public class SignIn extends AppCompatActivity {
             //passwordField.setErrorEnabled(false);
             return true;
         }
+    }
+
+    public void callChangePassword(View view) {
+        startActivity(new Intent(getApplicationContext(), ChangePasswordEnterEmail.class));
+    }
+
+    public void callSignInFingerprint(View view) {
+        startActivity(new Intent(getApplicationContext(), SignInWithFingerprint.class));
     }
 }

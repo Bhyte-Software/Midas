@@ -66,7 +66,7 @@
                     android:id="@+id/profile_picture"
                     android:layout_height="@dimen/dimen_120"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/dimen_50"
+                    android:layout_marginTop="@dimen/dimen_60"
                     app:civ_circle_background_color="@color/white"
                     android:src="@drawable/profile_picture_default" />
 
@@ -91,6 +91,7 @@
                     android:layout_height="wrap_content" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:onClick="callEditProfile"
                     android:layout_gravity="center_horizontal"
                     android:paddingStart="@dimen/dimen_25"
                     android:layout_width="wrap_content"

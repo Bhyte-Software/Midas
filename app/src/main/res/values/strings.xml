@@ -249,6 +249,8 @@
     <string name="already_have_an_account_sign_in">Already have an account? Sign In</string>
     <string name="select_birthdate">Please select your correct birthday from the field below</string>
     <string name="registration">Registration</string>
+    <string name="or_use_just_password_instead">or use just password instead.</string>
+    <string name="forgot_password">Forgot Password</string>
     <!-- HOME -->
 
 </resources>

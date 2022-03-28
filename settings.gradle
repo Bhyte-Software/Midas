@@ -3,6 +3,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://button.passbase.com/__android' }
         jcenter() // Warning: this repository is going to shut down soon
     }
 }

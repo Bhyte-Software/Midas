@@ -51,7 +51,9 @@
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_contact_support.xml" value="0.264" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_create_card.xml" value="0.2" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_create_card_final.xml" value="0.264" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_edit_profile.xml" value="0.4" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_faq.xml" value="0.264" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_fingerprint_registration.xml" value="0.1" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_get_started.xml" value="0.264" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_gift_card_choose_design.xml" value="0.25" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_main_dashboard.xml" value="0.2" />
@@ -60,10 +62,11 @@
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_on_boarding.xml" value="0.2" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_processing_card_creation.xml" value="0.176" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_profile.xml" value="0.264" />
-        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_in.xml" value="0.136" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_in.xml" value="0.2" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_in_with_fingerprint.xml" value="0.25" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_birthdate.xml" value="0.29010416666666666" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_complete.xml" value="0.264" />
-        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_credentials.xml" value="0.176" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_credentials.xml" value="0.264" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_enable_fingerprint.xml" value="0.264" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_enter_number.xml" value="0.264" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/activity_sign_up_enter_otp.xml" value="0.4" />
@@ -77,6 +80,7 @@
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/card_creation_info.xml" value="0.264" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/card_type_slides_layout.xml" value="0.152" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/currency_bottom_sheet.xml" value="0.4" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/enter_amount_bottom_sheet.xml" value="0.264" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/fragment_onboarding_five.xml" value="0.12" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/fragment_onboarding_four.xml" value="0.1" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/fragment_onboarding_one.xml" value="0.1" />

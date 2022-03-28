@@ -419,4 +419,8 @@ public class Profile extends AppCompatActivity {
     public void callChangePassword(View view) {
         startActivity(new Intent(getApplicationContext(), ChangePasswordEnterEmail.class));
     }
+
+    public void callEditProfile(View view) {
+        startActivity(new Intent(getApplicationContext(), EditProfile.class));
+    }
 }

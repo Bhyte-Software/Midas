@@ -28,6 +28,9 @@ public class ContactSupport extends AppCompatActivity {
     }
 
     private void callPhone() {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:+233202280564"));
+        startActivity(intent);
     }
 
     public void callClose(View view) {
