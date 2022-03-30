@@ -46,6 +46,7 @@
             android:name=".User.ChangePasswordCreateNewPassword"
             android:exported="false" />
         <activity
+            android:launchMode="singleInstance"
             android:name=".User.ChangePasswordOpenEmail"
             android:exported="false" />
         <activity

@@ -252,6 +252,7 @@
     <string name="or_use_just_password_instead">or use just password instead.</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="verify_me">Verify Me</string>
+    <string name="resend_email">Resend Email</string>
     <!-- HOME -->
 
 </resources>

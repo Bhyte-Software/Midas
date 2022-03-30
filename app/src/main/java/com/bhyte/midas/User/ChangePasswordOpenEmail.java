@@ -19,6 +19,12 @@ public class ChangePasswordOpenEmail extends AppCompatActivity {
         setContentView(R.layout.activity_change_password_open_email);
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        startActivity(new Intent(getApplicationContext(), ChangePasswordSuccess.class));
+    }
+
     public void callBack(View view) {
         finish();
     }
@@ -42,7 +48,6 @@ public class ChangePasswordOpenEmail extends AppCompatActivity {
         }
     }
 
-    public void callEnterNew(View view) {
-        startActivity(new Intent(getApplicationContext(), ChangePasswordCreateNewPassword.class));
+    public void resendEmail(View view) {
     }
 }
