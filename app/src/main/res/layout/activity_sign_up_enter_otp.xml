@@ -45,9 +45,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/dimen_20"
         android:layout_marginEnd="@dimen/dimen_20"
-        android:clickable="true"
         android:layout_marginBottom="@dimen/dimen_70"
         android:background="@drawable/ripple_round_box"
+        android:clickable="true"
         android:elevation="@dimen/dimen_5"
         android:paddingStart="@dimen/dimen_20"
         android:paddingTop="@dimen/dimen_40"
@@ -76,12 +76,12 @@
             app:viewType="line" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/verify"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="@dimen/dimen_25"
             android:layout_marginTop="@dimen/dimen_90"
             android:layout_marginEnd="@dimen/dimen_25"
-            android:id="@+id/verify"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/verify"
             android:textAllCaps="false"

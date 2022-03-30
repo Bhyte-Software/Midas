@@ -74,4 +74,10 @@ dependencies {
     // Passbase
     implementation 'com.passbase:passbase_sdk:2.10.0'
 
+    // Biometric Authentication
+    implementation "androidx.biometric:biometric:1.1.0"
+
+    // Browser
+    implementation 'androidx.browser:browser:1.4.0'
+
 }

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "945619515981",
+    "firebase_url": "https://midas-2020-default-rtdb.firebaseio.com",
     "project_id": "midas-2020",
     "storage_bucket": "midas-2020.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "945619515981-r43j1tdrlcuquvem3l97k7nseje8a8nd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bhyte.midas",
+            "certificate_hash": "ac98dca33e37b4acc2ab1f00d30e3b684ddff2db"
+          }
+        },
         {
           "client_id": "945619515981-fi8b1ncmt6hu2sjp9l0oh7qbm5hqm2d7.apps.googleusercontent.com",
           "client_type": 3

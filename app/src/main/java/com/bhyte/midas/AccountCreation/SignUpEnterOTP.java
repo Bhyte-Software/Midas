@@ -112,26 +112,16 @@ public class SignUpEnterOTP extends AppCompatActivity {
                         } else {
 
                             //verification unsuccessful.. display an error message
-
-                            String message = "Something is wrong, we will fix it soon...";
-
-                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                message = "Invalid code entered...";
-                            }
-
-                            Snackbar snackbar = Snackbar.make(findViewById(R.id.parent), message, Snackbar.LENGTH_LONG);
-                            snackbar.setAction("Dismiss", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-
-                                }
-                            });
-                            snackbar.show();
+                            // TODO
+                            showError();
                         }
                     }
                 });
     }
 
+    private void showError() {
+        //TODO
+    }
 
     // callback method is called on Phone auth provider.
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks

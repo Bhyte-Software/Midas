@@ -1,20 +1,18 @@
 package com.bhyte.midas.AccountCreation;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bhyte.midas.R;
 import com.bhyte.midas.User.UserHomeFragment;
 import com.google.android.material.button.MaterialButton;
-import com.google.firebase.database.annotations.NotNull;
 import com.passbase.passbase_sdk.PassbaseSDK;
-import com.passbase.passbase_sdk.PassbaseButton;
 import com.passbase.passbase_sdk.PassbaseSDKListener;
 
 public class SignUpVerifyIdentity extends AppCompatActivity {
@@ -44,6 +42,8 @@ public class SignUpVerifyIdentity extends AppCompatActivity {
             @Override
             public void onFinish(@Nullable String identityAccessKey) {
                 System.out.println("MainActivity onFinish: " + identityAccessKey);
+                // Success
+                key = "no skip";
             }
 
             @Override

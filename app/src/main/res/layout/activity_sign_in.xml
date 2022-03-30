@@ -8,11 +8,12 @@
     tools:context=".AccountCreation.SignIn">
 
     <ImageView
-        android:onClick="callSignInFingerprint"
+        android:layout_centerHorizontal="true"
         android:id="@+id/fingerprint_image"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_marginTop="@dimen/dimen_50"
+        android:onClick="callSignInFingerprint"
         android:src="@drawable/fingerprint_normal" />
 
     <TextView
@@ -39,6 +40,7 @@
         android:textSize="20sp" />
 
     <RelativeLayout
+        android:layout_marginBottom="@dimen/dimen_20"
         android:id="@+id/rec"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -115,19 +117,17 @@
 
     </RelativeLayout>
 
-    <com.google.android.material.button.MaterialButton
+    <TextView
+        android:onClick="callChangePassword"
         android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/transparent"
+        android:layout_marginBottom="@dimen/dimen_25"
         android:fontFamily="@font/roboto_medium"
-        android:onClick="callChangePassword"
-        android:padding="@dimen/dimen_10"
         android:text="@string/forgot_password"
-        android:textAllCaps="false"
         android:textColor="@color/blue_200"
-        android:textSize="16sp" />
+        android:textSize="17sp" />
 
 </RelativeLayout>
