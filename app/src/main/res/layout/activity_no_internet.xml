@@ -32,6 +32,7 @@
         android:layout_marginStart="@dimen/dimen_25"
         android:layout_marginTop="@dimen/dimen_25"
         android:layout_marginEnd="@dimen/dimen_25"
+        android:onClick="callSettings"
         android:layout_marginBottom="@dimen/dimen_50"
         android:text="@string/go_to_settings"
         android:textAllCaps="false"

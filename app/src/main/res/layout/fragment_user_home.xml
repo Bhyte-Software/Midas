@@ -227,6 +227,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/virtual_card"
                     android:clickable="true"
                     android:layout_marginStart="@dimen/dimen_15"
                     android:background="@drawable/quick_actions_border_ripple"

@@ -14,8 +14,8 @@
         android:layout_height="5dp"/>
 
     <RelativeLayout
-        android:paddingTop="@dimen/dimen_5"
-        android:paddingBottom="@dimen/dimen_5"
+        android:paddingTop="@dimen/dimen_10"
+        android:paddingBottom="@dimen/dimen_10"
         android:layout_marginTop="@dimen/dimen_10"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
@@ -46,21 +46,19 @@
 
         <ImageView
             android:id="@+id/check1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/check_small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:src="@drawable/check_small" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_marginBottom="@dimen/dimen_10"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
-        android:layout_marginTop="@dimen/dimen_10"
-        android:paddingTop="@dimen/dimen_5"
-        android:paddingBottom="@dimen/dimen_5"
+        android:paddingTop="@dimen/dimen_10"
+        android:paddingBottom="@dimen/dimen_10"
         android:id="@+id/united_states_dollar"
         android:paddingStart="15dp"
         android:paddingEnd="@dimen/dimen_15"

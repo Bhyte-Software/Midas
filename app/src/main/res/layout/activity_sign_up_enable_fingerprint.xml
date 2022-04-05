@@ -42,9 +42,9 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:layout_below="@id/description"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
         android:src="@drawable/red_fingerprint_image" />
 
     <com.google.android.material.button.MaterialButton
@@ -56,7 +56,6 @@
         android:layout_marginStart="@dimen/dimen_25"
         android:layout_marginTop="@dimen/dimen_40"
         android:layout_marginEnd="@dimen/dimen_25"
-        android:layout_marginBottom="10dp"
         android:fontFamily="@font/roboto_medium"
         android:onClick="callContinue"
         android:text="@string/go"
@@ -70,11 +69,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dimen_10"
-        android:layout_marginBottom="20dp"
         android:background="@color/transparent"
         android:fontFamily="@font/roboto_regular"
         android:onClick="callVerifyIdentity"
         android:text="@string/skip_step"
+        android:layout_marginBottom="@dimen/dimen_10"
         android:textAllCaps="false"
         android:textColor="@color/blue_200"
         android:textSize="16sp"

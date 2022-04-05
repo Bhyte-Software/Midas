@@ -1,12 +1,16 @@
 package com.bhyte.midas.AccountCreation;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bhyte.midas.Common.NoInternet;
 import com.bhyte.midas.R;
+import com.bhyte.midas.Util.CheckInternetConnection;
 
 public class GetStarted extends AppCompatActivity {
     @Override
@@ -22,10 +26,24 @@ public class GetStarted extends AppCompatActivity {
     }
 
     public void callSignUpEnterNumber(View view) {
-        startActivity(new Intent(getApplicationContext(), SignUpEnterNumber.class));
+        if (isNetworkConnected()) {
+            startActivity(new Intent(getApplicationContext(), SignUpEnterNumber.class));
+        } else {
+            startActivity(new Intent(getApplicationContext(), NoInternet.class));
+        }
     }
 
     public void callSignIn(View view) {
-        startActivity(new Intent(getApplicationContext(), SignIn.class));
+        if (isNetworkConnected()) {
+            startActivity(new Intent(getApplicationContext(), SignIn.class));
+        } else {
+            startActivity(new Intent(getApplicationContext(), NoInternet.class));
+        }    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
+
 }

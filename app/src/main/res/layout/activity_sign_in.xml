@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@drawable/background_gradient"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:layout_height="match_parent"
     tools:context=".AccountCreation.SignIn">
 
@@ -118,14 +120,14 @@
     </RelativeLayout>
 
     <TextView
-        android:onClick="callChangePassword"
         android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/dimen_25"
+        android:layout_marginBottom="@dimen/dimen_20"
         android:fontFamily="@font/roboto_medium"
+        android:onClick="callChangePassword"
         android:text="@string/forgot_password"
         android:textColor="@color/blue_200"
         android:textSize="17sp" />

@@ -1,9 +1,9 @@
 package com.bhyte.midas.Transactions;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bhyte.midas.R;
 
@@ -17,5 +17,9 @@ public class AddPaymentMethod extends AppCompatActivity {
 
     public void callBack(View view) {
         finish();
+    }
+
+    public void callMobileMoney(View view) {
+
     }
 }

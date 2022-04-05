@@ -1,7 +1,9 @@
 package com.bhyte.midas.User;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,18 +41,23 @@ public class UserHomeFragment extends Fragment {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
 
+    SharedPreferences selectedCurrency;
+
+    RelativeLayout usdLayout, ghcLayout;
+
     public static String key;
     public static String usernameS;
 
     String val = "visible";
     CircleImageView profilePicture;
     BottomSheetDialog bottomSheetDialog;
-    RelativeLayout currencyView, verificationStatus;
+    RelativeLayout currencyView, verificationStatus, virtualCard;
     MaterialButton addMoney, continueButton;
-    ImageView toggleIcon;
+    ImageView toggleIcon, check1, check2;
     String fullName;
     Animation animation;
     TextView currency, username, totalAssets, accountBalance, greetingText;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,6 +68,7 @@ public class UserHomeFragment extends Fragment {
         // Instance of FirebaseAuth
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        database = FirebaseDatabase.getInstance();
 
         // Hooks
         username = root.findViewById(R.id.username);
@@ -73,6 +81,16 @@ public class UserHomeFragment extends Fragment {
         totalAssets = root.findViewById(R.id.total_assets);
         profilePicture = root.findViewById(R.id.profile_picture);
         greetingText = root.findViewById(R.id.greetings);
+        virtualCard = root.findViewById(R.id.virtual_card);
+
+        selectedCurrency = getContext().getSharedPreferences("selectedCurrency", Context.MODE_PRIVATE);
+        boolean currencyBoolean = selectedCurrency.getBoolean("Currency", true);
+
+        if (currencyBoolean) {
+            updateToCedis();
+        } else {
+            updateToDollar();
+        }
 
         // Set Profile Picture
         assert firebaseUser != null;
@@ -82,12 +100,9 @@ public class UserHomeFragment extends Fragment {
                     .into(profilePicture);
         }
 
-        database = FirebaseDatabase.getInstance();
-
         // Greeting
         greetUser();
         getName();
-
 
         profilePicture.setOnClickListener(v -> startActivity(new Intent(getContext(), Profile.class)));
 
@@ -105,6 +120,71 @@ public class UserHomeFragment extends Fragment {
             bottomSheetDialog.setContentView(sheetView);
             bottomSheetDialog.show();
 
+            // Hooks
+            usdLayout = bottomSheetDialog.findViewById(R.id.united_states_dollar);
+            ghcLayout = bottomSheetDialog.findViewById(R.id.ghana_cedi);
+            check1 = bottomSheetDialog.findViewById(R.id.check1);
+            check2 = bottomSheetDialog.findViewById(R.id.check2);
+
+            if (currencyBoolean) {
+                check1.setVisibility(View.VISIBLE);
+                check2.setVisibility(View.INVISIBLE);
+            } else {
+                check1.setVisibility(View.INVISIBLE);
+                check2.setVisibility(View.VISIBLE);
+            }
+
+            ghcLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    // Save
+                    SharedPreferences.Editor editor = selectedCurrency.edit();
+                    editor.putBoolean("Currency", true);
+                    editor.apply();
+
+                    // Activate check
+                    check1.setVisibility(View.VISIBLE);
+                    check2.setVisibility(View.INVISIBLE);
+
+                    // Close Bottom Sheet
+                    bottomSheetDialog.dismiss();
+
+                    // Change Currency
+                    updateToCedis();
+
+                }
+            });
+
+            usdLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    // Save
+                    SharedPreferences.Editor editor = selectedCurrency.edit();
+                    editor.putBoolean("Currency", false);
+                    editor.apply();
+
+                    // Activate check
+                    check2.setVisibility(View.VISIBLE);
+                    check1.setVisibility(View.INVISIBLE);
+
+                    // Close Bottom Sheet
+                    bottomSheetDialog.dismiss();
+
+                    // Change Currency
+                    updateToDollar();
+
+                }
+            });
+
+        });
+
+        virtualCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), VirtualCardChooseDesign.class));
+            }
         });
 
         addMoney.setOnClickListener(v -> {
@@ -142,6 +222,22 @@ public class UserHomeFragment extends Fragment {
         });
 
         return root;
+    }
+
+    private void updateToDollar() {
+        totalAssets.setText(R.string.usd);
+        currency.setText("USD$");
+
+        // TODO Convert currency to dollars
+
+    }
+
+    private void updateToCedis() {
+        totalAssets.setText(R.string.total_assets_ghc);
+        currency.setText("GH₵");
+
+        // TODO Convert currency to cedis
+
     }
 
     private void checkInput() {

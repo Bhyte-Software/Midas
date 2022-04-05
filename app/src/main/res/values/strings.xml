@@ -253,6 +253,10 @@
     <string name="forgot_password">Forgot Password</string>
     <string name="verify_me">Verify Me</string>
     <string name="resend_email">Resend Email</string>
+    <string name="your_fingerprint_registration_is_25_complete">Your fingerprint registration is 25% complete</string>
+    <string name="register_fingerprint">Register Fingerprint</string>
+    <string name="add_payment_method">Add payment method</string>
+    <string name="usd">Total assets (USD$)</string>
     <!-- HOME -->
 
 </resources>

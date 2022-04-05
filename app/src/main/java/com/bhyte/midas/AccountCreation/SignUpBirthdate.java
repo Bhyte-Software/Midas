@@ -37,7 +37,7 @@ public class SignUpBirthdate extends AppCompatActivity {
             return;
         }
 
-        startActivity(new Intent(getApplicationContext(), FingerprintRegistration.class));
+        startActivity(new Intent(getApplicationContext(), SignUpEnableFingerprint.class));
         finish();
     }
 
