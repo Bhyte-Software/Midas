@@ -76,11 +76,11 @@
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:id="@+id/get_code"
             android:layout_marginStart="@dimen/dimen_25"
             android:layout_marginTop="@dimen/dimen_90"
             android:layout_marginEnd="@dimen/dimen_25"
             android:fontFamily="@font/roboto_medium"
-            android:onClick="getCode"
             android:text="@string/get_code"
             android:textAllCaps="false"
             app:cornerRadius="35dp" />

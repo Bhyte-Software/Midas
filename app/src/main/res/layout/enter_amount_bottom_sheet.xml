@@ -26,7 +26,7 @@
         android:textSize="22sp" />
 
     <EditText
-        android:id="@+id/name_input_layout"
+        android:id="@+id/amount_input_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_60"
         android:layout_marginStart="@dimen/dimen_15"
@@ -56,5 +56,5 @@
         android:text="Continue"
         android:textAllCaps="false"
         app:cornerRadius="35dp" />
-
+    
 </LinearLayout>

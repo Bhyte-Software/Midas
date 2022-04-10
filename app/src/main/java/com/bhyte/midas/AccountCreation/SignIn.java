@@ -11,9 +11,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bhyte.midas.Common.MainDashboard;
+import com.bhyte.midas.Common.NoInternet;
 import com.bhyte.midas.R;
 import com.bhyte.midas.User.ChangePasswordEnterEmail;
 import com.bhyte.midas.User.SignInWithFingerprint;
+import com.bhyte.midas.Util.CheckInternetConnection;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
@@ -58,16 +60,22 @@ public class SignIn extends AppCompatActivity {
             return;
         }
 
-        // Get Data
-        email = emailField.getText().toString();
-        password = passwordField.getText().toString();
+        if(CheckInternetConnection.isConnected(SignIn.this)){
+            // Get Data
+            email = emailField.getText().toString();
+            password = passwordField.getText().toString();
 
-        firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(authResult -> {
-            startActivity(new Intent(getApplicationContext(), MainDashboard.class));
-            finish();
-        }).addOnFailureListener(e -> {
-            Toast.makeText(SignIn.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-        });
+            firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(authResult -> {
+                startActivity(new Intent(getApplicationContext(), MainDashboard.class));
+                finish();
+            }).addOnFailureListener(e -> {
+                Toast.makeText(SignIn.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            });
+        }
+        else {
+            startActivity(new Intent(getApplicationContext(), NoInternet.class));
+        }
+
     }
 
     private boolean validateEmail() {

@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,9 +19,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.bhyte.midas.AccountCreation.SignUpEnterNumber;
 import com.bhyte.midas.AccountCreation.SignUpVerifyIdentity;
 import com.bhyte.midas.R;
 import com.bhyte.midas.Transactions.AddMoneyChooseMethod;
+import com.bhyte.midas.Util.Common;
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
@@ -47,8 +51,11 @@ public class UserHomeFragment extends Fragment {
 
     public static String key;
     public static String usernameS;
+    public String amountEntered;
+    public int lengthOfVal;
 
     String val = "visible";
+    EditText enterAmount;
     CircleImageView profilePicture;
     BottomSheetDialog bottomSheetDialog;
     RelativeLayout currencyView, verificationStatus, virtualCard;
@@ -198,8 +205,10 @@ public class UserHomeFragment extends Fragment {
 
             // Hooks
             continueButton = bottomSheetDialog.findViewById(R.id.continue_button);
+            enterAmount = bottomSheetDialog.findViewById(R.id.amount_input_layout);
 
             // Click Listeners
+            assert continueButton != null;
             continueButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -242,6 +251,14 @@ public class UserHomeFragment extends Fragment {
 
     private void checkInput() {
         //TODO CHECK USER INPUT AMOUNT
+        amountEntered = enterAmount.getText().toString().trim();
+        lengthOfVal = amountEntered.length();
+
+        if (lengthOfVal == 10) {
+            enterAmount.setCompoundDrawablesWithIntrinsicBounds(R.drawable.custom_cedi_icon, 0, R.drawable.green_tick, 0);
+        } else {
+            enterAmount.setCompoundDrawablesWithIntrinsicBounds(R.drawable.custom_cedi_icon, 0, 0, 0);
+        }
     }
 
     private void getName() {

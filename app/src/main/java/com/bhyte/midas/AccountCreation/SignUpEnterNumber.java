@@ -12,12 +12,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bhyte.midas.Common.NoInternet;
 import com.bhyte.midas.R;
+import com.bhyte.midas.Util.CheckInternetConnection;
 import com.bhyte.midas.Util.Common;
+import com.google.android.material.button.MaterialButton;
 
 public class SignUpEnterNumber extends AppCompatActivity {
 
     EditText enterNumberLayout;
+    MaterialButton getCode;
     public String countryCode;
     public String phoneNumber;
     public int lengthOfVal;
@@ -31,6 +35,18 @@ public class SignUpEnterNumber extends AppCompatActivity {
 
         // Hooks
         enterNumberLayout = findViewById(R.id.input_number_field);
+        getCode = findViewById(R.id.get_code);
+
+        getCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (CheckInternetConnection.isConnected(SignUpEnterNumber.this)) {
+                    getCode();
+                } else {
+                    startActivity(new Intent(getApplicationContext(), NoInternet.class));
+                }
+            }
+        });
 
     }
 
@@ -55,7 +71,7 @@ public class SignUpEnterNumber extends AppCompatActivity {
         }
     }
 
-    public void getCode(View view) {
+    public void getCode() {
 
         if (lengthOfVal == 10) {
 
