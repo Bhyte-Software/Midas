@@ -227,6 +227,7 @@
     <string name="us_dollar">US Dollar</string>
     <string name="cedi">GH₵</string>
     <string name="dollar">$</string>
+    <string name="dollar_usd">USD$</string>
     <string name="ghana_cedi">Ghana Cedi</string>
     <string name="phone">Phone</string>
     <string name="midas_gmail_com">midas@gmail.com</string>

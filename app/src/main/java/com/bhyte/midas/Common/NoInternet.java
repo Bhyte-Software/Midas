@@ -18,6 +18,6 @@ public class NoInternet extends AppCompatActivity {
     }
 
     public void callSettings(View view) {
-        startActivityForResult(new Intent(Settings.ACTION_NETWORK_OPERATOR_SETTINGS), 0);
+        startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
     }
 }

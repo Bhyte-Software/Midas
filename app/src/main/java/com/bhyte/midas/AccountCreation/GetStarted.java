@@ -3,6 +3,7 @@ package com.bhyte.midas.AccountCreation;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
@@ -24,6 +25,10 @@ public class GetStarted extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_started);
 
+        // Error Fix for Check Internet Connection
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         // Hooks
         createAccountButton = findViewById(R.id.create_account_button);
         signInButton = findViewById(R.id.sign_in_button);
@@ -32,14 +37,22 @@ public class GetStarted extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), SignIn.class));
+                if (CheckInternetConnection.isConnected(GetStarted.this)) {
+                    startActivity(new Intent(getApplicationContext(), SignIn.class));
+                } else {
+                    startActivity(new Intent(getApplicationContext(), NoInternet.class));
+                }
             }
         });
 
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), SignUpEnterNumber.class));
+                if (CheckInternetConnection.isConnected(GetStarted.this)) {
+                    startActivity(new Intent(getApplicationContext(), SignUpEnterNumber.class));
+                } else {
+                    startActivity(new Intent(getApplicationContext(), NoInternet.class));
+                }
             }
         });
     }

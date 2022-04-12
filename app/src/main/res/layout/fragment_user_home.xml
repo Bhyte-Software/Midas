@@ -130,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="@string/_0_00"
+                    android:text="100"
                     android:textColor="@color/black"
                     android:textSize="35sp"
                     android:visibility="visible" />

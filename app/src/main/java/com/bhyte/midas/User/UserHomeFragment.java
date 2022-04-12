@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
@@ -19,11 +18,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.bhyte.midas.AccountCreation.SignUpEnterNumber;
 import com.bhyte.midas.AccountCreation.SignUpVerifyIdentity;
 import com.bhyte.midas.R;
 import com.bhyte.midas.Transactions.AddMoneyChooseMethod;
-import com.bhyte.midas.Util.Common;
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
@@ -57,6 +54,7 @@ public class UserHomeFragment extends Fragment {
     String val = "visible";
     EditText enterAmount;
     CircleImageView profilePicture;
+    String account_balance;
     BottomSheetDialog bottomSheetDialog;
     RelativeLayout currencyView, verificationStatus, virtualCard;
     MaterialButton addMoney, continueButton;
@@ -89,6 +87,9 @@ public class UserHomeFragment extends Fragment {
         profilePicture = root.findViewById(R.id.profile_picture);
         greetingText = root.findViewById(R.id.greetings);
         virtualCard = root.findViewById(R.id.virtual_card);
+
+        // Save Account Balance in variable
+        account_balance = accountBalance.getText().toString();
 
         selectedCurrency = getContext().getSharedPreferences("selectedCurrency", Context.MODE_PRIVATE);
         boolean currencyBoolean = selectedCurrency.getBoolean("Currency", true);
@@ -225,7 +226,7 @@ public class UserHomeFragment extends Fragment {
                 val = "invisible";
             } else if (val.equals("invisible")) {
                 toggleIcon.setImageResource(R.drawable.toggle_balance);
-                accountBalance.setText(R.string._0_00);
+                accountBalance.setText(account_balance);
                 val = "visible";
             }
         });
@@ -233,9 +234,10 @@ public class UserHomeFragment extends Fragment {
         return root;
     }
 
+
     private void updateToDollar() {
         totalAssets.setText(R.string.usd);
-        currency.setText("USD$");
+        currency.setText(R.string.dollar_usd);
 
         // TODO Convert currency to dollars
 
@@ -243,7 +245,7 @@ public class UserHomeFragment extends Fragment {
 
     private void updateToCedis() {
         totalAssets.setText(R.string.total_assets_ghc);
-        currency.setText("GH₵");
+        currency.setText(R.string.cedi);
 
         // TODO Convert currency to cedis
 

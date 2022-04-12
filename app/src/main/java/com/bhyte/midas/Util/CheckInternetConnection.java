@@ -25,7 +25,7 @@ public class CheckInternetConnection {
                 URL url = new URL("http://www.google.com/");
                 HttpURLConnection urlc = (HttpURLConnection)url.openConnection();
                 urlc.setRequestProperty("User-Agent", "test");
-                urlc.setConnectTimeout(5000); // mTimeout is in seconds
+                urlc.setConnectTimeout(2000); // mTimeout is in seconds
                 urlc.connect();
                 return urlc.getResponseCode() == 200;
             } catch (IOException e) {

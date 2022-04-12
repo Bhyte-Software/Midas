@@ -80,4 +80,6 @@ dependencies {
     // Browser
     implementation 'androidx.browser:browser:1.4.0'
 
+    implementation 'com.android.volley:volley:1.2.1'
+
 }

@@ -60,23 +60,18 @@ public class SignIn extends AppCompatActivity {
             return;
         }
 
-        if(CheckInternetConnection.isConnected(SignIn.this)){
-            // Get Data
-            email = emailField.getText().toString();
-            password = passwordField.getText().toString();
+        // Get Data
+        email = emailField.getText().toString();
+        password = passwordField.getText().toString();
 
-            firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(authResult -> {
-                startActivity(new Intent(getApplicationContext(), MainDashboard.class));
-                finish();
-            }).addOnFailureListener(e -> {
-                Toast.makeText(SignIn.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-            });
-        }
-        else {
-            startActivity(new Intent(getApplicationContext(), NoInternet.class));
-        }
-
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(authResult -> {
+            startActivity(new Intent(getApplicationContext(), MainDashboard.class));
+            finish();
+        }).addOnFailureListener(e -> {
+            Toast.makeText(SignIn.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        });
     }
+
 
     private boolean validateEmail() {
         String val = emailField.getText().toString().trim();
@@ -113,8 +108,7 @@ public class SignIn extends AppCompatActivity {
         } else if (!val.matches(check_password)) {
             passwordField.setError("Password should contain 8 characters!");
             return false;
-        }
-        else {
+        } else {
             passwordField.setError(null);
             //passwordField.setErrorEnabled(false);
             return true;
