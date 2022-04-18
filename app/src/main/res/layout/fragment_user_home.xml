@@ -17,21 +17,21 @@
         android:paddingEnd="@dimen/dimen_25">
 
         <RelativeLayout
-            android:layout_marginTop="10dp"
-            android:layout_alignParentEnd="true"
             android:id="@+id/home_title_icons"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                app:civ_circle_background_color="@color/white"
                 android:id="@+id/profile_picture"
                 android:layout_width="@dimen/dimen_40"
                 android:layout_height="@dimen/dimen_40"
                 android:layout_centerVertical="true"
                 android:src="@drawable/home_profile_default"
                 app:civ_border_color="@color/white"
-                app:civ_border_width="2dp" />
+                app:civ_border_width="2dp"
+                app:civ_circle_background_color="@color/white" />
 
         </RelativeLayout>
 
@@ -174,28 +174,28 @@
             android:orientation="vertical">
 
             <TextView
-                android:textSize="20sp"
-                android:fontFamily="@font/roboto_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="@dimen/dimen_25"
-                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_medium"
                 android:text="Quick actions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <LinearLayout
-                android:paddingTop="@dimen/dimen_15"
-                android:paddingBottom="@dimen/dimen_15"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/dimen_15"
+                android:paddingBottom="@dimen/dimen_15">
 
                 <RelativeLayout
-                    android:clickable="true"
+                    android:layout_width="@dimen/dimen_120"
+                    android:layout_height="150dp"
                     android:layout_marginStart="@dimen/dimen_25"
                     android:background="@drawable/quick_actions_border_ripple"
-                    android:layout_width="@dimen/dimen_120"
-                    android:layout_height="150dp">
+                    android:clickable="true">
 
                     <ImageView
                         android:id="@+id/rec"
@@ -206,33 +206,33 @@
                         android:src="@drawable/quick_action" />
 
                     <ImageView
-                        android:layout_marginTop="@dimen/dimen_40"
-                        android:src="@drawable/money"
-                        android:layout_centerHorizontal="true"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/dimen_40"
+                        android:src="@drawable/money" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:textSize="18sp"
-                        android:fontFamily="@font/roboto_regular"
                         android:layout_centerHorizontal="true"
                         android:layout_marginBottom="@dimen/dimen_15"
+                        android:fontFamily="@font/roboto_regular"
                         android:padding="@dimen/dimen_5"
                         android:text="Add Money"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/virtual_card"
-                    android:clickable="true"
+                    android:layout_width="@dimen/dimen_120"
+                    android:layout_height="150dp"
                     android:layout_marginStart="@dimen/dimen_15"
                     android:background="@drawable/quick_actions_border_ripple"
-                    android:layout_width="@dimen/dimen_120"
-                    android:layout_height="150dp">
+                    android:clickable="true">
 
                     <ImageView
                         android:id="@+id/rec2"
@@ -254,12 +254,12 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
-                        android:fontFamily="@font/roboto_regular"
-                        android:textSize="18sp"
                         android:layout_marginBottom="@dimen/dimen_15"
+                        android:fontFamily="@font/roboto_regular"
                         android:padding="@dimen/dimen_5"
                         android:text="Virtual Card"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
 
                 </RelativeLayout>
 
@@ -267,37 +267,37 @@
 
             <RelativeLayout
                 android:id="@+id/verification_status"
-                android:clickable="true"
-                android:background="@drawable/not_verified_rec_ripple"
                 android:layout_width="match_parent"
+                android:layout_height="65dp"
                 android:layout_marginStart="@dimen/dimen_25"
                 android:layout_marginEnd="@dimen/dimen_25"
                 android:layout_marginBottom="@dimen/dimen_15"
-                android:layout_height="65dp">
+                android:background="@drawable/not_verified_rec_ripple"
+                android:clickable="true">
 
                 <LinearLayout
-                    android:layout_marginStart="@dimen/dimen_15"
-                    android:layout_centerVertical="true"
-                    android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_15"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:fontFamily="@font/roboto_medium"
                         android:id="@+id/title"
-                        android:textSize="16sp"
-                        android:textColor="@color/white"
-                        android:text="@string/not_verified"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/not_verified"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
 
                     <TextView
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:text="@string/start_verification"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -305,25 +305,41 @@
 
 
             <TextView
-                android:textSize="20sp"
-                android:fontFamily="@font/roboto_medium"
-                android:layout_marginStart="25dp"
-                android:textColor="@color/black"
-                android:text="Recommended for you"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:id="@+id/recommended_text"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/recommended_for_you"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <LinearLayout
-                android:layout_marginBottom="@dimen/dimen_90"
+                android:id="@+id/recommended_layout"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginStart="@dimen/dimen_25"
                 android:layout_marginTop="@dimen/dimen_15"
                 android:layout_marginEnd="@dimen/dimen_25"
-                android:layout_marginStart="@dimen/dimen_25"
-                android:background="@drawable/quick_actions_border_ripple"
-                android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_marginBottom="@dimen/dimen_90"
+                android:clickable="true"
+                android:background="@drawable/quick_actions_border_ripple">
 
+                <com.google.android.ads.nativetemplates.TemplateView
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/recommended"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:gnt_template_type="@layout/gnt_small_template_view" />
 
             </LinearLayout>
+
+            <View
+                android:visibility="gone"
+                android:id="@+id/view_holder"
+                android:layout_marginBottom="@dimen/dimen_50"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
 
         </LinearLayout>
 

@@ -258,6 +258,7 @@
     <string name="register_fingerprint">Register Fingerprint</string>
     <string name="add_payment_method">Add payment method</string>
     <string name="usd">Total assets (USD$)</string>
+    <string name="recommended_for_you">Recommended for you</string>
     <!-- HOME -->
 
 </resources>

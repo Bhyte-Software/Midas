@@ -13,7 +13,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bhyte.midas.Common.NoInternet;
 import com.bhyte.midas.R;
+import com.bhyte.midas.User.VirtualCardDetails;
 import com.bhyte.midas.Util.CheckInternetConnection;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.button.MaterialButton;
 
 public class GetStarted extends AppCompatActivity {
@@ -34,25 +38,19 @@ public class GetStarted extends AppCompatActivity {
         signInButton = findViewById(R.id.sign_in_button);
 
         // Click Listeners
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (CheckInternetConnection.isConnected(GetStarted.this)) {
-                    startActivity(new Intent(getApplicationContext(), SignIn.class));
-                } else {
-                    startActivity(new Intent(getApplicationContext(), NoInternet.class));
-                }
+        signInButton.setOnClickListener(v -> {
+            if (CheckInternetConnection.isConnected(GetStarted.this)) {
+                startActivity(new Intent(getApplicationContext(), SignIn.class));
+            } else {
+                startActivity(new Intent(getApplicationContext(), NoInternet.class));
             }
         });
 
-        createAccountButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (CheckInternetConnection.isConnected(GetStarted.this)) {
-                    startActivity(new Intent(getApplicationContext(), SignUpEnterNumber.class));
-                } else {
-                    startActivity(new Intent(getApplicationContext(), NoInternet.class));
-                }
+        createAccountButton.setOnClickListener(v -> {
+            if (CheckInternetConnection.isConnected(GetStarted.this)) {
+                startActivity(new Intent(getApplicationContext(), SignUpEnterNumber.class));
+            } else {
+                startActivity(new Intent(getApplicationContext(), NoInternet.class));
             }
         });
     }
@@ -80,4 +78,7 @@ public class GetStarted extends AppCompatActivity {
         pressedTime = System.currentTimeMillis();
     }
 
+    public void callVirtualCardDetails(View view) {
+        startActivity(new Intent(getApplicationContext(), VirtualCardDetails.class));
+    }
 }

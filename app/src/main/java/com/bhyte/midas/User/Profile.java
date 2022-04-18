@@ -83,7 +83,7 @@ public class Profile extends AppCompatActivity {
 
         // Set Profile Picture
         assert firebaseUser != null;
-        if (firebaseUser.getPhotoUrl() != null){
+        if (firebaseUser.getPhotoUrl() != null) {
             Glide.with(this)
                     .load(firebaseUser.getPhotoUrl())
                     .into(profilePicture);
@@ -98,12 +98,7 @@ public class Profile extends AppCompatActivity {
         fullName = UserHomeFragment.usernameS;
 
         // Click Listeners
-        rateMidas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rateMidasPopup();
-            }
-        });
+        rateMidas.setOnClickListener(v -> rateMidasPopup());
 
         logoutButton.setOnClickListener(v -> {
             logoutDialog = new Dialog(Profile.this, R.style.BottomSheetTheme);
@@ -121,65 +116,58 @@ public class Profile extends AppCompatActivity {
             positive.setOnClickListener(v1 -> logoutDialog.dismiss());
         });
 
-        profilePicture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bottomSheetDialog = new BottomSheetDialog(Profile.this, R.style.BottomSheetTheme);
+        profilePicture.setOnClickListener(v -> {
+            bottomSheetDialog = new BottomSheetDialog(Profile.this, R.style.BottomSheetTheme);
 
-                View sheetView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.profile_bottom_sheet,
-                        findViewById(R.id.profile_sheet));
+            View sheetView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.profile_bottom_sheet,
+                    findViewById(R.id.profile_sheet));
 
-                bottomSheetDialog.setContentView(sheetView);
+            bottomSheetDialog.setContentView(sheetView);
 
-                bottomSheetDialog.show();
+            bottomSheetDialog.show();
 
-                // Hooks
-                takePhoto = bottomSheetDialog.findViewById(R.id.take_photo);
-                choosePhoto = bottomSheetDialog.findViewById(R.id.choose_photo);
-                removePhoto = bottomSheetDialog.findViewById(R.id.remove_photo);
+            // Hooks
+            takePhoto = bottomSheetDialog.findViewById(R.id.take_photo);
+            choosePhoto = bottomSheetDialog.findViewById(R.id.choose_photo);
+            removePhoto = bottomSheetDialog.findViewById(R.id.remove_photo);
 
-                takePhoto.setOnClickListener(v1 -> {
-                    takePicture();
+            takePhoto.setOnClickListener(v1 -> {
+                takePicture();
+                bottomSheetDialog.dismiss();
+            });
+
+            choosePhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    choosePhoto();
                     bottomSheetDialog.dismiss();
-                });
+                }
+            });
 
-                choosePhoto.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        choosePhoto();
-                        bottomSheetDialog.dismiss();
-                    }
-                });
+            removePhoto.setOnClickListener(v12 -> {
 
-                removePhoto.setOnClickListener(new View.OnClickListener() {
-                    @SuppressLint("UseCompatLoadingForDrawables")
-                    @Override
-                    public void onClick(View v) {
+                // Check if image is still default
+                if (profilePicture.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.profile_picture_default).getConstantState()) {
+                    // Default
+                    bottomSheetDialog.dismiss();
+                    Toast toast = Toast.makeText(Profile.this, "Sorry, you cannot remove default profile picture", Toast.LENGTH_SHORT);
+                    View view1 = toast.getView();
 
-                        // Check if image is still default
-                        if (profilePicture.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.profile_picture_default).getConstantState()) {
-                            // Default
-                            bottomSheetDialog.dismiss();
-                            Toast toast = Toast.makeText(Profile.this, "Sorry, you cannot remove default profile picture", Toast.LENGTH_SHORT);
-                            View view1 = toast.getView();
+                    //Gets the actual oval background of the Toast then sets the colour filter
+                    view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
 
-                            //Gets the actual oval background of the Toast then sets the colour filter
-                            view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+                    //Gets the TextView from the Toast so it can be edited
+                    TextView text = view1.findViewById(android.R.id.message);
+                    text.setTextColor(getResources().getColor(R.color.white));
 
-                            //Gets the TextView from the Toast so it can be edited
-                            TextView text = view1.findViewById(android.R.id.message);
-                            text.setTextColor(getResources().getColor(R.color.white));
-
-                            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 90);
-                            toast.show();
-                        } else {
-                            // New Image
-                            showConfirmationDialog();
-                            bottomSheetDialog.dismiss();
-                        }
-                    }
-                });
-            }
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 90);
+                    toast.show();
+                } else {
+                    // New Image
+                    showConfirmationDialog();
+                    bottomSheetDialog.dismiss();
+                }
+            });
         });
 
     }
@@ -190,7 +178,7 @@ public class Profile extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
 
-        if(intent.resolveActivity(getPackageManager()) != null){
+        if (intent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(intent, PICK_IMAGE_CODE);
         }
     }
@@ -271,8 +259,7 @@ public class Profile extends AppCompatActivity {
                 profilePicture.setImageBitmap(bitmap);
                 handleUpload(bitmap);
             }
-        }
-        else if (requestCode == PICK_IMAGE_CODE) {
+        } else if (requestCode == PICK_IMAGE_CODE) {
             if (resultCode == RESULT_OK) {
                 Uri mImageUri = data.getData();
                 profilePicture.setImageURI(mImageUri);
@@ -292,7 +279,6 @@ public class Profile extends AppCompatActivity {
     }
 
     // Upload Image to Firebase
-
     private void handleUpload(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
@@ -304,72 +290,54 @@ public class Profile extends AppCompatActivity {
                 .child(uid + ".jpeg");
 
         storageReference.putBytes(byteArrayOutputStream.toByteArray())
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        getDownloadUrl(storageReference);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // TODO
-                    }
+                .addOnSuccessListener(taskSnapshot -> getDownloadUrl(storageReference))
+                .addOnFailureListener(e -> {
+                    // TODO
                 });
     }
 
-    private void getDownloadUrl(StorageReference reference){
+    private void getDownloadUrl(StorageReference reference) {
         reference.getDownloadUrl()
-                .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                       // TODO
-                        setUserProfileUrl(uri);
-                    }
+                .addOnSuccessListener(uri -> {
+                    // TODO
+                    setUserProfileUrl(uri);
                 });
     }
 
-    private void setUserProfileUrl(Uri uri){
+    private void setUserProfileUrl(Uri uri) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
         UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
                 .setPhotoUri(uri)
                 .build();
 
         user.updateProfile(request)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast toast = Toast.makeText(Profile.this, "Profile image updated successfully", Toast.LENGTH_SHORT);
-                        View view1 = toast.getView();
+                .addOnSuccessListener(unused -> {
+                    Toast toast = Toast.makeText(Profile.this, "Profile image updated successfully", Toast.LENGTH_SHORT);
+                    View view1 = toast.getView();
 
-                        //Gets the actual oval background of the Toast then sets the colour filter
-                        view1.getBackground().setColorFilter(getResources().getColor(R.color.light_green), PorterDuff.Mode.SRC_IN);
+                    //Gets the actual oval background of the Toast then sets the colour filter
+                    view1.getBackground().setColorFilter(getResources().getColor(R.color.light_green), PorterDuff.Mode.SRC_IN);
 
-                        //Gets the TextView from the Toast so it can be edited
-                        TextView text = view1.findViewById(android.R.id.message);
-                        text.setTextColor(getResources().getColor(R.color.white));
+                    //Gets the TextView from the Toast so it can be edited
+                    TextView text = view1.findViewById(android.R.id.message);
+                    text.setTextColor(getResources().getColor(R.color.white));
 
-                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 90);
-                        toast.show();
-                    }
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 90);
+                    toast.show();
                 })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast toast = Toast.makeText(Profile.this, "Failed to update profile image...", Toast.LENGTH_SHORT);
-                        View view1 = toast.getView();
+                .addOnFailureListener(e -> {
+                    Toast toast = Toast.makeText(Profile.this, "Failed to update profile image...", Toast.LENGTH_SHORT);
+                    View view1 = toast.getView();
 
-                        //Gets the actual oval background of the Toast then sets the colour filter
-                        view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+                    //Gets the actual oval background of the Toast then sets the colour filter
+                    view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
 
-                        //Gets the TextView from the Toast so it can be edited
-                        TextView text = view1.findViewById(android.R.id.message);
-                        text.setTextColor(getResources().getColor(R.color.white));
+                    //Gets the TextView from the Toast so it can be edited
+                    TextView text = view1.findViewById(android.R.id.message);
+                    text.setTextColor(getResources().getColor(R.color.white));
 
-                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 90);
-                        toast.show();
-                    }
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 90);
+                    toast.show();
                 });
     }
 

@@ -11,6 +11,7 @@
     tools:context=".AccountCreation.GetStarted">
 
     <ImageView
+        android:onClick="callVirtualCardDetails"
         android:layout_width="match_parent"
         android:src="@drawable/onboarding_image_one"
         android:layout_height="wrap_content"/>

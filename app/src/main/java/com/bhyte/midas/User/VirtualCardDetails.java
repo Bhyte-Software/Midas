@@ -36,8 +36,6 @@ public class VirtualCardDetails extends AppCompatActivity {
         cardCvv = findViewById(R.id.cvv);
 
         copyToClipboard();
-
-        
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -125,7 +123,6 @@ public class VirtualCardDetails extends AppCompatActivity {
 
             toast3.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
 
-
             // Show
             toast3.show();
 
@@ -137,4 +134,7 @@ public class VirtualCardDetails extends AppCompatActivity {
 
     }
 
+    public void goBack(View view) {
+        finish();
+    }
 }

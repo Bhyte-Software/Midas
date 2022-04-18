@@ -19,10 +19,11 @@ public class VirtualCardChooseLabel extends AppCompatActivity {
 
     public String chosenColor;
     public static String userFullName;
+    public static String dateToday;
+
     EditText nameInputLayout;
     String fullName;
     TextView date;
-    public static String dateToday;
     RelativeLayout cardLayout;
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -78,7 +79,7 @@ public class VirtualCardChooseLabel extends AppCompatActivity {
     private void checkInputLayout() {
 
         // Display check icon at end of EditText if user inputs whitespace
-        if (!nameInputLayout.getText().toString().matches("\\S+")){
+        if (!nameInputLayout.getText().toString().matches("\\S+")) {
             nameInputLayout.setCompoundDrawablesWithIntrinsicBounds(R.drawable.user_icon, 0, R.drawable.green_tick, 0);
         }
 
@@ -90,7 +91,7 @@ public class VirtualCardChooseLabel extends AppCompatActivity {
 
     public void callFundVirtualCard(View view) {
 
-        if(!validateFullName()){
+        if (!validateFullName()) {
             return;
         }
 
@@ -107,16 +108,13 @@ public class VirtualCardChooseLabel extends AppCompatActivity {
         String check_spaces = "\\A\\w{1,20}\\z";
 
         if (val.isEmpty()) {
-
             nameInputLayout.setError("Field cannot be empty!");
             return false;
-
         } else if (val.matches(check_spaces)) {
             nameInputLayout.setError("Enter your full name!");
             return false;
         } else {
             nameInputLayout.setError(null);
-            //fullNameField.setErrorEnabled(false);
             return true;
         }
     }

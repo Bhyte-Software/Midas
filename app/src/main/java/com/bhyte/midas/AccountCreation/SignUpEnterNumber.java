@@ -3,6 +3,7 @@ package com.bhyte.midas.AccountCreation;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -33,18 +34,19 @@ public class SignUpEnterNumber extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_enter_number);
 
+        // Error Fix for Check Internet Connection
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         // Hooks
         enterNumberLayout = findViewById(R.id.input_number_field);
         getCode = findViewById(R.id.get_code);
 
-        getCode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (CheckInternetConnection.isConnected(SignUpEnterNumber.this)) {
-                    getCode();
-                } else {
-                    startActivity(new Intent(getApplicationContext(), NoInternet.class));
-                }
+        getCode.setOnClickListener(v -> {
+            if (CheckInternetConnection.isConnected(SignUpEnterNumber.this)) {
+                getCode();
+            } else {
+                startActivity(new Intent(getApplicationContext(), NoInternet.class));
             }
         });
 
