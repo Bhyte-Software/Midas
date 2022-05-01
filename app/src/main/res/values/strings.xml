@@ -154,11 +154,10 @@
     <string name="virtual_card">Virtual Card</string>
     <string name="gift_card">Gift Card</string>
     <string name="create_virtual_card">Create Virtual Card</string>
-    <string name="create_gift_card">Create Gift Card</string>
     <!-- Cards -->
 
     <!-- Transactions -->
-    <string name="no_transactions">You currently have no transactions!</string>
+    <string name="no_transactions">You have no transactions!</string>
     <string name="no_transactions_description">You have not made any transactions yet when you do they will appear here</string>
     <string name="yes">Yes</string>
     <string name="are_you_sure">Are you sure about this?</string>
@@ -259,6 +258,20 @@
     <string name="add_payment_method">Add payment method</string>
     <string name="usd">Total assets (USD$)</string>
     <string name="recommended_for_you">Recommended for you</string>
+    <string name="confirm_deletion_description">Are you sure you want to delete this card? You will loose all information and the money on this card!</string>
+    <string name="confirm_deletion">Confirm Deletion</string>
+    <string name="my_cards">My Cards</string>
+    <string name="shuffle">Shuffle</string>
+    <string name="return_home">Return Home</string>
+    <string name="coming_soon_description">Midas store would be available in future update. Stay posted for updates.</string>
+    <string name="coming_soon">Coming Soon</string>
+    <string name="quick_actions">Quick actions</string>
+    <string name="no_data">No data to download</string>
+    <string name="recipient_email">Recipient Email</string>
+    <string name="message">Message</string>
+    <string name="title">Title</string>
+    <string name="create_gift_card">Create Gift Card</string>
+    <string name="back_to_exit">Press back again to exit midas</string>
     <!-- HOME -->
 
 </resources>

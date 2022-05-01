@@ -27,5 +27,6 @@ public class SignUpEnableFingerprint extends AppCompatActivity {
         // Continue to fingerprint registration screen
         fingerprintStatus = "fingerprint registered";
         startActivity(new Intent(getApplicationContext(), FingerprintRegistration.class));
+        finish();
     }
 }

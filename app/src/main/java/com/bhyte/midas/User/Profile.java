@@ -8,11 +8,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PorterDuff;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -23,6 +25,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bhyte.midas.AccountCreation.GetStarted;
 import com.bhyte.midas.R;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -56,13 +59,13 @@ public class Profile extends AppCompatActivity {
     int PICK_IMAGE_CODE = 1002;
 
     Dialog logoutDialog, dialog, rateDialog;
-    private BottomSheetDialog bottomSheetDialog;
     RelativeLayout takePhoto, choosePhoto, removePhoto, rateMidas;
     CircleImageView profilePicture;
     Button positive, negative;
     TextView userName, userEmail;
     String fullName, email;
     MaterialButton logoutButton;
+    private BottomSheetDialog bottomSheetDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,18 +153,31 @@ public class Profile extends AppCompatActivity {
                 if (profilePicture.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.profile_picture_default).getConstantState()) {
                     // Default
                     bottomSheetDialog.dismiss();
-                    Toast toast = Toast.makeText(Profile.this, "Sorry, you cannot remove default profile picture", Toast.LENGTH_SHORT);
-                    View view1 = toast.getView();
+                    if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
+                        Toast toast = Toast.makeText(Profile.this, "Sorry, you cannot remove default profile picture", Toast.LENGTH_SHORT);
+                        View view1 = toast.getView();
 
-                    //Gets the actual oval background of the Toast then sets the colour filter
-                    view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+                        //Gets the actual oval background of the Toast then sets the colour filter
+                        view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
 
-                    //Gets the TextView from the Toast so it can be edited
-                    TextView text = view1.findViewById(android.R.id.message);
-                    text.setTextColor(getResources().getColor(R.color.white));
+                        //Gets the TextView from the Toast so it can be edited
+                        TextView text = view1.findViewById(android.R.id.message);
+                        text.setTextColor(getResources().getColor(R.color.white));
 
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 90);
-                    toast.show();
+                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                        toast.show();
+                    } else {
+                        LayoutInflater inflater = getLayoutInflater();
+                        View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.custom_toast_container));
+                        TextView textView = (TextView) layout.findViewById(R.id.text);
+                        textView.setText("You cannot remove default profile picture");
+
+                        Toast toast = new Toast(getApplicationContext());
+                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);
+                        toast.setDuration(Toast.LENGTH_SHORT);
+                        toast.setView(layout);
+                        toast.show();
+                    }
                 } else {
                     // New Image
                     showConfirmationDialog();
@@ -312,32 +328,59 @@ public class Profile extends AppCompatActivity {
 
         user.updateProfile(request)
                 .addOnSuccessListener(unused -> {
-                    Toast toast = Toast.makeText(Profile.this, "Profile image updated successfully", Toast.LENGTH_SHORT);
-                    View view1 = toast.getView();
+                    if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
+                        Toast toast = Toast.makeText(Profile.this, "Profile image updated successfully", Toast.LENGTH_SHORT);
+                        View view1 = toast.getView();
 
-                    //Gets the actual oval background of the Toast then sets the colour filter
-                    view1.getBackground().setColorFilter(getResources().getColor(R.color.light_green), PorterDuff.Mode.SRC_IN);
+                        //Gets the actual oval background of the Toast then sets the colour filter
+                        view1.getBackground().setColorFilter(getResources().getColor(R.color.light_green), PorterDuff.Mode.SRC_IN);
 
-                    //Gets the TextView from the Toast so it can be edited
-                    TextView text = view1.findViewById(android.R.id.message);
-                    text.setTextColor(getResources().getColor(R.color.white));
+                        //Gets the TextView from the Toast so it can be edited
+                        TextView text = view1.findViewById(android.R.id.message);
+                        text.setTextColor(getResources().getColor(R.color.white));
 
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 90);
-                    toast.show();
+                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                        toast.show();
+                    }
+                    else {
+                        LayoutInflater inflater = getLayoutInflater();
+                        View layout = inflater.inflate(R.layout.custom_toast_green, (ViewGroup) findViewById(R.id.custom_toast_container_green));
+                        TextView textView = (TextView) layout.findViewById(R.id.text);
+                        textView.setText("Profile updated successfully");
+
+                        Toast toast = new Toast(getApplicationContext());
+                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);
+                        toast.setDuration(Toast.LENGTH_SHORT);
+                        toast.setView(layout);
+                        toast.show();
+                    }
                 })
                 .addOnFailureListener(e -> {
-                    Toast toast = Toast.makeText(Profile.this, "Failed to update profile image...", Toast.LENGTH_SHORT);
-                    View view1 = toast.getView();
+                    if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
+                        Toast toast = Toast.makeText(Profile.this, "Failed to update profile image...", Toast.LENGTH_SHORT);
+                        View view1 = toast.getView();
 
-                    //Gets the actual oval background of the Toast then sets the colour filter
-                    view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+                        //Gets the actual oval background of the Toast then sets the colour filter
+                        view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
 
-                    //Gets the TextView from the Toast so it can be edited
-                    TextView text = view1.findViewById(android.R.id.message);
-                    text.setTextColor(getResources().getColor(R.color.white));
+                        //Gets the TextView from the Toast so it can be edited
+                        TextView text = view1.findViewById(android.R.id.message);
+                        text.setTextColor(getResources().getColor(R.color.white));
 
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 90);
-                    toast.show();
+                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                        toast.show();
+                    } else {
+                        LayoutInflater inflater = getLayoutInflater();
+                        View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.custom_toast_container));
+                        TextView textView = (TextView) layout.findViewById(R.id.text);
+                        textView.setText("Failed to update profile");
+
+                        Toast toast = new Toast(getApplicationContext());
+                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);
+                        toast.setDuration(Toast.LENGTH_SHORT);
+                        toast.setView(layout);
+                        toast.show();
+                    }
                 });
     }
 

@@ -3,8 +3,10 @@ package com.bhyte.midas.User;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 import android.view.Gravity;
@@ -13,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +28,7 @@ import com.bhyte.midas.Common.ContactSupport;
 import com.bhyte.midas.Common.FAQ;
 import com.bhyte.midas.Common.TermsOfService;
 import com.bhyte.midas.R;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class UserSettingsFragment extends Fragment {
@@ -32,7 +37,9 @@ public class UserSettingsFragment extends Fragment {
     Dialog logoutDialog;
     Button positive, negative;
     String userFullName;
-    TextView username;
+    ImageView themeIcon;
+    TextView username, themeName;
+    SwitchMaterial switchMaterial;
 
     FirebaseAuth firebaseAuth;
 
@@ -51,9 +58,29 @@ public class UserSettingsFragment extends Fragment {
         faqLayout = root.findViewById(R.id.faq_layout);
         username = root.findViewById(R.id.user_name);
         downloadLayout = root.findViewById(R.id.download_layout);
+        switchMaterial = root.findViewById(R.id.theme_switch);
+        themeName = root.findViewById(R.id.theme_name);
+        themeIcon = root.findViewById(R.id.theme);
 
         // Get Data
         userFullName = UserHomeFragment.usernameS;
+
+        // Switch
+        switchMaterial.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    // Dark Theme
+                    themeName.setText(R.string.dark_theme);
+                    themeIcon.setImageResource(R.drawable.moon_icon);
+                }
+                else{
+                    // Light Theme
+                    themeIcon.setImageResource(R.drawable.sun_icon);
+                    themeName.setText(R.string.light_theme);
+                }
+            }
+        });
 
         // Firebase Instance
         firebaseAuth = FirebaseAuth.getInstance();
@@ -70,18 +97,33 @@ public class UserSettingsFragment extends Fragment {
         downloadLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(getContext(), "No data to download", Toast.LENGTH_SHORT);
-                View view1 = toast.getView();
+                if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
+                    Toast toast = Toast.makeText(getContext(), R.string.no_data, Toast.LENGTH_SHORT);
+                    View view1 = toast.getView();
 
-                //Gets the actual oval background of the Toast then sets the colour filter
-                view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+                    //Gets the actual oval background of the Toast then sets the colour filter
+                    view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
 
-                //Gets the TextView from the Toast so it can be edited
-                TextView text = view1.findViewById(android.R.id.message);
-                text.setTextColor(getResources().getColor(R.color.white));
+                    //Gets the TextView from the Toast so it can be edited
+                    TextView text = view1.findViewById(android.R.id.message);
+                    text.setTextColor(getResources().getColor(R.color.white));
 
-                toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 85);
-                toast.show();
+                    toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 85);
+                    toast.show();
+                }
+                else {
+                    LayoutInflater inflater = getLayoutInflater();
+                    View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) root.findViewById(R.id.custom_toast_container));
+                    TextView textView = (TextView) layout.findViewById(R.id.text);
+                    textView.setText(R.string.no_data);
+
+                    Toast toast = new Toast(getContext());
+                    toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 85);
+                    toast.setDuration(Toast.LENGTH_SHORT);
+                    toast.setView(layout);
+                    toast.show();
+                }
+
             }
         });
 

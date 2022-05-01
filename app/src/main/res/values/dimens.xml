@@ -15,4 +15,10 @@
     <dimen name="dimen_105">105dp</dimen>
     <dimen name="dimen_120">120dp</dimen>
     <dimen name="dimen_55">55dp</dimen>
+
+    <dimen name="translationX">6dp</dimen>
+    <dimen name="translationY">30dp</dimen>
+    <dimen name="translation2Y">60dp</dimen>
+    <dimen name="translationYMax">45dp</dimen>
+
 </resources>

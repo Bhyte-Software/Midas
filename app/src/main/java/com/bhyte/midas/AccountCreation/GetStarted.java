@@ -2,27 +2,30 @@ package com.bhyte.midas.AccountCreation;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import com.bhyte.midas.Common.MainDashboard;
 import com.bhyte.midas.Common.NoInternet;
 import com.bhyte.midas.R;
-import com.bhyte.midas.User.VirtualCardDetails;
 import com.bhyte.midas.Util.CheckInternetConnection;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class GetStarted extends AppCompatActivity {
-    private long pressedTime;
+
     MaterialButton createAccountButton, signInButton;
+    FirebaseAnalytics firebaseAnalytics;
+    private long pressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,9 @@ public class GetStarted extends AppCompatActivity {
         // Hooks
         createAccountButton = findViewById(R.id.create_account_button);
         signInButton = findViewById(R.id.sign_in_button);
+
+        // Analytics
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         // Click Listeners
         signInButton.setOnClickListener(v -> {
@@ -59,26 +65,39 @@ public class GetStarted extends AppCompatActivity {
     public void onBackPressed() {
         if (pressedTime + 2000 > System.currentTimeMillis()) {
             super.onBackPressed();
-            finish();
+            System.exit(0);
         } else {
             // Make Custom Toast Instead
-            Toast toast = Toast.makeText(GetStarted.this, "Press back again to exit midas", Toast.LENGTH_SHORT);
-            View view1 = toast.getView();
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                Toast toast = Toast.makeText(GetStarted.this, "Press back again to exit midas", Toast.LENGTH_SHORT);
+                View view1 = toast.getView();
 
-            //Gets the actual oval background of the Toast then sets the colour filter
-            view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+                //Gets the actual oval background of the Toast then sets the colour filter
+                view1.getBackground().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.red), PorterDuff.Mode.SRC_IN);
 
-            //Gets the TextView from the Toast so it can be edited
-            TextView text = view1.findViewById(android.R.id.message);
-            text.setTextColor(getResources().getColor(R.color.white));
+                //Gets the TextView from the Toast so it can be edited
+                TextView text = view1.findViewById(android.R.id.message);
+                text.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-            toast.show();
+                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                toast.show();
+            } else {
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
+                TextView textView = layout.findViewById(R.id.text);
+                textView.setText(R.string.back_to_exit);
+
+                Toast toast = new Toast(getApplicationContext());
+                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);
+                toast.setDuration(Toast.LENGTH_SHORT);
+                toast.setView(layout);
+                toast.show();
+            }
         }
         pressedTime = System.currentTimeMillis();
     }
 
     public void callVirtualCardDetails(View view) {
-        startActivity(new Intent(getApplicationContext(), VirtualCardDetails.class));
+        startActivity(new Intent(getApplicationContext(), MainDashboard.class));
     }
 }

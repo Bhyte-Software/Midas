@@ -17,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,8 +24,10 @@ import androidx.fragment.app.Fragment;
 
 import com.bhyte.midas.AccountCreation.SignUpVerifyIdentity;
 import com.bhyte.midas.R;
+import com.bhyte.midas.Store.Store;
 import com.bhyte.midas.Transactions.AddMoneyChooseMethod;
 import com.bumptech.glide.Glide;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.ads.nativetemplates.NativeTemplateStyle;
 import com.google.android.ads.nativetemplates.TemplateView;
 import com.google.android.gms.ads.AdListener;
@@ -34,9 +35,6 @@ import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.android.gms.ads.nativead.NativeAd;
 import com.google.android.gms.ads.nativead.NativeAdOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
@@ -49,44 +47,32 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
-import java.util.List;
-import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserHomeFragment extends Fragment {
 
+    public static String key, usernameS, amountEntered;
+    public int lengthOfVal;
     private AdLoader adLoader;
 
     FirebaseDatabase database;
+    ShimmerFrameLayout shimmerFrameLayout;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
-
     SharedPreferences selectedCurrency;
-
-    RelativeLayout usdLayout, ghcLayout;
-
-    public static String key;
-    public static String usernameS;
-    public String amountEntered;
-    public int lengthOfVal;
-
     LinearLayout adView;
-    TextView recommendedText;
     View viewHolder;
-
     String val = "visible";
     EditText enterAmount;
     CircleImageView profilePicture;
-    String account_balance;
+    String account_balance, fullName;
     BottomSheetDialog bottomSheetDialog;
-    RelativeLayout currencyView, verificationStatus, virtualCard;
+    RelativeLayout currencyView, verificationStatus, virtualCard, midasStore, usdLayout, ghcLayout;
     MaterialButton addMoney, continueButton;
     ImageView toggleIcon, check1, check2;
-    String fullName;
-    Animation animation;
-    TextView currency, username, totalAssets, accountBalance, greetingText;
-
+    Animation animation, animation2;
+    TextView currency, username, totalAssets, accountBalance, greetingText, recommendedText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -114,6 +100,8 @@ public class UserHomeFragment extends Fragment {
         profilePicture = root.findViewById(R.id.profile_picture);
         greetingText = root.findViewById(R.id.greetings);
         virtualCard = root.findViewById(R.id.virtual_card);
+        midasStore = root.findViewById(R.id.store);
+        shimmerFrameLayout = root.findViewById(R.id.shimmer_layout);
 
         // Save Account Balance in variable
         account_balance = accountBalance.getText().toString();
@@ -127,18 +115,6 @@ public class UserHomeFragment extends Fragment {
             updateToDollar();
         }
 
-        // Set Profile Picture
-        assert firebaseUser != null;
-        if (firebaseUser.getPhotoUrl() != null) {
-            Glide.with(this)
-                    .load(firebaseUser.getPhotoUrl())
-                    .into(profilePicture);
-        }
-
-        // Greeting
-        greetUser();
-        getName();
-
         profilePicture.setOnClickListener(v -> startActivity(new Intent(getContext(), Profile.class)));
 
         verificationStatus.setOnClickListener(v -> {
@@ -146,11 +122,9 @@ public class UserHomeFragment extends Fragment {
             key = "no skip";
         });
 
-        currencyView.setOnClickListener(v -> {
-            bottomSheetDialog = new BottomSheetDialog(requireContext(), R.style.BottomSheetTheme);
+        currencyView.setOnClickListener(v -> { bottomSheetDialog = new BottomSheetDialog(requireContext(), R.style.BottomSheetTheme);
 
-            View sheetView = LayoutInflater.from(getActivity()).inflate(R.layout.currency_bottom_sheet,
-                    root.findViewById(R.id.currency_sheet));
+            View sheetView = LayoutInflater.from(getActivity()).inflate(R.layout.currency_bottom_sheet, root.findViewById(R.id.currency_sheet));
 
             bottomSheetDialog.setContentView(sheetView);
             bottomSheetDialog.show();
@@ -169,64 +143,50 @@ public class UserHomeFragment extends Fragment {
                 check2.setVisibility(View.VISIBLE);
             }
 
-            ghcLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            ghcLayout.setOnClickListener(v12 -> {
+                // Save
+                SharedPreferences.Editor editor = selectedCurrency.edit();
+                editor.putBoolean("Currency", true);
+                editor.apply();
 
-                    // Save
-                    SharedPreferences.Editor editor = selectedCurrency.edit();
-                    editor.putBoolean("Currency", true);
-                    editor.apply();
+                // Activate check
+                check1.setVisibility(View.VISIBLE);
+                check2.setVisibility(View.INVISIBLE);
 
-                    // Activate check
-                    check1.setVisibility(View.VISIBLE);
-                    check2.setVisibility(View.INVISIBLE);
+                // Close Bottom Sheet
+                bottomSheetDialog.dismiss();
 
-                    // Close Bottom Sheet
-                    bottomSheetDialog.dismiss();
-
-                    // Change Currency
-                    updateToCedis();
-
-                }
+                // Change Currency
+                updateToCedis();
             });
 
-            usdLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            usdLayout.setOnClickListener(v1 -> {
+                // Save
+                SharedPreferences.Editor editor = selectedCurrency.edit();
+                editor.putBoolean("Currency", false);
+                editor.apply();
 
-                    // Save
-                    SharedPreferences.Editor editor = selectedCurrency.edit();
-                    editor.putBoolean("Currency", false);
-                    editor.apply();
+                // Activate check
+                check1.setVisibility(View.INVISIBLE);
+                check2.setVisibility(View.VISIBLE);
 
-                    // Activate check
-                    check2.setVisibility(View.VISIBLE);
-                    check1.setVisibility(View.INVISIBLE);
+                // Close Bottom Sheet
+                bottomSheetDialog.dismiss();
 
-                    // Close Bottom Sheet
-                    bottomSheetDialog.dismiss();
-
-                    // Change Currency
-                    updateToDollar();
-
-                }
+                // Change Currency
+                updateToDollar();
             });
 
         });
 
-        virtualCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), VirtualCardChooseDesign.class));
-            }
-        });
+        midasStore.setOnClickListener(v -> startActivity(new Intent(getActivity(), Store.class)));
+
+        virtualCard.setOnClickListener(v -> startActivity(new Intent(getActivity(), VirtualCardChooseDesign.class)));
 
         addMoney.setOnClickListener(v -> {
             bottomSheetDialog = new BottomSheetDialog(requireContext(), R.style.BottomSheetTheme);
 
-            View sheetView = LayoutInflater.from(getActivity()).inflate(R.layout.enter_amount_bottom_sheet,
-                    root.findViewById(R.id.amount_sheet));
+            View sheetView = LayoutInflater.from(getActivity()).inflate(R.layout.enter_amount_bottom_sheet, root.findViewById(R.id.amount_sheet));
 
             bottomSheetDialog.setContentView(sheetView);
             bottomSheetDialog.show();
@@ -237,13 +197,7 @@ public class UserHomeFragment extends Fragment {
 
             // Click Listeners
             assert continueButton != null;
-            continueButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    checkInput();
-                    startActivity(new Intent(getActivity(), AddMoneyChooseMethod.class));
-                }
-            });
+            continueButton.setOnClickListener(v13 -> checkInput());
         });
 
         toggleIcon.setOnClickListener(v -> {
@@ -261,30 +215,38 @@ public class UserHomeFragment extends Fragment {
         return root;
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        // Set Profile Picture
+        assert firebaseUser != null;
+        if (firebaseUser.getPhotoUrl() != null) {
+            Glide.with(this)
+                    .load(firebaseUser.getPhotoUrl())
+                    .into(profilePicture);
+        }
+
+        // Greeting
+        greetUser();
+        getName();
 
         // Initialize Ads
         MobileAds.initialize(getContext(), initializationStatus -> {
         });
 
         // Load Native Ads
-        adLoader = new AdLoader.Builder(getContext(), "ca-app-pub-3940256099942544/2247696110")
+        adLoader = new AdLoader.Builder(getContext(), "ca-app-pub-3862971524430784/7025923215")
                 .forNativeAd(NativeAd -> {
-                    // Show the ad.
-
-                    // Make Ad View Visible
-                    adView.setVisibility(View.VISIBLE);
-                    recommendedText.setVisibility(View.VISIBLE);
-                    viewHolder.setVisibility(View.GONE);
-
-                    // Check if ad has loaded
-                    if (!adLoader.isLoading()) {
-                        // TODO
+                    // Show the ad
+                    if(adLoader.isLoading()){
+                        //Show Shimmer
+                        shimmerFrameLayout.setVisibility(View.VISIBLE);
+                        shimmerFrameLayout.startShimmer();
                     }
+
                     // Destroy Ads
-                    if (requireActivity().isDestroyed()) {
+                    if (getActivity() == null) {
                         NativeAd.destroy();
                     }
 
@@ -305,11 +267,25 @@ public class UserHomeFragment extends Fragment {
                 })
                 .withAdListener(new AdListener() {
                     @Override
-                    public void onAdFailedToLoad(LoadAdError adError) {
+                    public void onAdFailedToLoad(@NonNull LoadAdError adError) {
                         // Make Ad View Invisible
                         adView.setVisibility(View.GONE);
                         recommendedText.setVisibility(View.GONE);
                         viewHolder.setVisibility(View.VISIBLE);
+                    }
+                    @Override
+                    public void onAdLoaded() {
+                        // Stop and hide shimmer
+                        shimmerFrameLayout.stopShimmer();
+                        shimmerFrameLayout.setVisibility(View.GONE);
+                        // Make Ad View Visible
+                        adView.setVisibility(View.VISIBLE);
+                        recommendedText.setVisibility(View.VISIBLE);
+                        viewHolder.setVisibility(View.GONE);
+                        // Animate
+                        animation2 = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
+                        adView.setAnimation(animation2);
+                        recommendedText.setAnimation(animation2);
                     }
                 })
                 .withNativeAdOptions(new NativeAdOptions.Builder()
@@ -338,19 +314,19 @@ public class UserHomeFragment extends Fragment {
     }
 
     private void checkInput() {
-        //TODO CHECK USER INPUT AMOUNT
         amountEntered = enterAmount.getText().toString().trim();
         lengthOfVal = amountEntered.length();
 
-        if (lengthOfVal == 10) {
-            enterAmount.setCompoundDrawablesWithIntrinsicBounds(R.drawable.custom_cedi_icon, 0, R.drawable.green_tick, 0);
+        if (lengthOfVal >= 2) {
+            startActivity(new Intent(getActivity(), AddMoneyChooseMethod.class));
+        } else if (lengthOfVal == 0) {
+            enterAmount.setError("Please enter amount");
         } else {
-            enterAmount.setCompoundDrawablesWithIntrinsicBounds(R.drawable.custom_cedi_icon, 0, 0, 0);
+            enterAmount.setError("Amount should be 10 or more");
         }
     }
 
     private void getName() {
-
         firebaseUser = firebaseAuth.getCurrentUser();
         DatabaseReference databaseReference = database.getReference("Users").child(firebaseUser.getUid()).child("name");
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -358,7 +334,6 @@ public class UserHomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 fullName = snapshot.getValue(String.class);
                 setName();
-
                 if (!(fullName == null)) {
                     usernameS = fullName;
                 }
@@ -377,13 +352,10 @@ public class UserHomeFragment extends Fragment {
         if (username != null) {
             animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
             username.setAnimation(animation);
-        } else {
-            return;
         }
     }
 
     private void greetUser() {
-
         Calendar calendar = Calendar.getInstance();
         int timeOfDay;
         timeOfDay = calendar.get(Calendar.HOUR_OF_DAY);
@@ -409,7 +381,6 @@ public class UserHomeFragment extends Fragment {
             animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
             greetingText.setAnimation(animation);
         }
-
     }
 
 }

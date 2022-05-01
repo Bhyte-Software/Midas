@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/warning"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/sign_out_title"
             android:textAlignment="center"
@@ -44,7 +44,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/title"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dimen_5"
             android:fontFamily="@font/roboto_regular"
             android:text="@string/logout_confirmation"
             android:textAlignment="center" />
@@ -55,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/message"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dimen_20"
+            android:layout_marginTop="@dimen/dimen_15"
             android:layout_marginBottom="@dimen/dimen_20">
 
             <com.google.android.material.button.MaterialButton

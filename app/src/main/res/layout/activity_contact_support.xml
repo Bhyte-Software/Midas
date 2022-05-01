@@ -10,15 +10,27 @@
     <RelativeLayout
         android:id="@+id/top_image"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/contact_us_image">
 
         <ImageView
+            android:layout_alignParentEnd="true"
+            android:id="@+id/close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="callCLose"
-            android:padding="@dimen/dimen_25"
+            android:layout_margin="@dimen/dimen_25"
             android:src="@drawable/close" />
+
+        <TextView
+            android:layout_margin="@dimen/dimen_25"
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/contact_support"
+            android:textColor="@color/black"
+            android:textSize="26sp" />
 
     </RelativeLayout>
 
@@ -32,7 +44,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/illustration"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -75,7 +86,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:onClick="callEmail"
+                android:layout_marginBottom="@dimen/dimen_20"
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:layout_marginStart="@dimen/dimen_20"
@@ -84,6 +95,7 @@
                 android:background="@drawable/ripple_round_box"
                 android:clickable="true"
                 android:elevation="@dimen/dimen_10"
+                android:onClick="callEmail"
                 android:padding="@dimen/dimen_20">
 
                 <ImageView

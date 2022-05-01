@@ -1,9 +1,12 @@
 package com.bhyte.midas.AccountCreation;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,7 +26,6 @@ public class SignUpCredentials extends AppCompatActivity {
 
     String fullName, email, password;
     EditText fullNameField, emailField, passwordField;
-
     FirebaseAuth firebaseAuth;
 
     @Override
@@ -54,7 +56,6 @@ public class SignUpCredentials extends AppCompatActivity {
         email = emailField.getText().toString();
         password = passwordField.getText().toString();
 
-
         // Create User
         createUser();
 
@@ -64,7 +65,20 @@ public class SignUpCredentials extends AppCompatActivity {
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             // Go to next page
             saveData();
-        }).addOnFailureListener(e -> Toast.makeText(SignUpCredentials.this, "Oops!, Something went wrong please try again", Toast.LENGTH_SHORT).show());
+        }).addOnFailureListener(e -> {
+            Toast toast = Toast.makeText(SignUpCredentials.this, "Oops!, Something went wrong please try again", Toast.LENGTH_SHORT);
+            View view1 = toast.getView();
+
+            //Gets the actual oval background of the Toast then sets the colour filter
+            view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+
+            //Gets the TextView from the Toast so it can be edited
+            TextView text = view1.findViewById(android.R.id.message);
+            text.setTextColor(getResources().getColor(R.color.white));
+
+            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+            toast.show();
+        });
     }
 
     private void saveData() {
@@ -80,7 +94,18 @@ public class SignUpCredentials extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), AcceptTermsOfService.class));
                     finish();
                 } else {
-                    Toast.makeText(SignUpCredentials.this, "User registration failed", Toast.LENGTH_SHORT).show();
+                    Toast toast = Toast.makeText(SignUpCredentials.this, "User registration failed", Toast.LENGTH_SHORT);
+                    View view1 = toast.getView();
+
+                    //Gets the actual oval background of the Toast then sets the colour filter
+                    view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+
+                    //Gets the TextView from the Toast so it can be edited
+                    TextView text = view1.findViewById(android.R.id.message);
+                    text.setTextColor(getResources().getColor(R.color.white));
+
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                    toast.show();
                 }
             }
         });
@@ -91,8 +116,7 @@ public class SignUpCredentials extends AppCompatActivity {
         String check_spaces = "\\A\\w{1,20}\\z";
 
         if (val.isEmpty()) {
-
-            fullNameField.setError("Field cannot be empty!");
+            fullNameField.setError("FullName cannot be empty!");
             return false;
 
         } else if (val.matches(check_spaces)) {
@@ -100,7 +124,6 @@ public class SignUpCredentials extends AppCompatActivity {
             return false;
         } else {
             fullNameField.setError(null);
-            //fullNameField.setErrorEnabled(false);
             return true;
         }
     }
@@ -134,14 +157,13 @@ public class SignUpCredentials extends AppCompatActivity {
                 "$";
 
         if (val.isEmpty()) {
-            passwordField.setError("Field cannot be empty!");
+            passwordField.setError("Password cannot be empty!");
             return false;
         } else if (!val.matches(check_password)) {
             passwordField.setError("Password should contain 8 characters!");
             return false;
         } else {
             passwordField.setError(null);
-            //passwordField.setErrorEnabled(false);
             return true;
         }
     }

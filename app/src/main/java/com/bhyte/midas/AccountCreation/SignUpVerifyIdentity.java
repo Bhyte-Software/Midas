@@ -17,11 +17,11 @@ import com.passbase.passbase_sdk.PassbaseSDKListener;
 
 public class SignUpVerifyIdentity extends AppCompatActivity {
 
+    public static String verificationStatus;
     String key;
     RelativeLayout nationalID, passport;
     MaterialButton skipButton;
 
-    public static String verificationStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -20,15 +20,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="@dimen/dimen_20">
+                android:layout_marginTop="@dimen/dimen_10"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:onClick="callUserMain"
                     android:id="@+id/menu_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:onClick="callUserMain"
+                    android:padding="@dimen/dimen_15"
                     android:src="@drawable/back_icon"
                     app:tint="@color/white" />
 
@@ -36,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/dimen_20"
+                    android:layout_marginStart="@dimen/dimen_5"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/profile"
                     android:textColor="@color/white"
@@ -49,7 +50,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="-50dp"
+            android:layout_marginTop="-60dp"
             android:background="@drawable/top_round_corner_overlay"
             android:elevation="10dp"
             android:scrollbars="none">
@@ -66,7 +67,7 @@
                     android:id="@+id/profile_picture"
                     android:layout_height="@dimen/dimen_120"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/dimen_60"
+                    android:layout_marginTop="@dimen/dimen_50"
                     app:civ_circle_background_color="@color/white"
                     android:src="@drawable/profile_picture_default" />
 
@@ -98,7 +99,7 @@
                     android:layout_height="60dp"
                     android:drawableEnd="@drawable/ic_navigate_next"
                     android:layout_marginStart="@dimen/dimen_25"
-                    android:layout_marginTop="@dimen/dimen_20"
+                    android:layout_marginTop="@dimen/dimen_10"
                     android:layout_marginEnd="@dimen/dimen_25"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/edit_profile"
@@ -106,7 +107,7 @@
                     app:cornerRadius="35dp" />
 
                 <RelativeLayout
-                    android:layout_marginTop="@dimen/dimen_25"
+                    android:layout_marginTop="@dimen/dimen_20"
                     android:padding="@dimen/dimen_20"
                     android:layout_marginEnd="@dimen/dimen_25"
                     android:layout_marginStart="@dimen/dimen_25"
@@ -206,7 +207,7 @@
                     android:onClick="callChangePassword"
                     app:iconGravity="textEnd"
                     android:layout_marginStart="@dimen/dimen_25"
-                    android:layout_marginTop="@dimen/dimen_30"
+                    android:layout_marginTop="@dimen/dimen_20"
                     android:layout_marginEnd="@dimen/dimen_25"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/change_password"

@@ -1,8 +1,5 @@
 package com.bhyte.midas.AccountCreation;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -11,16 +8,17 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bhyte.midas.R;
 import com.chaos.view.PinView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -30,7 +28,6 @@ import java.util.concurrent.TimeUnit;
 public class SignUpEnterOTP extends AppCompatActivity {
 
     public String verificationId;
-
     public String fullPhoneNumber;
     public String smsNumber;
     public String completeNumber;
@@ -66,17 +63,25 @@ public class SignUpEnterOTP extends AppCompatActivity {
 
         sendVerificationCode(smsNumber);
 
-        verifyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (pinView.getText() == null) {
-                    // Error Message
-                    Toast.makeText(SignUpEnterOTP.this, "Please enter SMS code sent to your number", Toast.LENGTH_SHORT).show();
-                } else if (pinView.length() == 6) {
-                    // Verify Code
-                    String code = pinView.getText().toString().trim();
-                    verifyCode(code);
-                }
+        verifyButton.setOnClickListener(v -> {
+            if (pinView.getText() == null) {
+                // Error Message
+                Toast toast = Toast.makeText(SignUpEnterOTP.this, "Please enter SMS code sent to your number", Toast.LENGTH_SHORT);
+                View view1 = toast.getView();
+
+                //Gets the actual oval background of the Toast then sets the colour filter
+                view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+
+                //Gets the TextView from the Toast so it can be edited
+                TextView text = view1.findViewById(android.R.id.message);
+                text.setTextColor(getResources().getColor(R.color.white));
+
+                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                toast.show();
+            } else if (pinView.length() == 6) {
+                // Verify Code
+                String code = pinView.getText().toString().trim();
+                verifyCode(code);
             }
         });
 
@@ -110,9 +115,7 @@ public class SignUpEnterOTP extends AppCompatActivity {
                             startActivity(i);
                             finish();
                         } else {
-
                             //verification unsuccessful.. display an error message
-                            // TODO
                             showError();
                         }
                     }
@@ -120,7 +123,18 @@ public class SignUpEnterOTP extends AppCompatActivity {
     }
 
     private void showError() {
-        //TODO
+        Toast toast = Toast.makeText(SignUpEnterOTP.this, "The code you entered was incorrect...Try Again", Toast.LENGTH_SHORT);
+        View view1 = toast.getView();
+
+        //Gets the actual oval background of the Toast then sets the colour filter
+        view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+
+        //Gets the TextView from the Toast so it can be edited
+        TextView text = view1.findViewById(android.R.id.message);
+        text.setTextColor(getResources().getColor(R.color.white));
+
+        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+        toast.show();
     }
 
     // callback method is called on Phone auth provider.

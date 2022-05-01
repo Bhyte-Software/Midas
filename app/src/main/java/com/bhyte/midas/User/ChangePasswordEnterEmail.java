@@ -1,8 +1,5 @@
 package com.bhyte.midas.User;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -12,18 +9,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bhyte.midas.AccountCreation.SignUpEnterNumber;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bhyte.midas.R;
 import com.bhyte.midas.Util.Common;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class ChangePasswordEnterEmail extends AppCompatActivity {
 
-    private static final int SPLASH_TIMER = 2000;
+    private static final int TIMER = 1500;
 
     EditText emailInputField;
     MaterialButton sendInstructions;
@@ -44,9 +40,7 @@ public class ChangePasswordEnterEmail extends AppCompatActivity {
             if (firebaseUser != null) {
                 // Do whatever you want with the UserId by firebaseUser.getUid()
                 String userID = firebaseUser.getUid();
-            } //else {
-                // TODO
-            //}
+            }
         };
 
         // Hooks
@@ -72,12 +66,12 @@ public class ChangePasswordEnterEmail extends AppCompatActivity {
     }
 
     private void startPasswordReset() {
-        if(userEmail.contains("@gmail.com") | userEmail.contains("@yahoo.com")){
+        if(userEmail.contains("@gmail.com") | userEmail.contains("@yahoo.com") | userEmail.contains("@hotmail.com")){
             // Send Instructions
             sendPasswordResetEmail();
         } else if (emailInputField.getText().toString().trim().isEmpty()) {
-            emailInputField.setError("Field cannot be empty!");
-        } else if (!userEmail.contains("@gmail.com")){
+            emailInputField.setError("Email cannot be empty!");
+        } else if (!userEmail.contains("@gmail.com") | !userEmail.contains("@yahoo.com")){
             emailInputField.setError("Invalid Email!");
         }
     }
@@ -101,7 +95,7 @@ public class ChangePasswordEnterEmail extends AppCompatActivity {
                     new Handler().postDelayed(() -> {
                         startActivity(new Intent(getApplicationContext(), ChangePasswordOpenEmail.class));
                         finish();
-                    }, SPLASH_TIMER);
+                    }, TIMER);
                 }
                 else {
                     // Custom Toast

@@ -3,24 +3,31 @@ package com.bhyte.midas.User;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bhyte.midas.R;
+import com.google.android.material.button.MaterialButton;
 
 public class VirtualCardDetails extends AppCompatActivity {
+
+    Dialog dialog;
 
     ImageView copyName, copyNumber, copyCvv;
     TextView cardName, cardNumber, cardCvv;
     Toast toast1, toast2, toast3;
+    MaterialButton deleteButton, confirmDeleteButton, cancelButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +41,38 @@ public class VirtualCardDetails extends AppCompatActivity {
         cardName = findViewById(R.id.cardholder_name);
         cardNumber = findViewById(R.id.card_number_);
         cardCvv = findViewById(R.id.cvv);
+        deleteButton = findViewById(R.id.delete_button);
 
         copyToClipboard();
+
+        // Click Listeners
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Show Confirm Delete Dialog
+                dialog = new Dialog(VirtualCardDetails.this, R.style.BottomSheetTheme);
+
+                View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.delete_virtual_card_confirmation,
+                        findViewById(R.id.confirm_deletion_popup));
+
+                dialog.setContentView(dialogView);
+                dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                dialog.show();
+
+                // Hooks
+                confirmDeleteButton = dialogView.findViewById(R.id.delete);
+                cancelButton = dialogView.findViewById(R.id.cancel);
+
+                // Click Listeners
+                confirmDeleteButton.setOnClickListener(v1 -> {
+                    // TODO DELETE VIRTUAL CARD
+                });
+
+                cancelButton.setOnClickListener(v12 -> dialog.dismiss());
+
+            }
+        });
+
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")

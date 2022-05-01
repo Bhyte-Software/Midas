@@ -1,19 +1,22 @@
 package com.bhyte.midas.User;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import com.bhyte.midas.R;
+import com.google.android.material.button.MaterialButton;
 
 public class GiftCardChooseDesign extends AppCompatActivity {
 
     RelativeLayout cardOne, cardTwo, cardThree, cardFour;
     ImageView cardImage, tickOne, tickTwo, tickThree, tickFour;
+    MaterialButton nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,44 +33,42 @@ public class GiftCardChooseDesign extends AppCompatActivity {
         tickTwo = findViewById(R.id.check_two);
         tickThree = findViewById(R.id.check_three);
         tickFour = findViewById(R.id.check_four);
+        nextButton = findViewById(R.id.next);
+
+        nextButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), GiftCardChooseLabel.class)));
 
         checkChosenDesign();
     }
 
     private void checkChosenDesign() {
-
         cardOne.setOnClickListener(v -> {
             tickOne.setVisibility(View.VISIBLE);
             tickTwo.setVisibility(View.INVISIBLE);
             tickThree.setVisibility(View.INVISIBLE);
             tickFour.setVisibility(View.INVISIBLE);
-            cardImage.setImageDrawable(getResources().getDrawable(R.drawable.gift_card_red));
+            cardImage.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gift_card_red));
         });
-
         cardTwo.setOnClickListener(v -> {
             tickOne.setVisibility(View.INVISIBLE);
             tickTwo.setVisibility(View.VISIBLE);
             tickThree.setVisibility(View.INVISIBLE);
             tickFour.setVisibility(View.INVISIBLE);
-            cardImage.setImageDrawable(getResources().getDrawable(R.drawable.gift_card_blue));
+            cardImage.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gift_card_blue));
         });
-
         cardThree.setOnClickListener(v -> {
             tickOne.setVisibility(View.INVISIBLE);
             tickTwo.setVisibility(View.INVISIBLE);
             tickThree.setVisibility(View.VISIBLE);
             tickFour.setVisibility(View.INVISIBLE);
-            cardImage.setImageDrawable(getResources().getDrawable(R.drawable.gift_card_green));
+            cardImage.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gift_card_green));
         });
-
         cardFour.setOnClickListener(v -> {
             tickOne.setVisibility(View.INVISIBLE);
             tickTwo.setVisibility(View.INVISIBLE);
             tickThree.setVisibility(View.INVISIBLE);
             tickFour.setVisibility(View.VISIBLE);
-            cardImage.setImageDrawable(getResources().getDrawable(R.drawable.gift_card_black));
+            cardImage.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gift_card_black));
         });
-
     }
 
     public void callBack(View view) {

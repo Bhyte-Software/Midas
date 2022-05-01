@@ -1,8 +1,5 @@
 package com.bhyte.midas.AccountCreation;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.KeyguardManager;
@@ -19,8 +16,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import com.bhyte.midas.R;
-import com.bhyte.midas.User.ChangePasswordOpenEmail;
 
 public class FingerprintRegistration extends AppCompatActivity {
 
