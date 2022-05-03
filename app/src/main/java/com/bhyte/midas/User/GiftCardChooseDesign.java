@@ -14,6 +14,8 @@ import com.google.android.material.button.MaterialButton;
 
 public class GiftCardChooseDesign extends AppCompatActivity {
 
+    public static String chosenColor;
+
     RelativeLayout cardOne, cardTwo, cardThree, cardFour;
     ImageView cardImage, tickOne, tickTwo, tickThree, tickFour;
     MaterialButton nextButton;
@@ -37,6 +39,9 @@ public class GiftCardChooseDesign extends AppCompatActivity {
 
         nextButton.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), GiftCardChooseLabel.class)));
 
+        // Default Chosen Color
+        chosenColor = "Red";
+
         checkChosenDesign();
     }
 
@@ -47,6 +52,7 @@ public class GiftCardChooseDesign extends AppCompatActivity {
             tickThree.setVisibility(View.INVISIBLE);
             tickFour.setVisibility(View.INVISIBLE);
             cardImage.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gift_card_red));
+            chosenColor = "Red";
         });
         cardTwo.setOnClickListener(v -> {
             tickOne.setVisibility(View.INVISIBLE);
@@ -54,6 +60,7 @@ public class GiftCardChooseDesign extends AppCompatActivity {
             tickThree.setVisibility(View.INVISIBLE);
             tickFour.setVisibility(View.INVISIBLE);
             cardImage.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gift_card_blue));
+            chosenColor = "Blue";
         });
         cardThree.setOnClickListener(v -> {
             tickOne.setVisibility(View.INVISIBLE);
@@ -61,6 +68,7 @@ public class GiftCardChooseDesign extends AppCompatActivity {
             tickThree.setVisibility(View.VISIBLE);
             tickFour.setVisibility(View.INVISIBLE);
             cardImage.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gift_card_green));
+            chosenColor = "Green";
         });
         cardFour.setOnClickListener(v -> {
             tickOne.setVisibility(View.INVISIBLE);
@@ -68,6 +76,7 @@ public class GiftCardChooseDesign extends AppCompatActivity {
             tickThree.setVisibility(View.INVISIBLE);
             tickFour.setVisibility(View.VISIBLE);
             cardImage.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gift_card_black));
+            chosenColor = "Black";
         });
     }
 

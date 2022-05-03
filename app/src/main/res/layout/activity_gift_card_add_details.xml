@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,151 +7,133 @@
     android:background="@drawable/background_gradient"
     tools:context=".User.GiftCardAddDetails">
 
-    <RelativeLayout
-        android:id="@+id/menu_bar"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="@dimen/dimen_5"
-        android:padding="@dimen/dimen_15">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/back"
+        <RelativeLayout
+            android:id="@+id/menu_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/dimen_5"
+            android:padding="@dimen/dimen_15">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:onClick="callBack"
+                android:src="@drawable/back_icon"
+                app:tint="@color/blue_200"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dimen_15"
+                android:layout_toEndOf="@id/back"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Card Details"
+                android:textColor="@color/blue_200"
+                android:textSize="26sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:onClick="callBack"
-            android:src="@drawable/back_icon"
-            app:tint="@color/blue_200"
-            tools:ignore="ContentDescription" />
+            android:layout_below="@id/menu_bar"
+            android:layout_marginTop="-10dp"
+            android:background="@drawable/gift_card_black">
+
+        </RelativeLayout>
 
         <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_below="@id/card"
             android:layout_marginStart="@dimen/dimen_15"
-            android:layout_toEndOf="@id/back"
             android:fontFamily="@font/roboto_bold"
-            android:text="Card Details"
+            android:text="Enter details you want card recipient\nto see"
             android:textColor="@color/blue_200"
-            android:textSize="26sp" />
+            android:textSize="22sp" />
 
-    </RelativeLayout>
+        <EditText
+            android:id="@+id/email_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_60"
+            android:layout_below="@id/title"
+            android:layout_marginStart="@dimen/dimen_15"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:layout_marginEnd="@dimen/dimen_15"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_email_icon"
+            android:drawablePadding="15dp"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:paddingStart="15dp"
+            android:paddingEnd="@dimen/dimen_15"
+            android:textColor="@color/blue_200"
+            android:textSize="18sp" />
 
-    <RelativeLayout
-        android:id="@+id/card"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/menu_bar"
-        android:layout_marginTop="-10dp"
-        android:background="@drawable/gift_card_black">
+        <EditText
+            android:id="@+id/title_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_60"
+            android:layout_below="@id/email_input_layout"
+            android:layout_marginStart="@dimen/dimen_15"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:layout_marginEnd="@dimen/dimen_15"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_email_icon"
+            android:drawablePadding="15dp"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="@string/title"
+            android:inputType="text"
+            android:paddingStart="15dp"
+            android:paddingEnd="@dimen/dimen_15"
+            android:textColor="@color/blue_200"
+            android:textSize="18sp" />
 
-    </RelativeLayout>
+        <EditText
+            android:id="@+id/message_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_60"
+            android:layout_below="@id/title_input_layout"
+            android:layout_marginStart="@dimen/dimen_15"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:layout_marginEnd="@dimen/dimen_15"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_email_icon"
+            android:drawablePadding="15dp"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="@string/message"
+            android:inputType="text"
+            android:paddingStart="15dp"
+            android:paddingEnd="@dimen/dimen_15"
+            android:textColor="@color/blue_200"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/card"
-        android:layout_marginStart="@dimen/dimen_15"
-        android:fontFamily="@font/roboto_bold"
-        android:text="@string/recipient_email"
-        android:textColor="@color/blue_200"
-        android:textSize="22sp" />
-
-    <EditText
-        android:id="@+id/email_input_layout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_60"
-        android:layout_below="@id/title"
-        android:layout_marginStart="@dimen/dimen_15"
-        android:layout_marginTop="@dimen/dimen_10"
-        android:layout_marginEnd="@dimen/dimen_15"
-        android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/custom_email_icon"
-        android:drawablePadding="15dp"
-        android:fontFamily="@font/roboto_medium"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:paddingStart="15dp"
-        android:paddingEnd="@dimen/dimen_15"
-        android:textColor="@color/blue_200"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/title2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/email_input_layout"
-        android:layout_marginStart="@dimen/dimen_15"
-        android:layout_marginTop="@dimen/dimen_10"
-        android:fontFamily="@font/roboto_bold"
-        android:text="@string/title"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
-
-    <EditText
-        android:id="@+id/title_input_layout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_60"
-        android:layout_below="@id/title2"
-        android:layout_marginStart="@dimen/dimen_15"
-        android:layout_marginTop="@dimen/dimen_10"
-        android:layout_marginEnd="@dimen/dimen_15"
-        android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/custom_email_icon"
-        android:drawablePadding="15dp"
-        android:fontFamily="@font/roboto_medium"
-        android:hint="@string/title"
-        android:inputType="text"
-        android:paddingStart="15dp"
-        android:paddingEnd="@dimen/dimen_15"
-        android:textColor="@color/blue_200"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/title3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title_input_layout"
-        android:layout_marginStart="@dimen/dimen_15"
-        android:layout_marginTop="@dimen/dimen_10"
-        android:fontFamily="@font/roboto_bold"
-        android:text="@string/message"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
-
-    <EditText
-        android:id="@+id/message_input_layout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_60"
-        android:layout_below="@id/title3"
-        android:layout_marginStart="@dimen/dimen_15"
-        android:layout_marginTop="@dimen/dimen_10"
-        android:layout_marginEnd="@dimen/dimen_15"
-        android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/custom_email_icon"
-        android:drawablePadding="15dp"
-        android:fontFamily="@font/roboto_medium"
-        android:hint="@string/message"
-        android:inputType="text"
-        android:paddingStart="15dp"
-        android:paddingEnd="@dimen/dimen_15"
-        android:textColor="@color/blue_200"
-        android:textSize="18sp" />
-
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="@dimen/dimen_25"
-        android:layout_marginTop="@dimen/dimen_25"
-        android:layout_marginEnd="@dimen/dimen_25"
-        android:layout_marginBottom="@dimen/dimen_25"
-        android:backgroundTint="@color/orange"
-        android:onClick="callCreateCardFinal"
-        android:text="@string/continueButton"
-        android:textAllCaps="false"
-        app:cornerRadius="35dp" />
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginTop="@dimen/dimen_25"
+            android:layout_marginEnd="@dimen/dimen_25"
+            android:layout_marginBottom="@dimen/dimen_40"
+            android:backgroundTint="@color/orange"
+            android:onClick="callCreateCardFinal"
+            android:text="@string/continueButton"
+            android:textAllCaps="false"
+            app:cornerRadius="35dp" />
 
 
-</RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

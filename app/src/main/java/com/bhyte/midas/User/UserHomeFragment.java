@@ -220,7 +220,6 @@ public class UserHomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // Set Profile Picture
-        assert firebaseUser != null;
         if (firebaseUser.getPhotoUrl() != null) {
             Glide.with(this)
                     .load(firebaseUser.getPhotoUrl())

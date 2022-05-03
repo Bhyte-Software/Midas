@@ -18,34 +18,31 @@ public class SliderAdapter extends PagerAdapter {
 
     Context context;
     LayoutInflater layoutInflater;
-
-    public SliderAdapter(Context context) {
-        this.context = context;
-    }
-
-    int images[] = {
+    int[] images = {
             R.drawable.onboarding_image_one,
             R.drawable.onboarding_image_two,
             R.drawable.onboarding_image_three,
             R.drawable.onboarding_image_four,
             R.drawable.onboarding_image_five
     };
-
-    int headings[] = {
+    int[] headings = {
             R.string.onboarding_title_one,
             R.string.onboarding_title_two,
             R.string.onboarding_title_three,
             R.string.onboarding_title_four,
             R.string.onboarding_title_five
     };
-
-    int descriptions[] = {
+    int[] descriptions = {
             R.string.onboarding_description_one,
             R.string.onboarding_description_two,
             R.string.onboarding_description_three,
             R.string.onboarding_description_four,
             R.string.onboarding_description_five
     };
+
+    public SliderAdapter(Context context) {
+        this.context = context;
+    }
 
     @Override
     public int getCount() {
@@ -75,8 +72,6 @@ public class SliderAdapter extends PagerAdapter {
         imageView.setImageResource(images[position]);
         title.setText(headings[position]);
         description.setText(descriptions[position]);
-        //button.setText(button_text[position]);
-        //dot_indicator.setImageResource(indicators[position]);
 
         container.addView(view);
 

@@ -1,6 +1,7 @@
 package com.bhyte.midas.User;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -46,16 +47,16 @@ public class VirtualCardChooseLabel extends AppCompatActivity {
         // Update Card Background
         switch (chosenColor) {
             case "Black":
-                cardLayout.setBackground(getResources().getDrawable(R.drawable.black_card));
+                cardLayout.setBackground(ContextCompat.getDrawable(VirtualCardChooseLabel.this, R.drawable.black_card));
                 break;
             case "Blue":
-                cardLayout.setBackground(getResources().getDrawable(R.drawable.blue_card));
+                cardLayout.setBackground(ContextCompat.getDrawable(VirtualCardChooseLabel.this, R.drawable.blue_card));
                 break;
             case "Red":
-                cardLayout.setBackground(getResources().getDrawable(R.drawable.red_card));
+                cardLayout.setBackground(ContextCompat.getDrawable(VirtualCardChooseLabel.this, R.drawable.red_card));
                 break;
             case "Yellow":
-                cardLayout.setBackground(getResources().getDrawable(R.drawable.yellow_card));
+                cardLayout.setBackground(ContextCompat.getDrawable(VirtualCardChooseLabel.this, R.drawable.yellow_card));
                 break;
         }
 

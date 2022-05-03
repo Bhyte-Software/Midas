@@ -1,16 +1,15 @@
 package com.bhyte.midas.User;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+
 import com.bhyte.midas.HelperClasses.CardTypeSliderAdapter;
-import com.bhyte.midas.HelperClasses.SliderAdapter;
 import com.bhyte.midas.R;
 import com.google.android.material.button.MaterialButton;
 
@@ -22,6 +21,35 @@ public class CreateCard extends AppCompatActivity {
     ImageView dotIndicator;
     int currentPosition;
 
+    ViewPager.OnPageChangeListener changeListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            currentPosition = position;
+
+            // Update View Elements Based On Current Page
+
+            if (position == 0) {
+                materialButton.setText(R.string.virtual_card);
+                materialButton.setBackgroundColor(ContextCompat.getColor(CreateCard.this, R.color.blue_200));
+                dotIndicator.setImageResource(R.drawable.single_dot_indicator_one);
+            } else if (position == 1) {
+                dotIndicator.setImageResource(R.drawable.dot_indicator_orange);
+                materialButton.setText(R.string.gift_card);
+                materialButton.setBackgroundColor(ContextCompat.getColor(CreateCard.this, R.color.orange));
+            }
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,36 +68,6 @@ public class CreateCard extends AppCompatActivity {
         viewPager.addOnPageChangeListener(changeListener);
 
     }
-
-    ViewPager.OnPageChangeListener changeListener = new ViewPager.OnPageChangeListener() {
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-        }
-
-        @Override
-        public void onPageSelected(int position) {
-            currentPosition = position;
-
-            // Update View Elements Based On Current Page
-
-            if (position == 0) {
-                materialButton.setText(R.string.virtual_card);
-                materialButton.setBackgroundColor(getResources().getColor(R.color.blue_200));
-                dotIndicator.setImageResource(R.drawable.single_dot_indicator_one);
-            } else if (position == 1) {
-                dotIndicator.setImageResource(R.drawable.single_dot_indicator_two);
-                materialButton.setText(R.string.gift_card);
-                materialButton.setBackgroundColor(getResources().getColor(R.color.orange));
-            }
-
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-
-        }
-    };
 
     public void createCard(View view) {
         if (currentPosition == 0) {
