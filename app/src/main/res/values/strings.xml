@@ -164,13 +164,12 @@
     <string name="choose_card_design">Choose card design</string>
     <string name="card_design">Card design</string>
     <string name="choose_card_label">Choose card label</string>
-    <string name="card_lable_title">What would you like to label your card as?</string>
     <string name="card_label_description">A card label will allow you to identify your cards easily, when you have a couple of them</string>
     <string name="go_to_settings">Go to settings</string>
     <string name="no_internet_connection">No internet connection</string>
     <string name="by_creating_this_card_you_agree_to">By creating this card, you agree to</string>
     <string name="our_terms_amp_conditions"><![CDATA[Our Terms & Conditions]]></string>
-    <string name="processing">Processing...</string>
+    <string name="processing">Processing…</string>
     <string name="about_tagline">Create virtual credit cards for use on various platforms in your gadget with this app</string>
     <string name="dummy_text">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?</string>
     <string name="enter_credentials">Enter Credentials</string>
@@ -267,11 +266,22 @@
     <string name="coming_soon">Coming Soon</string>
     <string name="quick_actions">Quick actions</string>
     <string name="no_data">No data to download</string>
+    <string name="sign_in_error">Error signing in, please try again</string>
     <string name="recipient_email">Recipient Email</string>
     <string name="message">Message</string>
     <string name="title">Title</string>
     <string name="create_gift_card">Create Gift Card</string>
     <string name="back_to_exit">Press back again to exit midas</string>
+    <string name="card_label_title">What would you like to label\nyour card as?</string>
+    <string name="enter_number_to_continue">Please enter your number to continue</string>
+    <string name="enter_valid_digits">Please enter a valid 10 digit number</string>
+    <string name="enter_valid_number">Please enter a valid 10 digit number e.g 0202280564</string>
+    <string name="incorrect_code">Incorrect code, try again</string>
+    <string name="enter_sms">Enter SMS code sent to your number</string>
+    <string name="code_verification_error">Error verifying code</string>
+    <string name="ineligible">You are ineligible to Sign Up</string>
+    <string name="error_try_again">Error, try again</string>
+    <string name="registration_failed">User registration failed</string>
     <!-- HOME -->
 
 </resources>

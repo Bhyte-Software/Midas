@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/dimen_5"
+    android:id="@+id/bg"
     tools:context=".Common.OnBoarding">
 
     <androidx.viewpager.widget.ViewPager

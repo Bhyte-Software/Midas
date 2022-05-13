@@ -14,23 +14,14 @@
         android:background="@drawable/contact_us_image">
 
         <ImageView
-            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
             android:id="@+id/close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="callCLose"
             android:layout_margin="@dimen/dimen_25"
-            android:src="@drawable/close" />
-
-        <TextView
-            android:layout_margin="@dimen/dimen_25"
-            android:layout_alignParentStart="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_bold"
-            android:text="@string/contact_support"
-            android:textColor="@color/black"
-            android:textSize="26sp" />
+            android:src="@drawable/close"
+            tools:ignore="ContentDescription" />
 
     </RelativeLayout>
 

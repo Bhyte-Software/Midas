@@ -1,8 +1,8 @@
 package com.bhyte.midas.AccountCreation;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,14 +10,15 @@ import android.os.StrictMode;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.bhyte.midas.Common.NoInternet;
 import com.bhyte.midas.R;
@@ -36,6 +37,9 @@ public class SignUpEnterNumber extends AppCompatActivity {
     EditText enterNumberLayout;
     MaterialButton getCode;
 
+    RelativeLayout bg, ripple;
+    TextView desc, title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,23 @@ public class SignUpEnterNumber extends AppCompatActivity {
         // Hooks
         enterNumberLayout = findViewById(R.id.input_number_field);
         getCode = findViewById(R.id.get_code);
+        bg = findViewById(R.id.bg);
+        desc = findViewById(R.id.description);
+        title = findViewById(R.id.title);
+        ripple = findViewById(R.id.ripple);
+
+        // Switch Theme Based on Mode
+        int nightModeFlags = getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                darkMode();
+                break;
+
+            case Configuration.UI_MODE_NIGHT_NO | Configuration.UI_MODE_NIGHT_UNDEFINED:
+                lightMode();
+                break;
+
+        }
 
         getCode.setOnClickListener(v -> {
             if (CheckInternetConnection.isConnected(SignUpEnterNumber.this)) {
@@ -57,6 +78,20 @@ public class SignUpEnterNumber extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void darkMode() {
+        bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.dark_bg));
+        // Change Text Colors
+        title.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+        desc.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white_light));
+        ripple.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_round_box_dark));
+        enterNumberLayout.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_input_dark));
+        enterNumberLayout.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+        enterNumberLayout.setHintTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+    }
+
+    private void lightMode() {
     }
 
     @Override
@@ -80,7 +115,6 @@ public class SignUpEnterNumber extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("ObsoleteSdkInt")
     public void getCode() {
 
         if (lengthOfVal == 10) {
@@ -93,16 +127,16 @@ public class SignUpEnterNumber extends AppCompatActivity {
 
         } else if (lengthOfVal == 0) {
             // Custom Toast for Android Versions < 11
-            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
-                Toast toast = Toast.makeText(SignUpEnterNumber.this, "Please enter your number to continue", Toast.LENGTH_SHORT);
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                Toast toast = Toast.makeText(SignUpEnterNumber.this, R.string.enter_number_to_continue, Toast.LENGTH_SHORT);
                 LinearLayout layout = (LinearLayout) toast.getView();
 
                 //Gets the actual oval background of the Toast then sets the colour filter
-                layout.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+                layout.getBackground().setColorFilter(ContextCompat.getColor(SignUpEnterNumber.this, R.color.red), PorterDuff.Mode.SRC_IN);
 
                 //Gets the TextView from the Toast so it can be edited
                 TextView text = layout.findViewById(android.R.id.message);
-                text.setTextColor(getResources().getColor(R.color.white));
+                text.setTextColor(ContextCompat.getColor(SignUpEnterNumber.this, R.color.white));
 
                 toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
                 toast.show();
@@ -110,36 +144,35 @@ public class SignUpEnterNumber extends AppCompatActivity {
             // Default Android Toast for android version 11
             else {
                 LayoutInflater inflater = getLayoutInflater();
-                View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.custom_toast_container));
-                TextView textView = (TextView) layout.findViewById(R.id.text);
-                textView.setText("Please enter your number to continue");
+                View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
+                TextView textView = layout.findViewById(R.id.text);
+                textView.setText(R.string.enter_number_to_continue);
 
-                Toast toast = new Toast(getApplicationContext());
+                Toast toast = new Toast(SignUpEnterNumber.this);
                 toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);
                 toast.setDuration(Toast.LENGTH_SHORT);
                 toast.setView(layout);
                 toast.show();
-
             }
         } else {
-            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
-                Toast toast = Toast.makeText(SignUpEnterNumber.this, "Please enter a valid 10 digit number e.g 0202280564", Toast.LENGTH_SHORT);
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                Toast toast = Toast.makeText(SignUpEnterNumber.this, R.string.enter_valid_number, Toast.LENGTH_SHORT);
                 View view1 = toast.getView();
 
                 //Gets the actual oval background of the Toast then sets the colour filter
-                view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+                view1.getBackground().setColorFilter(ContextCompat.getColor(SignUpEnterNumber.this, R.color.red), PorterDuff.Mode.SRC_IN);
 
                 //Gets the TextView from the Toast so it can be edited
                 TextView text = view1.findViewById(android.R.id.message);
-                text.setTextColor(getResources().getColor(R.color.white));
+                text.setTextColor(ContextCompat.getColor(SignUpEnterNumber.this, R.color.white));
 
                 toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
                 toast.show();
             } else {
                 LayoutInflater inflater = getLayoutInflater();
-                View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.custom_toast_container));
-                TextView textView = (TextView) layout.findViewById(R.id.text);
-                textView.setText("Please enter a valid 10 digit number");
+                View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
+                TextView textView = layout.findViewById(R.id.text);
+                textView.setText(R.string.enter_valid_digits);
 
                 Toast toast = new Toast(getApplicationContext());
                 toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);

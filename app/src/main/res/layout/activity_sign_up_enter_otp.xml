@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:focusable="true"
+    android:id="@+id/bg"
     android:focusableInTouchMode="true"
     android:layout_width="match_parent"
     android:background="@drawable/background_gradient"
@@ -40,6 +41,7 @@
         android:textSize="20sp" />
 
     <RelativeLayout
+        android:id="@+id/ripple"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -53,7 +55,6 @@
         android:paddingTop="@dimen/dimen_40"
         android:paddingEnd="@dimen/dimen_20"
         android:paddingBottom="@dimen/dimen_40">
-
 
         <com.chaos.view.PinView
             android:id="@+id/pin_view"

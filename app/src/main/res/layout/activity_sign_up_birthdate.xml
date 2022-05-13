@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/bg"
     android:background="@drawable/background_gradient"
     android:layout_height="match_parent"
     tools:context=".AccountCreation.SignUpBirthdate">
@@ -39,7 +40,7 @@
         android:textSize="20sp" />
 
     <RelativeLayout
-        android:paddingTop="@dimen/dimen_10"
+        android:id="@+id/ripple"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -49,10 +50,10 @@
         android:background="@drawable/ripple_round_box"
         android:clickable="true"
         android:elevation="@dimen/dimen_5"
-        android:paddingBottom="@dimen/dimen_20"
         android:paddingStart="@dimen/dimen_20"
-        android:paddingEnd="@dimen/dimen_20">
-
+        android:paddingTop="@dimen/dimen_10"
+        android:paddingEnd="@dimen/dimen_20"
+        android:paddingBottom="@dimen/dimen_20">
 
         <DatePicker
             android:id="@+id/birthday_picker"
@@ -66,12 +67,11 @@
             android:hapticFeedbackEnabled="true"
             android:spinnersShown="true" />
 
-
         <com.google.android.material.button.MaterialButton
-            android:layout_centerHorizontal="true"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_below="@id/birthday_picker"
+            android:layout_centerHorizontal="true"
             android:layout_marginStart="@dimen/dimen_25"
             android:layout_marginEnd="@dimen/dimen_25"
             android:fontFamily="@font/roboto_medium"

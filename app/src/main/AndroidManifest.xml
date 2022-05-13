@@ -19,6 +19,9 @@
         android:theme="@style/Theme.Midas"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".User.Welcome"
+            android:exported="false" />
+        <activity
             android:name=".User.CreateGiftCardFinal"
             android:exported="false" />
         <activity

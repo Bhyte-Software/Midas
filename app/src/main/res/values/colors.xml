@@ -34,7 +34,11 @@
     <color name="nav_four">#81E8B5</color>
     <!-- BOTTOM NAV -->
 
-    <!-- SWITCH COLORS -->
-    <!-- SWITCH COLORS -->
+    <!-- OTHER COLORS -->
+    <color name="dark_background">#2D313D</color>
+    <color name="dark_background_light">#3E4355</color>
+    <color name="white_light">#EBEBEB</color>
+    <color name="default_text_color">#808080</color>
+    <!-- OTHER COLORS -->
 
 </resources>

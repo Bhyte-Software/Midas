@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:id="@+id/bg"
     android:gravity="center_horizontal"
     android:layout_height="match_parent"
     tools:context=".AccountCreation.SignUpComplete">
@@ -15,7 +16,7 @@
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:layout_marginTop="-280dp"
+        android:layout_marginTop="-320dp"
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,6 +41,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="@dimen/dimen_25"
         android:layout_marginTop="@dimen/dimen_90"
+        android:id="@+id/button"
         android:layout_marginEnd="@dimen/dimen_25"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/hooray"

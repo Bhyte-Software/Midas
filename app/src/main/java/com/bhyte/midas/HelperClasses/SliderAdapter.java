@@ -1,6 +1,7 @@
 package com.bhyte.midas.HelperClasses;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bhyte.midas.R;
@@ -68,6 +70,19 @@ public class SliderAdapter extends PagerAdapter {
         MaterialButton button = view.findViewById(R.id.slider_button);
         ImageView dot_indicator = view.findViewById(R.id.dot_indicator);
 
+        // Switch Theme Based on Mode
+        int nightModeFlags = context.getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                title.setTextColor(ContextCompat.getColor(context.getApplicationContext(), R.color.white));
+                description.setTextColor(ContextCompat.getColor(context.getApplicationContext(), R.color.white_light));
+                break;
+
+            case Configuration.UI_MODE_NIGHT_NO | Configuration.UI_MODE_NIGHT_UNDEFINED:
+                break;
+
+        }
+
         // Set
         imageView.setImageResource(images[position]);
         title.setText(headings[position]);
@@ -76,7 +91,6 @@ public class SliderAdapter extends PagerAdapter {
         container.addView(view);
 
         return view;
-
 
     }
 

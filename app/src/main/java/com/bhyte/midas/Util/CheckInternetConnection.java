@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+
 import com.bhyte.midas.R;
 
 import java.io.IOException;
@@ -37,11 +39,11 @@ public class CheckInternetConnection {
                     View view = toast.getView();
 
                     //Gets the actual oval background of the Toast then sets the colour filter
-                    view.getBackground().setColorFilter(context.getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+                    view.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_IN);
 
                     //Gets the TextView from the Toast so it can be edited
                     TextView text = view.findViewById(android.R.id.message);
-                    text.setTextColor(context.getResources().getColor(R.color.white));
+                    text.setTextColor(ContextCompat.getColor(context, R.color.white));
 
                     toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
                     toast.show();

@@ -91,7 +91,7 @@
         android:layout_below="@id/card"
         android:layout_marginStart="@dimen/dimen_15"
         android:fontFamily="@font/roboto_bold"
-        android:text=" What would you like to label \n your card as?"
+        android:text="@string/card_label_title"
         android:textColor="@color/blue_200"
         android:textSize="22sp" />
 

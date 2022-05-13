@@ -110,8 +110,7 @@ public class UserSettingsFragment extends Fragment {
 
                     toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 85);
                     toast.show();
-                }
-                else {
+                } else {
                     LayoutInflater inflater = getLayoutInflater();
                     View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) root.findViewById(R.id.custom_toast_container));
                     TextView textView = (TextView) layout.findViewById(R.id.text);

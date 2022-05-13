@@ -1,20 +1,23 @@
 package com.bhyte.midas.AccountCreation;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 
-import com.bhyte.midas.Common.MainDashboard;
 import com.bhyte.midas.Common.NoInternet;
 import com.bhyte.midas.R;
 import com.bhyte.midas.Util.CheckInternetConnection;
@@ -23,6 +26,8 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class GetStarted extends AppCompatActivity {
 
+    LinearLayout background;
+    TextView title, desc;
     MaterialButton createAccountButton, signInButton;
     FirebaseAnalytics firebaseAnalytics;
     private long pressedTime;
@@ -37,8 +42,24 @@ public class GetStarted extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         // Hooks
+        title = findViewById(R.id.title);
+        desc = findViewById(R.id.desc);
+        background = findViewById(R.id.bg);
         createAccountButton = findViewById(R.id.create_account_button);
         signInButton = findViewById(R.id.sign_in_button);
+
+        // Switch Theme Based on Mode
+        int nightModeFlags = getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                darkMode();
+                break;
+
+            case Configuration.UI_MODE_NIGHT_NO | Configuration.UI_MODE_NIGHT_UNDEFINED:
+                lightMode();
+                break;
+
+        }
 
         // Analytics
         firebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -51,7 +72,6 @@ public class GetStarted extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), NoInternet.class));
             }
         });
-
         createAccountButton.setOnClickListener(v -> {
             if (CheckInternetConnection.isConnected(GetStarted.this)) {
                 startActivity(new Intent(getApplicationContext(), SignUpEnterNumber.class));
@@ -61,6 +81,24 @@ public class GetStarted extends AppCompatActivity {
         });
     }
 
+    private void darkMode() {
+        background.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.dark_bg));
+        // Change Text Colors
+        title.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+        desc.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white_light));
+        //
+        Drawable buttonDrawable = signInButton.getBackground();
+        buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+        //the color is a direct color int and not a color resource
+        DrawableCompat.setTint(buttonDrawable, getColor(R.color.dark_background));
+        signInButton.setBackground(buttonDrawable);
+        //
+    }
+
+    private void lightMode() {
+        background.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.background_gradient));
+        title.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.black));
+    }
     @Override
     public void onBackPressed() {
         if (pressedTime + 2000 > System.currentTimeMillis()) {
@@ -88,7 +126,7 @@ public class GetStarted extends AppCompatActivity {
                 textView.setText(R.string.back_to_exit);
 
                 Toast toast = new Toast(getApplicationContext());
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);
+                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
                 toast.setDuration(Toast.LENGTH_SHORT);
                 toast.setView(layout);
                 toast.show();
@@ -97,7 +135,7 @@ public class GetStarted extends AppCompatActivity {
         pressedTime = System.currentTimeMillis();
     }
 
-    public void callVirtualCardDetails(View view) {
-        startActivity(new Intent(getApplicationContext(), MainDashboard.class));
+    public void callBirthday(View view) {
+        startActivity(new Intent(getApplicationContext(), SignUpComplete.class));
     }
 }

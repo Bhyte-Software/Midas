@@ -2,21 +2,21 @@ package com.bhyte.midas.AccountCreation;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.bhyte.midas.Common.AcceptTermsOfService;
 import com.bhyte.midas.Database.ReadWriteUserDetails;
 import com.bhyte.midas.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -48,8 +48,10 @@ public class SignUpCredentials extends AppCompatActivity {
     }
 
     public void callAuthentication(View view) {
-        if (!validateFullName() | !validateEmail() | validatePassword()) {
-        }
+
+        validateFullName();
+        validateEmail();
+        validatePassword();
 
         // Get Data from Edit Text Fields
         fullName = fullNameField.getText().toString();
@@ -63,21 +65,34 @@ public class SignUpCredentials extends AppCompatActivity {
 
     private void createUser() {
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-            // Go to next page
+            // Save Data & Go to next page
             saveData();
         }).addOnFailureListener(e -> {
-            Toast toast = Toast.makeText(SignUpCredentials.this, "Oops!, Something went wrong please try again", Toast.LENGTH_SHORT);
-            View view1 = toast.getView();
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                Toast toast = Toast.makeText(SignUpCredentials.this, R.string.error_try_again, Toast.LENGTH_SHORT);
+                View view1 = toast.getView();
 
-            //Gets the actual oval background of the Toast then sets the colour filter
-            view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+                //Gets the actual oval background of the Toast then sets the colour filter
+                view1.getBackground().setColorFilter(ContextCompat.getColor(SignUpCredentials.this, R.color.red), PorterDuff.Mode.SRC_IN);
 
-            //Gets the TextView from the Toast so it can be edited
-            TextView text = view1.findViewById(android.R.id.message);
-            text.setTextColor(getResources().getColor(R.color.white));
+                //Gets the TextView from the Toast so it can be edited
+                TextView text = view1.findViewById(android.R.id.message);
+                text.setTextColor(ContextCompat.getColor(SignUpCredentials.this, R.color.white));
 
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-            toast.show();
+                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                toast.show();
+            } else {
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
+                TextView textView = layout.findViewById(R.id.text);
+                textView.setText(R.string.error_try_again);
+
+                Toast toast = new Toast(SignUpCredentials.this);
+                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                toast.setDuration(Toast.LENGTH_SHORT);
+                toast.setView(layout);
+                toast.show();
+            }
         });
     }
 
@@ -87,64 +102,69 @@ public class SignUpCredentials extends AppCompatActivity {
 
         ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(fullName, email);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    startActivity(new Intent(getApplicationContext(), AcceptTermsOfService.class));
-                    finish();
-                } else {
-                    Toast toast = Toast.makeText(SignUpCredentials.this, "User registration failed", Toast.LENGTH_SHORT);
+        assert firebaseUser != null;
+        databaseReference.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                startActivity(new Intent(getApplicationContext(), AcceptTermsOfService.class));
+                finish();
+            } else {
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    Toast toast = Toast.makeText(SignUpCredentials.this, R.string.registration_failed, Toast.LENGTH_LONG);
                     View view1 = toast.getView();
 
                     //Gets the actual oval background of the Toast then sets the colour filter
-                    view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+                    view1.getBackground().setColorFilter(ContextCompat.getColor(SignUpCredentials.this, R.color.red), PorterDuff.Mode.SRC_IN);
 
                     //Gets the TextView from the Toast so it can be edited
                     TextView text = view1.findViewById(android.R.id.message);
-                    text.setTextColor(getResources().getColor(R.color.white));
+                    text.setTextColor(ContextCompat.getColor(SignUpCredentials.this, R.color.white));
 
                     toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                    toast.show();
+                } else {
+                    LayoutInflater inflater = getLayoutInflater();
+                    View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
+                    TextView textView = layout.findViewById(R.id.text);
+                    textView.setText(R.string.registration_failed);
+
+                    Toast toast = new Toast(SignUpCredentials.this);
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);
+                    toast.setDuration(Toast.LENGTH_LONG);
+                    toast.setView(layout);
                     toast.show();
                 }
             }
         });
     }
 
-    private boolean validateFullName() {
+    private void validateFullName() {
         String val = fullNameField.getText().toString().trim();
         String check_spaces = "\\A\\w{1,20}\\z";
 
         if (val.isEmpty()) {
             fullNameField.setError("FullName cannot be empty!");
-            return false;
 
         } else if (val.matches(check_spaces)) {
             fullNameField.setError("Enter your full name!");
-            return false;
         } else {
             fullNameField.setError(null);
-            return true;
         }
     }
 
-    private boolean validateEmail() {
+    private void validateEmail() {
         String val = emailField.getText().toString().trim();
         String check_email = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
         if (val.isEmpty()) {
             emailField.setError("Field cannot be empty!");
-            return false;
         } else if (!val.matches(check_email)) {
             emailField.setError("Invalid Email!");
-            return false;
         } else {
             emailField.setError(null);
-            return true;
         }
     }
 
-    private boolean validatePassword() {
+    private void validatePassword() {
         String val = passwordField.getText().toString().trim();
         String check_password = "^" +
                 //"(?=.*[0-9])" +   // at least 1 digit
@@ -158,13 +178,10 @@ public class SignUpCredentials extends AppCompatActivity {
 
         if (val.isEmpty()) {
             passwordField.setError("Password cannot be empty!");
-            return false;
         } else if (!val.matches(check_password)) {
             passwordField.setError("Password should contain 8 characters!");
-            return false;
         } else {
             passwordField.setError(null);
-            return true;
         }
     }
 
