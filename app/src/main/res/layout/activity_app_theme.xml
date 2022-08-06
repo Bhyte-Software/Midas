@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    tools:context=".Common.AppTheme">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/blue_200"
+            android:elevation="8dp">
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:layout_marginEnd="@dimen/dimen_10"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/menu_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:onClick="callSettings"
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/back_material"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dimen_5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="App Theme"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:paddingBottom="@dimen/dimen_25"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-70dp"
+            android:background="@drawable/top_round_corner_overlay"
+            android:elevation="10dp">
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_marginEnd="@dimen/dimen_15"
+                android:layout_marginStart="@dimen/dimen_15"
+                android:layout_marginTop="@dimen/dimen_25"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/mobile_money"
+                    android:drawablePadding="@dimen/dimen_15"
+                    android:paddingStart="@dimen/dimen_20"
+                    android:paddingEnd="@dimen/dimen_20"
+                    android:paddingTop="@dimen/dimen_30"
+                    android:paddingBottom="@dimen/dimen_30"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:background="@drawable/radio_selector"
+                    android:textColor="@drawable/radio_text"
+                    android:drawableStart="@drawable/phone"
+                    android:button="@color/transparent"
+                    android:layout_width="match_parent"
+                    android:text="@string/light_theme"
+                    android:layout_height="match_parent"/>
+
+                <RadioButton
+                    android:id="@+id/bank_transfer"
+                    android:layout_marginTop="@dimen/dimen_15"
+                    android:drawablePadding="@dimen/dimen_15"
+                    android:padding="@dimen/dimen_15"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:background="@drawable/radio_selector"
+                    android:textColor="@drawable/radio_text"
+                    android:drawableStart="@drawable/bank"
+                    android:button="@color/transparent"
+                    android:layout_width="match_parent"
+                    android:text="Bank Transfer\nFee: 5.0%\nTakes a few hours"
+                    android:layout_height="match_parent"/>
+
+            </RadioGroup>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/logout_button"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:layout_marginTop="@dimen/dimen_25"
+                android:layout_marginEnd="@dimen/dimen_25"
+                android:layout_marginBottom="@dimen/dimen_25"
+                android:backgroundTint="@color/light_green"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/save"
+                android:textAllCaps="false"
+                app:cornerRadius="35dp"
+                app:icon="@drawable/ic_save"
+                app:iconGravity="textStart" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

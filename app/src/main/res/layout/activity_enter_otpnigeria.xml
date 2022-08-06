@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_width="match_parent"
+    android:background="@color/bg"
+    android:layout_height="match_parent"
+    tools:context=".AccountCreation.EnterOTPNigeria">
+
+    <ImageView
+        android:contentDescription="@string/image"
+        android:id="@+id/verify_image"
+        android:src="@drawable/verification_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/verify_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-30dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/verification"
+        android:textColor="@color/main_text"
+        android:textSize="27sp" />
+
+    <TextView
+        android:id="@+id/verification_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/roboto_regular"
+        android:padding="5dp"
+        android:text="Enter the 6 digit code that was sent to\n"
+        android:textAlignment="center"
+        android:textColor="@color/secondary_text"
+        android:textSize="20sp"
+        tools:ignore="HardcodedText" />
+
+    <RelativeLayout
+        android:id="@+id/ripple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/dimen_20"
+        android:layout_marginEnd="@dimen/dimen_20"
+        android:layout_marginBottom="@dimen/dimen_80"
+        android:background="@drawable/ripple_round_box"
+        android:clickable="true"
+        android:elevation="@dimen/dimen_5"
+        android:paddingStart="@dimen/dimen_20"
+        android:paddingTop="@dimen/dimen_40"
+        android:paddingEnd="@dimen/dimen_20"
+        android:paddingBottom="@dimen/dimen_40">
+
+        <com.chaos.view.PinView
+            android:id="@+id/pin_view"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_50"
+            android:layout_centerHorizontal="true"
+            android:cursorVisible="false"
+            android:elevation="@dimen/dimen_10"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="number"
+            android:textColor="@color/main_text"
+            android:textSize="20sp"
+            app:itemCount="6"
+            app:itemHeight="@dimen/dimen_50"
+            app:itemWidth="@dimen/dimen_40"
+            app:lineColor="@color/blue_200"
+            app:lineWidth="2.5dp"
+            app:viewType="line" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/verify"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginTop="@dimen/dimen_90"
+            android:layout_marginEnd="@dimen/dimen_25"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/verify"
+            android:textAllCaps="false"
+            app:cornerRadius="35dp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:padding="@dimen/dimen_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dimen_25"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/resend_code"
+        android:textColor="@color/skip_text"
+        android:textSize="17sp" />
+
+</RelativeLayout>

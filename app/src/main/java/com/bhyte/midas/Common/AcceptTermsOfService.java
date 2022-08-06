@@ -8,7 +8,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bhyte.midas.AccountCreation.SignIn;
 import com.bhyte.midas.AccountCreation.SignUpComplete;
 import com.bhyte.midas.R;
 import com.google.android.material.button.MaterialButton;
@@ -16,12 +15,15 @@ import com.google.android.material.button.MaterialButton;
 public class AcceptTermsOfService extends AppCompatActivity {
 
     Dialog acceptTermsDialog;
-    MaterialButton cancelButton;
+    MaterialButton cancelButton, declineButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accept_terms_of_service);
+
+        // Hooks
+        declineButton = findViewById(R.id.decline_button);
     }
 
     public void callPopup(View view) {

@@ -1,18 +1,20 @@
 package com.bhyte.midas.User;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.bhyte.midas.R;
 import com.google.android.material.button.MaterialButton;
@@ -21,6 +23,7 @@ import com.google.android.material.radiobutton.MaterialRadioButton;
 public class VirtualCardChooseDesign extends AppCompatActivity {
 
     public static String chosenColor;
+    Context context;
 
     MaterialButton continueButton;
     RadioGroup radioGroup;
@@ -31,6 +34,8 @@ public class VirtualCardChooseDesign extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_virtual_card_choose_design);
+
+        context = getApplicationContext();
 
         // Hooks
         continueButton = findViewById(R.id.next);
@@ -105,4 +110,5 @@ public class VirtualCardChooseDesign extends AppCompatActivity {
     public void callBack(View view) {
         finish();
     }
+
 }

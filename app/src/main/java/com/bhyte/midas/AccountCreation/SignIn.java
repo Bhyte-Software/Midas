@@ -19,13 +19,10 @@ import com.bhyte.midas.R;
 import com.bhyte.midas.User.ChangePasswordEnterEmail;
 import com.bhyte.midas.User.SignInWithFingerprint;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class SignIn extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
-    FirebaseDatabase database;
     String email, password;
     EditText passwordField, emailField;
 
@@ -40,19 +37,6 @@ public class SignIn extends AppCompatActivity {
 
         // Instance of FirebaseAuth
         firebaseAuth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance();
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        FirebaseUser mUser = firebaseAuth.getCurrentUser();
-        if (mUser != null) {
-            Intent intent = new Intent(getApplicationContext(), MainDashboard.class);
-            startActivity(intent);
-        }
 
     }
 

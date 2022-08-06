@@ -22,8 +22,8 @@ public class CardTypeSliderAdapter extends PagerAdapter {
     MaterialButton cancelButton;
     LayoutInflater layoutInflater;
     int[] images = {
-            R.drawable.virtual_card,
-            R.drawable.gift_card
+            R.drawable.v_card,
+            R.drawable.g_card
     };
     int[] headings = {
             R.string.virtual_card,
@@ -38,6 +38,14 @@ public class CardTypeSliderAdapter extends PagerAdapter {
             R.string.gift_card_feature_one
     };
     int[] feature_two = {
+            R.string.virtual_card_feature_two,
+            R.string.gift_card_feature_two
+    };
+    int[] feature_three = {
+            R.string.virtual_card_feature_two,
+            R.string.gift_card_feature_two
+    };
+    int[] feature_four = {
             R.string.virtual_card_feature_two,
             R.string.gift_card_feature_two
     };
@@ -60,7 +68,7 @@ public class CardTypeSliderAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
-        TextView featureOne, featureTwo, featureThree;
+        TextView featureOne, featureTwo, featureThree, featureFour;
 
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.card_type_slides_layout, container, false);
@@ -72,6 +80,8 @@ public class CardTypeSliderAdapter extends PagerAdapter {
         TextView creationFee = view.findViewById(R.id.card_creation_fee);
         featureOne = view.findViewById(R.id.feature_one);
         featureTwo = view.findViewById(R.id.feature_two);
+        featureThree = view.findViewById(R.id.feature_three);
+        featureFour = view.findViewById(R.id.feature_four);
 
         // Set
         cardTypeImage.setImageResource(images[position]);
@@ -79,6 +89,8 @@ public class CardTypeSliderAdapter extends PagerAdapter {
         creationFee.setText(descriptions[position]);
         featureOne.setText(feature_one[position]);
         featureTwo.setText(feature_two[position]);
+        featureThree.setText(feature_three[position]);
+        featureFour.setText(feature_four[position]);
 
         // Click Listeners
         cardCreationFeeInfo.setOnClickListener(v -> {

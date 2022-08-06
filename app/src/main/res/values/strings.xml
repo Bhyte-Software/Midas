@@ -140,7 +140,7 @@
     <string name="help">Help</string>
     <string name="about">About</string>
     <string name="faq">FAQ</string>
-    <string name="contact_support">Contact support</string>
+    <string name="contact_support">Contact Support</string>
     <string name="terms_and_conditions">Terms &amp; Conditions</string>
     <!-- SETTINGS -->
 
@@ -151,8 +151,10 @@
     <string name="no_cards">You currently have no cards!</string>
     <string name="no_cards_description">Create a new card to start exploring your boundaries with Midas</string>
     <string name="create_new_card">Create New Card</string>
-    <string name="virtual_card">Virtual Card</string>
-    <string name="gift_card">Gift Card</string>
+    <string name="virtual_card">Midas Virtual Credit\nCard</string>
+    <string name="virtual_card2">Midas Virtual Credit Card</string>
+    <string name="gift_card">Midas Gift Credit\nCard</string>
+    <string name="gift_card2">Midas Gift Credit Card</string>
     <string name="create_virtual_card">Create Virtual Card</string>
     <!-- Cards -->
 
@@ -166,7 +168,7 @@
     <string name="choose_card_label">Choose card label</string>
     <string name="card_label_description">A card label will allow you to identify your cards easily, when you have a couple of them</string>
     <string name="go_to_settings">Go to settings</string>
-    <string name="no_internet_connection">No internet connection</string>
+    <string name="no_internet_connection">Please check your internet connection</string>
     <string name="by_creating_this_card_you_agree_to">By creating this card, you agree to</string>
     <string name="our_terms_amp_conditions"><![CDATA[Our Terms & Conditions]]></string>
     <string name="processing">Processing…</string>
@@ -178,6 +180,7 @@
     <string name="full_name">Full Name</string>
     <string name="password">Password</string>
     <string name="_233_phone_number">+ (233) Phone Number</string>
+    <string name="_234_phone_number">+ (234) Phone Number</string>
     <string name="enter_amount">Enter amount</string>
     <string name="creation_fee_virtual_card">$1.00 creation fee</string>
     <string name="creation_fee_gift_card">$2.00 creation fee</string>
@@ -249,7 +252,7 @@
     <string name="select_birthdate">Please select your correct birthday from the field below</string>
     <string name="registration">Registration</string>
     <string name="or_use_just_password_instead">or use just password instead.</string>
-    <string name="forgot_password">Forgot Password</string>
+    <string name="forgot_password"><u>Forgot Password</u></string>
     <string name="verify_me">Verify Me</string>
     <string name="resend_email">Resend Email</string>
     <string name="your_fingerprint_registration_is_25_complete">Your fingerprint registration is 25% complete</string>
@@ -275,13 +278,97 @@
     <string name="card_label_title">What would you like to label\nyour card as?</string>
     <string name="enter_number_to_continue">Please enter your number to continue</string>
     <string name="enter_valid_digits">Please enter a valid 10 digit number</string>
+    <string name="enter_valid_11_digits">Please enter a valid 11 digit number</string>
     <string name="enter_valid_number">Please enter a valid 10 digit number e.g 0202280564</string>
+    <string name="enter_valid_number_ng">Please enter a valid 11 digit number e.g 08202280564</string>
     <string name="incorrect_code">Incorrect code, try again</string>
     <string name="enter_sms">Enter SMS code sent to your number</string>
     <string name="code_verification_error">Error verifying code</string>
     <string name="ineligible">You are ineligible to Sign Up</string>
     <string name="error_try_again">Error, try again</string>
     <string name="registration_failed">User registration failed</string>
+    <string name="back_exit">Please press back again to exit midas</string>
+    <string name="back_quit">Please press back again to exit midas</string>
     <!-- HOME -->
+
+    <!-- TERMS & CONDITIONS -->
+    <string name="conditions_of_use">
+        By using this app, you certify that you have read and reviewed this Agreement and that you agree to comply with its terms. 
+        If you do not want to be bound by the terms of this Agreement, you are advised to leave the app accordingly.Midas only grants 
+        use and access of this app, its products, and its services to those who have accepted its terms.
+    </string>
+    <string name="privacy_policy">
+        Before you continue using our website, we advise you to read our privacy policy [link to privacy policy] regarding our user data collection.
+        It will help you better understand our practices.
+    </string>
+    <string name="age_restriction">
+        You must be at least 18 (eighteen) years of age before you can use this website. By using this website,
+        you warrant that you are at least 18 years of age and you may legally adhere to this Agreement.
+        Midas assumes no responsibility for liabilities related to age misrepresentation.
+    </string>
+    <string name="intellectual_property">
+        You agree that all materials, products, and services provided on this app are the property of
+        Midas, its affiliates, directors, officers, employees, agents, suppliers, or licensors including all
+        copyrights, trade secrets, trademarks, patents, and other intellectual property. You also agree
+        that you will not reproduce or redistribute the [name]’s intellectual property in any way,
+        including electronic, digital, or new trademark registrations.
+        You grant Midas a royalty-free and non-exclusive license to display, use, copy, transmit, and
+        broadcast the content you upload and publish. For issues regarding intellectual property claims,
+        you should contact the company in order to come to an agreement.
+    </string>
+    <string name="user_accounts">
+        As a user of this app, you may be asked to register with us and provide private information.
+        You are responsible for ensuring the accuracy of this information, and you are responsible for
+        maintaining the safety and security of your identifying information. You are also responsible for
+        all activities that occur under your account or password.
+        If you think there are any possible issues regarding the security of your account on the app,
+        inform us immediately so we may address them accordingly.
+        We reserve all rights to terminate accounts, edit or remove content and cancel orders at our sole
+        discretion.
+    </string>
+    <string name="applicable_law">
+        By using this app, you agree that the laws of Ghana, without regard to principles of
+        conflict laws, will govern these terms and conditions, or any dispute of any sort that might come
+        between Midas and you, or its business partners and associates.
+    </string>
+    <string name="disputes">
+        Any dispute related in any way to your visit to this website or to products you purchase from us
+        shall be arbitrated by state or federal court [location] and you consent to exclusive jurisdiction
+        and venue of such courts
+    </string>
+    <string name="indemnification">
+        You agree to indemnify Midas and its affiliates and hold Midas harmless against legal claims
+        and demands that may arise from your use or misuse of our services. We reserve the right to
+        select our own legal counsel.
+    </string>
+    <string name="limitation_on_liability">
+        Midas is not liable for any damages that may occur to you as a result of your misuse of our app.
+        Midas reserves the right to edit, modify, and change this Agreement at any time. We shall let
+        our users know of these changes through electronic mail. This Agreement is an understanding
+        between Midas and the user, and this supersedes and replaces all prior agreements regarding
+        the use of this app.
+    </string>
+    <string name="try_again">Try Again</string>
+    <string name="no_internet">Error, No Internet</string>
+    <string name="image">image</string>
+    <string name="enter_your_name_email_and_password">Enter your name, email and password</string>
+    <string name="use_password">Use Password</string>
+    <string name="save">Save</string>
+    <string name="english">English</string>
+    <string name="create">Create</string>
+    <string name="gh">Ghana</string>
+    <string name="ng">Nigeria</string>
+    <string name="residence">What is your country of residence?</string>
+    <string name="no_available_ng">Midas is not available in Nigeria</string>
+    <string name="select_deposit_method">Please select a deposit method</string>
+    <string name="bank_transfer_not_available">Bank transfer not available</string>
+    <string name="nothing">Nothing to delete</string>
+    <string name="right_amount">Enter the right amount</string>
+    <string name="max_characters">Max characters entered</string>
+    <string name="dummy_number">0202280564</string>
+    <string name="choose_your_provider">Choose your provider</string>
+    <string name="use_same_number">You have to use the same number that\'s verified on your Midas account</string>
+    <string name="update_number">Contact support if you need to update your number</string>
+    <!-- TERMS & CONDITIONS -->
 
 </resources>

@@ -180,7 +180,6 @@ int attr contentInsetStart 0x0
 int attr contentInsetStartWithNavigation 0x0
 int attr contrast 0x0
 int attr controlBackground 0x0
-int attr coordinatorLayoutStyle 0x0
 int attr crossfade 0x0
 int attr currentState 0x0
 int attr curveFit 0x0
@@ -290,15 +289,11 @@ int attr initialActivityCount 0x0
 int attr isLightTheme 0x0
 int attr itemPadding 0x0
 int attr keyPositionType 0x0
-int attr keylines 0x0
 int attr lStar 0x0
 int attr lastBaselineToBottomHeight 0x0
 int attr layout 0x0
 int attr layoutDescription 0x0
 int attr layoutDuringTransition 0x0
-int attr layout_anchor 0x0
-int attr layout_anchorGravity 0x0
-int attr layout_behavior 0x0
 int attr layout_constrainedHeight 0x0
 int attr layout_constrainedWidth 0x0
 int attr layout_constraintBaseline_creator 0x0
@@ -345,7 +340,6 @@ int attr layout_constraintWidth_default 0x0
 int attr layout_constraintWidth_max 0x0
 int attr layout_constraintWidth_min 0x0
 int attr layout_constraintWidth_percent 0x0
-int attr layout_dodgeInsetEdges 0x0
 int attr layout_editor_absoluteX 0x0
 int attr layout_editor_absoluteY 0x0
 int attr layout_goneMarginBaseline 0x0
@@ -355,8 +349,6 @@ int attr layout_goneMarginLeft 0x0
 int attr layout_goneMarginRight 0x0
 int attr layout_goneMarginStart 0x0
 int attr layout_goneMarginTop 0x0
-int attr layout_insetEdge 0x0
-int attr layout_keyline 0x0
 int attr layout_marginBaseline 0x0
 int attr layout_optimizationLevel 0x0
 int attr layout_wrapBehaviorInParent 0x0
@@ -502,7 +494,6 @@ int attr springStopThreshold 0x0
 int attr srcCompat 0x0
 int attr staggered 0x0
 int attr state_above_anchor 0x0
-int attr statusBarBackground 0x0
 int attr subMenuArrow 0x0
 int attr submitBackground 0x0
 int attr subtitle 0x0
@@ -681,11 +672,13 @@ int color error_color_material_light 0x0
 int color foreground_material_dark 0x0
 int color foreground_material_light 0x0
 int color gnt_ad_green 0x0
+int color gnt_bg 0x0
 int color gnt_black 0x0
 int color gnt_blue 0x0
 int color gnt_gold 0x0
 int color gnt_gray 0x0
 int color gnt_green 0x0
+int color gnt_main_text 0x0
 int color gnt_outline 0x0
 int color gnt_red 0x0
 int color gnt_test_background_color 0x0
@@ -988,6 +981,7 @@ int drawable common_google_signin_btn_text_light 0x0
 int drawable common_google_signin_btn_text_light_focused 0x0
 int drawable common_google_signin_btn_text_light_normal 0x0
 int drawable common_google_signin_btn_text_light_normal_background 0x0
+int drawable gnt_ad_button 0x0
 int drawable gnt_outline_shape 0x0
 int drawable gnt_rounded_corners_shape 0x0
 int drawable googleg_disabled_color_18 0x0
@@ -1403,6 +1397,10 @@ int string common_google_play_services_wear_update_text 0x0
 int string common_open_on_phone 0x0
 int string common_signin_button_text 0x0
 int string common_signin_button_text_long 0x0
+int string copy_toast_msg 0x0
+int string fallback_menu_item_copy_link 0x0
+int string fallback_menu_item_open_in_browser 0x0
+int string fallback_menu_item_share_link 0x0
 int string offline_notification_text 0x0
 int string offline_notification_title 0x0
 int string offline_opt_in_confirm 0x0
@@ -1770,7 +1768,6 @@ int style Widget_AppCompat_Toolbar 0x0
 int style Widget_AppCompat_Toolbar_Button_Navigation 0x0
 int style Widget_Compat_NotificationActionContainer 0x0
 int style Widget_Compat_NotificationActionText 0x0
-int style Widget_Support_CoordinatorLayout 0x0
 int[] styleable ActionBar { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
 int styleable ActionBar_background 0
 int styleable ActionBar_backgroundSplit 1
@@ -2035,7 +2032,7 @@ int styleable CheckedTextView_android_checkMark 0
 int styleable CheckedTextView_checkMarkCompat 1
 int styleable CheckedTextView_checkMarkTint 2
 int styleable CheckedTextView_checkMarkTintMode 3
-int[] styleable ColorStateListItem { 0x0, 0x101031f, 0x10101a5, 0x0, 0x0 }
+int[] styleable ColorStateListItem { 0x0, 0x101031f, 0x10101a5, 0x1010647, 0x0 }
 int styleable ColorStateListItem_alpha 0
 int styleable ColorStateListItem_android_alpha 1
 int styleable ColorStateListItem_android_color 2
@@ -2527,17 +2524,6 @@ int styleable ConstraintSet_polarRelativeTo 118
 int styleable ConstraintSet_quantizeMotionSteps 119
 int styleable ConstraintSet_transitionEasing 120
 int styleable ConstraintSet_transitionPathRotate 121
-int[] styleable CoordinatorLayout { 0x0, 0x0 }
-int styleable CoordinatorLayout_keylines 0
-int styleable CoordinatorLayout_statusBarBackground 1
-int[] styleable CoordinatorLayout_Layout { 0x10100b3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
-int styleable CoordinatorLayout_Layout_android_layout_gravity 0
-int styleable CoordinatorLayout_Layout_layout_anchor 1
-int styleable CoordinatorLayout_Layout_layout_anchorGravity 2
-int styleable CoordinatorLayout_Layout_layout_behavior 3
-int styleable CoordinatorLayout_Layout_layout_dodgeInsetEdges 4
-int styleable CoordinatorLayout_Layout_layout_insetEdge 5
-int styleable CoordinatorLayout_Layout_layout_keyline 6
 int[] styleable CustomAttribute { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
 int styleable CustomAttribute_attributeName 0
 int styleable CustomAttribute_customBoolean 1
@@ -3143,3 +3129,4 @@ int styleable ViewTransition_upDuration 13
 int styleable ViewTransition_viewTransitionMode 14
 int[] styleable include { 0x0 }
 int styleable include_constraintSet 0
+int xml image_share_filepaths 0x0

@@ -1,8 +1,7 @@
 package com.bhyte.midas.Common;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
@@ -12,14 +11,13 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bhyte.midas.R;
-import com.bhyte.midas.User.Profile;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.ads.nativetemplates.NativeTemplateStyle;
 import com.google.android.ads.nativetemplates.TemplateView;
@@ -128,7 +126,11 @@ public class About extends AppCompatActivity {
         adLoader.loadAd(new AdRequest.Builder().build());
     }
 
-    public void callBack(View view) {
+    public void updateRequired(View view) {
+        startActivity(new Intent(getApplicationContext(), UpdateRequired.class));
+    }
+
+    public void finish(View view) {
         finish();
     }
 }

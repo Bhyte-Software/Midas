@@ -16,7 +16,7 @@
     <RelativeLayout
         android:paddingTop="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_10"
-        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginTop="@dimen/dimen_15"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:paddingStart="15dp"
@@ -38,10 +38,10 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
-            android:fontFamily="@font/roboto_regular"
             android:layout_toEndOf="@id/ghana"
-            android:text="@string/ghana_cedi"
-            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_regular"
+            android:text="GHS"
+            android:textColor="@color/main_text"
             android:textSize="18sp" />
 
         <ImageView
@@ -55,12 +55,13 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_marginBottom="@dimen/dimen_15"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:paddingTop="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_10"
         android:id="@+id/united_states_dollar"
-        android:paddingStart="15dp"
+        android:paddingStart="@dimen/dimen_15"
         android:paddingEnd="@dimen/dimen_15"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,11 +78,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:fontFamily="@font/roboto_regular"
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@id/united_states"
-            android:text="@string/us_dollar"
-            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_regular"
+            android:text="USD"
+            android:textColor="@color/main_text"
             android:textSize="18sp" />
 
         <ImageView

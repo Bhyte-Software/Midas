@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/background_gradient"
-    android:scrollbars="none"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
     tools:context=".User.GiftCardChooseDesign">
 
     <LinearLayout
@@ -15,147 +14,165 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_5"
-            android:layout_marginBottom="@dimen/dimen_5"
-            android:elevation="@dimen/dimen_5">
+            android:layout_height="120dp"
+            android:background="@color/blue_200"
+            android:elevation="8dp">
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:padding="@dimen/dimen_15"
+                    android:id="@+id/menu_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:onClick="callBack"
+                    android:src="@drawable/back_icon"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dimen_20"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/choose_card_design"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-55dp"
+            android:background="@drawable/top_round_corner_overlay"
+            android:elevation="10dp">
 
             <ImageView
-                android:id="@+id/back"
+                android:paddingEnd="@dimen/dimen_20"
+                android:paddingStart="@dimen/dimen_20"
+                android:id="@+id/card_image"
+                android:layout_marginTop="@dimen/dimen_20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:onClick="callBack"
-                android:padding="15dp"
-                android:src="@drawable/back_icon"
-                app:tint="@color/blue_200"
-                tools:ignore="ContentDescription,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                android:src="@drawable/gift_card_red" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dimen_5"
-                android:layout_toEndOf="@id/back"
-                android:fontFamily="@font/roboto_bold"
-                android:text="@string/choose_card_design"
-                android:textColor="@color/blue_200"
-                android:textSize="26sp" />
+                android:layout_marginTop="-10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-        </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/card_one"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:background="@drawable/gift_card_red_small">
 
-        <ImageView
-            android:paddingEnd="@dimen/dimen_20"
-            android:paddingStart="@dimen/dimen_20"
-            android:id="@+id/card_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-20dp"
-            android:src="@drawable/gift_card_red" />
+                    <ImageView
+                        android:id="@+id/check_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="@dimen/dimen_15"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        android:layout_marginEnd="@dimen/dimen_15"
+                        android:layout_marginBottom="@dimen/dimen_15"
+                        android:src="@drawable/green_checkmark"
+                        tools:ignore="ImageContrastCheck" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-10dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/card_one"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                android:background="@drawable/gift_card_red_small">
+                <RelativeLayout
+                    android:id="@+id/card_two"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_toEndOf="@id/card_one"
+                    android:background="@drawable/gift_card_blue_small">
 
-                <ImageView
-                    android:id="@+id/check_one"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="@dimen/dimen_15"
-                    android:layout_marginTop="@dimen/dimen_15"
-                    android:layout_marginEnd="@dimen/dimen_15"
-                    android:layout_marginBottom="@dimen/dimen_15"
-                    android:src="@drawable/green_checkmark"
-                    tools:ignore="ImageContrastCheck" />
+                    <ImageView
+                        android:id="@+id/check_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="@dimen/dimen_15"
+                        android:src="@drawable/green_checkmark"
+                        android:visibility="invisible" />
 
-            </RelativeLayout>
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/card_two"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                android:layout_toEndOf="@id/card_one"
-                android:background="@drawable/gift_card_blue_small">
+                <RelativeLayout
+                    android:id="@+id/card_three"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_below="@id/card_one"
+                    android:background="@drawable/gift_card_green_small">
 
-                <ImageView
-                    android:id="@+id/check_two"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_margin="@dimen/dimen_15"
-                    android:src="@drawable/green_checkmark"
-                    android:visibility="invisible" />
+                    <ImageView
+                        android:id="@+id/check_three"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="@dimen/dimen_15"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        android:layout_marginEnd="@dimen/dimen_15"
+                        android:layout_marginBottom="@dimen/dimen_15"
+                        android:src="@drawable/green_checkmark"
+                        android:visibility="invisible" />
 
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/card_three"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                android:layout_below="@id/card_one"
-                android:background="@drawable/gift_card_green_small">
-
-                <ImageView
-                    android:id="@+id/check_three"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="@dimen/dimen_15"
-                    android:layout_marginTop="@dimen/dimen_15"
-                    android:layout_marginEnd="@dimen/dimen_15"
-                    android:layout_marginBottom="@dimen/dimen_15"
-                    android:src="@drawable/green_checkmark"
-                    android:visibility="invisible" />
-
-            </RelativeLayout>
+                </RelativeLayout>
 
 
-            <RelativeLayout
-                android:id="@+id/card_four"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                android:layout_below="@id/card_two"
-                android:layout_toEndOf="@id/card_three"
-                android:background="@drawable/gift_card_black_small">
+                <RelativeLayout
+                    android:id="@+id/card_four"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_below="@id/card_two"
+                    android:layout_toEndOf="@id/card_three"
+                    android:background="@drawable/gift_card_black_small">
 
-                <ImageView
-                    android:id="@+id/check_four"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_margin="@dimen/dimen_15"
-                    android:src="@drawable/green_checkmark"
-                    android:visibility="invisible" />
+                    <ImageView
+                        android:id="@+id/check_four"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="@dimen/dimen_15"
+                        android:src="@drawable/green_checkmark"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
 
             </RelativeLayout>
 
-        </RelativeLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/next"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="@dimen/dimen_25"
+                android:backgroundTint="@color/orange"
+                android:text="@string/next"
+                android:textAllCaps="false"
+                app:cornerRadius="35dp"
+                tools:ignore="TextContrastCheck" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/next"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_margin="@dimen/dimen_25"
-            android:backgroundTint="@color/orange"
-            android:text="@string/next"
-            android:textAllCaps="false"
-            app:cornerRadius="35dp"
-            tools:ignore="TextContrastCheck" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>

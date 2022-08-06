@@ -30,4 +30,15 @@
         <item name="android:colorForeground">#42221f1f</item>
     </style>
 
+    <style name="MyDatePicker" parent="android:Widget.Material.DatePicker">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:calendarTextColor">@color/white</item>
+    </style>
+
+    <style name="roundImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/dimen_20</item>
+        <item name="color">@color/bg</item>
+    </style>
+
 </resources>

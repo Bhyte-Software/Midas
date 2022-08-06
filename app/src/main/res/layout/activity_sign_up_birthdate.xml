@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/bg"
-    android:background="@drawable/background_gradient"
+    android:background="@color/bg"
     android:layout_height="match_parent"
     tools:context=".AccountCreation.SignUpBirthdate">
 
@@ -24,7 +23,7 @@
         android:layout_marginTop="-30dp"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/registration"
-        android:textColor="@color/black"
+        android:textColor="@color/main_text"
         android:textSize="27sp" />
 
     <TextView
@@ -34,7 +33,11 @@
         android:layout_below="@id/title"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/roboto_regular"
-        android:padding="5dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="@dimen/dimen_10"
+        android:paddingStart="@dimen/dimen_10"
+        android:paddingBottom="@dimen/dimen_5"
+        android:textColor="@color/secondary_text"
         android:text="@string/select_birthdate"
         android:textAlignment="center"
         android:textSize="20sp" />
@@ -61,7 +64,6 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:calendarTextColor="@color/black"
             android:calendarViewShown="false"
             android:datePickerMode="spinner"
             android:hapticFeedbackEnabled="true"

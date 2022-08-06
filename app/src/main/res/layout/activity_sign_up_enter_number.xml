@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/bg"
-    android:background="@drawable/background_gradient"
+    android:background="@color/bg"
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
@@ -24,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/roboto_bold"
         android:text="Registration"
-        android:textColor="@color/black"
+        android:textColor="@color/main_text"
         android:textSize="27sp" />
 
     <TextView
@@ -37,6 +36,7 @@
         android:padding="5dp"
         android:text="@string/enter_number"
         android:textAlignment="center"
+        android:textColor="@color/secondary_text"
         android:textSize="20sp" />
 
     <RelativeLayout
@@ -53,7 +53,7 @@
         android:paddingStart="@dimen/dimen_20"
         android:paddingTop="@dimen/dimen_40"
         android:paddingEnd="@dimen/dimen_20"
-        android:paddingBottom="@dimen/dimen_40">
+        android:paddingBottom="@dimen/dimen_30">
 
         <EditText
             android:id="@+id/input_number_field"
@@ -70,7 +70,7 @@
             android:maxLength="10"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:textColor="@color/blue_200"
+            android:textColor="@color/main_text"
             android:textSize="18sp"
             tools:ignore="RtlSymmetry" />
 

@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/bg"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/bg"
     tools:context=".Common.AcceptTermsOfService">
 
     <LinearLayout
@@ -26,12 +27,13 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/title1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="Terms of service"
-                    android:textColor="@color/black"
-                    android:textSize="30sp" />
+                    android:text="Terms and Conditions"
+                    android:textColor="@color/main_text"
+                    android:textSize="26sp"/>
 
             </RelativeLayout>
 
@@ -40,16 +42,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/title"
-                android:fontFamily="@font/roboto_regular"
+                android:fontFamily="@font/roboto_medium"
                 android:text="Last Updated January 21 2022"
                 android:textColor="@color/blue_200" />
 
             <TextView
+                android:textColor="@color/secondary_text"
                 android:id="@+id/warning"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/date"
-                android:text="Read these terms and conditions carefully before using our application." />
+                android:text="Read these terms and conditions carefully before using Midas operated by Bhyte LLC." />
 
         </RelativeLayout>
 
@@ -57,7 +60,7 @@
             android:layout_marginTop="@dimen/dimen_10"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/blue_light" />
+            android:background="@color/blue_200" />
 
     </LinearLayout>
 
@@ -75,29 +78,167 @@
             android:paddingEnd="@dimen/dimen_15">
 
             <TextView
-                android:textSize="22sp"
+                android:id="@+id/title2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
                 android:fontFamily="@font/roboto_medium"
-                android:text="Acknowledgement"
-                android:textColor="@color/black" />
+                android:text="Conditions of use"
+                android:textColor="@color/main_text"
+                android:textSize="20sp" />
 
 
             <TextView
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/secondary_text"
+                android:id="@+id/desc1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dummy_text" />
+                android:text="@string/conditions_of_use" />
 
             <TextView
+                android:id="@+id/title3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dummy_text" />
+                android:layout_marginTop="@dimen/dimen_20"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Privacy Policy"
+                android:textColor="@color/main_text"
+                android:textSize="20sp" />
 
             <TextView
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/secondary_text"
+                android:id="@+id/desc2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dummy_text" />
+                android:text="@string/privacy_policy" />
+
+            <TextView
+                android:id="@+id/title4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Age restriction"
+                android:textColor="@color/main_text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/secondary_text"
+                android:id="@+id/desc3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/age_restriction" />
+
+            <TextView
+                android:id="@+id/title5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Intellectual property"
+                android:textColor="@color/main_text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/secondary_text"
+                android:id="@+id/desc4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/intellectual_property" />
+
+            <TextView
+                android:id="@+id/title6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:fontFamily="@font/roboto_medium"
+                android:text="User accounts"
+                android:textColor="@color/main_text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/secondary_text"
+                android:id="@+id/desc5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_accounts" />
+
+            <TextView
+                android:id="@+id/title7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Applicable law"
+                android:textColor="@color/main_text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/secondary_text"
+                android:id="@+id/desc6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/applicable_law" />
+
+            <TextView
+                android:id="@+id/title8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Disputes"
+                android:textColor="@color/main_text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/secondary_text"
+                android:id="@+id/desc7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/disputes" />
+
+            <TextView
+                android:id="@+id/title9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Indemnification"
+                android:textColor="@color/main_text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/secondary_text"
+                android:id="@+id/desc8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/indemnification" />
+
+            <TextView
+                android:id="@+id/title10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Limitation on Liability"
+                android:textColor="@color/main_text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/secondary_text"
+                android:id="@+id/desc9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/limitation_on_liability" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -112,7 +253,7 @@
                     android:layout_height="60dp"
                     android:layout_marginEnd="@dimen/dimen_10"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/white"
+                    android:backgroundTint="@color/bg"
                     android:onClick="callPopup"
                     android:text="Decline"
                     android:textAllCaps="false"

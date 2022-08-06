@@ -32,14 +32,13 @@ public class CreateCard extends AppCompatActivity {
             currentPosition = position;
 
             // Update View Elements Based On Current Page
-
             if (position == 0) {
-                materialButton.setText(R.string.virtual_card);
+                materialButton.setText(R.string.create_virtual_card);
                 materialButton.setBackgroundColor(ContextCompat.getColor(CreateCard.this, R.color.blue_200));
-                dotIndicator.setImageResource(R.drawable.single_dot_indicator_one);
+                dotIndicator.setImageResource(R.drawable.indicator1);
             } else if (position == 1) {
-                dotIndicator.setImageResource(R.drawable.dot_indicator_orange);
-                materialButton.setText(R.string.gift_card);
+                dotIndicator.setImageResource(R.drawable.indicator2);
+                materialButton.setText(R.string.create_gift_card);
                 materialButton.setBackgroundColor(ContextCompat.getColor(CreateCard.this, R.color.orange));
             }
 
@@ -66,6 +65,18 @@ public class CreateCard extends AppCompatActivity {
         viewPager.setAdapter(cardTypeSliderAdapter);
 
         viewPager.addOnPageChangeListener(changeListener);
+
+        dotIndicator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(currentPosition == 0){
+                    viewPager.setCurrentItem(currentPosition + 1);
+                }
+                else{
+                    viewPager.setCurrentItem(0);
+                }
+            }
+        });
 
     }
 

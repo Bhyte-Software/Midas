@@ -3,121 +3,269 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/bg"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
     tools:context=".Common.ContactSupport">
 
-    <RelativeLayout
-        android:id="@+id/top_image"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/contact_us_image">
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_alignParentStart="true"
-            android:id="@+id/close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="callCLose"
-            android:layout_margin="@dimen/dimen_25"
-            android:src="@drawable/close"
-            tools:ignore="ContentDescription" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/blue_200"
+            android:elevation="8dp">
 
-    </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginEnd="@dimen/dimen_10"
+                android:orientation="horizontal">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/top_image"
-        android:background="@drawable/background_gradient"
-        android:scrollbars="none">
+                <ImageView
+                    android:id="@+id/menu_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:onClick="finish"
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/back_material"
+                    app:tint="@color/white" />
 
-        <LinearLayout
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dimen_5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/contact_support"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/upload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:contentDescription="@string/image"
+                    android:onClick="finish"
+                    android:paddingStart="@dimen/dimen_10"
+                    android:paddingTop="@dimen/dimen_5"
+                    android:paddingEnd="@dimen/dimen_10"
+                    android:paddingBottom="@dimen/dimen_5"
+                    android:src="@drawable/ic_baseline_upgrade_24"
+                    app:tint="@color/white" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="-70dp"
+            android:background="@drawable/top_round_corner_overlay"
+            android:elevation="10dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_marginBottom="@dimen/dimen_40"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:contentDescription="@string/image"
+                    android:layout_marginTop="@dimen/dimen_25"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/towing_truck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <RelativeLayout
+                    android:id="@+id/phone_layout"
+                    android:layout_marginTop="@dimen/dimen_25"
+                    android:padding="@dimen/dimen_15"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_centerVertical="true"
+                        android:id="@+id/phone"
+                        android:layout_width="@dimen/dimen_50"
+                        android:layout_height="@dimen/dimen_50"
+                        android:background="@drawable/circle"
+                        android:padding="@dimen/dimen_15">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/icon_material_phone" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/dimen_20"
+                        android:layout_toEndOf="@id/phone"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textSize="18sp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textColor="@color/main_text"
+                            android:text="Phone Number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/dimen_5"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/secondary_text"
+                            android:text="+1-202-555-0162"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <View
+                    android:background="@color/divider"
+                    android:layout_marginEnd="@dimen/dimen_15"
+                    android:layout_marginStart="@dimen/dimen_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:id="@+id/email_layout"
+                    android:padding="@dimen/dimen_15"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/email"
+                        android:layout_width="@dimen/dimen_50"
+                        android:layout_height="@dimen/dimen_50"
+                        android:background="@drawable/circle"
+                        android:padding="@dimen/dimen_15">
+
+                        <ImageView
+                            android:contentDescription="@string/image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/email_icon" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/dimen_20"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textSize="18sp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textColor="@color/main_text"
+                            android:text="E-mail address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/dimen_5"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/secondary_text"
+                            android:text="info@midas.app"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/live_chat_bg"
+        android:clickable="true"
+        android:padding="@dimen/dimen_25">
+
+        <ImageView
+            android:id="@+id/live_chat_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/image"
+            android:src="@drawable/live_chat" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dimen_20"
+            android:layout_toEndOf="@id/live_chat_image"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/phone_layout"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_marginStart="@dimen/dimen_20"
-                android:layout_marginTop="@dimen/dimen_20"
-                android:layout_marginEnd="@dimen/dimen_20"
-                android:background="@drawable/ripple_round_box"
-                android:clickable="true"
-                android:elevation="@dimen/dimen_10"
-                android:padding="@dimen/dimen_20">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Contact live chat"
+                android:textColor="@color/main_text"
+                android:textSize="20sp" />
 
-                <ImageView
-                    android:id="@+id/phone_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/phone_contact" />
-
-                <TextView
-                    android:id="@+id/phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/phone_image"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="@string/phone"
-                    android:textColor="@color/black"
-                    android:textSize="22sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/phone"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="+233 202 280 564"
-                    android:textSize="18sp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_marginBottom="@dimen/dimen_20"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_marginStart="@dimen/dimen_20"
-                android:layout_marginTop="@dimen/dimen_20"
-                android:layout_marginEnd="@dimen/dimen_20"
-                android:background="@drawable/ripple_round_box"
-                android:clickable="true"
-                android:elevation="@dimen/dimen_10"
-                android:onClick="callEmail"
-                android:padding="@dimen/dimen_20">
-
-                <ImageView
-                    android:id="@+id/email_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/email_contact" />
-
-                <TextView
-                    android:id="@+id/email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/email_image"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="@string/email"
-                    android:textColor="@color/black"
-                    android:textSize="22sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/email"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/midas_gmail_com"
-                    android:textSize="18sp" />
-
-            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="we are ready to answer you"
+                android:textColor="@color/secondary_text"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
-    </ScrollView>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/next_material"
+            app:tint="@color/main_text" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

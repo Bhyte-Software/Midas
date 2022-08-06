@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/profile_sheet"
     android:background="@drawable/bottom_sheet_background"
     android:layout_width="match_parent"
@@ -15,11 +14,12 @@
         android:layout_height="5dp"/>
 
     <RelativeLayout
-        android:layout_marginTop="@dimen/dimen_5"
+        android:layout_marginTop="@dimen/dimen_15"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:paddingBottom="@dimen/dimen_10"
         android:paddingTop="@dimen/dimen_10"
+        android:paddingEnd="@dimen/dimen_15"
         android:paddingStart="15dp"
         android:id="@+id/take_photo"
         android:layout_width="match_parent"
@@ -27,6 +27,7 @@
         android:focusable="true">
 
         <ImageView
+            android:contentDescription="@string/image"
             android:id="@+id/camera"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -34,14 +35,15 @@
             android:src="@drawable/take_photo" />
 
         <TextView
+            android:fontFamily="@font/roboto_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/dimen_15"
             android:layout_toEndOf="@id/camera"
             android:text="@string/take_picture"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textColor="@color/main_text"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 
@@ -52,11 +54,13 @@
         android:paddingBottom="@dimen/dimen_10"
         android:paddingTop="@dimen/dimen_10"
         android:paddingStart="15dp"
+        android:paddingEnd="@dimen/dimen_15"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="true">
 
         <ImageView
+            android:contentDescription="@string/image"
             android:id="@+id/gallery"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -64,22 +68,25 @@
             android:src="@drawable/choose_from_gallery" />
 
         <TextView
+            android:fontFamily="@font/roboto_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@id/gallery"
             android:text="@string/choose_picture"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textColor="@color/main_text"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_marginBottom="@dimen/dimen_15"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:id="@+id/remove_photo"
         android:paddingStart="15dp"
+        android:paddingEnd="@dimen/dimen_15"
         android:paddingBottom="@dimen/dimen_10"
         android:paddingTop="@dimen/dimen_10"
         android:layout_width="match_parent"
@@ -87,6 +94,7 @@
         android:focusable="true">
 
         <ImageView
+            android:contentDescription="@string/image"
             android:id="@+id/remove"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -94,14 +102,15 @@
             android:src="@drawable/remove_image" />
 
         <TextView
+            android:fontFamily="@font/roboto_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@id/remove"
             android:text="@string/remove_picture"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textColor="@color/main_text"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 

@@ -1,12 +1,16 @@
 package com.bhyte.midas.User;
 
+import static android.content.ContentValues.TAG;
+
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,14 +20,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.bhyte.midas.AccountCreation.GetStarted;
 import com.bhyte.midas.AccountCreation.SignUpVerifyIdentity;
 import com.bhyte.midas.R;
+import com.bhyte.midas.Recycler.QuickActionsAdapter;
+import com.bhyte.midas.Recycler.QuickActionsHelperClass;
 import com.bhyte.midas.Store.Store;
 import com.bhyte.midas.Transactions.AddMoneyChooseMethod;
 import com.bumptech.glide.Glide;
@@ -46,16 +56,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class UserHomeFragment extends Fragment {
+public class UserHomeFragment extends Fragment implements QuickActionsAdapter.OnNoteListener {
 
-    public static String key, usernameS, amountEntered;
-    public int lengthOfVal;
-    private AdLoader adLoader;
+    RecyclerView quickActionsRecycler;
+    RecyclerView.Adapter adapter;
+    ArrayList<QuickActionsHelperClass> viewQuickActions = new ArrayList<>();
 
+    Dialog logoutDialog;
+    MaterialButton positive, negative;
+
+    public static String key, usernameS;
+    public int lengthOfVal, lengthOfAmount;
+    Context context;
     FirebaseDatabase database;
     ShimmerFrameLayout shimmerFrameLayout;
     FirebaseAuth firebaseAuth;
@@ -68,11 +85,13 @@ public class UserHomeFragment extends Fragment {
     CircleImageView profilePicture;
     String account_balance, fullName;
     BottomSheetDialog bottomSheetDialog;
-    RelativeLayout currencyView, verificationStatus, virtualCard, midasStore, usdLayout, ghcLayout;
-    MaterialButton addMoney, continueButton;
+    RelativeLayout currencyView, verificationStatus, usdLayout, ghcLayout, gradientLayout, roundRec;
+    MaterialButton addMoney;
     ImageView toggleIcon, check1, check2;
+    ScrollView scrollView;
     Animation animation, animation2;
-    TextView currency, username, totalAssets, accountBalance, greetingText, recommendedText;
+    TextView currency, username, totalAssets, accountBalance, greetingText, recommendedText, text1, text2, text3;
+    private AdLoader adLoader;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -80,12 +99,22 @@ public class UserHomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_user_home, container, false);
 
+        // Context
+        this.context = getContext();
+
         // Instance of FirebaseAuth
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         database = FirebaseDatabase.getInstance();
 
         // Hooks
+        quickActionsRecycler = root.findViewById(R.id.quick_actions_recycler);
+        text1 = root.findViewById(R.id.text1);
+        text2 = root.findViewById(R.id.text2);
+        text3 = root.findViewById(R.id.text3);
+        scrollView = root.findViewById(R.id.scroll_layout);
+        roundRec = root.findViewById(R.id.round_rec);
+        gradientLayout = root.findViewById(R.id.gradient_layout);
         adView = root.findViewById(R.id.recommended_layout);
         recommendedText = root.findViewById(R.id.recommended_text);
         viewHolder = root.findViewById(R.id.view_holder);
@@ -99,14 +128,16 @@ public class UserHomeFragment extends Fragment {
         totalAssets = root.findViewById(R.id.total_assets);
         profilePicture = root.findViewById(R.id.profile_picture);
         greetingText = root.findViewById(R.id.greetings);
-        virtualCard = root.findViewById(R.id.virtual_card);
-        midasStore = root.findViewById(R.id.store);
         shimmerFrameLayout = root.findViewById(R.id.shimmer_layout);
+
+        // Recycler
+        quickActionsRecycler.setFocusable(false);
+        quickActionsRecycler();
 
         // Save Account Balance in variable
         account_balance = accountBalance.getText().toString();
 
-        selectedCurrency = getContext().getSharedPreferences("selectedCurrency", Context.MODE_PRIVATE);
+        selectedCurrency = context.getSharedPreferences("selectedCurrency", Context.MODE_PRIVATE);
         boolean currencyBoolean = selectedCurrency.getBoolean("Currency", true);
 
         if (currencyBoolean) {
@@ -118,13 +149,14 @@ public class UserHomeFragment extends Fragment {
         profilePicture.setOnClickListener(v -> startActivity(new Intent(getContext(), Profile.class)));
 
         verificationStatus.setOnClickListener(v -> {
-            startActivity(new Intent(getActivity(), SignUpVerifyIdentity.class));
+            startActivity(new Intent(context, SignUpVerifyIdentity.class));
             key = "no skip";
         });
 
-        currencyView.setOnClickListener(v -> { bottomSheetDialog = new BottomSheetDialog(requireContext(), R.style.BottomSheetTheme);
+        currencyView.setOnClickListener(v -> {
+            bottomSheetDialog = new BottomSheetDialog(requireContext(), R.style.BottomSheetTheme);
 
-            View sheetView = LayoutInflater.from(getActivity()).inflate(R.layout.currency_bottom_sheet, root.findViewById(R.id.currency_sheet));
+            View sheetView = LayoutInflater.from(context).inflate(R.layout.currency_bottom_sheet, root.findViewById(R.id.currency_sheet));
 
             bottomSheetDialog.setContentView(sheetView);
             bottomSheetDialog.show();
@@ -179,31 +211,14 @@ public class UserHomeFragment extends Fragment {
 
         });
 
-        midasStore.setOnClickListener(v -> startActivity(new Intent(getActivity(), Store.class)));
-
-        virtualCard.setOnClickListener(v -> startActivity(new Intent(getActivity(), VirtualCardChooseDesign.class)));
-
-        addMoney.setOnClickListener(v -> {
-            bottomSheetDialog = new BottomSheetDialog(requireContext(), R.style.BottomSheetTheme);
-
-            View sheetView = LayoutInflater.from(getActivity()).inflate(R.layout.enter_amount_bottom_sheet, root.findViewById(R.id.amount_sheet));
-
-            bottomSheetDialog.setContentView(sheetView);
-            bottomSheetDialog.show();
-
-            // Hooks
-            continueButton = bottomSheetDialog.findViewById(R.id.continue_button);
-            enterAmount = bottomSheetDialog.findViewById(R.id.amount_input_layout);
-
-            // Click Listeners
-            assert continueButton != null;
-            continueButton.setOnClickListener(v13 -> checkInput());
-        });
+        addMoney.setOnClickListener(v -> startActivity(new Intent(getActivity(), AddMoneyChooseMethod.class)));
 
         toggleIcon.setOnClickListener(v -> {
             if (val.equals("visible")) {
                 toggleIcon.setImageResource(R.drawable.toggle_balance_);
-                accountBalance.setText("****");
+                lengthOfAmount = accountBalance.getText().length();
+                String repeated = new String(new char[lengthOfAmount]).replace("\0", "*");
+                accountBalance.setText(repeated);
                 val = "invisible";
             } else if (val.equals("invisible")) {
                 toggleIcon.setImageResource(R.drawable.toggle_balance);
@@ -211,10 +226,44 @@ public class UserHomeFragment extends Fragment {
                 val = "visible";
             }
         });
-
         return root;
     }
 
+    private void quickActionsRecycler() {
+        quickActionsRecycler.setHasFixedSize(true);
+        quickActionsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+        viewQuickActions.add(new QuickActionsHelperClass(R.drawable.add, "Create Card"));
+        viewQuickActions.add(new QuickActionsHelperClass(R.drawable.check, "Deposit"));
+        viewQuickActions.add(new QuickActionsHelperClass(R.drawable.card, "Cards"));
+        viewQuickActions.add(new QuickActionsHelperClass(R.drawable.store, "Store"));
+        viewQuickActions.add(new QuickActionsHelperClass(R.drawable.logout, "Sign Out"));
+
+        adapter = new QuickActionsAdapter(viewQuickActions, this);
+        quickActionsRecycler.setAdapter(adapter);
+    }
+
+    @Override
+    public void onNoteClick(int position) {
+        if(position == 0){
+            startActivity(new Intent(getActivity(), CreateCard.class));
+        }
+        if(position == 1){
+            startActivity(new Intent(getActivity(), AddMoneyChooseMethod.class));
+        }
+        if(position == 2){
+            // Cards Fragment
+            Log.d(TAG, "onNoteClick: ");
+        }
+        if(position == 3){
+            startActivity(new Intent(getActivity(), Store.class));
+        }
+        if(position == 4){
+            // Sign Out
+            firebaseAuth.signOut();
+            startActivity(new Intent(getActivity(), GetStarted.class));
+        }
+    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -231,21 +280,21 @@ public class UserHomeFragment extends Fragment {
         getName();
 
         // Initialize Ads
-        MobileAds.initialize(getContext(), initializationStatus -> {
+        MobileAds.initialize(context, initializationStatus -> {
         });
 
         // Load Native Ads
-        adLoader = new AdLoader.Builder(getContext(), "ca-app-pub-3862971524430784/7025923215")
+        adLoader = new AdLoader.Builder(context, "ca-app-pub-3862971524430784/7025923215")
                 .forNativeAd(NativeAd -> {
                     // Show the ad
-                    if(adLoader.isLoading()){
+                    if (adLoader.isLoading()) {
                         //Show Shimmer
                         shimmerFrameLayout.setVisibility(View.VISIBLE);
                         shimmerFrameLayout.startShimmer();
                     }
 
                     // Destroy Ads
-                    if (getActivity() == null) {
+                    if (context == null) {
                         NativeAd.destroy();
                     }
 
@@ -272,6 +321,7 @@ public class UserHomeFragment extends Fragment {
                         recommendedText.setVisibility(View.GONE);
                         viewHolder.setVisibility(View.VISIBLE);
                     }
+
                     @Override
                     public void onAdLoaded() {
                         // Stop and hide shimmer
@@ -282,7 +332,7 @@ public class UserHomeFragment extends Fragment {
                         recommendedText.setVisibility(View.VISIBLE);
                         viewHolder.setVisibility(View.GONE);
                         // Animate
-                        animation2 = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
+                        animation2 = AnimationUtils.loadAnimation(context, R.anim.fade_animation);
                         adView.setAnimation(animation2);
                         recommendedText.setAnimation(animation2);
                     }
@@ -312,19 +362,6 @@ public class UserHomeFragment extends Fragment {
 
     }
 
-    private void checkInput() {
-        amountEntered = enterAmount.getText().toString().trim();
-        lengthOfVal = amountEntered.length();
-
-        if (lengthOfVal >= 2) {
-            startActivity(new Intent(getActivity(), AddMoneyChooseMethod.class));
-        } else if (lengthOfVal == 0) {
-            enterAmount.setError("Please enter amount");
-        } else {
-            enterAmount.setError("Amount should be 10 or more");
-        }
-    }
-
     private void getName() {
         firebaseUser = firebaseAuth.getCurrentUser();
         DatabaseReference databaseReference = database.getReference("Users").child(firebaseUser.getUid()).child("name");
@@ -348,8 +385,8 @@ public class UserHomeFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     private void setName() {
         username.setText(fullName + " 👋");
-        if (username != null) {
-            animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
+        if (context != null) {
+            animation = AnimationUtils.loadAnimation(context, R.anim.fade_animation);
             username.setAnimation(animation);
         }
     }
@@ -362,24 +399,23 @@ public class UserHomeFragment extends Fragment {
         if (timeOfDay < 12) {
             greetingText.setText(R.string.morning);
             // Set animation
-            animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
+            animation = AnimationUtils.loadAnimation(context, R.anim.fade_animation);
             greetingText.setAnimation(animation);
         } else if (timeOfDay < 16) {
             greetingText.setText(R.string.afternoon);
             // Set Animation
-            animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
+            animation = AnimationUtils.loadAnimation(context, R.anim.fade_animation);
             greetingText.setAnimation(animation);
         } else if (timeOfDay < 21) {
             greetingText.setText(R.string.evening);
             // Set Animation
-            animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
+            animation = AnimationUtils.loadAnimation(context, R.anim.fade_animation);
             greetingText.setAnimation(animation);
         } else {
             greetingText.setText(R.string.night);
             // Set Animation
-            animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_animation);
+            animation = AnimationUtils.loadAnimation(context, R.anim.fade_animation);
             greetingText.setAnimation(animation);
         }
     }
-
 }

@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpCredentials extends AppCompatActivity {
 
-    String fullName, email, password;
+    String fullName, email, password, phoneNumber;
     EditText fullNameField, emailField, passwordField;
     FirebaseAuth firebaseAuth;
 
@@ -36,11 +36,12 @@ public class SignUpCredentials extends AppCompatActivity {
         // Instance of FirebaseAuth
         firebaseAuth = FirebaseAuth.getInstance();
 
+        phoneNumber = SignUpEnterNumber.fullPhoneNumber;
+
         // Hooks
         fullNameField = findViewById(R.id.name_input_layout);
         emailField = findViewById(R.id.email_input_layout);
         passwordField = findViewById(R.id.password_input_layout);
-
     }
 
     public void callSignIn(View view) {
@@ -100,7 +101,7 @@ public class SignUpCredentials extends AppCompatActivity {
 
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-        ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(fullName, email);
+        ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(phoneNumber, fullName, email);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         assert firebaseUser != null;
         databaseReference.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(task -> {

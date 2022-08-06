@@ -1,51 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background_gradient"
+    android:id="@+id/bg"
+    android:background="@color/bg"
     android:layout_height="match_parent"
     tools:context=".Store.Store">
 
     <ImageView
+        android:paddingEnd="@dimen/dimen_15"
+        android:paddingStart="@dimen/dimen_15"
+        android:id="@+id/img"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/coming_soon" />
+        android:layout_height="340dp"
+        android:contentDescription="@string/image"
+        android:src="@drawable/under_construction" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/img"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="-30dp"
-        android:fontFamily="@font/roboto_medium"
+        android:fontFamily="@font/roboto_bold"
         android:text="@string/coming_soon"
-        android:textColor="@color/black"
-        android:textSize="22sp" />
+        android:textColor="@color/main_text"
+        android:textSize="27sp" />
 
     <TextView
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/title"
         android:fontFamily="@font/roboto_regular"
         android:padding="5dp"
-        android:paddingEnd="@dimen/dimen_10"
         android:paddingStart="@dimen/dimen_10"
+        android:paddingEnd="@dimen/dimen_10"
         android:text="@string/coming_soon_description"
         android:textAlignment="center"
-        android:textSize="18sp" />
+        android:textColor="@color/secondary_text"
+        android:textSize="20sp" />
 
     <com.google.android.material.button.MaterialButton
+        android:layout_alignParentBottom="true"
         android:id="@+id/create_card_button"
         android:layout_width="match_parent"
         android:onClick="callMainDashboard"
         android:textAllCaps="false"
         android:text="@string/return_home"
+        android:layout_marginBottom="85dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dimen_60"
         android:layout_marginEnd="@dimen/dimen_25"
         android:layout_marginStart="@dimen/dimen_25"
         app:cornerRadius="35dp"
         android:layout_height="@dimen/dimen_60"/>
 
-</LinearLayout>
+</RelativeLayout>

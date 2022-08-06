@@ -26,10 +26,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bhyte.midas.AccountCreation.GetStarted;
+import com.bhyte.midas.Common.UpdateRequired;
 import com.bhyte.midas.R;
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,7 +41,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -59,7 +57,7 @@ public class Profile extends AppCompatActivity {
     int PICK_IMAGE_CODE = 1002;
 
     Dialog logoutDialog, dialog, rateDialog;
-    RelativeLayout takePhoto, choosePhoto, removePhoto, rateMidas;
+    RelativeLayout takePhoto, choosePhoto, removePhoto, rateMidas, languageLayout;
     CircleImageView profilePicture;
     Button positive, negative;
     TextView userName, userEmail;
@@ -67,6 +65,7 @@ public class Profile extends AppCompatActivity {
     MaterialButton logoutButton;
     private BottomSheetDialog bottomSheetDialog;
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +74,7 @@ public class Profile extends AppCompatActivity {
         // Hooks
         fullName = UserHomeFragment.usernameS;
         logoutButton = findViewById(R.id.logout_button);
+        languageLayout = findViewById(R.id.language_layout);
         userName = findViewById(R.id.user_name);
         profilePicture = findViewById(R.id.profile_picture);
         rateMidas = findViewById(R.id.rate_midas);
@@ -103,6 +103,17 @@ public class Profile extends AppCompatActivity {
         // Click Listeners
         rateMidas.setOnClickListener(v -> rateMidasPopup());
 
+        languageLayout.setOnClickListener(v -> {
+            bottomSheetDialog = new BottomSheetDialog(Profile.this, R.style.BottomSheetTheme);
+
+            View sheetView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.language_bottom_sheet,
+                    findViewById(R.id.language_sheet));
+
+            bottomSheetDialog.setContentView(sheetView);
+
+            bottomSheetDialog.show();
+        });
+
         logoutButton.setOnClickListener(v -> {
             logoutDialog = new Dialog(Profile.this, R.style.BottomSheetTheme);
 
@@ -117,6 +128,11 @@ public class Profile extends AppCompatActivity {
             negative = dialogView.findViewById(R.id.logout);
 
             positive.setOnClickListener(v1 -> logoutDialog.dismiss());
+            negative.setOnClickListener(v14 -> {
+                logoutDialog.dismiss();
+                firebaseAuth.signOut();
+                startActivity(new Intent(Profile.this, GetStarted.class));
+            });
         });
 
         profilePicture.setOnClickListener(v -> {
@@ -139,12 +155,9 @@ public class Profile extends AppCompatActivity {
                 bottomSheetDialog.dismiss();
             });
 
-            choosePhoto.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    choosePhoto();
-                    bottomSheetDialog.dismiss();
-                }
+            choosePhoto.setOnClickListener(v13 -> {
+                choosePhoto();
+                bottomSheetDialog.dismiss();
             });
 
             removePhoto.setOnClickListener(v12 -> {
@@ -357,7 +370,7 @@ public class Profile extends AppCompatActivity {
                 })
                 .addOnFailureListener(e -> {
                     if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
-                        Toast toast = Toast.makeText(Profile.this, "Failed to update profile image...", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(Profile.this, "Failed to update profile image, Try again", Toast.LENGTH_SHORT);
                         View view1 = toast.getView();
 
                         //Gets the actual oval background of the Toast then sets the colour filter
@@ -434,4 +447,5 @@ public class Profile extends AppCompatActivity {
     public void callEditProfile(View view) {
         startActivity(new Intent(getApplicationContext(), EditProfile.class));
     }
+
 }

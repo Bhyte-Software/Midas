@@ -34,7 +34,7 @@
             android:fontFamily="@font/roboto_medium"
             android:text="Accept terms of service"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/main_text"
             android:textSize="18sp" />
 
         <TextView
@@ -44,6 +44,7 @@
             android:layout_below="@id/title"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dimen_5"
+            android:textColor="@color/secondary_text"
             android:fontFamily="@font/roboto_regular"
             android:text="As a requirement to use Midas you have to accept terms of service."
             android:textAlignment="center" />

@@ -1,14 +1,12 @@
 package com.bhyte.midas.AccountCreation;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,8 +33,7 @@ public class SignUpEnterOTP extends AppCompatActivity {
     public String smsNumber;
     public String completeNumber;
 
-    RelativeLayout bg, ripple;
-    TextView verify_description, title;
+    TextView verify_description;
     PinView pinView;
     MaterialButton verifyButton;
 
@@ -49,26 +46,9 @@ public class SignUpEnterOTP extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         // Hooks
-        ripple = findViewById(R.id.ripple);
-        title = findViewById(R.id.title);
-        bg = findViewById(R.id.bg);
         verify_description = findViewById(R.id.verification_description);
         pinView = findViewById(R.id.pin_view);
         verifyButton = findViewById(R.id.verify);
-
-        // Switch Theme Based on Mode
-        int nightModeFlags = getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        switch (nightModeFlags) {
-            case Configuration.UI_MODE_NIGHT_YES:
-                darkMode();
-                break;
-
-            case Configuration.UI_MODE_NIGHT_NO | Configuration.UI_MODE_NIGHT_UNDEFINED:
-                lightMode();
-                break;
-
-        }
-
 
         // Get Data from Previous Activity
         fullPhoneNumber = SignUpEnterNumber.fullPhoneNumber;
@@ -79,8 +59,9 @@ public class SignUpEnterOTP extends AppCompatActivity {
         fullPhoneNumber = fullPhoneNumber.substring(4);
 
         // Append
-        verify_description.append(" " + "+ (233)" + fullPhoneNumber);
+        verify_description.append(" " + "+(233)" + fullPhoneNumber);
 
+        // Send Code
         sendVerificationCode(smsNumber);
 
         verifyButton.setOnClickListener(v -> {
@@ -119,20 +100,6 @@ public class SignUpEnterOTP extends AppCompatActivity {
         });
 
     }
-
-    private void darkMode() {
-        bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.dark_bg));
-        // Change Text Colors
-        title.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
-        verify_description.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white_light));
-        ripple.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_round_box_dark));
-
-        pinView.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
-    }
-
-    private void lightMode() {
-    }
-
 
     private void sendVerificationCode(String smsNumber) {
         // this method is used for getting

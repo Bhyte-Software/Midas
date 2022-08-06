@@ -1,19 +1,20 @@
 package com.bhyte.midas.Common;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bhyte.midas.R;
-import com.bhyte.midas.User.UserSettingsFragment;
 
 public class ContactSupport extends AppCompatActivity {
 
     RelativeLayout phoneLayout;
+    LinearLayout emailLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +23,11 @@ public class ContactSupport extends AppCompatActivity {
 
         // Hooks
         phoneLayout = findViewById(R.id.phone_layout);
+        emailLayout = findViewById(R.id.email_layout);
 
+        // Click Listeners
         phoneLayout.setOnClickListener(v -> callPhone());
-
+        emailLayout.setOnClickListener(v -> callEmail());
     }
 
     private void callPhone() {
@@ -33,15 +36,7 @@ public class ContactSupport extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void callClose(View view) {
-        startActivity(new Intent(getApplicationContext(), MainDashboard.class));
-    }
-
-    public void callCLose(View view) {
-        finish();
-    }
-
-    public void callEmail(View view) {
+    public void callEmail() {
         String to, subject, message;
         to = "midas@gmail.com";
         message = "Please enter what you need help with";
@@ -55,5 +50,9 @@ public class ContactSupport extends AppCompatActivity {
         email.setType("message/rfc822");
 
         startActivity(Intent.createChooser(email, "Choose an Email client :"));
+    }
+
+    public void finish(View view) {
+        finish();
     }
 }

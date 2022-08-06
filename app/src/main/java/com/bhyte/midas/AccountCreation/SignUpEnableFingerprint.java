@@ -1,10 +1,10 @@
 package com.bhyte.midas.AccountCreation;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bhyte.midas.R;
 
@@ -16,6 +16,9 @@ public class SignUpEnableFingerprint extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_enable_fingerprint);
+
+        // Hooks
+
     }
 
     public void callVerifyIdentity(View view) {

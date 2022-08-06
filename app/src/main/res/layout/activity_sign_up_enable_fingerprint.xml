@@ -4,35 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
+    android:background="@color/bg"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".AccountCreation.SignUpEnableFingerprint">
 
     <ImageView
+        android:contentDescription="@string/image"
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/security_image" />
 
     <TextView
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/image"
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/image"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="-20dp"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/fingerprint"
-        android:textColor="@color/black"
+        android:textColor="@color/main_text"
         android:textSize="27sp" />
 
     <TextView
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/title"
+        android:textColor="@color/main_text"
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
         android:fontFamily="@font/roboto_regular"
         android:padding="5dp"
         android:text="@string/fingerprint_description"
@@ -40,12 +42,15 @@
         android:textSize="20sp" />
 
     <ImageView
+        android:contentDescription="@string/image"
+        android:id="@+id/fingerprint_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/description"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:src="@drawable/red_fingerprint_image" />
+        android:src="@drawable/red_fingerprint_image"
+        app:tint="@color/main_text" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/cancel"
@@ -56,6 +61,7 @@
         android:layout_marginStart="@dimen/dimen_25"
         android:layout_marginTop="@dimen/dimen_40"
         android:layout_marginEnd="@dimen/dimen_25"
+        android:layout_marginBottom="@dimen/dimen_20"
         android:fontFamily="@font/roboto_medium"
         android:onClick="callContinue"
         android:text="@string/go"
@@ -68,18 +74,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginBottom="@dimen/dimen_30"
         android:background="@color/transparent"
         android:fontFamily="@font/roboto_regular"
         android:onClick="callVerifyIdentity"
-        android:text="@string/skip_step"
-        android:layout_marginBottom="@dimen/dimen_10"
+        android:text="@string/skip"
         android:textAllCaps="false"
-        android:textColor="@color/blue_200"
+        android:textColor="@color/skip_text"
         android:textSize="16sp"
-        android:visibility="visible"
-        app:icon="@drawable/skip_image"
-        app:iconGravity="textEnd"
-        app:iconTint="@color/blue_200" />
+        android:visibility="visible"/>
 
 </RelativeLayout>

@@ -4,156 +4,130 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     tools:context=".Transactions.AddMoneyChooseMethod">
 
-    <LinearLayout
+    <RelativeLayout
+        android:layout_margin="@dimen/dimen_10"
+        android:id="@+id/navigation"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:padding="@dimen/dimen_10"
+            android:src="@drawable/back_material"
+            app:tint="@color/main_text"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <ImageView
+            android:id="@+id/deposit_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:padding="@dimen/dimen_10"
+            android:src="@drawable/help_outline"
+            app:tint="@color/main_text"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/navigation"
+        android:contentDescription="@string/image"
+        android:paddingStart="@dimen/dimen_15"
+        android:paddingEnd="@dimen/dimen_15"
+        android:src="@drawable/deposit" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:fontFamily="@font/roboto_bold"
+        android:text="How would you like to deposit?"
+        android:textAlignment="center"
+        android:textColor="@color/main_text"
+        android:textSize="27sp" />
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingStart="@dimen/dimen_10"
+        android:paddingTop="@dimen/dimen_5"
+        android:paddingEnd="@dimen/dimen_10"
+        android:paddingBottom="@dimen/dimen_5"
+        android:text="Choose a method to deposit money into your Midas wallet"
+        android:textAlignment="center"
+        android:textColor="@color/secondary_text"
+        android:textSize="20sp" />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_marginEnd="@dimen/dimen_15"
+        android:layout_marginStart="@dimen/dimen_15"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:layout_below="@id/desc"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/mobile_money"
+            android:drawablePadding="@dimen/dimen_15"
+            android:padding="@dimen/dimen_15"
+            android:textSize="18sp"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@drawable/radio_selector"
+            android:textColor="@drawable/radio_text"
+            android:drawableStart="@drawable/phone"
+            android:button="@color/transparent"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:background="@color/blue_200"
-            android:elevation="8dp">
+            android:text="Mobile Money\nFee: 1.4%\nTakes a few minutes"
+            android:layout_height="match_parent"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="@dimen/dimen_20">
+        <RadioButton
+            android:id="@+id/bank_transfer"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:drawablePadding="@dimen/dimen_15"
+            android:padding="@dimen/dimen_15"
+            android:textSize="18sp"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@drawable/radio_selector"
+            android:textColor="@drawable/radio_text"
+            android:drawableStart="@drawable/bank"
+            android:button="@color/transparent"
+            android:layout_width="match_parent"
+            android:text="Bank Transfer\nFee: 5.0%\nTakes a few hours"
+            android:layout_height="match_parent"/>
 
-                <ImageView
-                    android:onClick="callBack"
-                    android:id="@+id/menu_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/back_icon"
-                    app:tint="@color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/dimen_20"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="@string/choose_a_method"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-            <LinearLayout
-                android:elevation="10dp"
-                android:layout_marginTop="-50dp"
-                android:background="@drawable/top_round_corner_overlay"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                    <TextView
-                        android:layout_marginBottom="@dimen/dimen_25"
-                        android:layout_marginStart="@dimen/dimen_25"
-                        android:layout_marginTop="@dimen/dimen_30"
-                        android:textSize="18sp"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="@string/mobile_transfers"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <RelativeLayout
-                        android:paddingBottom="@dimen/dimen_10"
-                        android:paddingTop="@dimen/dimen_10"
-                        android:paddingEnd="@dimen/dimen_25"
-                        android:paddingStart="@dimen/dimen_25"
-                        android:clickable="true"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                            <ImageView
-                                android:id="@+id/mtn_logo"
-                                android:layout_centerVertical="true"
-                                android:src="@drawable/mtn"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-
-                        <TextView
-                            android:id="@+id/network_name"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/roboto_medium"
-                            android:layout_marginStart="@dimen/dimen_20"
-                            android:layout_toEndOf="@id/mtn_logo"
-                            android:text="@string/mtn_mobile_money"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-
-                        <TextView
-                            android:layout_below="@id/network_name"
-                            android:fontFamily="@font/roboto_regular"
-                            android:layout_marginStart="@dimen/dimen_20"
-                            android:layout_toEndOf="@id/mtn_logo"
-                            android:text="*******890"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_marginTop="@dimen/dimen_10"
-                        android:paddingBottom="@dimen/dimen_10"
-                        android:paddingTop="@dimen/dimen_10"
-                        android:paddingEnd="@dimen/dimen_25"
-                        android:paddingStart="@dimen/dimen_25"
-                        android:clickable="true"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                            <ImageView
-                                android:id="@+id/vodaphone_logo"
-                                android:layout_centerVertical="true"
-                                android:src="@drawable/vodaphone"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-
-                        <TextView
-                            android:id="@+id/network_name2"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/roboto_medium"
-                            android:layout_marginStart="@dimen/dimen_20"
-                            android:layout_toEndOf="@id/vodaphone_logo"
-                            android:text="@string/mtn_mobile_money"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-
-                        <TextView
-                            android:layout_below="@id/network_name2"
-                            android:fontFamily="@font/roboto_regular"
-                            android:layout_marginStart="@dimen/dimen_20"
-                            android:layout_toEndOf="@id/vodaphone_logo"
-                            android:text="*******890"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-
-                    </RelativeLayout>
-
-            </LinearLayout>
-
-    </LinearLayout>
+    </RadioGroup>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/next"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_60"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/dimen_25"
-        android:onClick="addPaymentMethod"
         android:layout_marginEnd="@dimen/dimen_25"
         android:layout_marginBottom="@dimen/dimen_25"
-        android:text="Add payment method"
+        android:text="@string/next"
         android:textAllCaps="false"
         app:cornerRadius="35dp" />
+
 </RelativeLayout>

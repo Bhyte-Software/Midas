@@ -9,6 +9,7 @@
     tools:context=".User.UserHomeFragment">
 
     <RelativeLayout
+        android:id="@+id/gradient_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/gradient"
@@ -29,9 +30,8 @@
                 android:layout_height="@dimen/dimen_40"
                 android:layout_centerVertical="true"
                 android:src="@drawable/home_profile_default"
-                app:civ_border_color="@color/white"
-                app:civ_border_width="2dp"
-                app:civ_circle_background_color="@color/white" />
+                app:civ_border_color="@color/white_light"
+                app:civ_border_width="2dp" />
 
         </RelativeLayout>
 
@@ -61,15 +61,15 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
                     android:text=""
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textColor="@color/white_light"
+                    android:textSize="22sp" />
 
             </LinearLayout>
 
         </RelativeLayout>
 
-
         <RelativeLayout
+            android:id="@+id/round_rec"
             android:layout_width="match_parent"
             android:layout_height="175dp"
             android:layout_below="@id/greeting_view"
@@ -92,7 +92,10 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
-                    android:text="@string/total_assets_ghc" />
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/total_assets_ghc"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="18sp" />
 
                 <RelativeLayout
                     android:id="@+id/currency_view"
@@ -129,8 +132,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="100"
-                    android:textColor="@color/black"
+                    android:text="0"
+                    android:textColor="@color/main_text"
                     android:textSize="35sp"
                     android:visibility="visible" />
 
@@ -161,6 +164,7 @@
     </RelativeLayout>
 
     <ScrollView
+        android:id="@+id/scroll_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="-130dp"
@@ -173,103 +177,28 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="@dimen/dimen_25"
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/quick_actions"
-                android:textColor="@color/black"
+                android:textColor="@color/main_text"
                 android:textSize="20sp" />
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:clickable="true"
+                android:layout_margin="@dimen/dimen_10"
+                android:id="@+id/quick_actions_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="@dimen/dimen_15"
-                android:paddingBottom="@dimen/dimen_15">
-
-                <RelativeLayout
-                    android:id="@+id/store"
-                    android:layout_width="@dimen/dimen_120"
-                    android:layout_height="150dp"
-                    android:layout_marginStart="@dimen/dimen_25"
-                    android:background="@drawable/quick_actions_border_ripple"
-                    android:clickable="true">
-
-                    <ImageView
-                        android:id="@+id/rec"
-                        android:layout_width="@dimen/dimen_90"
-                        android:layout_height="@dimen/dimen_80"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/dimen_15"
-                        android:src="@drawable/quick_action" />
-
-                    <ImageView
-                        android:layout_width="@dimen/dimen_50"
-                        android:layout_height="@dimen/dimen_50"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/dimen_30"
-                        android:src="@drawable/store" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="@dimen/dimen_15"
-                        android:fontFamily="@font/roboto_regular"
-                        android:padding="@dimen/dimen_5"
-                        android:text="Store"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/virtual_card"
-                    android:layout_width="@dimen/dimen_120"
-                    android:layout_height="150dp"
-                    android:layout_marginStart="@dimen/dimen_15"
-                    android:background="@drawable/cards_quick_action_border_ripple"
-                    android:clickable="true">
-
-                    <ImageView
-                        android:id="@+id/rec2"
-                        android:layout_width="@dimen/dimen_90"
-                        android:layout_height="@dimen/dimen_80"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/dimen_15"
-                        android:src="@drawable/quick_action_cards" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/dimen_40"
-                        android:src="@drawable/credit_card" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="@dimen/dimen_15"
-                        android:fontFamily="@font/roboto_regular"
-                        android:padding="@dimen/dimen_5"
-                        android:text="@string/cards"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-                </RelativeLayout>
-
-            </LinearLayout>
+                android:focusable="false" />
 
             <RelativeLayout
                 android:id="@+id/verification_status"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="@dimen/dimen_25"
                 android:layout_marginEnd="@dimen/dimen_25"
                 android:layout_marginBottom="@dimen/dimen_15"
@@ -325,7 +254,6 @@
 
             </com.facebook.shimmer.ShimmerFrameLayout>
 
-
             <TextView
                 android:id="@+id/recommended_text"
                 android:layout_width="wrap_content"
@@ -334,14 +262,14 @@
                 android:layout_marginStart="25dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/recommended_for_you"
-                android:textColor="@color/black"
+                android:textColor="@color/main_text"
                 android:textSize="20sp"
                 android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/recommended_layout"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_120"
+                android:layout_height="130dp"
                 android:layout_marginStart="@dimen/dimen_25"
                 android:layout_marginTop="@dimen/dimen_15"
                 android:layout_marginEnd="@dimen/dimen_25"

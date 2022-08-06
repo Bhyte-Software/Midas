@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/background_gradient"
+    android:background="@color/bg"
+    android:id="@+id/bg"
     tools:context=".User.UserCardsFragment">
 
     <LinearLayout
@@ -13,6 +14,7 @@
         android:orientation="vertical">
 
         <ImageView
+            android:contentDescription="@string/image"
             android:padding="@dimen/dimen_20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,10 +28,11 @@
             android:layout_marginTop="@dimen/dimen_20"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/no_cards"
-            android:textColor="@color/black"
+            android:textColor="@color/main_text"
             android:textSize="22sp" />
 
         <TextView
+            android:textColor="@color/secondary_text"
             android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -50,7 +50,6 @@ public class TemplateView extends FrameLayout {
   private ImageView iconView;
   private MediaView mediaView;
   private Button callToActionView;
-  private ConstraintLayout background;
 
   private static final String MEDIUM_TEMPLATE = "medium_template";
   private static final String SMALL_TEMPLATE = "small_template";
@@ -88,7 +87,6 @@ public class TemplateView extends FrameLayout {
 
     Drawable mainBackground = styles.getMainBackgroundColor();
     if (mainBackground != null) {
-      background.setBackground(mainBackground);
       if (primaryView != null) {
         primaryView.setBackground(mainBackground);
       }
@@ -297,6 +295,5 @@ public class TemplateView extends FrameLayout {
     callToActionView = (Button) findViewById(R.id.cta);
     iconView = (ImageView) findViewById(R.id.icon);
     mediaView = (MediaView) findViewById(R.id.media_view);
-    background = (ConstraintLayout) findViewById(R.id.background);
   }
 }

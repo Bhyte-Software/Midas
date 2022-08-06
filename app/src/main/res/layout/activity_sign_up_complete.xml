@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:id="@+id/bg"
+    android:background="@color/bg"
     android:gravity="center_horizontal"
     android:layout_height="match_parent"
     tools:context=".AccountCreation.SignUpComplete">
@@ -22,16 +22,16 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/welcome"
-        android:textColor="@color/black"
+        android:textColor="@color/main_text"
         android:textSize="27sp" />
 
     <TextView
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_10"
         android:fontFamily="@font/roboto_medium"
         android:padding="5dp"
+        android:textColor="@color/secondary_text"
         android:text="@string/welcome_description"
         android:textAlignment="center"
         android:textSize="20sp" />
@@ -47,6 +47,5 @@
         android:text="@string/hooray"
         android:textAllCaps="false"
         app:cornerRadius="35dp" />
-
 
 </LinearLayout>

@@ -47,6 +47,7 @@ public class ChangePasswordEnterEmail extends AppCompatActivity {
         emailInputField = findViewById(R.id.input_email);
         sendInstructions = findViewById(R.id.send_instructions);
 
+        // Click Listeners
         sendInstructions.setOnClickListener(v -> startPasswordReset());
 
     }

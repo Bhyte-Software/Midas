@@ -22,7 +22,7 @@
         android:layout_marginStart="@dimen/dimen_15"
         android:fontFamily="@font/roboto_bold"
         android:text="How much do you want to fund this\ncard with?"
-        android:textColor="@color/blue_200"
+        android:textColor="@color/skip_text"
         android:textSize="22sp" />
 
     <EditText
@@ -41,7 +41,7 @@
         android:inputType="numberDecimal|textFilter"
         android:paddingStart="15dp"
         android:paddingEnd="@dimen/dimen_15"
-        android:textColor="@color/blue_200"
+        android:textColor="@color/main_text"
         android:textSize="18sp" />
 
     <com.google.android.material.button.MaterialButton

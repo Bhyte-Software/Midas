@@ -5,21 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_container"
-    android:background="@drawable/background_gradient"
+    android:background="@color/bg"
     tools:context=".Common.MainDashboard">
 
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
-        android:layout_width="match_parent"
         android:id="@+id/bottom_nav_menu"
-        android:theme="@style/Theme.Midas.BottomNavTheme"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#EBEBEB"
         android:layout_alignParentBottom="true"
-        app:cnb_unselectedColor="@color/black"
-        app:cnb_radius="@dimen/dimen_20"
-        android:padding="@dimen/dimen_10"
+        android:background="@color/bottom_nav_bg"
         android:elevation="@dimen/dimen_5"
+        android:padding="@dimen/dimen_10"
+        android:theme="@style/Theme.Midas.BottomNavTheme"
+        app:cnb_menuResource="@menu/bottom_nav_menu"
         app:cnb_orientationMode="horizontal"
-        app:cnb_menuResource="@menu/bottom_nav_menu"/>
+        app:cnb_radius="@dimen/dimen_20"/>
 
 </RelativeLayout>

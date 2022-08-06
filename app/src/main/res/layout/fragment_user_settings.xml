@@ -1,356 +1,349 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/background_gradient"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg"
     android:orientation="vertical"
+    android:scrollbars="none"
     tools:context=".User.UserSettingsFragment">
 
-    <ScrollView
-        android:scrollbars="none"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:orientation="vertical"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:elevation="@dimen/dimen_5"
-                android:padding="@dimen/dimen_20"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="@string/settings"
-                    android:textColor="@color/black"
-                    android:textSize="26sp" />
-
-            </RelativeLayout>
-
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/dimen_5"
+            android:padding="@dimen/dimen_20">
 
             <TextView
-                android:layout_marginTop="@dimen/dimen_5"
-                android:layout_marginStart="@dimen/dimen_25"
-                android:textColor="@color/blue_200"
-                android:fontFamily="@font/roboto_medium"
-                android:textAllCaps="true"
-                android:text="@string/profile"
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/settings"
+                android:textColor="@color/main_text"
+                android:textSize="26sp" />
 
-            <RelativeLayout
-                android:id="@+id/profile_layout"
-                android:clickable="true"
-                android:paddingEnd="@dimen/dimen_20"
-                android:paddingStart="@dimen/dimen_20"
-                android:layout_marginEnd="@dimen/dimen_25"
-                android:layout_marginStart="@dimen/dimen_25"
-                android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/dimen_15"
-                android:background="@drawable/ripple_top_block"
-                android:layout_height="@dimen/dimen_60">
+        </RelativeLayout>
 
-                <ImageView
-                    android:id="@+id/language"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/profile_icon" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/profile"
+            android:textAllCaps="true"
+            android:textColor="@color/blue_200" />
 
-                <TextView
-                    android:id="@+id/signed_in_as"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/dimen_20"
-                    android:layout_toEndOf="@id/language"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/signed_in"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+        <RelativeLayout
+            android:id="@+id/profile_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_60"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:layout_marginEnd="@dimen/dimen_25"
+            android:background="@drawable/ripple_top_block"
+            android:clickable="true"
+            android:paddingStart="@dimen/dimen_20"
+            android:paddingEnd="@dimen/dimen_20">
 
-                <TextView
-                    android:id="@+id/user_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/dimen_5"
-                    android:layout_toEndOf="@id/signed_in_as"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="@string/placeholder_name"
-                    android:textColor="@color/blue_200"
-                    android:textSize="18sp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/sign_out_layout"
-                android:layout_marginTop="@dimen/dimen_5"
-                android:paddingEnd="@dimen/dimen_20"
-                android:paddingStart="@dimen/dimen_20"
-                android:layout_marginEnd="@dimen/dimen_25"
-                android:layout_marginStart="@dimen/dimen_25"
-                android:layout_width="match_parent"
-                android:clickable="true"
-                android:background="@drawable/ripple_bottom_block"
-                android:layout_height="@dimen/dimen_60">
-
-                <ImageView
-                    android:id="@+id/rate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/logout_image"
-                    app:tint="@color/red" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/dimen_20"
-                    android:layout_toEndOf="@id/rate"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/sign_out"
-                    android:textColor="@color/red"
-                    android:textSize="18sp" />
-
-            </RelativeLayout>
+            <ImageView
+                android:id="@+id/language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/profile_icon" />
 
             <TextView
-                android:layout_marginTop="@dimen/dimen_25"
-                android:layout_marginStart="@dimen/dimen_25"
-                android:textColor="@color/blue_200"
-                android:fontFamily="@font/roboto_medium"
-                android:textAllCaps="true"
-                android:text="@string/personalize"
+                android:id="@+id/signed_in_as"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <RelativeLayout
-                android:layout_marginTop="@dimen/dimen_15"
-                android:paddingStart="@dimen/dimen_20"
-                android:paddingEnd="@dimen/dimen_20"
-                android:layout_marginEnd="@dimen/dimen_25"
-                android:layout_marginStart="@dimen/dimen_25"
-                android:layout_width="match_parent"
-                android:background="@drawable/round_block"
-                android:layout_height="60dp">
-
-                <ImageView
-                    android:id="@+id/theme"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/sun_icon" />
-
-                <TextView
-                    android:id="@+id/theme_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/dimen_20"
-                    android:layout_toEndOf="@id/theme"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/light_theme"
-                    android:textColor="@color/blue_200"
-                    android:textSize="18sp" />
-
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/theme_switch"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:theme="@style/CustomSwitch"
-                    app:trackTint="@color/nav_one" />
-
-            </RelativeLayout>
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_toEndOf="@id/language"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/signed_in"
+                android:textColor="@color/main_text"
+                android:textSize="18sp" />
 
             <TextView
-                android:layout_marginTop="@dimen/dimen_25"
-                android:layout_marginStart="@dimen/dimen_25"
-                android:textColor="@color/blue_200"
-                android:fontFamily="@font/roboto_medium"
-                android:textAllCaps="true"
-                android:text="@string/advanced"
+                android:id="@+id/user_name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dimen_5"
+                android:layout_toEndOf="@id/signed_in_as"
+                android:fontFamily="@font/roboto_medium"
+                android:text=""
+                android:textColor="@color/blue_200"
+                android:textSize="18sp" />
 
-            <RelativeLayout
-                android:id="@+id/download_layout"
-                android:layout_marginTop="@dimen/dimen_15"
-                android:padding="@dimen/dimen_20"
-                android:layout_marginEnd="@dimen/dimen_25"
-                android:layout_marginStart="@dimen/dimen_25"
-                android:layout_width="match_parent"
-                android:clickable="true"
-                android:background="@drawable/ripple_round_block"
-                android:layout_height="@dimen/dimen_60">
+        </RelativeLayout>
 
-                <ImageView
-                    android:id="@+id/download"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/downlaod_icon" />
+        <RelativeLayout
+            android:id="@+id/sign_out_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_60"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:layout_marginEnd="@dimen/dimen_25"
+            android:background="@drawable/ripple_bottom_block"
+            android:clickable="true"
+            android:paddingStart="@dimen/dimen_20"
+            android:paddingEnd="@dimen/dimen_20">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/dimen_20"
-                    android:layout_toEndOf="@id/download"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/download_statement"
-                    android:textColor="@color/blue_200"
-                    android:textSize="17sp" />
-
-            </RelativeLayout>
+            <ImageView
+                android:id="@+id/rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/logout_image"
+                app:tint="@color/red" />
 
             <TextView
-                android:layout_marginTop="@dimen/dimen_25"
-                android:layout_marginStart="@dimen/dimen_25"
-                android:textColor="@color/blue_200"
-                android:fontFamily="@font/roboto_medium"
-                android:textAllCaps="true"
-                android:text="@string/help"
+                android:id="@+id/sign_out"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_toEndOf="@id/rate"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/sign_out"
+                android:textColor="@color/red"
+                android:textSize="18sp" />
 
-            <RelativeLayout
-                android:id="@+id/faq_layout"
-                android:layout_marginTop="@dimen/dimen_15"
-                android:padding="@dimen/dimen_20"
-                android:clickable="true"
-                android:layout_marginEnd="@dimen/dimen_25"
-                android:layout_marginStart="@dimen/dimen_25"
-                android:layout_width="match_parent"
-                android:background="@drawable/ripple_top_block"
-                android:layout_height="@dimen/dimen_60">
+        </RelativeLayout>
 
-                <ImageView
-                    android:id="@+id/faq"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/faq_image" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginTop="@dimen/dimen_25"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/personalize"
+            android:textAllCaps="true"
+            android:textColor="@color/blue_200" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/dimen_20"
-                    android:layout_toEndOf="@id/faq"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/faq"
-                    android:textColor="@color/blue_200"
-                    android:textSize="18sp" />
+        <RelativeLayout
+            android:clickable="true"
+            android:id="@+id/theme_layout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:layout_marginEnd="@dimen/dimen_25"
+            android:background="@drawable/ripple_round_block"
+            android:paddingStart="@dimen/dimen_20"
+            android:paddingEnd="@dimen/dimen_20">
 
-            </RelativeLayout>
+            <ImageView
+                android:id="@+id/theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/sun_icon" />
 
-            <RelativeLayout
-                android:id="@+id/contact_support"
-                android:layout_marginTop="@dimen/dimen_5"
-                android:padding="@dimen/dimen_20"
-                android:layout_marginEnd="@dimen/dimen_25"
-                android:layout_marginStart="@dimen/dimen_25"
-                android:layout_width="match_parent"
-                android:clickable="true"
-                android:background="@drawable/ripple_normal_block"
-                android:layout_height="@dimen/dimen_60">
+            <TextView
+                android:id="@+id/theme_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_toEndOf="@id/theme"
+                android:fontFamily="@font/roboto_regular"
+                android:text="App Theme"
+                android:textColor="@color/skip_text"
+                android:textSize="18sp" />
 
-                <ImageView
-                    android:id="@+id/support"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/contact_support_icon" />
+        </RelativeLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/dimen_20"
-                    android:layout_toEndOf="@id/support"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/contact_support"
-                    android:textColor="@color/blue_200"
-                    android:textSize="18sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginTop="@dimen/dimen_25"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/advanced"
+            android:textAllCaps="true"
+            android:textColor="@color/blue_200" />
 
-            </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/download_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_60"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:layout_marginEnd="@dimen/dimen_25"
+            android:background="@drawable/ripple_round_block"
+            android:clickable="true"
+            android:padding="@dimen/dimen_20">
 
-            <RelativeLayout
-                android:layout_marginTop="@dimen/dimen_5"
-                android:padding="@dimen/dimen_20"
-                android:id="@+id/terms_and_conditions"
-                android:layout_marginEnd="@dimen/dimen_25"
-                android:layout_marginStart="@dimen/dimen_25"
-                android:layout_width="match_parent"
-                android:clickable="true"
-                android:background="@drawable/ripple_normal_block"
-                android:layout_height="@dimen/dimen_60">
+            <ImageView
+                android:id="@+id/download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/downlaod_icon" />
 
-                <ImageView
-                    android:id="@+id/terms"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/terms_icon" />
+            <TextView
+                android:id="@+id/download_statement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_toEndOf="@id/download"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/download_statement"
+                android:textColor="@color/skip_text"
+                android:textSize="18sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/dimen_20"
-                    android:layout_toEndOf="@id/terms"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/terms_and_conditions"
-                    android:textColor="@color/blue_200"
-                    android:textSize="18sp" />
+        </RelativeLayout>
 
-            </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginTop="@dimen/dimen_25"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/help"
+            android:textAllCaps="true"
+            android:textColor="@color/blue_200" />
 
-            <RelativeLayout
-                android:id="@+id/about_layout"
-                android:layout_marginBottom="@dimen/dimen_105"
-                android:layout_marginTop="@dimen/dimen_5"
-                android:padding="@dimen/dimen_20"
-                android:layout_marginEnd="@dimen/dimen_25"
-                android:layout_marginStart="@dimen/dimen_25"
-                android:layout_width="match_parent"
-                android:clickable="true"
-                android:background="@drawable/ripple_bottom_block"
-                android:layout_height="@dimen/dimen_60">
+        <RelativeLayout
+            android:id="@+id/faq_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_60"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:layout_marginEnd="@dimen/dimen_25"
+            android:background="@drawable/ripple_top_block"
+            android:clickable="true"
+            android:padding="@dimen/dimen_20">
 
-                <ImageView
-                    android:id="@+id/about"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/about_icon" />
+            <ImageView
+                android:id="@+id/faq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/faq_image" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/dimen_20"
-                    android:layout_toEndOf="@id/about"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/about"
-                    android:textColor="@color/blue_200"
-                    android:textSize="18sp" />
+            <TextView
+                android:id="@+id/faq_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_toEndOf="@id/faq"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/faq"
+                android:textColor="@color/skip_text"
+                android:textSize="18sp" />
 
-            </RelativeLayout>
+        </RelativeLayout>
 
-        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/contact_support"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_60"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:layout_marginEnd="@dimen/dimen_25"
+            android:background="@drawable/ripple_normal_block"
+            android:clickable="true"
+            android:padding="@dimen/dimen_20">
 
-    </ScrollView>
+            <ImageView
+                android:id="@+id/support"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/contact_support_icon" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/contact_support_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_toEndOf="@id/support"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/contact_support"
+                android:textColor="@color/skip_text"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/terms_and_conditions"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_60"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:layout_marginEnd="@dimen/dimen_25"
+            android:background="@drawable/ripple_normal_block"
+            android:clickable="true"
+            android:padding="@dimen/dimen_20">
+
+            <ImageView
+                android:id="@+id/terms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/terms_icon" />
+
+            <TextView
+                android:id="@+id/terms_and_conditions_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_toEndOf="@id/terms"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/terms_and_conditions"
+                android:textColor="@color/skip_text"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/about_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_60"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:layout_marginEnd="@dimen/dimen_25"
+            android:layout_marginBottom="@dimen/dimen_105"
+            android:background="@drawable/ripple_bottom_block"
+            android:clickable="true"
+            android:padding="@dimen/dimen_20">
+
+            <ImageView
+                android:id="@+id/about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/about_icon" />
+
+            <TextView
+                android:id="@+id/about_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_toEndOf="@id/about"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/about"
+                android:textColor="@color/skip_text"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -2,7 +2,6 @@ package com.bhyte.midas.AccountCreation;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,15 +28,13 @@ public class SignUpEnterNumber extends AppCompatActivity {
 
     public static String fullPhoneNumber;
     public static String completeNumber;
+    public static String country;
     public String countryCode;
     public String phoneNumber;
     public int lengthOfVal;
     public Context context;
     EditText enterNumberLayout;
     MaterialButton getCode;
-
-    RelativeLayout bg, ripple;
-    TextView desc, title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,23 +48,6 @@ public class SignUpEnterNumber extends AppCompatActivity {
         // Hooks
         enterNumberLayout = findViewById(R.id.input_number_field);
         getCode = findViewById(R.id.get_code);
-        bg = findViewById(R.id.bg);
-        desc = findViewById(R.id.description);
-        title = findViewById(R.id.title);
-        ripple = findViewById(R.id.ripple);
-
-        // Switch Theme Based on Mode
-        int nightModeFlags = getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        switch (nightModeFlags) {
-            case Configuration.UI_MODE_NIGHT_YES:
-                darkMode();
-                break;
-
-            case Configuration.UI_MODE_NIGHT_NO | Configuration.UI_MODE_NIGHT_UNDEFINED:
-                lightMode();
-                break;
-
-        }
 
         getCode.setOnClickListener(v -> {
             if (CheckInternetConnection.isConnected(SignUpEnterNumber.this)) {
@@ -78,20 +57,6 @@ public class SignUpEnterNumber extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void darkMode() {
-        bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.dark_bg));
-        // Change Text Colors
-        title.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
-        desc.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white_light));
-        ripple.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_round_box_dark));
-        enterNumberLayout.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_input_dark));
-        enterNumberLayout.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
-        enterNumberLayout.setHintTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
-    }
-
-    private void lightMode() {
     }
 
     @Override
@@ -122,6 +87,7 @@ public class SignUpEnterNumber extends AppCompatActivity {
             completeNumber = phoneNumber.substring(1);
             fullPhoneNumber = "+" + countryCode + completeNumber;
 
+            country = "Ghana";
             startActivity(new Intent(getApplicationContext(), SignUpEnterOTP.class));
             finish();
 

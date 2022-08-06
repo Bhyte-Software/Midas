@@ -1,14 +1,14 @@
 package com.bhyte.midas.User;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+
+import androidx.fragment.app.Fragment;
 
 import com.bhyte.midas.R;
 import com.bhyte.midas.Transactions.AddMoneyChooseMethod;
@@ -22,6 +22,7 @@ public class UserTransactionsFragment extends Fragment {
     MaterialButton addMoneyButton, continueButton;
     BottomSheetDialog bottomSheetDialog;
     EditText enterAmount;
+    Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,12 +32,13 @@ public class UserTransactionsFragment extends Fragment {
 
         // Hooks
         addMoneyButton = root.findViewById(R.id.add_money_button);
+        this.context = getContext();
 
         // Click Listeners
         addMoneyButton.setOnClickListener(v -> {
             bottomSheetDialog = new BottomSheetDialog(requireContext(), R.style.BottomSheetTheme);
 
-            View sheetView = LayoutInflater.from(getActivity()).inflate(R.layout.enter_amount_bottom_sheet,
+            View sheetView = LayoutInflater.from(context).inflate(R.layout.enter_amount_bottom_sheet,
                     root.findViewById(R.id.amount_sheet));
 
             bottomSheetDialog.setContentView(sheetView);
@@ -48,12 +50,7 @@ public class UserTransactionsFragment extends Fragment {
 
             // Click Listeners
             assert continueButton != null;
-            continueButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    checkInput();
-                }
-            });
+            continueButton.setOnClickListener(v1 -> checkInput());
         });
 
         return root;
@@ -64,7 +61,7 @@ public class UserTransactionsFragment extends Fragment {
         lengthOfVal = amountEntered.length();
 
         if (lengthOfVal >= 2) {
-            startActivity(new Intent(getActivity(), AddMoneyChooseMethod.class));
+            startActivity(new Intent(context, AddMoneyChooseMethod.class));
         } else if (lengthOfVal == 0) {
             enterAmount.setError("Please enter amount");
         } else {

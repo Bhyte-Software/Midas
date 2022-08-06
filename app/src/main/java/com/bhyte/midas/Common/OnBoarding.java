@@ -1,7 +1,6 @@
 package com.bhyte.midas.Common;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -9,8 +8,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bhyte.midas.AccountCreation.GetStarted;
@@ -28,7 +25,6 @@ public class OnBoarding extends AppCompatActivity {
     Animation animation;
 
     int currentPosition;
-    ConstraintLayout bg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,21 +36,6 @@ public class OnBoarding extends AppCompatActivity {
         skipButton = findViewById(R.id.skip_button);
         materialButton = findViewById(R.id.slider_button);
         dotIndicator = findViewById(R.id.dot_indicator);
-        bg = findViewById(R.id.bg);
-
-        // Switch Theme Based on Mode
-        int nightModeFlags = getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        switch (nightModeFlags) {
-            case Configuration.UI_MODE_NIGHT_YES:
-                darkMode();
-                break;
-
-            case Configuration.UI_MODE_NIGHT_NO | Configuration.UI_MODE_NIGHT_UNDEFINED:
-                lightMode();
-                break;
-
-        }
-
 
         // Call Adapter
         sliderAdapter = new SliderAdapter(this);
@@ -62,14 +43,6 @@ public class OnBoarding extends AppCompatActivity {
 
         viewPager.addOnPageChangeListener(changeListener);
 
-    }
-
-    private void lightMode() {
-    }
-
-    private void darkMode() {
-        skipButton.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
-        bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.dark_bg));
     }
 
     public void skip(View view){

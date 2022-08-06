@@ -3,9 +3,9 @@
 3    package="com.google.android.ads.nativetemplates" >
 4
 5    <uses-sdk
-6        android:minSdkVersion="16"
+6        android:minSdkVersion="27"
 6-->C:\Users\Braimah Abiola\Desktop\Projects\Midas\nativetemplates\src\main\AndroidManifest.xml
-7        android:targetSdkVersion="30" />
+7        android:targetSdkVersion="31" />
 7-->C:\Users\Braimah Abiola\Desktop\Projects\Midas\nativetemplates\src\main\AndroidManifest.xml
 8
 9    <application android:supportsRtl="true" >

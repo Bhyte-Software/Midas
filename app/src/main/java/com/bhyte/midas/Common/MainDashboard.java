@@ -1,9 +1,5 @@
 package com.bhyte.midas.Common;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Build;
@@ -16,6 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bhyte.midas.AccountCreation.GetStarted;
 import com.bhyte.midas.R;
@@ -52,7 +52,6 @@ public class MainDashboard extends AppCompatActivity {
         bottomNavMenu();
     }
 
-
     boolean doubleBackToExitPressedOnce = false;
 
     @Override
@@ -63,9 +62,9 @@ public class MainDashboard extends AppCompatActivity {
             return;
         }
 
-        if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.M){
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
             this.doubleBackToExitPressedOnce = true;
-            Toast toast = Toast.makeText(MainDashboard.this, "Please press back again to exit midas", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(MainDashboard.this, R.string.back_quit, Toast.LENGTH_SHORT);
             View view1 = toast.getView();
 
             //Gets the actual oval background of the Toast then sets the colour filter
@@ -83,7 +82,7 @@ public class MainDashboard extends AppCompatActivity {
             LayoutInflater inflater = getLayoutInflater();
             View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.custom_toast_container));
             TextView textView = (TextView) layout.findViewById(R.id.text);
-            textView.setText("Please press back again to exit midas");
+            textView.setText(R.string.back_exit);
 
             Toast toast = new Toast(getApplicationContext());
             toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);
@@ -92,38 +91,28 @@ public class MainDashboard extends AppCompatActivity {
             toast.show();
         }
 
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce=false;
-            }
-        }, 2000);
+        new Handler(Looper.getMainLooper()).postDelayed(() -> doubleBackToExitPressedOnce=false, 2000);
     }
 
     private void bottomNavMenu() {
-        chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public void onItemSelected(int i) {
-                Fragment fragment = null;
-                switch (i) {
-                    case R.id.bottom_nav_home:
-                        fragment = new UserHomeFragment();
-                        break;
-                    case R.id.bottom_nav_transactions:
-                        fragment = new UserTransactionsFragment();
-                        break;
-                    case R.id.bottom_nav_cards:
-                        fragment = new UserCardsFragment();
-                        break;
-                    case R.id.bottom_nav_settings:
-                        fragment = new UserSettingsFragment();
-                        break;
-                }
-                assert fragment != null;
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        chipNavigationBar.setOnItemSelectedListener(i -> {
+            Fragment fragment = null;
+            switch (i) {
+                case R.id.bottom_nav_home:
+                    fragment = new UserHomeFragment();
+                    break;
+                case R.id.bottom_nav_transactions:
+                    fragment = new UserTransactionsFragment();
+                    break;
+                case R.id.bottom_nav_cards:
+                    fragment = new UserCardsFragment();
+                    break;
+                case R.id.bottom_nav_settings:
+                    fragment = new UserSettingsFragment();
+                    break;
             }
+            assert fragment != null;
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
         });
     }
 }

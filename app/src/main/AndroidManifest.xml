@@ -17,15 +17,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Midas"
+        android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
         <activity
-            android:name=".User.Welcome"
+            android:name=".Common.AppTheme"
+            android:exported="false" />
+        <activity
+            android:name=".Transactions.ReviewTransaction"
+            android:exported="false" />
+        <activity
+            android:name=".Transactions.AddMoneyChooseProvider"
+            android:exported="false" />
+        <activity
+            android:name=".Common.UpdateRequired"
+            android:exported="false" />
+        <activity
+            android:name=".Transactions.AddMoney"
+            android:exported="false" />
+        <activity
+            android:name=".AccountCreation.EnterOTPNigeria"
+            android:exported="false" />
+        <activity
+            android:name=".AccountCreation.EnterNumberNigeria"
             android:exported="false" />
         <activity
             android:name=".User.CreateGiftCardFinal"
             android:exported="false" />
         <activity
             android:name=".User.GiftCardAddDetails"
+            android:exported="false" />
+        <activity
+            android:name=".AccountCreation.SignUpBirthdate"
             android:exported="false" />
         <activity
             android:name=".User.GiftCardFundCard"
@@ -46,16 +68,10 @@
             android:name=".User.EditProfile"
             android:exported="false" />
         <activity
-            android:name=".AccountCreation.SignUpBirthdate"
-            android:exported="false" />
-        <activity
             android:name=".AccountCreation.FingerprintRegistration"
             android:exported="false" />
         <activity
             android:name=".Transactions.AddPaymentMethod"
-            android:exported="false" />
-        <activity
-            android:name=".Common.FAQ"
             android:exported="false" />
         <activity
             android:name=".Transactions.AddMoneyChooseMethod"
@@ -172,7 +188,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Test App ID -->
+        </activity>
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3862971524430784~7943472965" />

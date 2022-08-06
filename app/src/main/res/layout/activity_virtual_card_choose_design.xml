@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:scrollbars="none"
-    android:background="@drawable/background_gradient"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
     tools:context=".User.VirtualCardChooseDesign">
 
     <LinearLayout
@@ -15,216 +14,252 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/dimen_5"
-            android:padding="@dimen/dimen_15">
-
-            <ImageView
-                android:id="@+id/back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:onClick="callBack"
-                android:src="@drawable/back_icon"
-                app:tint="@color/blue_200"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dimen_15"
-                android:layout_toEndOf="@id/back"
-                android:fontFamily="@font/roboto_bold"
-                android:text="@string/choose_card_design"
-                android:textColor="@color/blue_200"
-                android:textSize="26sp" />
-
-        </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/card_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-40dp"
-            android:src="@drawable/cards_black" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_15"
-            android:layout_marginTop="-30dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="@string/card_design"
-            android:textColor="@color/blue_200"
-            android:textSize="22sp" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_15"
-            android:orientation="horizontal"
-            android:padding="15dp">
+            android:layout_height="120dp"
+            android:background="@color/blue_200"
+            android:elevation="8dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/standard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/round_black" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dimen_10"
-                        android:layout_toEndOf="@id/standard"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="Standard"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
+                <ImageView
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:padding="@dimen/dimen_15"
+                    android:id="@+id/menu_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_20">
+                    android:layout_gravity="center_vertical"
+                    android:onClick="callBack"
+                    android:src="@drawable/back_icon"
+                    app:tint="@color/white" />
 
-                    <ImageView
-                        android:id="@+id/blue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/round_blue" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dimen_10"
-                        android:layout_toEndOf="@id/blue"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="Blue"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_20">
-
-                    <ImageView
-                        android:id="@+id/red"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/round_red" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dimen_10"
-                        android:layout_toEndOf="@id/red"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="Red"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_20">
-
-                    <ImageView
-                        android:id="@+id/yellow"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/round_yellow" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dimen_10"
-                        android:layout_toEndOf="@id/yellow"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="Yellow"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-                </RelativeLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:orientation="vertical">
-
-                <RadioGroup
-                    android:id="@+id/radio_group"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/black_radio"
-                        android:layout_width="@dimen/dimen_30"
-                        android:layout_height="@dimen/dimen_30"
-                        android:buttonTint="@color/black" />
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/blue_radio"
-                        android:layout_width="@dimen/dimen_30"
-                        android:layout_height="@dimen/dimen_30"
-                        android:layout_marginTop="@dimen/dimen_20"
-                        android:buttonTint="@color/blue_200" />
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/red_radio"
-                        android:layout_width="@dimen/dimen_30"
-                        android:layout_height="@dimen/dimen_30"
-                        android:layout_marginTop="@dimen/dimen_20"
-                        android:buttonTint="@color/red_light" />
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/yellow_radio"
-                        android:layout_width="@dimen/dimen_30"
-                        android:layout_height="@dimen/dimen_30"
-                        android:layout_marginTop="@dimen/dimen_20"
-                        android:buttonTint="@color/orange_light" />
-
-                </RadioGroup>
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dimen_20"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/choose_card_design"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
         </RelativeLayout>
 
-        <com.google.android.material.button.MaterialButton
+        <ScrollView
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dimen_40"
+            android:paddingStart="@dimen/dimen_10"
+            android:paddingEnd="@dimen/dimen_10"
+            android:scrollbars="none"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_margin="@dimen/dimen_25"
-            android:id="@+id/next"
-            android:layout_marginBottom="@dimen/dimen_50"
-            android:text="Continue"
-            android:textAllCaps="false"
-            app:cornerRadius="35dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-55dp"
+            android:background="@drawable/top_round_corner_overlay"
+            android:elevation="10dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginTop="-20dp"
+                    android:id="@+id/card_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cards_black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_15"
+                    android:layout_marginTop="-40dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/card_design"
+                    android:textColor="@color/skip_text"
+                    android:textSize="22sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_15"
+                    android:orientation="horizontal"
+                    android:padding="15dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/standard"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/round_black" />
+
+                            <TextView
+                                android:id="@+id/text1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/dimen_10"
+                                android:layout_toEndOf="@id/standard"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="Standard"
+                                android:textColor="@color/main_text"
+                                android:textSize="18sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_20">
+
+                            <ImageView
+                                android:id="@+id/blue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/round_blue" />
+
+                            <TextView
+                                android:id="@+id/text2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/dimen_10"
+                                android:layout_toEndOf="@id/blue"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="Blue"
+                                android:textColor="@color/main_text"
+                                android:textSize="18sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_20">
+
+                            <ImageView
+                                android:id="@+id/red"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/round_red" />
+
+                            <TextView
+                                android:id="@+id/text3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/dimen_10"
+                                android:layout_toEndOf="@id/red"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="Red"
+                                android:textColor="@color/main_text"
+                                android:textSize="18sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_20">
+
+                            <ImageView
+                                android:id="@+id/yellow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/round_yellow" />
+
+                            <TextView
+                                android:id="@+id/text4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/dimen_10"
+                                android:layout_toEndOf="@id/yellow"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="Yellow"
+                                android:textColor="@color/main_text"
+                                android:textSize="18sp" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:orientation="vertical">
+
+                        <RadioGroup
+                            android:id="@+id/radio_group"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.radiobutton.MaterialRadioButton
+                                android:id="@+id/black_radio"
+                                android:layout_width="@dimen/dimen_30"
+                                android:layout_height="@dimen/dimen_30"
+                                android:buttonTint="@color/black" />
+
+                            <com.google.android.material.radiobutton.MaterialRadioButton
+                                android:id="@+id/blue_radio"
+                                android:layout_width="@dimen/dimen_30"
+                                android:layout_height="@dimen/dimen_30"
+                                android:layout_marginTop="@dimen/dimen_20"
+                                android:buttonTint="@color/blue_200" />
+
+                            <com.google.android.material.radiobutton.MaterialRadioButton
+                                android:id="@+id/red_radio"
+                                android:layout_width="@dimen/dimen_30"
+                                android:layout_height="@dimen/dimen_30"
+                                android:layout_marginTop="@dimen/dimen_20"
+                                android:buttonTint="@color/red_light" />
+
+                            <com.google.android.material.radiobutton.MaterialRadioButton
+                                android:id="@+id/yellow_radio"
+                                android:layout_width="@dimen/dimen_30"
+                                android:layout_height="@dimen/dimen_30"
+                                android:layout_marginTop="@dimen/dimen_20"
+                                android:buttonTint="@color/orange_light" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="@dimen/dimen_10"
+                    android:layout_marginEnd="@dimen/dimen_10"
+                    android:layout_marginTop="@dimen/dimen_30"
+                    android:id="@+id/next"
+                    android:layout_marginBottom="@dimen/dimen_25"
+                    android:text="@string/continueButton"
+                    android:textAllCaps="false"
+                    app:cornerRadius="35dp" />
+
+            </LinearLayout>
+
+        </ScrollView>
 
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>

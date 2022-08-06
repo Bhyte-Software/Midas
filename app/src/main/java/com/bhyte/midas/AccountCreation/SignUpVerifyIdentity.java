@@ -31,7 +31,6 @@ public class SignUpVerifyIdentity extends AppCompatActivity {
     RelativeLayout nationalID, passport;
     MaterialButton skipButton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -3,8 +3,8 @@
     package="com.google.android.ads.nativetemplates" >
 
     <uses-sdk
-        android:minSdkVersion="16"
-        android:targetSdkVersion="30" />
+        android:minSdkVersion="27"
+        android:targetSdkVersion="31" />
 
     <application android:supportsRtl="true" >
     </application>

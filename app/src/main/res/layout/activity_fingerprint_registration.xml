@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/bg"
     android:background="@drawable/background_gradient"
     tools:context=".AccountCreation.FingerprintRegistration">
 
@@ -81,7 +82,6 @@
 
         <TextView
             android:id="@+id/data_text"
-            android:visibility="invisible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/skip_button"
@@ -89,7 +89,8 @@
             android:layout_marginTop="@dimen/dimen_10"
             android:fontFamily="@font/roboto_regular"
             android:padding="@dimen/dimen_15"
-            android:text="Data" />
+            android:text="Data"
+            android:visibility="invisible" />
 
     </RelativeLayout>
 

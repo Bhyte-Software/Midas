@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-  <solid android:color="#ffffffff"/>
+  <solid android:color="@color/gnt_bg"/>
 
   <stroke android:width="2dp"
-      android:color="@color/gnt_ad_green"/>
+      android:color="@color/gnt_main_text"/>
 
   <padding android:left="1dp"
       android:top="1dp"

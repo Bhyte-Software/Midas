@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/background_gradient"
+    android:background="@color/bg"
     android:layout_height="match_parent"
     tools:context=".User.UserTransactionsFragment">
 
@@ -13,28 +13,28 @@
         android:orientation="vertical">
 
         <ImageView
-            android:paddingEnd="@dimen/dimen_10"
-            android:paddingStart="@dimen/dimen_10"
-            android:layout_marginTop="-40dp"
+            android:padding="@dimen/dimen_20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/no_data" />
+            android:src="@drawable/no_cards_image"
+            android:contentDescription="@string/image" />
 
         <TextView
             android:gravity="center"
             android:id="@+id/title"
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:paddingStart="@dimen/dimen_10"
             android:paddingEnd="@dimen/dimen_10"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-40dp"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/no_transactions"
-            android:textColor="@color/black"
+            android:textColor="@color/main_text"
             android:textSize="22sp" />
 
         <TextView
+            android:textColor="@color/secondary_text"
             android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -4,25 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     tools:context=".Common.NoInternet">
 
     <ImageView
+        android:id="@+id/img"
+        android:layout_width="wrap_content"
+        android:layout_height="340dp"
+        android:contentDescription="@string/no_internet"
+        android:paddingStart="@dimen/dimen_10"
+        android:paddingEnd="@dimen/dimen_10"
+        android:src="@drawable/world_connected" />
+
+    <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/no_internet" />
+        android:layout_below="@id/img"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/no_internet"
+        android:textColor="@color/main_text"
+        android:textSize="27sp" />
 
     <TextView
         android:id="@+id/description"
+        android:layout_below="@id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/go_to_settings"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/dimen_40"
         android:fontFamily="@font/roboto_regular"
         android:padding="5dp"
+        android:textColor="@color/secondary_text"
         android:text="@string/no_internet_connection"
         android:textAlignment="center"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/go_to_settings"
@@ -32,10 +48,23 @@
         android:layout_marginStart="@dimen/dimen_25"
         android:layout_marginTop="@dimen/dimen_25"
         android:layout_marginEnd="@dimen/dimen_25"
+        android:layout_marginBottom="80dp"
         android:onClick="callSettings"
-        android:layout_marginBottom="@dimen/dimen_50"
         android:text="@string/go_to_settings"
         android:textAllCaps="false"
         app:cornerRadius="35dp" />
+
+    <TextView
+        android:id="@+id/try_again"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dimen_20"
+        android:fontFamily="@font/roboto_medium"
+        android:onClick="callGetStarted"
+        android:padding="@dimen/dimen_10"
+        android:text="@string/try_again"
+        android:textColor="@color/skip_text" />
 
 </RelativeLayout>

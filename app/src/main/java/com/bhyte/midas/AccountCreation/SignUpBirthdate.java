@@ -1,19 +1,13 @@
 package com.bhyte.midas.AccountCreation;
 
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,16 +16,12 @@ import androidx.core.content.ContextCompat;
 
 import com.bhyte.midas.R;
 
-import java.lang.reflect.Field;
 import java.util.Calendar;
 
 public class SignUpBirthdate extends AppCompatActivity {
 
     public static int age;
     DatePicker datePicker;
-
-    RelativeLayout bg, ripple;
-    TextView title, desc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,31 +30,6 @@ public class SignUpBirthdate extends AppCompatActivity {
 
         // Hooks
         datePicker = findViewById(R.id.birthday_picker);
-        bg = findViewById(R.id.bg);
-        ripple = findViewById(R.id.ripple);
-        title = findViewById(R.id.title);
-        desc = findViewById(R.id.description);
-
-        // Switch Theme Based on Mode
-        int nightModeFlags = getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        switch (nightModeFlags) {
-            case Configuration.UI_MODE_NIGHT_YES:
-                darkMode();
-                break;
-
-            case Configuration.UI_MODE_NIGHT_NO | Configuration.UI_MODE_NIGHT_UNDEFINED:
-                break;
-
-        }
-
-    }
-
-    private void darkMode() {
-        bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.dark_bg));
-        // Change Text Colors
-        title.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
-        desc.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white_light));
-        ripple.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_round_box_dark));
     }
 
     public void callNext(View view) {

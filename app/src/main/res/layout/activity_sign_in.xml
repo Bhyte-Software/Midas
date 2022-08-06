@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/background_gradient"
+    android:background="@color/bg"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:layout_height="match_parent"
     tools:context=".AccountCreation.SignIn">
 
     <ImageView
+        android:contentDescription="@string/image"
         android:layout_centerHorizontal="true"
         android:id="@+id/fingerprint_image"
         android:layout_width="wrap_content"
@@ -27,10 +28,12 @@
         android:layout_marginTop="@dimen/dimen_10"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/try_fingerprint"
-        android:textColor="@color/black"
+        android:textColor="@color/main_text"
         android:textSize="25sp" />
 
     <TextView
+        android:textColor="@color/secondary_text"
+        android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
@@ -42,13 +45,13 @@
         android:textSize="20sp" />
 
     <RelativeLayout
-        android:layout_marginBottom="@dimen/dimen_20"
         android:id="@+id/rec"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/forgot_password"
         android:layout_marginStart="@dimen/dimen_20"
         android:layout_marginEnd="@dimen/dimen_20"
+        android:layout_marginBottom="@dimen/dimen_20"
         android:background="@drawable/ripple_round_box"
         android:clickable="true"
         android:elevation="@dimen/dimen_5"
@@ -58,6 +61,7 @@
         android:paddingBottom="@dimen/dimen_20">
 
         <TextView
+            android:textColor="@color/secondary_text"
             android:id="@+id/hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,8 +84,9 @@
             android:inputType="textEmailAddress|textFilter"
             android:paddingStart="15dp"
             android:paddingEnd="@dimen/dimen_15"
-            android:textColor="@color/blue_200"
-            android:textSize="18sp" />
+            android:textColor="@color/main_text"
+            android:textSize="18sp"
+            android:autofillHints="emailAddress" />
 
         <EditText
             android:id="@+id/input_password"
@@ -89,7 +94,7 @@
             android:layout_height="@dimen/dimen_60"
             android:layout_below="@id/email_input_layout"
             android:layout_marginTop="@dimen/dimen_10"
-            android:autofillHints="none"
+            android:autofillHints="password"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_password_icon"
             android:drawablePadding="15dp"
@@ -98,7 +103,7 @@
             android:inputType="textPassword"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:textColor="@color/blue_200"
+            android:textColor="@color/main_text"
             android:textSize="18sp"
             tools:ignore="RtlSymmetry" />
 
@@ -128,8 +133,9 @@
         android:layout_marginBottom="@dimen/dimen_20"
         android:fontFamily="@font/roboto_medium"
         android:onClick="callChangePassword"
+        android:padding="@dimen/dimen_10"
         android:text="@string/forgot_password"
-        android:textColor="@color/blue_200"
+        android:textColor="@color/skip_text"
         android:textSize="17sp" />
 
 </RelativeLayout>
