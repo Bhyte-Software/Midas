@@ -90,7 +90,7 @@
         <RadioButton
             android:id="@+id/mobile_money"
             android:drawablePadding="@dimen/dimen_15"
-            android:padding="@dimen/dimen_15"
+            android:padding="@dimen/dimen_20"
             android:textSize="18sp"
             android:fontFamily="@font/roboto_medium"
             android:background="@drawable/radio_selector"
@@ -105,7 +105,7 @@
             android:id="@+id/bank_transfer"
             android:layout_marginTop="@dimen/dimen_15"
             android:drawablePadding="@dimen/dimen_15"
-            android:padding="@dimen/dimen_15"
+            android:padding="@dimen/dimen_20"
             android:textSize="18sp"
             android:fontFamily="@font/roboto_medium"
             android:background="@drawable/radio_selector"

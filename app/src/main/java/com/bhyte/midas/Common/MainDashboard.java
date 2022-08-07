@@ -1,5 +1,6 @@
 package com.bhyte.midas.Common;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Build;
@@ -15,7 +16,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bhyte.midas.AccountCreation.GetStarted;
 import com.bhyte.midas.R;
@@ -94,6 +94,7 @@ public class MainDashboard extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(() -> doubleBackToExitPressedOnce=false, 2000);
     }
 
+    @SuppressLint("NonConstantResourceId")
     private void bottomNavMenu() {
         chipNavigationBar.setOnItemSelectedListener(i -> {
             Fragment fragment = null;
@@ -112,7 +113,7 @@ public class MainDashboard extends AppCompatActivity {
                     break;
             }
             assert fragment != null;
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
         });
     }
 }

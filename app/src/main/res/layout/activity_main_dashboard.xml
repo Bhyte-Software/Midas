@@ -19,6 +19,6 @@
         android:theme="@style/Theme.Midas.BottomNavTheme"
         app:cnb_menuResource="@menu/bottom_nav_menu"
         app:cnb_orientationMode="horizontal"
-        app:cnb_radius="@dimen/dimen_20"/>
+        app:cnb_radius="@dimen/dimen_20" />
 
 </RelativeLayout>

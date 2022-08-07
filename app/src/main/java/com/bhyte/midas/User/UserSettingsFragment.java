@@ -3,6 +3,7 @@ package com.bhyte.midas.User;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Build;
@@ -40,10 +41,13 @@ public class UserSettingsFragment extends Fragment {
     Context context;
 
     FirebaseAuth firebaseAuth;
+    SharedPreferences appTheme;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        appTheme = requireContext().getSharedPreferences("AppThemePrefs", 0);
+        boolean isNightModeOn = appTheme.getBoolean("NightMode", false);
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_user_settings, container, false);
 
@@ -60,6 +64,16 @@ public class UserSettingsFragment extends Fragment {
         themeIcon = root.findViewById(R.id.theme);
 
         this.context = getContext();
+
+        if(isNightModeOn){
+            if (context != null) {
+                themeIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.moon_icon));
+            }
+        } else {
+            if (context != null) {
+                themeIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.sun_icon));
+            }
+        }
 
         // Get Data
         userFullName = UserHomeFragment.usernameS;

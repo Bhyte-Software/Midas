@@ -369,6 +369,7 @@
     <string name="choose_your_provider">Choose your provider</string>
     <string name="use_same_number">You have to use the same number that\'s verified on your Midas account</string>
     <string name="update_number">Contact support if you need to update your number</string>
+    <string name="app_theme">App Theme</string>
     <!-- TERMS & CONDITIONS -->
 
 </resources>

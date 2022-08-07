@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/image"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/dimen_20"
+        android:layout_marginTop="-50dp"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/choose_your_provider"
         android:textAlignment="center"
