@@ -22,9 +22,9 @@ import com.google.android.material.button.MaterialButton;
 public class AddMoney extends AppCompatActivity {
 
     BottomSheetDialog bottomSheetDialog;
-    public static int amountToDeposit;
+    public static Double amountToDeposit;
     public static String amountToDepositString;
-    int userAmountInteger;
+    Double userAmountDouble;
     MaterialButton nextButton;
     ImageView backspace, back, help;
     TextView amount, currency, one, two, three, four, five, six, seven, eight, nine, zero, dot;
@@ -59,11 +59,11 @@ public class AddMoney extends AppCompatActivity {
             // Get Input
             // Convert String to int
             String userInputAmount = amount.getText().toString();
-            userAmountInteger = Integer.parseInt(userInputAmount);
-            amountToDeposit = userAmountInteger;
+            userAmountDouble = Double.parseDouble(userInputAmount);
+            amountToDeposit = userAmountDouble;
             amountToDepositString = userInputAmount;
 
-            if (userAmountInteger > 5000 | userAmountInteger < 20) {
+            if (userAmountDouble > 5000 | userAmountDouble < 20) {
                 // Custom Toast
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                     Toast toast = Toast.makeText(AddMoney.this, R.string.right_amount, Toast.LENGTH_SHORT);
@@ -110,7 +110,7 @@ public class AddMoney extends AppCompatActivity {
         zero.setOnClickListener(v -> {
             if (amount.getText().toString().equals("0")) {
                 amount.setText("0");
-            } else if(amount.getText().toString().length() == 7){
+            } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
                 maxLengthToast();
             } else {
@@ -120,7 +120,7 @@ public class AddMoney extends AppCompatActivity {
         one.setOnClickListener(v -> {
             if (amount.getText().toString().equals("0")) {
                 amount.setText("1");
-            } else if(amount.getText().toString().length() == 7){
+            } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
                 maxLengthToast();
             } else {
@@ -130,7 +130,7 @@ public class AddMoney extends AppCompatActivity {
         two.setOnClickListener(v -> {
             if (amount.getText().toString().equals("0")) {
                 amount.setText("2");
-            } else if(amount.getText().toString().length() == 7){
+            } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
                 maxLengthToast();
             } else {
@@ -140,7 +140,7 @@ public class AddMoney extends AppCompatActivity {
         three.setOnClickListener(v -> {
             if (amount.getText().toString().equals("0")) {
                 amount.setText("3");
-            } else if(amount.getText().toString().length() == 7){
+            } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
                 maxLengthToast();
             } else {
@@ -150,7 +150,7 @@ public class AddMoney extends AppCompatActivity {
         four.setOnClickListener(v -> {
             if (amount.getText().toString().equals("0")) {
                 amount.setText("4");
-            } else if(amount.getText().toString().length() == 7){
+            } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
                 maxLengthToast();
             } else {
@@ -160,7 +160,7 @@ public class AddMoney extends AppCompatActivity {
         five.setOnClickListener(v -> {
             if (amount.getText().toString().equals("0")) {
                 amount.setText("5");
-            } else if(amount.getText().toString().length() == 7){
+            } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
                 maxLengthToast();
             } else {
@@ -170,7 +170,7 @@ public class AddMoney extends AppCompatActivity {
         six.setOnClickListener(v -> {
             if (amount.getText().toString().equals("0")) {
                 amount.setText("6");
-            } else if(amount.getText().toString().length() == 7){
+            } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
                 maxLengthToast();
             } else {
@@ -180,7 +180,7 @@ public class AddMoney extends AppCompatActivity {
         seven.setOnClickListener(v -> {
             if (amount.getText().toString().equals("0")) {
                 amount.setText("7");
-            } else if(amount.getText().toString().length() == 7){
+            } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
                 maxLengthToast();
             } else {
@@ -190,7 +190,7 @@ public class AddMoney extends AppCompatActivity {
         eight.setOnClickListener(v -> {
             if (amount.getText().toString().equals("0")) {
                 amount.setText("8");
-            } else if(amount.getText().toString().length() == 7){
+            } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
                 maxLengthToast();
             } else {
@@ -200,7 +200,7 @@ public class AddMoney extends AppCompatActivity {
         nine.setOnClickListener(v -> {
             if (amount.getText().toString().equals("0")) {
                 amount.setText("9");
-            } else if(amount.getText().toString().length() == 7){
+            } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
                 maxLengthToast();
             } else {
@@ -210,7 +210,7 @@ public class AddMoney extends AppCompatActivity {
         dot.setOnClickListener(v -> {
             if (amount.getText().toString().equals("0")) {
                 amount.setText(".");
-            } else if(amount.getText().toString().length() == 7){
+            } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
                 maxLengthToast();
             } else {
