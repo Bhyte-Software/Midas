@@ -3,7 +3,6 @@ package com.bhyte.midas.User;
 import static android.content.ContentValues.TAG;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,9 +13,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -63,15 +62,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserHomeFragment extends Fragment implements QuickActionsAdapter.OnNoteListener {
 
+    ScrollView scrollView;
     RecyclerView quickActionsRecycler;
     RecyclerView.Adapter adapter;
     ArrayList<QuickActionsHelperClass> viewQuickActions = new ArrayList<>();
 
-    Dialog logoutDialog;
-    MaterialButton positive, negative;
-
     public static String key, usernameS;
-    public int lengthOfVal, lengthOfAmount;
+    public int lengthOfAmount;
     Context context;
     FirebaseDatabase database;
     ShimmerFrameLayout shimmerFrameLayout;
@@ -81,14 +78,12 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
     LinearLayout adView;
     View viewHolder;
     String val = "visible";
-    EditText enterAmount;
     CircleImageView profilePicture;
     String account_balance, fullName;
     BottomSheetDialog bottomSheetDialog;
     RelativeLayout currencyView, verificationStatus, usdLayout, ghcLayout, gradientLayout, roundRec;
     MaterialButton addMoney;
     ImageView toggleIcon, check1, check2;
-    ScrollView scrollView;
     Animation animation, animation2;
     TextView currency, username, totalAssets, accountBalance, greetingText, recommendedText, text1, text2, text3;
     private AdLoader adLoader;
@@ -108,11 +103,11 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         database = FirebaseDatabase.getInstance();
 
         // Hooks
+        scrollView = root.findViewById(R.id.scroll_layout);
         quickActionsRecycler = root.findViewById(R.id.quick_actions_recycler);
         text1 = root.findViewById(R.id.text1);
         text2 = root.findViewById(R.id.text2);
         text3 = root.findViewById(R.id.text3);
-        scrollView = root.findViewById(R.id.scroll_layout);
         roundRec = root.findViewById(R.id.round_rec);
         gradientLayout = root.findViewById(R.id.gradient_layout);
         adView = root.findViewById(R.id.recommended_layout);
@@ -129,6 +124,10 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         profilePicture = root.findViewById(R.id.profile_picture);
         greetingText = root.findViewById(R.id.greetings);
         shimmerFrameLayout = root.findViewById(R.id.shimmer_layout);
+
+        // Clipping
+        scrollView.setOutlineProvider(ViewOutlineProvider.BACKGROUND);
+        scrollView.setClipToOutline(true);
 
         // Recycler
         quickActionsRecycler.setFocusable(false);
@@ -169,11 +168,12 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
 
             if (currencyBoolean) {
                 check1.setVisibility(View.VISIBLE);
-                check2.setVisibility(View.INVISIBLE);
+                check2.setVisibility(View.GONE);
             } else {
-                check1.setVisibility(View.INVISIBLE);
+                check1.setVisibility(View.GONE);
                 check2.setVisibility(View.VISIBLE);
             }
+            check2.setVisibility(View.GONE);
 
             ghcLayout.setOnClickListener(v12 -> {
                 // Save
@@ -183,7 +183,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
 
                 // Activate check
                 check1.setVisibility(View.VISIBLE);
-                check2.setVisibility(View.INVISIBLE);
+                check2.setVisibility(View.GONE);
 
                 // Close Bottom Sheet
                 bottomSheetDialog.dismiss();
@@ -199,7 +199,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
                 editor.apply();
 
                 // Activate check
-                check1.setVisibility(View.INVISIBLE);
+                check1.setVisibility(View.GONE);
                 check2.setVisibility(View.VISIBLE);
 
                 // Close Bottom Sheet

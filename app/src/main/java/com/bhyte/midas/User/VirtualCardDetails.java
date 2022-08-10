@@ -103,7 +103,7 @@ public class VirtualCardDetails extends AppCompatActivity {
 
 
             // Change Image Resource
-            copyName.setImageDrawable(getResources().getDrawable(R.drawable.check_small));
+            copyName.setImageDrawable(getResources().getDrawable(R.drawable.green_tick));
             copyNumber.setImageDrawable(getResources().getDrawable(R.drawable.copy));
             copyCvv.setImageDrawable(getResources().getDrawable(R.drawable.copy));
         });
@@ -135,7 +135,7 @@ public class VirtualCardDetails extends AppCompatActivity {
 
             // Change Image Resource
             copyName.setImageDrawable(getResources().getDrawable(R.drawable.copy));
-            copyNumber.setImageDrawable(getResources().getDrawable(R.drawable.check_small));
+            copyNumber.setImageDrawable(getResources().getDrawable(R.drawable.green_tick));
             copyCvv.setImageDrawable(getResources().getDrawable(R.drawable.copy));
         });
 
@@ -166,7 +166,7 @@ public class VirtualCardDetails extends AppCompatActivity {
             // Change Image Resource
             copyName.setImageDrawable(getResources().getDrawable(R.drawable.copy));
             copyNumber.setImageDrawable(getResources().getDrawable(R.drawable.copy));
-            copyCvv.setImageDrawable(getResources().getDrawable(R.drawable.check_small));
+            copyCvv.setImageDrawable(getResources().getDrawable(R.drawable.green_tick));
         });
 
     }

@@ -32,6 +32,7 @@ dimen gnt_text_row_weight
 dimen gnt_text_size_large
 dimen gnt_text_size_small
 drawable gnt_ad_button
+drawable gnt_ad_image_outline
 drawable gnt_outline_shape
 drawable gnt_rounded_corners_shape
 id ad_notification_view

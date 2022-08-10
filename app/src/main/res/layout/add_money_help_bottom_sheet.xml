@@ -55,15 +55,6 @@
             android:textColor="@color/main_text"
             android:textSize="18sp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:contentDescription="@string/image"
-            android:src="@drawable/next_material"
-            app:tint="@color/main_text" />
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -95,15 +86,6 @@
             android:text="How Peer-To-Peer works"
             android:textColor="@color/main_text"
             android:textSize="18sp" />
-
-        <ImageView
-            android:contentDescription="@string/image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/next_material"
-            app:tint="@color/main_text" />
 
     </RelativeLayout>
 
@@ -138,15 +120,6 @@
             android:text="How long until deposit shows in my Midas account"
             android:textColor="@color/main_text"
             android:textSize="18sp" />
-
-        <ImageView
-            android:contentDescription="@string/image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/next_material"
-            app:tint="@color/main_text" />
 
     </RelativeLayout>
 

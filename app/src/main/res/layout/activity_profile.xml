@@ -230,7 +230,6 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    app:icon="@drawable/lock_image"
                     android:onClick="callChangePassword"
                     app:iconGravity="textEnd"
                     app:iconPadding="@dimen/dimen_20"
@@ -256,7 +255,6 @@
                     android:text="@string/log_out"
                     android:textAllCaps="false"
                     app:cornerRadius="35dp"
-                    app:icon="@drawable/logout_image"
                     app:iconGravity="textEnd" />
 
             </LinearLayout>

@@ -20,7 +20,7 @@
                 android:layout_marginTop="@dimen/gnt_no_margin"
                 android:layout_marginEnd="@dimen/gnt_no_margin"
                 android:layout_marginBottom="@dimen/gnt_no_margin"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent" />
 
             <LinearLayout
                 android:id="@+id/headline"

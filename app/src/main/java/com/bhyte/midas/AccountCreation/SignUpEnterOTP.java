@@ -16,9 +16,12 @@ import androidx.core.content.ContextCompat;
 
 import com.bhyte.midas.R;
 import com.chaos.view.PinView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -120,12 +123,22 @@ public class SignUpEnterOTP extends AppCompatActivity {
         firebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        // if the code is correct and the task is successful
-                        // we are sending our user to new activity.
-                        Intent i = new Intent(SignUpEnterOTP.this, SignUpBirthdate.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(i);
-                        finish();
+                        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                        if (firebaseUser != null){
+                            firebaseUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        // if the code is correct and the task is successful
+                                        // we are sending our user to new activity after deleting phone auth data from firebase
+                                        Intent i = new Intent(SignUpEnterOTP.this, SignUpBirthdate.class);
+                                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                }
+                            });
+                        }
                     } else {
                         //verification unsuccessful.. display an error message
                         showError();

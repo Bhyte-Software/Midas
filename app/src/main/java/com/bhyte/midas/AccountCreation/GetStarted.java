@@ -17,7 +17,8 @@ import androidx.core.content.ContextCompat;
 
 import com.bhyte.midas.Common.NoInternet;
 import com.bhyte.midas.R;
-import com.bhyte.midas.Util.CheckInternetConnection;
+import com.bhyte.midas.User.FAQ;
+import com.bhyte.midas.util.CheckInternetConnection;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -145,4 +146,5 @@ public class GetStarted extends AppCompatActivity {
         }
         pressedTime = System.currentTimeMillis();
     }
+
 }

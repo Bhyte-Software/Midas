@@ -18,45 +18,50 @@
             android:background="@color/blue_200"
             android:elevation="8dp">
 
-            <LinearLayout
-                android:layout_marginTop="@dimen/dimen_10"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginEnd="@dimen/dimen_10"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:background="?selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:padding="@dimen/dimen_15"
                     android:id="@+id/menu_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
                     android:onClick="callUserProfile"
-                    android:src="@drawable/back_icon"
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/back_material"
                     app:tint="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/dimen_20"
+                    android:layout_marginStart="@dimen/dimen_5"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Edit Profile"
+                    android:text="@string/edit_profile"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:paddingBottom="@dimen/dimen_25"
+            android:paddingBottom="@dimen/dimen_20"
             android:paddingStart="@dimen/dimen_20"
             android:paddingEnd="@dimen/dimen_20"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="-55dp"
+            android:layout_marginTop="-70dp"
             android:background="@drawable/top_round_corner_overlay"
             android:elevation="10dp">
 
@@ -70,10 +75,9 @@
                 android:layout_marginEnd="@dimen/dimen_5"
                 android:backgroundTint="@color/light_green"
                 android:fontFamily="@font/roboto_medium"
-                android:text="@string/save"
+                android:text="@string/update_profile"
                 android:textAllCaps="false"
                 app:cornerRadius="35dp"
-                app:icon="@drawable/ic_save"
                 app:iconGravity="textStart" />
 
         </RelativeLayout>

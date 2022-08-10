@@ -20,8 +20,8 @@ import android.widget.Toast;
 
 import com.bhyte.midas.Common.NoInternet;
 import com.bhyte.midas.R;
-import com.bhyte.midas.Util.CheckInternetConnection;
-import com.bhyte.midas.Util.Common;
+import com.bhyte.midas.util.CheckInternetConnection;
+import com.bhyte.midas.util.Common;
 import com.google.android.material.button.MaterialButton;
 
 public class EnterNumberNigeria extends AppCompatActivity {

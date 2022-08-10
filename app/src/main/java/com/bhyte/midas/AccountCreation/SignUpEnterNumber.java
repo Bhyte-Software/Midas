@@ -20,8 +20,8 @@ import androidx.core.content.ContextCompat;
 
 import com.bhyte.midas.Common.NoInternet;
 import com.bhyte.midas.R;
-import com.bhyte.midas.Util.CheckInternetConnection;
-import com.bhyte.midas.Util.Common;
+import com.bhyte.midas.util.CheckInternetConnection;
+import com.bhyte.midas.util.Common;
 import com.google.android.material.button.MaterialButton;
 
 public class SignUpEnterNumber extends AppCompatActivity {

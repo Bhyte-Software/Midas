@@ -169,6 +169,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-130dp"
         android:background="@drawable/bottom_sheet_background"
+        android:elevation="@dimen/dimen_10"
         android:scrollbars="none">
 
         <LinearLayout
@@ -188,12 +189,14 @@
                 android:textSize="20sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:clickable="true"
-                android:layout_margin="@dimen/dimen_10"
                 android:id="@+id/quick_actions_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false" />
+                android:clickable="true"
+                android:elevation="2dp"
+                android:focusable="false"
+                android:paddingTop="@dimen/dimen_20"
+                android:paddingBottom="@dimen/dimen_20"/>
 
             <RelativeLayout
                 android:id="@+id/verification_status"
@@ -236,10 +239,10 @@
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmer_layout"
                 android:layout_width="match_parent"
-                android:layout_marginStart="@dimen/dimen_10"
-                android:layout_marginEnd="@dimen/dimen_10"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10"
                 android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginEnd="@dimen/dimen_10"
                 android:layout_marginBottom="@dimen/dimen_50"
                 android:visibility="visible">
 
@@ -258,8 +261,8 @@
                 android:id="@+id/recommended_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginStart="25dp"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/recommended_for_you"
                 android:textColor="@color/main_text"
@@ -291,7 +294,7 @@
                 android:id="@+id/view_holder"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginBottom="@dimen/dimen_50"
+                android:layout_marginBottom="@dimen/dimen_70"
                 android:visibility="invisible" />
 
         </LinearLayout>

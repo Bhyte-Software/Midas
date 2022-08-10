@@ -372,4 +372,19 @@
     <string name="app_theme">App Theme</string>
     <!-- TERMS & CONDITIONS -->
 
+    <string name="virtual_card_faq_one_title">1. What is a virtual credit card?</string>
+    <string name="get_started_faq_one_title">1. How do I get started?</string>
+    <string name="get_started_faq_one_detail">To get started with Midas you first need to create an account and make sure it is verified. After that simply navigate to the cards section using the bottom navigation and click on create card. Select the type of card you want to create and follow the prompt.</string>
+    <string name="virtual_card_faq_two_title">2. How do Midas virtual cards\nwork?</string>
+    <string name="virtual_card_faq_one_detail">A virtual credit card is basically the same as its traditional physical counterpart; it has a 16-digit code, CVV, and an expiration date. The main difference is that virtual credit cards are digital and can only be used for online payments and purchases, money cannot be withdrawn from them.</string>
+    <string name="virtual_card_faq_two_detail">Midas works in 3 simple steps:\nOpen Midas and add your mobile money number and account details\nTap "Create a card" to create a new virtual card and fund it with the money existing in your mobile money wallet\nUse the virtual card anywhere online for all your purchases and subscriptions</string>
+    <string name="all">All</string>
+    <string name="virtual_credit_card">Virtual Credit Card</string>
+    <string name="other">Other</string>
+    <string name="top_questions">Top Questions</string>
+    <string name="nothing_to_show">Nothing to show</string>
+    <string name="chat_bot">Chat Bot</string>
+    <string name="write_a_message">Write a message...</string>
+    <string name="update_profile">Update Profile</string>
+
 </resources>

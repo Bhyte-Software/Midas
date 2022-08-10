@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ public class VirtualCardChooseDesign extends AppCompatActivity {
     public static String chosenColor;
     Context context;
 
+    RadioButton blackRadio;
     MaterialButton continueButton;
     RadioGroup radioGroup;
     ImageView cardImage;
@@ -38,14 +40,37 @@ public class VirtualCardChooseDesign extends AppCompatActivity {
         context = getApplicationContext();
 
         // Hooks
+        blackRadio = findViewById(R.id.black_radio);
         continueButton = findViewById(R.id.next);
         radioGroup = findViewById(R.id.radio_group);
         cardImage = findViewById(R.id.card_image);
+
+        // Set Black default
+        blackRadio.setChecked(true);
 
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 callChooseCardLabel();
+            }
+        });
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int i = radioGroup.getCheckedRadioButtonId();
+                if (i == R.id.blue_radio) {
+                    cardImage.setImageResource(R.drawable.cards_blue);
+                }
+                if (i == R.id.red_radio) {
+                    cardImage.setImageResource(R.drawable.cards_red);
+                }
+                if (i == R.id.yellow_radio) {
+                    cardImage.setImageResource(R.drawable.cards_yellow);
+                }
+                if (i == R.id.black_radio) {
+                    cardImage.setImageResource(R.drawable.cards_black);
+                }
             }
         });
 
@@ -70,21 +95,6 @@ public class VirtualCardChooseDesign extends AppCompatActivity {
 
         startActivity(new Intent(getApplicationContext(), VirtualCardChooseLabel.class));
 
-    }
-
-    @Override
-    public void onUserInteraction() {
-        super.onUserInteraction();
-        // Change Image based on chosen color
-        if (radioGroup.getCheckedRadioButtonId() == R.id.blue_radio) {
-            cardImage.setImageResource(R.drawable.cards_blue);
-        } else if (radioGroup.getCheckedRadioButtonId() == R.id.red_radio) {
-            cardImage.setImageResource(R.drawable.cards_red);
-        } else if (radioGroup.getCheckedRadioButtonId() == R.id.yellow_radio) {
-            cardImage.setImageResource(R.drawable.cards_yellow);
-        } else if (radioGroup.getCheckedRadioButtonId() == R.id.black_radio) {
-            cardImage.setImageResource(R.drawable.cards_black);
-        }
     }
 
     private boolean validateColor() {
