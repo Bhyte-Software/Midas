@@ -1,21 +1,29 @@
 package com.bhyte.midas.Common;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.PorterDuff;
+import android.graphics.RectF;
+import android.graphics.Shader;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.bhyte.midas.R;
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -30,6 +38,8 @@ import com.google.android.gms.ads.nativead.NativeAdOptions;
 
 public class About extends AppCompatActivity {
 
+    Context context;
+
     LinearLayout adView;
     ShimmerFrameLayout shimmerFrameLayout;
     AdLoader adLoader;
@@ -39,16 +49,18 @@ public class About extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
+        this.context = getApplicationContext();
+
         // Hooks
         shimmerFrameLayout = findViewById(R.id.shimmer_layout);
         adView = findViewById(R.id.recommended_layout);
 
         // Initialize Ads
-        MobileAds.initialize(About.this, initializationStatus -> {
+        MobileAds.initialize(context, initializationStatus -> {
         });
 
         // Load Native Ads
-        adLoader = new AdLoader.Builder(About.this, "ca-app-pub-3862971524430784/7025923215")
+        adLoader = new AdLoader.Builder(context, "ca-app-pub-3862971524430784/7025923215")
                 .forNativeAd(NativeAd -> {
                     // Show the ad
                     if (adLoader.isLoading()) {
@@ -62,54 +74,42 @@ public class About extends AppCompatActivity {
                     template.setStyles(styles);
                     template.setNativeAd(NativeAd);
 
-                    /* Show Ads in custom Layout
-                    final String getHeadline = NativeAd.getHeadline();
-                    final NativeAd.Image getIcon = NativeAd.getIcon();
-                    final String getDetails = NativeAd.getBody();
-                    final String getPrice = NativeAd.getPrice();
-                    final String getAdvertiserName = NativeAd.getAdvertiser();
-                    final double getRating = NativeAd.getStarRating();
-                    final List<NativeAd.Image> images = NativeAd.getImages();
-                    */
                 })
                 .withAdListener(new AdListener() {
                     @SuppressLint("SetTextI18n")
                     @Override
-                    public void onAdFailedToLoad(LoadAdError adError) {
+                    public void onAdFailedToLoad(@NonNull LoadAdError adError) {
                         // Make Ad View Invisible
                         adView.setVisibility(View.GONE);
 
                         // Failed to load ads
-                        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
-                            Toast toast = Toast.makeText(About.this, "Failed to load ads", Toast.LENGTH_SHORT);
-                            View view1 = toast.getView();
+                        Toast toast = Toast.makeText(context, "Failed to load ads", Toast.LENGTH_SHORT);
+                        View view1 = toast.getView();
 
-                            //Gets the actual oval background of the Toast then sets the colour filter
-                            view1.getBackground().setColorFilter(getResources().getColor(R.color.light_green), PorterDuff.Mode.SRC_IN);
+                        //Gets the actual oval background of the Toast then sets the colour filter
+                        view1.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_IN);
 
-                            //Gets the TextView from the Toast so it can be edited
-                            TextView text = view1.findViewById(android.R.id.message);
-                            text.setTextColor(getResources().getColor(R.color.white));
+                        //Gets the TextView from the Toast so it can be edited
+                        TextView text = view1.findViewById(android.R.id.message);
+                        text.setTextColor(ContextCompat.getColor(context, R.color.white));
 
-                            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                            toast.show();
-                        }
-                        else {
-                            LayoutInflater inflater = getLayoutInflater();
-                            View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.custom_toast_container));
-                            TextView textView = (TextView) layout.findViewById(R.id.text);
-                            textView.setText("Failed to load ads");
-
-                            Toast toast = new Toast(getApplicationContext());
-                            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);
-                            toast.setDuration(Toast.LENGTH_SHORT);
-                            toast.setView(layout);
-                            toast.show();
-                        }
+                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                        toast.show();
                     }
 
                     @Override
                     public void onAdLoaded() {
+                        // Get Image and Add Rounded Corners
+                        ImageView adImage = adView.findViewById(R.id.icon);
+                        BitmapDrawable drawable = (BitmapDrawable) adImage.getDrawable();
+                        Bitmap adBitmap = drawable.getBitmap();
+                        Bitmap imageRounded = Bitmap.createBitmap(adBitmap.getWidth(), adBitmap.getHeight(), adBitmap.getConfig());
+                        Canvas canvas = new Canvas(imageRounded);
+                        Paint paint = new Paint();
+                        paint.setAntiAlias(true);
+                        paint.setShader(new BitmapShader(adBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
+                        canvas.drawRoundRect((new RectF(0, 0, adBitmap.getWidth(), adBitmap.getHeight())), 15, 15, paint); // Round Image Corner 100 100 100 100
+                        adImage.setImageBitmap(imageRounded);
                         // Stop and hide shimmer
                         shimmerFrameLayout.stopShimmer();
                         shimmerFrameLayout.setVisibility(View.GONE);
@@ -127,7 +127,7 @@ public class About extends AppCompatActivity {
     }
 
     public void updateRequired(View view) {
-        startActivity(new Intent(getApplicationContext(), UpdateRequired.class));
+        startActivity(new Intent(context, UpdateRequired.class));
     }
 
     public void finish(View view) {

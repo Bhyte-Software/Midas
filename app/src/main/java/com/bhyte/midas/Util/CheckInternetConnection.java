@@ -6,7 +6,6 @@ import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
@@ -17,22 +16,18 @@ import androidx.core.content.ContextCompat;
 import com.bhyte.midas.R;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class CheckInternetConnection {
     public static boolean isConnected(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         if (activeNetwork != null && activeNetwork.isConnected()) {
+            Runtime runtime = Runtime.getRuntime();
             try {
-                URL url = new URL("https://www.google.com/");
-                HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
-                urlc.setRequestProperty("User-Agent", "test");
-                urlc.setConnectTimeout(500); // mTimeout is in seconds
-                urlc.connect();
-                return urlc.getResponseCode() == 200;
-            } catch (IOException e) {
+                Process  mIpAddressProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
+                int mExitValue = mIpAddressProcess.waitFor();
+                return mExitValue == 0;
+            } catch (IOException | InterruptedException e) {
                 try {
                     // Make Custom Toast Instead
                     Toast toast = Toast.makeText(context, "Error checking internet connection" , Toast.LENGTH_SHORT);

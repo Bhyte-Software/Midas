@@ -41,15 +41,14 @@ public class UserSettingsFragment extends Fragment {
     Context context;
 
     FirebaseAuth firebaseAuth;
-    SharedPreferences appTheme;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        appTheme = requireContext().getSharedPreferences("AppThemePrefs", 0);
-        boolean isNightModeOn = appTheme.getBoolean("NightMode", false);
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_user_settings, container, false);
+
+        this.context = getContext();
 
         // Hooks
         themeLayout = root.findViewById(R.id.theme_layout);
@@ -62,18 +61,6 @@ public class UserSettingsFragment extends Fragment {
         username = root.findViewById(R.id.user_name);
         downloadLayout = root.findViewById(R.id.download_layout);
         themeIcon = root.findViewById(R.id.theme);
-
-        this.context = getContext();
-
-        if(isNightModeOn){
-            if (context != null) {
-                themeIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.moon_icon));
-            }
-        } else {
-            if (context != null) {
-                themeIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.sun_icon));
-            }
-        }
 
         // Get Data
         userFullName = UserHomeFragment.usernameS;
@@ -102,9 +89,7 @@ public class UserSettingsFragment extends Fragment {
         termsLayout.setOnClickListener(v -> startActivity(new Intent(getContext(), TermsOfService.class)));
 
         faqLayout.setOnClickListener(v -> {
-            Uri uri = Uri.parse("https://www.usemidas.app");
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(intent);
+            startActivity(new Intent(getActivity(), FAQ.class));
         });
 
         downloadLayout.setOnClickListener(v -> {

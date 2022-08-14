@@ -1,20 +1,19 @@
 package com.bhyte.midas.Common;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.bhyte.midas.AccountCreation.GetStarted;
@@ -28,13 +27,18 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class MainDashboard extends AppCompatActivity {
 
+    Context context;
+
     ChipNavigationBar chipNavigationBar;
     String keyOne;
+    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_dashboard);
+
+        this.context = getApplicationContext();
 
         // Hooks
         chipNavigationBar = findViewById(R.id.bottom_nav_menu);
@@ -52,8 +56,6 @@ public class MainDashboard extends AppCompatActivity {
         bottomNavMenu();
     }
 
-    boolean doubleBackToExitPressedOnce = false;
-
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
@@ -62,36 +64,21 @@ public class MainDashboard extends AppCompatActivity {
             return;
         }
 
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
-            this.doubleBackToExitPressedOnce = true;
-            Toast toast = Toast.makeText(MainDashboard.this, R.string.back_quit, Toast.LENGTH_SHORT);
-            View view1 = toast.getView();
+        this.doubleBackToExitPressedOnce = true;
+        Toast toast = Toast.makeText(MainDashboard.this, R.string.back_quit, Toast.LENGTH_SHORT);
+        View view1 = toast.getView();
 
-            //Gets the actual oval background of the Toast then sets the colour filter
-            view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+        //Gets the actual oval background of the Toast then sets the colour filter
+        view1.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_IN);
 
-            //Gets the TextView from the Toast so it can be edited
-            TextView text = view1.findViewById(android.R.id.message);
-            text.setTextColor(getResources().getColor(R.color.white));
+        //Gets the TextView from the Toast so it can be edited
+        TextView text = view1.findViewById(android.R.id.message);
+        text.setTextColor(ContextCompat.getColor(context, R.color.white));
 
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-            toast.show();
-        }
-        else {
-            this.doubleBackToExitPressedOnce = true;
-            LayoutInflater inflater = getLayoutInflater();
-            View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.custom_toast_container));
-            TextView textView = (TextView) layout.findViewById(R.id.text);
-            textView.setText(R.string.back_exit);
+        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+        toast.show();
 
-            Toast toast = new Toast(getApplicationContext());
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);
-            toast.setDuration(Toast.LENGTH_SHORT);
-            toast.setView(layout);
-            toast.show();
-        }
-
-        new Handler(Looper.getMainLooper()).postDelayed(() -> doubleBackToExitPressedOnce=false, 2000);
+        new Handler(Looper.getMainLooper()).postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
     }
 
     @SuppressLint("NonConstantResourceId")

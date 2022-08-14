@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
 import com.bhyte.midas.AccountCreation.GetStarted;
 import com.bhyte.midas.Common.OnBoarding;
@@ -16,8 +15,8 @@ import com.bhyte.midas.Common.OnBoarding;
 @SuppressLint("CustomSplashScreen")
 public class SplashScreen extends AppCompatActivity {
 
-    private static final int SPLASH_TIMER = 2500;
-    SharedPreferences onBoardingScreen, appTheme;
+    private static final int SPLASH_TIMER = 2000;
+    SharedPreferences onBoardingScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

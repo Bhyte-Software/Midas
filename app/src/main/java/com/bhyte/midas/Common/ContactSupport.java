@@ -13,8 +13,9 @@ import com.bhyte.midas.R;
 
 public class ContactSupport extends AppCompatActivity {
 
-    RelativeLayout phoneLayout;
+    RelativeLayout phoneLayout, contactChatBot;
     LinearLayout emailLayout;
+    LinearLayout websiteLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +23,27 @@ public class ContactSupport extends AppCompatActivity {
         setContentView(R.layout.activity_contact_support);
 
         // Hooks
+        websiteLayout = findViewById(R.id.website_layout);
         phoneLayout = findViewById(R.id.phone_layout);
         emailLayout = findViewById(R.id.email_layout);
+        contactChatBot = findViewById(R.id.contact_chat_bot);
 
         // Click Listeners
+        contactChatBot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ChatBot.class));
+            }
+        });
+        websiteLayout.setOnClickListener(v -> openWebsite());
         phoneLayout.setOnClickListener(v -> callPhone());
         emailLayout.setOnClickListener(v -> callEmail());
+    }
+
+    private void openWebsite() {
+        Uri uri = Uri.parse("https://www.usemidas.app");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 
     private void callPhone() {

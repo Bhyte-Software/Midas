@@ -20,5 +20,6 @@
     <dimen name="translationY">30dp</dimen>
     <dimen name="translation2Y">60dp</dimen>
     <dimen name="translationYMax">45dp</dimen>
+    <dimen name="dimen_35">35dp</dimen>
 
 </resources>

@@ -2,10 +2,8 @@ package com.bhyte.midas.AccountCreation;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,142 +25,14 @@ import java.util.concurrent.TimeUnit;
 
 public class EnterOTPNigeria extends AppCompatActivity {
 
-    private FirebaseAuth firebaseAuth;
     public String verificationIdN;
     public String fullPhoneNumberN;
     public String smsNumberN;
     public String completeNumberN;
-
     TextView verify_description;
     PinView pinView;
     MaterialButton verifyButton;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up_enter_otp);
-
-        // FirebaseAuth Instance
-        firebaseAuth = FirebaseAuth.getInstance();
-
-        // Hooks
-        verify_description = findViewById(R.id.verification_description);
-        pinView = findViewById(R.id.pin_view);
-        verifyButton = findViewById(R.id.verify);
-
-        // Get Data from Previous Activity
-        fullPhoneNumberN = EnterNumberNigeria.fullPhoneNumberN;
-        smsNumberN = EnterNumberNigeria.fullPhoneNumberN;
-        completeNumberN = EnterNumberNigeria.completeNumberN;
-
-        // Delete Country Code
-        fullPhoneNumberN = fullPhoneNumberN.substring(4);
-
-        // Append
-        verify_description.append(" " + "+(234)" + fullPhoneNumberN);
-
-        // Send Code
-        sendVerificationCode(smsNumberN);
-
-        verifyButton.setOnClickListener(v -> {
-            if (pinView.getText() == null) {
-                if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
-                    Toast toast = Toast.makeText(EnterOTPNigeria.this, R.string.enter_sms, Toast.LENGTH_SHORT);
-                    View view1 = toast.getView();
-
-                    //Gets the actual oval background of the Toast then sets the colour filter
-                    view1.getBackground().setColorFilter(ContextCompat.getColor(EnterOTPNigeria.this, R.color.red), PorterDuff.Mode.SRC_IN);
-
-                    //Gets the TextView from the Toast so it can be edited
-                    TextView text = view1.findViewById(android.R.id.message);
-                    text.setTextColor(ContextCompat.getColor(EnterOTPNigeria.this, R.color.white));
-
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                    toast.show();
-                }
-                else{
-                    LayoutInflater inflater = getLayoutInflater();
-                    View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
-                    TextView textView = layout.findViewById(R.id.text);
-                    textView.setText(R.string.enter_sms);
-
-                    Toast toast = new Toast(EnterOTPNigeria.this);
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                    toast.setDuration(Toast.LENGTH_SHORT);
-                    toast.setView(layout);
-                    toast.show();
-                }
-            } else if (pinView.length() == 6) {
-                // Verify Code
-                String code = pinView.getText().toString().trim();
-                verifyCode(code);
-            }
-        });
-
-    }
-
-    private void sendVerificationCode(String smsNumberN) {
-        // this method is used for getting
-        // OTP on user phone number.
-        PhoneAuthOptions options =
-                PhoneAuthOptions.newBuilder(firebaseAuth)
-                        .setPhoneNumber(smsNumberN)         // Phone number to verify
-                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                        .setActivity(this)                 // Activity (for callback binding)
-                        .setCallbacks(mCallBack)         // OnVerificationStateChangedCallbacks
-                        .build();
-        PhoneAuthProvider.verifyPhoneNumber(options);
-    }
-
-    private void signInWithCredential(PhoneAuthCredential credential) {
-        // inside this method we are checking if
-        // the code entered is correct or not.
-        firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        // if the code is correct and the task is successful
-                        // we are sending our user to new activity.
-                        Intent i = new Intent(EnterOTPNigeria.this, SignUpBirthdate.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(i);
-                        finish();
-                    } else {
-                        //verification unsuccessful.. display an error message
-                        showError();
-                    }
-                });
-    }
-
-    private void showError() {
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
-            Toast toast = Toast.makeText(EnterOTPNigeria.this, R.string.incorrect_code, Toast.LENGTH_SHORT);
-            View view1 = toast.getView();
-
-            //Gets the actual oval background of the Toast then sets the colour filter
-            view1.getBackground().setColorFilter(ContextCompat.getColor(EnterOTPNigeria.this, R.color.red), PorterDuff.Mode.SRC_IN);
-
-            //Gets the TextView from the Toast so it can be edited
-            TextView text = view1.findViewById(android.R.id.message);
-            text.setTextColor(ContextCompat.getColor(EnterOTPNigeria.this, R.color.white));
-
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-            toast.show();
-        }
-        else{
-            LayoutInflater inflater = getLayoutInflater();
-            View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
-            TextView textView = layout.findViewById(R.id.text);
-            textView.setText(R.string.incorrect_code);
-
-            Toast toast = new Toast(EnterOTPNigeria.this);
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-            toast.setDuration(Toast.LENGTH_SHORT);
-            toast.setView(layout);
-            toast.show();
-        }
-
-    }
-
+    private FirebaseAuth firebaseAuth;
     // callback method is called on Phone auth provider.
     private final PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
@@ -209,8 +79,51 @@ public class EnterOTPNigeria extends AppCompatActivity {
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
             // displaying error message with firebase exception.
-            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
-                Toast toast = Toast.makeText(EnterOTPNigeria.this, R.string.code_verification_error, Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(EnterOTPNigeria.this, R.string.code_verification_error, Toast.LENGTH_LONG);
+            View view1 = toast.getView();
+
+            //Gets the actual oval background of the Toast then sets the colour filter
+            view1.getBackground().setColorFilter(ContextCompat.getColor(EnterOTPNigeria.this, R.color.red), PorterDuff.Mode.SRC_IN);
+
+            //Gets the TextView from the Toast so it can be edited
+            TextView text = view1.findViewById(android.R.id.message);
+            text.setTextColor(ContextCompat.getColor(EnterOTPNigeria.this, R.color.white));
+
+            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+            toast.show();
+        }
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sign_up_enter_otp);
+
+        // FirebaseAuth Instance
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        // Hooks
+        verify_description = findViewById(R.id.verification_description);
+        pinView = findViewById(R.id.pin_view);
+        verifyButton = findViewById(R.id.verify);
+
+        // Get Data from Previous Activity
+        fullPhoneNumberN = EnterNumberNigeria.fullPhoneNumberN;
+        smsNumberN = EnterNumberNigeria.fullPhoneNumberN;
+        completeNumberN = EnterNumberNigeria.completeNumberN;
+
+        // Delete Country Code
+        fullPhoneNumberN = fullPhoneNumberN.substring(4);
+
+        // Append
+        verify_description.append(" " + "+(234)" + fullPhoneNumberN);
+
+        // Send Code
+        sendVerificationCode(smsNumberN);
+
+        verifyButton.setOnClickListener(v -> {
+            if (pinView.getText() == null) {
+                Toast toast = Toast.makeText(EnterOTPNigeria.this, R.string.enter_sms, Toast.LENGTH_SHORT);
                 View view1 = toast.getView();
 
                 //Gets the actual oval background of the Toast then sets the colour filter
@@ -222,21 +135,61 @@ public class EnterOTPNigeria extends AppCompatActivity {
 
                 toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
                 toast.show();
+            } else if (pinView.length() == 6) {
+                // Verify Code
+                String code = pinView.getText().toString().trim();
+                verifyCode(code);
             }
-            else{
-                LayoutInflater inflater = getLayoutInflater();
-                View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
-                TextView textView = layout.findViewById(R.id.text);
-                textView.setText(R.string.code_verification_error);
+        });
 
-                Toast toast = new Toast(EnterOTPNigeria.this);
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                toast.setDuration(Toast.LENGTH_LONG);
-                toast.setView(layout);
-                toast.show();
-            }
-        }
-    };
+    }
+
+    private void sendVerificationCode(String smsNumberN) {
+        // this method is used for getting
+        // OTP on user phone number.
+        PhoneAuthOptions options =
+                PhoneAuthOptions.newBuilder(firebaseAuth)
+                        .setPhoneNumber(smsNumberN)         // Phone number to verify
+                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                        .setActivity(this)                 // Activity (for callback binding)
+                        .setCallbacks(mCallBack)         // OnVerificationStateChangedCallbacks
+                        .build();
+        PhoneAuthProvider.verifyPhoneNumber(options);
+    }
+
+    private void signInWithCredential(PhoneAuthCredential credential) {
+        // inside this method we are checking if
+        // the code entered is correct or not.
+        firebaseAuth.signInWithCredential(credential)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        // if the code is correct and the task is successful
+                        // we are sending our user to new activity.
+                        Intent i = new Intent(EnterOTPNigeria.this, SignUpBirthdate.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(i);
+                        finish();
+                    } else {
+                        //verification unsuccessful.. display an error message
+                        showError();
+                    }
+                });
+    }
+
+    private void showError() {
+        Toast toast = Toast.makeText(EnterOTPNigeria.this, R.string.incorrect_code, Toast.LENGTH_SHORT);
+        View view1 = toast.getView();
+
+        //Gets the actual oval background of the Toast then sets the colour filter
+        view1.getBackground().setColorFilter(ContextCompat.getColor(EnterOTPNigeria.this, R.color.red), PorterDuff.Mode.SRC_IN);
+
+        //Gets the TextView from the Toast so it can be edited
+        TextView text = view1.findViewById(android.R.id.message);
+        text.setTextColor(ContextCompat.getColor(EnterOTPNigeria.this, R.color.white));
+
+        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+        toast.show();
+    }
 
     // below method is use to verify code from Firebase.
     private void verifyCode(String code) {

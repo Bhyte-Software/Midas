@@ -19,7 +19,7 @@
     <color name="light_white">#F8F8F8</color>
     <color name="light_gray">#CFCFCF</color>
     <color name="orange">#CC7C3B</color>
-    <color name="orange_light">#EF9162</color>
+    <color name="orange_light">#FF9900</color>
     <color name="transparent">#00000000</color>
     <color name="divider">#F0F0F0</color>
     <!-- MAIN -->
@@ -52,6 +52,7 @@
     <color name="ripple_round_box">#F8F8FA</color>
     <color name="light_stroke">#CFCFCF</color>
     <color name="bottom_nav_bg">#EBEBEB</color>
+    <color name="tab_unselected">#EBEBEB</color>
     <!-- MAIN -->
 
 </resources>

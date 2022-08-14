@@ -66,15 +66,11 @@ public class CreateCard extends AppCompatActivity {
 
         viewPager.addOnPageChangeListener(changeListener);
 
-        dotIndicator.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(currentPosition == 0){
-                    viewPager.setCurrentItem(currentPosition + 1);
-                }
-                else{
-                    viewPager.setCurrentItem(0);
-                }
+        dotIndicator.setOnClickListener(v -> {
+            if (currentPosition == 0) {
+                viewPager.setCurrentItem(currentPosition + 1);
+            } else {
+                viewPager.setCurrentItem(0);
             }
         });
 

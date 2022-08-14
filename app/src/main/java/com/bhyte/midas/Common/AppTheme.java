@@ -1,6 +1,5 @@
 package com.bhyte.midas.Common;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
@@ -25,6 +24,13 @@ public class AppTheme extends AppCompatActivity {
         radioGroup = findViewById(R.id.radio_group);
         darkThemeRadio = findViewById(R.id.dark_theme);
         lightThemeRadio = findViewById(R.id.light_theme);
+
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO) {
+            lightThemeRadio.setChecked(true);
+        }
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            darkThemeRadio.setChecked(true);
+        }
 
         // RadioGroup Listener
         radioGroup.setOnCheckedChangeListener((group, checkedId) -> {

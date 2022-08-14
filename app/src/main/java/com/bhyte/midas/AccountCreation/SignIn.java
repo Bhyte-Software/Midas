@@ -2,10 +2,8 @@ package com.bhyte.midas.AccountCreation;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,25 +17,35 @@ import com.bhyte.midas.R;
 import com.bhyte.midas.User.ChangePasswordEnterEmail;
 import com.bhyte.midas.User.SignInWithFingerprint;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SignIn extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
     String email, password;
     EditText passwordField, emailField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Instance of FirebaseAuth
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
         setContentView(R.layout.activity_sign_in);
 
         // Hooks
         passwordField = findViewById(R.id.input_password);
         emailField = findViewById(R.id.email_input_layout);
+    }
 
-        // Instance of FirebaseAuth
-        firebaseAuth = FirebaseAuth.getInstance();
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (firebaseUser != null) {
+            // Sign In Automatically
+            startActivity(new Intent(getApplicationContext(), MainDashboard.class));
+        }
     }
 
     public void callSignIn(View view) {
@@ -54,31 +62,18 @@ public class SignIn extends AppCompatActivity {
             finish();
         }).addOnFailureListener(e -> {
             // Sign In Error Custom Toast
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-                Toast toast = Toast.makeText(SignIn.this, R.string.sign_in_error, Toast.LENGTH_SHORT);
-                View view1 = toast.getView();
+            Toast toast = Toast.makeText(SignIn.this, R.string.sign_in_error, Toast.LENGTH_SHORT);
+            View view1 = toast.getView();
 
-                //Gets the actual oval background of the Toast then sets the colour filter
-                view1.getBackground().setColorFilter(ContextCompat.getColor(SignIn.this, R.color.red), PorterDuff.Mode.SRC_IN);
+            //Gets the actual oval background of the Toast then sets the colour filter
+            view1.getBackground().setColorFilter(ContextCompat.getColor(SignIn.this, R.color.red), PorterDuff.Mode.SRC_IN);
 
-                //Gets the TextView from the Toast so it can be edited
-                TextView text = view1.findViewById(android.R.id.message);
-                text.setTextColor(ContextCompat.getColor(SignIn.this, R.color.white));
+            //Gets the TextView from the Toast so it can be edited
+            TextView text = view1.findViewById(android.R.id.message);
+            text.setTextColor(ContextCompat.getColor(SignIn.this, R.color.white));
 
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                toast.show();
-            } else {
-                LayoutInflater inflater = getLayoutInflater();
-                View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
-                TextView textView = layout.findViewById(R.id.text);
-                textView.setText(R.string.sign_in_error);
-
-                Toast toast = new Toast(SignIn.this);
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                toast.setDuration(Toast.LENGTH_SHORT);
-                toast.setView(layout);
-                toast.show();
-            }
+            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+            toast.show();
         });
     }
 

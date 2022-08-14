@@ -20,6 +20,12 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".Common.ChatBot"
+            android:exported="false" />
+        <activity
+            android:name=".User.FAQ"
+            android:exported="false" />
+        <activity
             android:name=".Common.AppTheme"
             android:exported="false" />
         <activity
@@ -147,8 +153,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".AccountCreation.SignIn"
-            android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false"/>
         <activity
             android:name=".AccountCreation.SignUpCredentials"
             android:exported="false"

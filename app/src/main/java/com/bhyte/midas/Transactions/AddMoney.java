@@ -21,9 +21,9 @@ import com.google.android.material.button.MaterialButton;
 
 public class AddMoney extends AppCompatActivity {
 
-    BottomSheetDialog bottomSheetDialog;
     public static Double amountToDeposit;
     public static String amountToDepositString;
+    BottomSheetDialog bottomSheetDialog;
     Double userAmountDouble;
     MaterialButton nextButton;
     ImageView backspace, back, help;
@@ -63,33 +63,20 @@ public class AddMoney extends AppCompatActivity {
             amountToDeposit = userAmountDouble;
             amountToDepositString = userInputAmount;
 
-            if (userAmountDouble > 5000 | userAmountDouble < 20) {
+            if (userAmountDouble > 5000 | userAmountDouble < 20 | userInputAmount.equals("")) {
                 // Custom Toast
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-                    Toast toast = Toast.makeText(AddMoney.this, R.string.right_amount, Toast.LENGTH_SHORT);
-                    View view1 = toast.getView();
+                Toast toast = Toast.makeText(AddMoney.this, R.string.right_amount, Toast.LENGTH_SHORT);
+                View view1 = toast.getView();
 
-                    //Gets the actual oval background of the Toast then sets the colour filter
-                    view1.getBackground().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.red), PorterDuff.Mode.SRC_IN);
+                //Gets the actual oval background of the Toast then sets the colour filter
+                view1.getBackground().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.red), PorterDuff.Mode.SRC_IN);
 
-                    //Gets the TextView from the Toast so it can be edited
-                    TextView text = view1.findViewById(android.R.id.message);
-                    text.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+                //Gets the TextView from the Toast so it can be edited
+                TextView text = view1.findViewById(android.R.id.message);
+                text.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                    toast.show();
-                } else {
-                    LayoutInflater inflater = getLayoutInflater();
-                    View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
-                    TextView textView = layout.findViewById(R.id.text);
-                    textView.setText(R.string.right_amount);
-
-                    Toast toast = new Toast(getApplicationContext());
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                    toast.setDuration(Toast.LENGTH_SHORT);
-                    toast.setView(layout);
-                    toast.show();
-                }
+                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                toast.show();
             } else {
                 // Check Input
                 startActivity(new Intent(getApplicationContext(), AddMoneyChooseProvider.class));

@@ -2,10 +2,8 @@ package com.bhyte.midas.AccountCreation;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +17,7 @@ import com.chaos.view.PinView;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -66,32 +65,18 @@ public class SignUpEnterOTP extends AppCompatActivity {
 
         verifyButton.setOnClickListener(v -> {
             if (pinView.getText() == null) {
-                if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
-                    Toast toast = Toast.makeText(SignUpEnterOTP.this, R.string.enter_sms, Toast.LENGTH_SHORT);
-                    View view1 = toast.getView();
+                Toast toast = Toast.makeText(SignUpEnterOTP.this, R.string.enter_sms, Toast.LENGTH_SHORT);
+                View view1 = toast.getView();
 
-                    //Gets the actual oval background of the Toast then sets the colour filter
-                    view1.getBackground().setColorFilter(ContextCompat.getColor(SignUpEnterOTP.this, R.color.red), PorterDuff.Mode.SRC_IN);
+                //Gets the actual oval background of the Toast then sets the colour filter
+                view1.getBackground().setColorFilter(ContextCompat.getColor(SignUpEnterOTP.this, R.color.red), PorterDuff.Mode.SRC_IN);
 
-                    //Gets the TextView from the Toast so it can be edited
-                    TextView text = view1.findViewById(android.R.id.message);
-                    text.setTextColor(ContextCompat.getColor(SignUpEnterOTP.this, R.color.white));
+                //Gets the TextView from the Toast so it can be edited
+                TextView text = view1.findViewById(android.R.id.message);
+                text.setTextColor(ContextCompat.getColor(SignUpEnterOTP.this, R.color.white));
 
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                    toast.show();
-                }
-                else{
-                    LayoutInflater inflater = getLayoutInflater();
-                    View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
-                    TextView textView = layout.findViewById(R.id.text);
-                    textView.setText(R.string.enter_sms);
-
-                    Toast toast = new Toast(SignUpEnterOTP.this);
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                    toast.setDuration(Toast.LENGTH_SHORT);
-                    toast.setView(layout);
-                    toast.show();
-                }
+                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                toast.show();
             } else if (pinView.length() == 6) {
                 // Verify Code
                 String code = pinView.getText().toString().trim();
@@ -120,12 +105,19 @@ public class SignUpEnterOTP extends AppCompatActivity {
         firebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        // if the code is correct and the task is successful
-                        // we are sending our user to new activity.
-                        Intent i = new Intent(SignUpEnterOTP.this, SignUpBirthdate.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(i);
-                        finish();
+                        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                        if (firebaseUser != null) {
+                            firebaseUser.delete().addOnCompleteListener(task1 -> {
+                                if (task1.isSuccessful()) {
+                                    // if the code is correct and the task is successful
+                                    // we are sending our user to new activity after deleting phone auth data from firebase
+                                    Intent i = new Intent(SignUpEnterOTP.this, SignUpBirthdate.class);
+                                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(i);
+                                    finish();
+                                }
+                            });
+                        }
                     } else {
                         //verification unsuccessful.. display an error message
                         showError();
@@ -134,33 +126,18 @@ public class SignUpEnterOTP extends AppCompatActivity {
     }
 
     private void showError() {
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
-            Toast toast = Toast.makeText(SignUpEnterOTP.this, R.string.incorrect_code, Toast.LENGTH_SHORT);
-            View view1 = toast.getView();
+        Toast toast = Toast.makeText(SignUpEnterOTP.this, R.string.incorrect_code, Toast.LENGTH_SHORT);
+        View view1 = toast.getView();
 
-            //Gets the actual oval background of the Toast then sets the colour filter
-            view1.getBackground().setColorFilter(ContextCompat.getColor(SignUpEnterOTP.this, R.color.red), PorterDuff.Mode.SRC_IN);
+        //Gets the actual oval background of the Toast then sets the colour filter
+        view1.getBackground().setColorFilter(ContextCompat.getColor(SignUpEnterOTP.this, R.color.red), PorterDuff.Mode.SRC_IN);
 
-            //Gets the TextView from the Toast so it can be edited
-            TextView text = view1.findViewById(android.R.id.message);
-            text.setTextColor(ContextCompat.getColor(SignUpEnterOTP.this, R.color.white));
+        //Gets the TextView from the Toast so it can be edited
+        TextView text = view1.findViewById(android.R.id.message);
+        text.setTextColor(ContextCompat.getColor(SignUpEnterOTP.this, R.color.white));
 
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-            toast.show();
-        }
-        else{
-            LayoutInflater inflater = getLayoutInflater();
-            View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
-            TextView textView = layout.findViewById(R.id.text);
-            textView.setText(R.string.incorrect_code);
-
-            Toast toast = new Toast(SignUpEnterOTP.this);
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-            toast.setDuration(Toast.LENGTH_SHORT);
-            toast.setView(layout);
-            toast.show();
-        }
-
+        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+        toast.show();
     }
 
     // callback method is called on Phone auth provider.
@@ -209,32 +186,18 @@ public class SignUpEnterOTP extends AppCompatActivity {
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
             // displaying error message with firebase exception.
-            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
-                Toast toast = Toast.makeText(SignUpEnterOTP.this, R.string.code_verification_error, Toast.LENGTH_LONG);
-                View view1 = toast.getView();
+            Toast toast = Toast.makeText(SignUpEnterOTP.this, R.string.code_verification_error, Toast.LENGTH_LONG);
+            View view1 = toast.getView();
 
-                //Gets the actual oval background of the Toast then sets the colour filter
-                view1.getBackground().setColorFilter(ContextCompat.getColor(SignUpEnterOTP.this, R.color.red), PorterDuff.Mode.SRC_IN);
+            //Gets the actual oval background of the Toast then sets the colour filter
+            view1.getBackground().setColorFilter(ContextCompat.getColor(SignUpEnterOTP.this, R.color.red), PorterDuff.Mode.SRC_IN);
 
-                //Gets the TextView from the Toast so it can be edited
-                TextView text = view1.findViewById(android.R.id.message);
-                text.setTextColor(ContextCompat.getColor(SignUpEnterOTP.this, R.color.white));
+            //Gets the TextView from the Toast so it can be edited
+            TextView text = view1.findViewById(android.R.id.message);
+            text.setTextColor(ContextCompat.getColor(SignUpEnterOTP.this, R.color.white));
 
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                toast.show();
-            }
-            else{
-                LayoutInflater inflater = getLayoutInflater();
-                View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
-                TextView textView = layout.findViewById(R.id.text);
-                textView.setText(R.string.code_verification_error);
-
-                Toast toast = new Toast(SignUpEnterOTP.this);
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                toast.setDuration(Toast.LENGTH_LONG);
-                toast.setView(layout);
-                toast.show();
-            }
+            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+            toast.show();
         }
     };
 

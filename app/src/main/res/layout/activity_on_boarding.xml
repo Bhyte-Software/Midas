@@ -31,10 +31,10 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/slider_button"
             android:layout_width="280dp"
-            android:onClick="next"
             android:layout_height="60dp"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/roboto_medium"
+            android:onClick="next"
             android:text="@string/next"
             android:textAllCaps="false"
             app:cornerRadius="35dp" />

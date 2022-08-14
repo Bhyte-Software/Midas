@@ -28,34 +28,32 @@
         android:layout_height="130dp">
 
         <RelativeLayout
-            android:layout_marginBottom="@dimen/dimen_30"
+            android:paddingBottom="@dimen/dimen_20"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:padding="@dimen/dimen_10"
                 android:id="@+id/dot_indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
                 android:layout_marginStart="@dimen/dimen_15"
-                android:layout_marginTop="@dimen/dimen_20"
-                android:layout_marginBottom="@dimen/dimen_20"
+                android:padding="@dimen/dimen_10"
                 android:src="@drawable/indicator1" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/slider_button"
-                android:layout_width="185dp"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
+                android:layout_above="@id/dot_indicator"
                 android:layout_marginStart="@dimen/dimen_25"
                 android:layout_marginEnd="@dimen/dimen_25"
+                android:layout_marginBottom="@dimen/dimen_15"
                 android:fontFamily="@font/roboto_medium"
                 android:onClick="createCard"
-                android:text="Create Virtual Card"
+                android:text="@string/create_virtual_card"
                 android:textAllCaps="false"
                 app:cornerRadius="35dp" />
 

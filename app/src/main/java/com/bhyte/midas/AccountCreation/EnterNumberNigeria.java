@@ -1,22 +1,20 @@
 package com.bhyte.midas.AccountCreation;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.bhyte.midas.Common.NoInternet;
 import com.bhyte.midas.R;
@@ -29,8 +27,8 @@ public class EnterNumberNigeria extends AppCompatActivity {
     public static String fullPhoneNumberN;
     public static String country;
     public static String completeNumberN;
-    public String countryCode;
     public static String phoneNumberN;
+    public String countryCode;
     public int lengthOfVal;
     public Context context;
     EditText enterNumberLayout;
@@ -82,7 +80,6 @@ public class EnterNumberNigeria extends AppCompatActivity {
     }
 
     public void getCode() {
-
         if (lengthOfVal == 11) {
             countryCode = "234";
             completeNumberN = phoneNumberN.substring(1);
@@ -92,61 +89,32 @@ public class EnterNumberNigeria extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), EnterOTPNigeria.class));
             finish();
         } else if (lengthOfVal == 0) {
-            // Custom Toast for Android Versions < 11
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-                Toast toast = Toast.makeText(EnterNumberNigeria.this, R.string.enter_number_to_continue, Toast.LENGTH_SHORT);
-                LinearLayout layout = (LinearLayout) toast.getView();
+            Toast toast = Toast.makeText(EnterNumberNigeria.this, R.string.enter_number_to_continue, Toast.LENGTH_SHORT);
+            LinearLayout layout = (LinearLayout) toast.getView();
 
-                //Gets the actual oval background of the Toast then sets the colour filter
-                layout.getBackground().setColorFilter(ContextCompat.getColor(EnterNumberNigeria.this, R.color.red), PorterDuff.Mode.SRC_IN);
+            //Gets the actual oval background of the Toast then sets the colour filter
+            layout.getBackground().setColorFilter(ContextCompat.getColor(EnterNumberNigeria.this, R.color.red), PorterDuff.Mode.SRC_IN);
 
-                //Gets the TextView from the Toast so it can be edited
-                TextView text = layout.findViewById(android.R.id.message);
-                text.setTextColor(ContextCompat.getColor(EnterNumberNigeria.this, R.color.white));
+            //Gets the TextView from the Toast so it can be edited
+            TextView text = layout.findViewById(android.R.id.message);
+            text.setTextColor(ContextCompat.getColor(EnterNumberNigeria.this, R.color.white));
 
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                toast.show();
-            }
-            // Default Android Toast for android version 11
-            else {
-                LayoutInflater inflater = getLayoutInflater();
-                View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
-                TextView textView = layout.findViewById(R.id.text);
-                textView.setText(R.string.enter_number_to_continue);
+            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+            toast.show();
+        }
+        else {
+            Toast toast = Toast.makeText(EnterNumberNigeria.this, R.string.enter_valid_number_ng, Toast.LENGTH_SHORT);
+            View view1 = toast.getView();
 
-                Toast toast = new Toast(EnterNumberNigeria.this);
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);
-                toast.setDuration(Toast.LENGTH_SHORT);
-                toast.setView(layout);
-                toast.show();
-            }
-        } else {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-                Toast toast = Toast.makeText(EnterNumberNigeria.this, R.string.enter_valid_number_ng, Toast.LENGTH_SHORT);
-                View view1 = toast.getView();
+            //Gets the actual oval background of the Toast then sets the colour filter
+            view1.getBackground().setColorFilter(ContextCompat.getColor(EnterNumberNigeria.this, R.color.red), PorterDuff.Mode.SRC_IN);
 
-                //Gets the actual oval background of the Toast then sets the colour filter
-                view1.getBackground().setColorFilter(ContextCompat.getColor(EnterNumberNigeria.this, R.color.red), PorterDuff.Mode.SRC_IN);
+            //Gets the TextView from the Toast so it can be edited
+            TextView text = view1.findViewById(android.R.id.message);
+            text.setTextColor(ContextCompat.getColor(EnterNumberNigeria.this, R.color.white));
 
-                //Gets the TextView from the Toast so it can be edited
-                TextView text = view1.findViewById(android.R.id.message);
-                text.setTextColor(ContextCompat.getColor(EnterNumberNigeria.this, R.color.white));
-
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                toast.show();
-            } else {
-                LayoutInflater inflater = getLayoutInflater();
-                View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
-                TextView textView = layout.findViewById(R.id.text);
-                textView.setText(R.string.enter_valid_11_digits);
-
-                Toast toast = new Toast(getApplicationContext());
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);
-                toast.setDuration(Toast.LENGTH_SHORT);
-                toast.setView(layout);
-                toast.show();
-            }
+            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+            toast.show();
         }
     }
-
 }

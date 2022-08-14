@@ -22,7 +22,6 @@
                     <corners android:radius="@dimen/dimen_10"/>
                 </shape>
             </item>
-
             <item android:drawable="@drawable/ic_baseline_arrow_drop_down_24" android:end="@dimen/dimen_15" android:width="24dp" android:height="24dp" android:gravity="end|center_vertical"/>
         </layer-list>
     </item>

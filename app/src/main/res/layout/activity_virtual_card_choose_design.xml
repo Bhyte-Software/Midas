@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -18,47 +18,49 @@
             android:background="@color/blue_200"
             android:elevation="8dp">
 
-            <LinearLayout
-                android:layout_marginTop="@dimen/dimen_10"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginEnd="@dimen/dimen_10"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:background="?selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:padding="@dimen/dimen_15"
                     android:id="@+id/menu_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
                     android:onClick="callBack"
-                    android:src="@drawable/back_icon"
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/back_material"
                     app:tint="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/dimen_20"
+                    android:layout_marginStart="@dimen/dimen_5"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/choose_card_design"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
         </RelativeLayout>
 
         <ScrollView
             android:orientation="vertical"
-            android:paddingBottom="@dimen/dimen_40"
-            android:paddingStart="@dimen/dimen_10"
-            android:paddingEnd="@dimen/dimen_10"
             android:scrollbars="none"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-55dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-70dp"
             android:background="@drawable/top_round_corner_overlay"
             android:elevation="10dp">
 
@@ -68,26 +70,26 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_marginTop="-20dp"
+                    android:layout_marginTop="@dimen/dimen_20"
                     android:id="@+id/card_image"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@drawable/cards_black" />
 
                 <TextView
+                    android:layout_marginTop="@dimen/dimen_15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_15"
-                    android:layout_marginTop="-40dp"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/card_design"
                     android:textColor="@color/skip_text"
                     android:textSize="22sp" />
 
                 <RelativeLayout
+                    android:layout_marginTop="@dimen/dimen_10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_15"
                     android:orientation="horizontal"
                     android:padding="15dp">
 
@@ -155,7 +157,8 @@
                                 android:id="@+id/red"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/round_red" />
+                                android:src="@drawable/round_red"
+                                app:tint="#EB3C3C" />
 
                             <TextView
                                 android:id="@+id/text3"
@@ -180,7 +183,7 @@
                                 android:id="@+id/yellow"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/round_yellow" />
+                                android:src="@drawable/round_gold" />
 
                             <TextView
                                 android:id="@+id/text4"
@@ -190,7 +193,7 @@
                                 android:layout_marginStart="@dimen/dimen_10"
                                 android:layout_toEndOf="@id/yellow"
                                 android:fontFamily="@font/roboto_regular"
-                                android:text="Yellow"
+                                android:text="Gold"
                                 android:textColor="@color/main_text"
                                 android:textSize="18sp" />
 
@@ -229,7 +232,7 @@
                                 android:layout_width="@dimen/dimen_30"
                                 android:layout_height="@dimen/dimen_30"
                                 android:layout_marginTop="@dimen/dimen_20"
-                                android:buttonTint="@color/red_light" />
+                                android:buttonTint="#EB3C3C" />
 
                             <com.google.android.material.radiobutton.MaterialRadioButton
                                 android:id="@+id/yellow_radio"
@@ -247,12 +250,12 @@
                 <com.google.android.material.button.MaterialButton
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginStart="@dimen/dimen_10"
-                    android:layout_marginEnd="@dimen/dimen_10"
-                    android:layout_marginTop="@dimen/dimen_30"
+                    android:layout_marginStart="@dimen/dimen_25"
+                    android:layout_marginEnd="@dimen/dimen_25"
+                    android:layout_marginTop="@dimen/dimen_10"
                     android:id="@+id/next"
                     android:layout_marginBottom="@dimen/dimen_25"
-                    android:text="@string/continueButton"
+                    android:text="@string/next"
                     android:textAllCaps="false"
                     app:cornerRadius="35dp" />
 

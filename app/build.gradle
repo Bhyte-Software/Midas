@@ -35,7 +35,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.firebase:firebase-auth:21.0.6'
+    implementation 'com.google.firebase:firebase-auth:21.0.7'
     implementation 'com.google.firebase:firebase-database:20.0.5'
     implementation 'com.google.firebase:firebase-storage:20.0.1'
     implementation 'com.google.firebase:firebase-analytics:21.1.0'
@@ -93,5 +93,7 @@ dependencies {
     implementation 'com.airbnb.android:paris:2.0.0'
 
     implementation 'com.wajahatkarim:EasyFlipView:3.0.3'
+
+    implementation 'com.android.volley:volley:1.2.1'
 
 }
