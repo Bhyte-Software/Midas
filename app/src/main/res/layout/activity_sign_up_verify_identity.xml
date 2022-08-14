@@ -54,78 +54,87 @@
             android:padding="@dimen/dimen_20">
 
             <RelativeLayout
-                android:id="@+id/linear"
+                android:layout_centerInParent="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
 
                 <RelativeLayout
-                    android:id="@+id/counter"
-                    android:layout_width="@dimen/dimen_30"
-                    android:layout_height="@dimen/dimen_30"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/light_green_circle"
-                    android:padding="@dimen/dimen_5">
+                    android:id="@+id/linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/counter"
+                        android:layout_width="@dimen/dimen_30"
+                        android:layout_height="@dimen/dimen_30"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/light_green_circle"
+                        android:padding="@dimen/dimen_5">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/one"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
 
                     <TextView
+                        android:id="@+id/txt1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/dimen_10"
+                        android:layout_toEndOf="@id/counter"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="@string/one"
-                        android:textColor="@color/white" />
+                        android:text="@string/national"
+                        android:textColor="@color/main_text"
+                        android:textSize="18sp" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/recommended"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/red_bg"
+                        android:paddingStart="@dimen/dimen_10"
+                        android:paddingTop="@dimen/dimen_5"
+                        android:paddingEnd="@dimen/dimen_10"
+                        android:paddingBottom="@dimen/dimen_5"
+                        tools:ignore="RelativeOverlap">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="@string/recommended"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </RelativeLayout>
 
                 </RelativeLayout>
 
                 <TextView
-                    android:id="@+id/txt1"
+                    android:id="@+id/txt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/linear"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/dimen_10"
-                    android:layout_toEndOf="@id/counter"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="@string/national"
-                    android:textColor="@color/main_text"
-                    android:textSize="18sp" />
-
-
-                <RelativeLayout
-                    android:id="@+id/recommended"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:background="@drawable/red_bg"
-                    android:paddingStart="@dimen/dimen_10"
-                    android:paddingTop="@dimen/dimen_5"
-                    android:paddingEnd="@dimen/dimen_10"
-                    android:paddingBottom="@dimen/dimen_5"
-                    tools:ignore="RelativeOverlap">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="@string/recommended"
-                        android:textColor="@color/white"
-                        android:textSize="12sp" />
-
-                </RelativeLayout>
+                    android:layout_marginStart="@dimen/dimen_40"
+                    android:layout_marginTop="@dimen/dimen_5"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/national_description"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="16sp" />
 
             </RelativeLayout>
-
-            <TextView
-                android:id="@+id/txt2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/linear"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/dimen_40"
-                android:layout_marginTop="@dimen/dimen_5"
-                android:fontFamily="@font/roboto_regular"
-                android:text="@string/national_description"
-                android:textColor="@color/secondary_text"
-                android:textSize="16sp" />
 
         </RelativeLayout>
 
@@ -142,55 +151,62 @@
             android:elevation="@dimen/dimen_5"
             android:padding="@dimen/dimen_20">
 
-            <LinearLayout
-                android:id="@+id/linear2"
+            <RelativeLayout
+                android:layout_centerInParent="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
 
-                <RelativeLayout
-                    android:id="@+id/counter2"
-                    android:layout_width="@dimen/dimen_30"
-                    android:layout_height="@dimen/dimen_30"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/light_green_circle"
-                    android:padding="@dimen/dimen_5">
+                <LinearLayout
+                    android:id="@+id/linear2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/counter2"
+                        android:layout_width="@dimen/dimen_30"
+                        android:layout_height="@dimen/dimen_30"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/light_green_circle"
+                        android:padding="@dimen/dimen_5">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/two"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
 
                     <TextView
+                        android:id="@+id/txt3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/dimen_10"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="@string/two"
-                        android:textColor="@color/white" />
+                        android:text="@string/passport"
+                        android:textColor="@color/main_text"
+                        android:textSize="18sp" />
 
-                </RelativeLayout>
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/txt3"
+                    android:id="@+id/txt4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/linear2"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/dimen_10"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="@string/passport"
-                    android:textColor="@color/main_text"
-                    android:textSize="18sp" />
+                    android:layout_marginStart="@dimen/dimen_40"
+                    android:layout_marginTop="@dimen/dimen_5"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/passport_description"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="16sp" />
 
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/txt4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/linear2"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/dimen_40"
-                android:layout_marginTop="@dimen/dimen_5"
-                android:fontFamily="@font/roboto_regular"
-                android:text="@string/passport_description"
-                android:textColor="@color/secondary_text"
-                android:textSize="16sp" />
+            </RelativeLayout>
 
         </RelativeLayout>
 

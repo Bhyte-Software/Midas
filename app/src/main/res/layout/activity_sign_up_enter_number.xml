@@ -74,18 +74,39 @@
             android:textSize="18sp"
             tools:ignore="RtlSymmetry" />
 
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/get_code"
+        <RelativeLayout
+            android:id="@+id/button"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginStart="@dimen/dimen_25"
             android:layout_marginTop="@dimen/dimen_90"
             android:layout_marginEnd="@dimen/dimen_25"
-            android:fontFamily="@font/roboto_medium"
-            android:text="@string/get_code"
-            android:textAllCaps="false"
-            app:cornerRadius="35dp" />
+            android:background="@drawable/blue_button_ripple"
+            android:clickable="true">
+
+            <TextView
+                android:id="@+id/button_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/get_code"
+                android:textColor="@color/white" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/button_animation"
+                android:layout_width="@dimen/dimen_50"
+                android:layout_height="@dimen/dimen_50"
+                android:layout_centerInParent="true"
+                android:elevation="@dimen/dimen_5"
+                android:visibility="gone"
+                app:lottie_autoPlay="false"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/button_loading_white" />
+
+        </RelativeLayout>
+
 
 
     </RelativeLayout>

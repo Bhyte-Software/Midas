@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.bhyte.midas.R;
-import com.bhyte.midas.util.Common;
+import com.bhyte.midas.Util.Common;
 
 public class ChatBot extends AppCompatActivity {
 

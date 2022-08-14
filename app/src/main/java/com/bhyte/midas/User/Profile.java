@@ -1,20 +1,18 @@
 package com.bhyte.midas.User;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PorterDuff;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -24,9 +22,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.bhyte.midas.AccountCreation.GetStarted;
-import com.bhyte.midas.Common.UpdateRequired;
 import com.bhyte.midas.R;
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -44,6 +42,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -52,6 +51,8 @@ public class Profile extends AppCompatActivity {
     FirebaseDatabase database;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+
+    Context context;
 
     int TAKE_IMAGE_CODE = 1001;
     int PICK_IMAGE_CODE = 1002;
@@ -65,7 +66,6 @@ public class Profile extends AppCompatActivity {
     MaterialButton logoutButton;
     private BottomSheetDialog bottomSheetDialog;
 
-    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +93,7 @@ public class Profile extends AppCompatActivity {
         }
 
         database = FirebaseDatabase.getInstance();
+        this.context = getApplicationContext();
 
         getName();
         setTextView();
@@ -106,7 +107,7 @@ public class Profile extends AppCompatActivity {
         languageLayout.setOnClickListener(v -> {
             bottomSheetDialog = new BottomSheetDialog(Profile.this, R.style.BottomSheetTheme);
 
-            View sheetView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.language_bottom_sheet,
+            View sheetView = LayoutInflater.from(context).inflate(R.layout.language_bottom_sheet,
                     findViewById(R.id.language_sheet));
 
             bottomSheetDialog.setContentView(sheetView);
@@ -117,7 +118,7 @@ public class Profile extends AppCompatActivity {
         logoutButton.setOnClickListener(v -> {
             logoutDialog = new Dialog(Profile.this, R.style.BottomSheetTheme);
 
-            View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.logout_popup,
+            View dialogView = LayoutInflater.from(context).inflate(R.layout.logout_popup,
                     findViewById(R.id.logout_popup));
 
             logoutDialog.setContentView(dialogView);
@@ -138,7 +139,7 @@ public class Profile extends AppCompatActivity {
         profilePicture.setOnClickListener(v -> {
             bottomSheetDialog = new BottomSheetDialog(Profile.this, R.style.BottomSheetTheme);
 
-            View sheetView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.profile_bottom_sheet,
+            View sheetView = LayoutInflater.from(context).inflate(R.layout.profile_bottom_sheet,
                     findViewById(R.id.profile_sheet));
 
             bottomSheetDialog.setContentView(sheetView);
@@ -161,36 +162,22 @@ public class Profile extends AppCompatActivity {
             });
 
             removePhoto.setOnClickListener(v12 -> {
-
                 // Check if image is still default
-                if (profilePicture.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.profile_picture_default).getConstantState()) {
+                if (profilePicture.getDrawable().getConstantState() == Objects.requireNonNull(ContextCompat.getDrawable(context, R.drawable.profile_picture_default)).getConstantState()) {
                     // Default
                     bottomSheetDialog.dismiss();
-                    if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
-                        Toast toast = Toast.makeText(Profile.this, "Sorry, you cannot remove default profile picture", Toast.LENGTH_SHORT);
-                        View view1 = toast.getView();
+                    Toast toast = Toast.makeText(Profile.this, "You cannot remove default picture", Toast.LENGTH_SHORT);
+                    View view1 = toast.getView();
 
-                        //Gets the actual oval background of the Toast then sets the colour filter
-                        view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+                    //Gets the actual oval background of the Toast then sets the colour filter
+                    view1.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_IN);
 
-                        //Gets the TextView from the Toast so it can be edited
-                        TextView text = view1.findViewById(android.R.id.message);
-                        text.setTextColor(getResources().getColor(R.color.white));
+                    //Gets the TextView from the Toast so it can be edited
+                    TextView text = view1.findViewById(android.R.id.message);
+                    text.setTextColor(ContextCompat.getColor(context, R.color.white));
 
-                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                        toast.show();
-                    } else {
-                        LayoutInflater inflater = getLayoutInflater();
-                        View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.custom_toast_container));
-                        TextView textView = (TextView) layout.findViewById(R.id.text);
-                        textView.setText("You cannot remove default profile picture");
-
-                        Toast toast = new Toast(getApplicationContext());
-                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);
-                        toast.setDuration(Toast.LENGTH_SHORT);
-                        toast.setView(layout);
-                        toast.show();
-                    }
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                    toast.show();
                 } else {
                     // New Image
                     showConfirmationDialog();
@@ -241,7 +228,7 @@ public class Profile extends AppCompatActivity {
     private void rateMidasPopup() {
         rateDialog = new Dialog(Profile.this, R.style.BottomSheetTheme);
 
-        View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.rate_popup,
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.rate_popup,
                 findViewById(R.id.rate_popup));
 
         rateDialog.setContentView(dialogView);
@@ -251,12 +238,7 @@ public class Profile extends AppCompatActivity {
         positive = dialogView.findViewById(R.id.rate);
         negative = dialogView.findViewById(R.id.cancel);
 
-        positive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rateMidas();
-            }
-        });
+        positive.setOnClickListener(v -> rateMidas());
         negative.setOnClickListener(v1 -> rateDialog.dismiss());
 
     }
@@ -284,12 +266,14 @@ public class Profile extends AppCompatActivity {
 
         if (requestCode == TAKE_IMAGE_CODE) {
             if (resultCode == RESULT_OK) {
+                assert data != null;
                 Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                 profilePicture.setImageBitmap(bitmap);
                 handleUpload(bitmap);
             }
         } else if (requestCode == PICK_IMAGE_CODE) {
             if (resultCode == RESULT_OK) {
+                assert data != null;
                 Uri mImageUri = data.getData();
                 profilePicture.setImageURI(mImageUri);
 
@@ -312,7 +296,7 @@ public class Profile extends AppCompatActivity {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
 
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String uid = firebaseUser.getUid();
 
         StorageReference storageReference = FirebaseStorage.getInstance().getReference()
                 .child("Profile Images")
@@ -321,16 +305,25 @@ public class Profile extends AppCompatActivity {
         storageReference.putBytes(byteArrayOutputStream.toByteArray())
                 .addOnSuccessListener(taskSnapshot -> getDownloadUrl(storageReference))
                 .addOnFailureListener(e -> {
-                    // TODO
+                    // Toast
+                    Toast toast = Toast.makeText(Profile.this, "Error uploading picture", Toast.LENGTH_SHORT);
+                    View view1 = toast.getView();
+
+                    //Gets the actual oval background of the Toast then sets the colour filter
+                    view1.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_IN);
+
+                    //Gets the TextView from the Toast so it can be edited
+                    TextView text = view1.findViewById(android.R.id.message);
+                    text.setTextColor(ContextCompat.getColor(context, R.color.white));
+
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                    toast.show();
                 });
     }
 
     private void getDownloadUrl(StorageReference reference) {
         reference.getDownloadUrl()
-                .addOnSuccessListener(uri -> {
-                    // TODO
-                    setUserProfileUrl(uri);
-                });
+                .addOnSuccessListener(this::setUserProfileUrl);
     }
 
     private void setUserProfileUrl(Uri uri) {
@@ -339,61 +332,36 @@ public class Profile extends AppCompatActivity {
                 .setPhotoUri(uri)
                 .build();
 
+        assert user != null;
         user.updateProfile(request)
                 .addOnSuccessListener(unused -> {
-                    if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
-                        Toast toast = Toast.makeText(Profile.this, "Profile image updated successfully", Toast.LENGTH_SHORT);
-                        View view1 = toast.getView();
+                    Toast toast = Toast.makeText(Profile.this, "Profile updated successfully", Toast.LENGTH_SHORT);
+                    View view1 = toast.getView();
 
-                        //Gets the actual oval background of the Toast then sets the colour filter
-                        view1.getBackground().setColorFilter(getResources().getColor(R.color.light_green), PorterDuff.Mode.SRC_IN);
+                    //Gets the actual oval background of the Toast then sets the colour filter
+                    view1.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.light_green), PorterDuff.Mode.SRC_IN);
 
-                        //Gets the TextView from the Toast so it can be edited
-                        TextView text = view1.findViewById(android.R.id.message);
-                        text.setTextColor(getResources().getColor(R.color.white));
+                    //Gets the TextView from the Toast so it can be edited
+                    TextView text = view1.findViewById(android.R.id.message);
+                    text.setTextColor(ContextCompat.getColor(context, R.color.white));
 
-                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                        toast.show();
-                    }
-                    else {
-                        LayoutInflater inflater = getLayoutInflater();
-                        View layout = inflater.inflate(R.layout.custom_toast_green, (ViewGroup) findViewById(R.id.custom_toast_container_green));
-                        TextView textView = (TextView) layout.findViewById(R.id.text);
-                        textView.setText("Profile updated successfully");
-
-                        Toast toast = new Toast(getApplicationContext());
-                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);
-                        toast.setDuration(Toast.LENGTH_SHORT);
-                        toast.setView(layout);
-                        toast.show();
-                    }
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                    toast.show();
                 })
                 .addOnFailureListener(e -> {
-                    if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
-                        Toast toast = Toast.makeText(Profile.this, "Failed to update profile image, Try again", Toast.LENGTH_SHORT);
-                        View view1 = toast.getView();
+                    Toast toast = Toast.makeText(Profile.this, "Failed to update profile", Toast.LENGTH_SHORT);
+                    View view1 = toast.getView();
 
-                        //Gets the actual oval background of the Toast then sets the colour filter
-                        view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+                    //Gets the actual oval background of the Toast then sets the colour filter
+                    view1.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_IN);
 
-                        //Gets the TextView from the Toast so it can be edited
-                        TextView text = view1.findViewById(android.R.id.message);
-                        text.setTextColor(getResources().getColor(R.color.white));
+                    //Gets the TextView from the Toast so it can be edited
+                    TextView text = view1.findViewById(android.R.id.message);
+                    text.setTextColor(ContextCompat.getColor(context, R.color.white));
 
-                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                        toast.show();
-                    } else {
-                        LayoutInflater inflater = getLayoutInflater();
-                        View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.custom_toast_container));
-                        TextView textView = (TextView) layout.findViewById(R.id.text);
-                        textView.setText("Failed to update profile");
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                    toast.show();
 
-                        Toast toast = new Toast(getApplicationContext());
-                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);
-                        toast.setDuration(Toast.LENGTH_SHORT);
-                        toast.setView(layout);
-                        toast.show();
-                    }
                 });
     }
 
@@ -401,7 +369,7 @@ public class Profile extends AppCompatActivity {
 
         dialog = new Dialog(Profile.this, R.style.BottomSheetTheme);
 
-        View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.remove_profile_picture_confirmation,
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.remove_profile_picture_confirmation,
                 findViewById(R.id.confirm_popup));
 
         dialog.setContentView(dialogView);
@@ -441,11 +409,11 @@ public class Profile extends AppCompatActivity {
     }
 
     public void callChangePassword(View view) {
-        startActivity(new Intent(getApplicationContext(), ChangePasswordEnterEmail.class));
+        startActivity(new Intent(context, ChangePasswordEnterEmail.class));
     }
 
     public void callEditProfile(View view) {
-        startActivity(new Intent(getApplicationContext(), EditProfile.class));
+        startActivity(new Intent(context, EditProfile.class));
     }
 
 }

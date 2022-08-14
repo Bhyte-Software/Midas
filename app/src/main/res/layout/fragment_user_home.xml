@@ -243,7 +243,7 @@
                 android:layout_marginStart="@dimen/dimen_10"
                 android:layout_marginTop="@dimen/dimen_10"
                 android:layout_marginEnd="@dimen/dimen_10"
-                android:layout_marginBottom="@dimen/dimen_50"
+                android:layout_marginBottom="@dimen/dimen_60"
                 android:visibility="visible">
 
                 <LinearLayout
@@ -272,7 +272,7 @@
             <LinearLayout
                 android:id="@+id/recommended_layout"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="135dp"
                 android:layout_marginStart="@dimen/dimen_25"
                 android:layout_marginTop="@dimen/dimen_15"
                 android:layout_marginEnd="@dimen/dimen_25"
@@ -284,7 +284,7 @@
                 <com.google.android.ads.nativetemplates.TemplateView
                     android:id="@+id/recommended"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     app:gnt_template_type="@layout/gnt_small_template_view" />
 
@@ -294,7 +294,7 @@
                 android:id="@+id/view_holder"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginBottom="@dimen/dimen_70"
+                android:layout_marginBottom="@dimen/dimen_20"
                 android:visibility="invisible" />
 
         </LinearLayout>

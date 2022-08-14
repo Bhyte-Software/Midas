@@ -1,4 +1,4 @@
-package com.bhyte.midas.util;
+package com.bhyte.midas.Util;
 
 import android.app.Activity;
 import android.view.View;

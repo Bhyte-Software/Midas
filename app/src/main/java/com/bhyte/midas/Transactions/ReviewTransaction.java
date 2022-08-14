@@ -1,15 +1,14 @@
 package com.bhyte.midas.Transactions;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bhyte.midas.AccountCreation.SignUpEnterNumber;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bhyte.midas.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,7 +25,7 @@ public class ReviewTransaction extends AppCompatActivity {
 
     TextView amountText, receiveText, numberText, providerText, transactionFeeText;
     String provider, phoneNumber, amount, transactionFee, youReceive;
-    int amountInt;
+    Double amountDouble;
     ImageView back;
     double youReceiveInt;
 
@@ -51,7 +50,7 @@ public class ReviewTransaction extends AppCompatActivity {
         // Get Data from previous Activities
         amount = AddMoney.amountToDepositString;
         provider = AddMoneyChooseProvider.networkName;
-        amountInt = AddMoney.amountToDeposit;
+        amountDouble = AddMoney.amountToDeposit;
 
         // Data from Firebase
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
@@ -75,13 +74,12 @@ public class ReviewTransaction extends AppCompatActivity {
         }
 
         // Calculations
-
         // Transaction Fee
-        double transactionFeeInt = 0.014 * amountInt;
+        double transactionFeeInt = 0.014 * amountDouble;
         transactionFee = String.valueOf(transactionFeeInt);
 
         // Amount you will receive
-        youReceiveInt = amountInt - transactionFeeInt;
+        youReceiveInt = amountDouble - transactionFeeInt;
         youReceive = String.valueOf(youReceiveInt);
 
         // Set TextView Texts

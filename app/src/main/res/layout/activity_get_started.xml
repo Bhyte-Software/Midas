@@ -12,6 +12,7 @@
     tools:context=".AccountCreation.GetStarted">
 
     <ImageView
+        android:onClick="callComplete"
         android:contentDescription="@string/image"
         android:layout_width="match_parent"
         android:src="@drawable/onboarding_image_one"
@@ -52,20 +53,37 @@
         android:textAllCaps="false"
         app:cornerRadius="35dp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_marginStart="@dimen/dimen_25"
-        android:layout_marginEnd="@dimen/dimen_25"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:backgroundTint="@color/bg"
-        app:strokeColor="@color/blue_200"
-        android:textColor="@color/blue_200"
-        android:id="@+id/sign_in_button"
-        app:strokeWidth="1dp"
+    <RelativeLayout
         android:layout_marginTop="@dimen/dimen_5"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@string/sign_in"
-        android:textAllCaps="false"
-        app:cornerRadius="35dp" />
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginEnd="@dimen/dimen_25"
+            android:backgroundTint="@color/bg"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/sign_in"
+            android:textAllCaps="false"
+            android:textColor="@color/blue_200"
+            app:cornerRadius="35dp"
+            app:strokeColor="@color/blue_200"
+            app:strokeWidth="1dp" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_centerInParent="true"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="false"
+            android:elevation="@dimen/dimen_5"
+            android:id="@+id/sign_in_button_animation"
+            android:layout_width="@dimen/dimen_40"
+            android:layout_height="@dimen/dimen_40"
+            android:visibility="gone"
+            app:lottie_rawRes="@raw/button_loading_blue" />
+
+    </RelativeLayout>
 
 </LinearLayout>

@@ -8,10 +8,11 @@
     tools:context=".AccountCreation.SignUpBirthdate">
 
     <ImageView
-        android:layout_marginTop="-25dp"
         android:id="@+id/register_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="-25dp"
+        android:contentDescription="@string/image"
         android:src="@drawable/registration_image" />
 
     <TextView
@@ -78,7 +79,7 @@
             android:layout_marginEnd="@dimen/dimen_25"
             android:fontFamily="@font/roboto_medium"
             android:onClick="callNext"
-            android:text="Next"
+            android:text="@string/next"
             android:textAllCaps="false"
             app:cornerRadius="35dp" />
 

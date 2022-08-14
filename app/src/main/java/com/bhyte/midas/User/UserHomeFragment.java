@@ -6,14 +6,22 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.RectF;
+import android.graphics.Shader;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewOutlineProvider;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -21,9 +29,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -62,18 +72,17 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserHomeFragment extends Fragment implements QuickActionsAdapter.OnNoteListener {
 
-    ScrollView scrollView;
-    RecyclerView quickActionsRecycler;
-    RecyclerView.Adapter adapter;
-    ArrayList<QuickActionsHelperClass> viewQuickActions = new ArrayList<>();
-
     public static String key, usernameS;
     public int lengthOfAmount;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+    ScrollView scrollView;
+    RecyclerView quickActionsRecycler;
+    RecyclerView.Adapter<?> adapter;
+    ArrayList<QuickActionsHelperClass> viewQuickActions = new ArrayList<>();
     Context context;
     FirebaseDatabase database;
     ShimmerFrameLayout shimmerFrameLayout;
-    FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
     SharedPreferences selectedCurrency;
     LinearLayout adView;
     View viewHolder;
@@ -84,7 +93,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
     RelativeLayout currencyView, verificationStatus, usdLayout, ghcLayout, gradientLayout, roundRec;
     MaterialButton addMoney;
     ImageView toggleIcon, check1, check2;
-    Animation animation, animation2;
+    Animation animation, animation2, shakeAnimation;
     TextView currency, username, totalAssets, accountBalance, greetingText, recommendedText, text1, text2, text3;
     private AdLoader adLoader;
 
@@ -92,15 +101,14 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_user_home, container, false);
-
-        // Context
-        this.context = getContext();
-
         // Instance of FirebaseAuth
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         database = FirebaseDatabase.getInstance();
+        View root = inflater.inflate(R.layout.fragment_user_home, container, false);
+
+        // Context
+        this.context = getContext();
 
         // Hooks
         scrollView = root.findViewById(R.id.scroll_layout);
@@ -125,9 +133,10 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         greetingText = root.findViewById(R.id.greetings);
         shimmerFrameLayout = root.findViewById(R.id.shimmer_layout);
 
-        // Clipping
-        scrollView.setOutlineProvider(ViewOutlineProvider.BACKGROUND);
-        scrollView.setClipToOutline(true);
+        // Shake
+        // Animate
+        shakeAnimation = AnimationUtils.loadAnimation(context, R.anim.horizontal);
+        verificationStatus.setAnimation(shakeAnimation);
 
         // Recycler
         quickActionsRecycler.setFocusable(false);
@@ -245,20 +254,20 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
 
     @Override
     public void onNoteClick(int position) {
-        if(position == 0){
+        if (position == 0) {
             startActivity(new Intent(getActivity(), CreateCard.class));
         }
-        if(position == 1){
+        if (position == 1) {
             startActivity(new Intent(getActivity(), AddMoneyChooseMethod.class));
         }
-        if(position == 2){
+        if (position == 2) {
             // Cards Fragment
             Log.d(TAG, "onNoteClick: ");
         }
-        if(position == 3){
+        if (position == 3) {
             startActivity(new Intent(getActivity(), Store.class));
         }
-        if(position == 4){
+        if (position == 4) {
             // Sign Out
             firebaseAuth.signOut();
             startActivity(new Intent(getActivity(), GetStarted.class));
@@ -284,35 +293,34 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         });
 
         // Load Native Ads
-        adLoader = new AdLoader.Builder(context, "ca-app-pub-3862971524430784/7025923215")
-                .forNativeAd(NativeAd -> {
-                    // Show the ad
-                    if (adLoader.isLoading()) {
-                        //Show Shimmer
-                        shimmerFrameLayout.setVisibility(View.VISIBLE);
-                        shimmerFrameLayout.startShimmer();
-                    }
+        adLoader = new AdLoader.Builder(context, "ca-app-pub-3862971524430784/7025923215").forNativeAd(NativeAd -> {
+            // Show the ad
+            if (adLoader.isLoading()) {
+                //Show Shimmer
+                shimmerFrameLayout.setVisibility(View.VISIBLE);
+                shimmerFrameLayout.startShimmer();
+            }
 
-                    // Destroy Ads
-                    if (context == null) {
-                        NativeAd.destroy();
-                    }
+            // Destroy Ads
+            if (context == null) {
+                NativeAd.destroy();
+            }
 
-                    NativeTemplateStyle styles = new NativeTemplateStyle.Builder().withMainBackgroundColor(new ColorDrawable(Color.TRANSPARENT)).build();
-                    TemplateView template = view.findViewById(R.id.recommended);
-                    template.setStyles(styles);
-                    template.setNativeAd(NativeAd);
+            NativeTemplateStyle styles = new NativeTemplateStyle.Builder().withMainBackgroundColor(new ColorDrawable(Color.TRANSPARENT)).build();
+            TemplateView template = view.findViewById(R.id.recommended);
+            template.setStyles(styles);
+            template.setNativeAd(NativeAd);
 
                     /* Show Ads in custom Layout
-                    final String getHeadline = NativeAd.getHeadline();
                     final NativeAd.Image getIcon = NativeAd.getIcon();
+                    final String getHeadline = NativeAd.getHeadline();
                     final String getDetails = NativeAd.getBody();
                     final String getPrice = NativeAd.getPrice();
                     final String getAdvertiserName = NativeAd.getAdvertiser();
                     final double getRating = NativeAd.getStarRating();
                     final List<NativeAd.Image> images = NativeAd.getImages();
                     */
-                })
+        })
                 .withAdListener(new AdListener() {
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError adError) {
@@ -320,10 +328,34 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
                         adView.setVisibility(View.GONE);
                         recommendedText.setVisibility(View.GONE);
                         viewHolder.setVisibility(View.VISIBLE);
+                        // Failed to load ads
+                        Toast toast = Toast.makeText(context, "Failed to load ads", Toast.LENGTH_SHORT);
+                        View view1 = toast.getView();
+
+                        //Gets the actual oval background of the Toast then sets the colour filter
+                        view1.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_IN);
+
+                        //Gets the TextView from the Toast so it can be edited
+                        TextView text = view1.findViewById(android.R.id.message);
+                        text.setTextColor(ContextCompat.getColor(context, R.color.white));
+
+                        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                        toast.show();
                     }
 
                     @Override
                     public void onAdLoaded() {
+                        // Get Image and Add Rounded Corners
+                        ImageView adImage = adView.findViewById(R.id.icon);
+                        BitmapDrawable drawable = (BitmapDrawable) adImage.getDrawable();
+                        Bitmap adBitmap = drawable.getBitmap();
+                        Bitmap imageRounded = Bitmap.createBitmap(adBitmap.getWidth(), adBitmap.getHeight(), adBitmap.getConfig());
+                        Canvas canvas = new Canvas(imageRounded);
+                        Paint paint = new Paint();
+                        paint.setAntiAlias(true);
+                        paint.setShader(new BitmapShader(adBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
+                        canvas.drawRoundRect((new RectF(0, 0, adBitmap.getWidth(), adBitmap.getHeight())), 15, 15, paint); // Round Image Corner 100 100 100 100
+                        adImage.setImageBitmap(imageRounded);
                         // Stop and hide shimmer
                         shimmerFrameLayout.stopShimmer();
                         shimmerFrameLayout.setVisibility(View.GONE);

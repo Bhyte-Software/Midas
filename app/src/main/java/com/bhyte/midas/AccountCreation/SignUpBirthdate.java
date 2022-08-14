@@ -37,7 +37,6 @@ public class SignUpBirthdate extends AppCompatActivity {
         if (!validateAge()) {
             return;
         }
-
         startActivity(new Intent(getApplicationContext(), SignUpEnableFingerprint.class));
         finish();
     }
@@ -48,33 +47,18 @@ public class SignUpBirthdate extends AppCompatActivity {
         age = currentYear - userAge;
 
         if (age < 18) {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-                Toast toast = Toast.makeText(SignUpBirthdate.this, R.string.ineligible, Toast.LENGTH_LONG);
-                View view1 = toast.getView();
+            Toast toast = Toast.makeText(SignUpBirthdate.this, R.string.ineligible, Toast.LENGTH_LONG);
+            View view1 = toast.getView();
 
-                //Gets the actual oval background of the Toast then sets the colour filter
-                view1.getBackground().setColorFilter(ContextCompat.getColor(SignUpBirthdate.this, R.color.red), PorterDuff.Mode.SRC_IN);
+            //Gets the actual oval background of the Toast then sets the colour filter
+            view1.getBackground().setColorFilter(ContextCompat.getColor(SignUpBirthdate.this, R.color.red), PorterDuff.Mode.SRC_IN);
 
-                //Gets the TextView from the Toast so it can be edited
-                TextView text = view1.findViewById(android.R.id.message);
-                text.setTextColor(ContextCompat.getColor(SignUpBirthdate.this, R.color.white));
+            //Gets the TextView from the Toast so it can be edited
+            TextView text = view1.findViewById(android.R.id.message);
+            text.setTextColor(ContextCompat.getColor(SignUpBirthdate.this, R.color.white));
 
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                toast.show();
-
-            } else {
-                LayoutInflater inflater = getLayoutInflater();
-                View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
-                TextView textView = layout.findViewById(R.id.text);
-                textView.setText(R.string.ineligible);
-
-                Toast toast = new Toast(SignUpBirthdate.this);
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                toast.setDuration(Toast.LENGTH_LONG);
-                toast.setView(layout);
-                toast.show();
-
-            }
+            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+            toast.show();
             return false;
         } else
             return true;

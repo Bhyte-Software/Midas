@@ -73,7 +73,7 @@
 
 
     <!-- Welcome -->
-    <string name="welcome">Welcome</string>
+    <string name="welcome">Welcome!!!</string>
     <string name="hooray">Hooray!</string>
     <string name="welcome_description">Well you have thus come this far! Thanks for choosing us enjoy your experience!</string>
     <!-- Welcome -->
@@ -87,7 +87,7 @@
     <string name="recommended">Recommended</string>
     <string name="done">Done</string>
     <string name="national_description">National ID or Driver\'s licence for citizens of the country mainly </string>
-    <string name="passport_description">Required passport for non citizens</string>
+    <string name="passport_description">Required passport for non citizens of Ghana</string>
     <string name="identity_description">We need to verify your identity (Required)</string>
     <!-- Verify Identity -->
 
@@ -190,10 +190,12 @@
     <string name="virtual_card_feature_one">• Make purchases online</string>
     <string name="virtual_card_feature_two">• Reminders on your subscriptions</string>
     <string name="virtual_card_feature_three">• Control how you spend</string>
+    <string name="virtual_card_feature_four">• Deactivate card at your own convenience</string>
 
     <string name="gift_card_feature_one">• Gift friends with virtual cards</string>
     <string name="gift_card_feature_two">• Delivered instantly by email</string>
     <string name="gift_card_feature_three">• Redeemable for online purchases</string>
+    <string name="gift_card_feature_four"> </string>
     <!-- Card Features -->
 
     <!-- FRAGMENT -->
@@ -279,8 +281,8 @@
     <string name="enter_number_to_continue">Please enter your number to continue</string>
     <string name="enter_valid_digits">Please enter a valid 10 digit number</string>
     <string name="enter_valid_11_digits">Please enter a valid 11 digit number</string>
-    <string name="enter_valid_number">Please enter a valid 10 digit number e.g 0202280564</string>
-    <string name="enter_valid_number_ng">Please enter a valid 11 digit number e.g 08202280564</string>
+    <string name="enter_valid_number">Please enter a valid 10 digit number</string>
+    <string name="enter_valid_number_ng">Please enter a valid 11 digit number</string>
     <string name="incorrect_code">Incorrect code, try again</string>
     <string name="enter_sms">Enter SMS code sent to your number</string>
     <string name="code_verification_error">Error verifying code</string>
@@ -384,7 +386,7 @@
     <string name="top_questions">Top Questions</string>
     <string name="nothing_to_show">Nothing to show</string>
     <string name="chat_bot">Chat Bot</string>
-    <string name="write_a_message">Write a message...</string>
+    <string name="write_a_message">Write a message…</string>
     <string name="update_profile">Update Profile</string>
 
 </resources>

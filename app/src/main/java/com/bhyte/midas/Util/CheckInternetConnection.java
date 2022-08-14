@@ -1,4 +1,4 @@
-package com.bhyte.midas.util;
+package com.bhyte.midas.Util;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -26,7 +26,6 @@ public class CheckInternetConnection {
             try {
                 Process  mIpAddressProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
                 int mExitValue = mIpAddressProcess.waitFor();
-                System.out.println(" mExitValue "+ mExitValue);
                 return mExitValue == 0;
             } catch (IOException | InterruptedException e) {
                 try {

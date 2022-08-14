@@ -6,7 +6,7 @@
             android:shape="rectangle">
             <solid android:color="#000000"/>
             <corners
-                android:radius="@dimen/dimen_15"/>
+                android:radius="@dimen/dimen_35"/>
         </shape>
     </item>
     <item android:drawable="@drawable/round_blue" />

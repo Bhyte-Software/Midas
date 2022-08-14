@@ -1,22 +1,13 @@
 package com.bhyte.midas.AccountCreation;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.KeyguardManager;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.graphics.PorterDuff;
-import android.hardware.fingerprint.FingerprintManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;

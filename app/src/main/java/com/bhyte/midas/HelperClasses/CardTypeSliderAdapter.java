@@ -42,12 +42,12 @@ public class CardTypeSliderAdapter extends PagerAdapter {
             R.string.gift_card_feature_two
     };
     int[] feature_three = {
-            R.string.virtual_card_feature_two,
-            R.string.gift_card_feature_two
+            R.string.virtual_card_feature_three,
+            R.string.gift_card_feature_three
     };
     int[] feature_four = {
-            R.string.virtual_card_feature_two,
-            R.string.gift_card_feature_two
+            R.string.virtual_card_feature_four,
+            R.string.gift_card_feature_four
     };
 
     public CardTypeSliderAdapter(Context context) {

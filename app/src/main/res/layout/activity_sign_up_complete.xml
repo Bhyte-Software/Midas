@@ -29,18 +29,27 @@
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_medium"
+        android:fontFamily="@font/roboto_regular"
         android:padding="5dp"
         android:textColor="@color/secondary_text"
         android:text="@string/welcome_description"
         android:textAlignment="center"
         android:textSize="20sp" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_marginTop="-400dp"
+        app:lottie_rawRes="@raw/confetti_large"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        android:id="@+id/confetti_animation"
+        android:layout_width="500dp"
+        android:layout_height="870dp"/>
+
     <com.google.android.material.button.MaterialButton
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="@dimen/dimen_25"
-        android:layout_marginTop="@dimen/dimen_90"
+        android:layout_marginTop="-420dp"
         android:id="@+id/button"
         android:layout_marginEnd="@dimen/dimen_25"
         android:fontFamily="@font/roboto_medium"

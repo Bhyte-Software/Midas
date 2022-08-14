@@ -29,9 +29,8 @@ public class FAQ extends AppCompatActivity {
 
         viewPagerAdapter = new ViewPagerAdapter(this);
         viewPager.setAdapter(viewPagerAdapter);
-        viewPager.setUserInputEnabled(false);
 
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());

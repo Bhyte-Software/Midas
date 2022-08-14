@@ -129,7 +129,6 @@
 
                     <include layout="@layout/medium_ads_shimmer" />
 
-
                 </LinearLayout>
 
             </com.facebook.shimmer.ShimmerFrameLayout>
@@ -140,7 +139,7 @@
                 android:layout_alignParentBottom="true"
                 android:id="@+id/recommended_layout"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="135dp"
                 android:background="@drawable/quick_actions_border_ripple"
                 android:clickable="true"
                 android:visibility="gone">

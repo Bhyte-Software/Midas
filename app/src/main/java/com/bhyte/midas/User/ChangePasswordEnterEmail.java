@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bhyte.midas.R;
-import com.bhyte.midas.util.Common;
+import com.bhyte.midas.Util.Common;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
