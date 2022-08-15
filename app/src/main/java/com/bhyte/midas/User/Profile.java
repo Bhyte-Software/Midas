@@ -1,9 +1,11 @@
 package com.bhyte.midas.User;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PorterDuff;
@@ -56,6 +58,7 @@ public class Profile extends AppCompatActivity {
 
     int TAKE_IMAGE_CODE = 1001;
     int PICK_IMAGE_CODE = 1002;
+
 
     Dialog logoutDialog, dialog, rateDialog;
     RelativeLayout takePhoto, choosePhoto, removePhoto, rateMidas, languageLayout;
@@ -240,6 +243,7 @@ public class Profile extends AppCompatActivity {
 
         positive.setOnClickListener(v -> rateMidas());
         negative.setOnClickListener(v1 -> rateDialog.dismiss());
+
 
     }
 
