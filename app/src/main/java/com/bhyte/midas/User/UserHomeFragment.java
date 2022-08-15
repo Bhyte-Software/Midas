@@ -41,6 +41,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bhyte.midas.AccountCreation.GetStarted;
 import com.bhyte.midas.AccountCreation.SignUpVerifyIdentity;
 import com.bhyte.midas.R;
+import com.bhyte.midas.Recycler.PlatformsAdapter;
+import com.bhyte.midas.Recycler.PlatformsHelperClass;
 import com.bhyte.midas.Recycler.QuickActionsAdapter;
 import com.bhyte.midas.Recycler.QuickActionsHelperClass;
 import com.bhyte.midas.Store.Store;
@@ -74,18 +76,23 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
 
     public static String key, usernameS;
     public int lengthOfAmount;
+    private AdLoader adLoader;
+
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
-    ScrollView scrollView;
-    RecyclerView quickActionsRecycler;
+
     RecyclerView.Adapter<?> adapter;
+    RecyclerView.Adapter<?> platformsAdapter;
     ArrayList<QuickActionsHelperClass> viewQuickActions = new ArrayList<>();
+    ArrayList<PlatformsHelperClass> viewPlatforms = new ArrayList<>();
+
+    ScrollView scrollView;
+    RecyclerView quickActionsRecycler, platformsRecycler;
     Context context;
     FirebaseDatabase database;
     ShimmerFrameLayout shimmerFrameLayout;
     SharedPreferences selectedCurrency;
     LinearLayout adView;
-    View viewHolder;
     String val = "visible";
     CircleImageView profilePicture;
     String account_balance, fullName;
@@ -95,7 +102,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
     ImageView toggleIcon, check1, check2;
     Animation animation, animation2, shakeAnimation;
     TextView currency, username, totalAssets, accountBalance, greetingText, recommendedText, text1, text2, text3;
-    private AdLoader adLoader;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -113,6 +120,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         // Hooks
         scrollView = root.findViewById(R.id.scroll_layout);
         quickActionsRecycler = root.findViewById(R.id.quick_actions_recycler);
+        platformsRecycler = root.findViewById(R.id.platforms_recycler);
         text1 = root.findViewById(R.id.text1);
         text2 = root.findViewById(R.id.text2);
         text3 = root.findViewById(R.id.text3);
@@ -120,7 +128,6 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         gradientLayout = root.findViewById(R.id.gradient_layout);
         adView = root.findViewById(R.id.recommended_layout);
         recommendedText = root.findViewById(R.id.recommended_text);
-        viewHolder = root.findViewById(R.id.view_holder);
         username = root.findViewById(R.id.username);
         currencyView = root.findViewById(R.id.currency_view);
         currency = root.findViewById(R.id.currency);
@@ -133,14 +140,15 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         greetingText = root.findViewById(R.id.greetings);
         shimmerFrameLayout = root.findViewById(R.id.shimmer_layout);
 
-        // Shake
-        // Animate
+        // Shake View
         shakeAnimation = AnimationUtils.loadAnimation(context, R.anim.horizontal);
         verificationStatus.setAnimation(shakeAnimation);
 
         // Recycler
         quickActionsRecycler.setFocusable(false);
+        platformsRecycler.setFocusable(false);
         quickActionsRecycler();
+        platformsRecycler();
 
         // Save Account Balance in variable
         account_balance = accountBalance.getText().toString();
@@ -238,6 +246,19 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         return root;
     }
 
+    private void platformsRecycler() {
+        platformsRecycler.setHasFixedSize(true);
+        platformsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+        viewPlatforms.add(new PlatformsHelperClass(R.drawable.amazon_logo, "Amazon", "Shopping"));
+        viewPlatforms.add(new PlatformsHelperClass(R.drawable.spotify_logo, "Spotify", "Music & Podcast"));
+        viewPlatforms.add(new PlatformsHelperClass(R.drawable.amazon_logo, "Amazon", "Shopping"));
+        viewPlatforms.add(new PlatformsHelperClass(R.drawable.spotify_logo, "Spotify", "Music & Podcast"));
+
+        platformsAdapter = new PlatformsAdapter(viewPlatforms);
+        platformsRecycler.setAdapter(platformsAdapter);
+    }
+
     private void quickActionsRecycler() {
         quickActionsRecycler.setHasFixedSize(true);
         quickActionsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -327,7 +348,6 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
                         // Make Ad View Invisible
                         adView.setVisibility(View.GONE);
                         recommendedText.setVisibility(View.GONE);
-                        viewHolder.setVisibility(View.VISIBLE);
                         // Failed to load ads
                         Toast toast = Toast.makeText(context, "Failed to load ads", Toast.LENGTH_SHORT);
                         View view1 = toast.getView();
@@ -362,7 +382,6 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
                         // Make Ad View Visible
                         adView.setVisibility(View.VISIBLE);
                         recommendedText.setVisibility(View.VISIBLE);
-                        viewHolder.setVisibility(View.GONE);
                         // Animate
                         animation2 = AnimationUtils.loadAnimation(context, R.anim.fade_animation);
                         adView.setAnimation(animation2);

@@ -169,7 +169,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-130dp"
         android:background="@drawable/bottom_sheet_background"
-        android:elevation="@dimen/dimen_10"
+        android:elevation="@dimen/dimen_50"
         android:scrollbars="none">
 
         <LinearLayout
@@ -193,10 +193,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
+                android:clipToPadding="false"
                 android:elevation="2dp"
                 android:focusable="false"
+                android:paddingStart="@dimen/dimen_25"
                 android:paddingTop="@dimen/dimen_20"
-                android:paddingBottom="@dimen/dimen_20"/>
+                android:paddingEnd="@dimen/dimen_25"
+                android:paddingBottom="@dimen/dimen_20" />
 
             <RelativeLayout
                 android:id="@+id/verification_status"
@@ -243,7 +246,7 @@
                 android:layout_marginStart="@dimen/dimen_10"
                 android:layout_marginTop="@dimen/dimen_10"
                 android:layout_marginEnd="@dimen/dimen_10"
-                android:layout_marginBottom="@dimen/dimen_60"
+                android:layout_marginBottom="@dimen/dimen_25"
                 android:visibility="visible">
 
                 <LinearLayout
@@ -276,7 +279,6 @@
                 android:layout_marginStart="@dimen/dimen_25"
                 android:layout_marginTop="@dimen/dimen_15"
                 android:layout_marginEnd="@dimen/dimen_25"
-                android:layout_marginBottom="@dimen/dimen_90"
                 android:background="@drawable/quick_actions_border_ripple"
                 android:clickable="true"
                 android:visibility="gone">
@@ -290,12 +292,68 @@
 
             </LinearLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:layout_marginTop="@dimen/dimen_25"
+                android:layout_marginEnd="@dimen/dimen_25">
+
+                <TextView
+                    android:id="@+id/platforms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Top Platforms"
+                    android:textColor="@color/main_text"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/view_all_platforms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/roboto_regular"
+                    android:padding="@dimen/dimen_5"
+                    android:text="View All"
+                    android:textColor="@color/blue_200"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_marginTop="@dimen/dimen_10"
+                android:id="@+id/platforms_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:paddingStart="@dimen/dimen_25"
+                android:paddingEnd="@dimen/dimen_25"
+                android:text="@string/platforms_description"
+                android:textColor="@color/main_text"
+                android:textSize="18sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/platforms_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:clipToPadding="false"
+                android:elevation="2dp"
+                android:focusable="false"
+                android:paddingStart="@dimen/dimen_25"
+                android:paddingTop="@dimen/dimen_20"
+                android:paddingEnd="@dimen/dimen_25"
+                android:paddingBottom="@dimen/dimen_20" />
+
             <View
-                android:id="@+id/view_holder"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginBottom="@dimen/dimen_20"
-                android:visibility="invisible" />
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginBottom="@dimen/dimen_90" />
 
         </LinearLayout>
 

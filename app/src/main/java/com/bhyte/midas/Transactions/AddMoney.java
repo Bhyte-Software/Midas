@@ -3,7 +3,6 @@ package com.bhyte.midas.Transactions;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.PorterDuff;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -59,13 +58,9 @@ public class AddMoney extends AppCompatActivity {
             // Get Input
             // Convert String to int
             String userInputAmount = amount.getText().toString();
-            userAmountDouble = Double.parseDouble(userInputAmount);
-            amountToDeposit = userAmountDouble;
-            amountToDepositString = userInputAmount;
-
-            if (userAmountDouble > 5000 | userAmountDouble < 20 | userInputAmount.equals("")) {
+            if (userInputAmount.equals("")) {
                 // Custom Toast
-                Toast toast = Toast.makeText(AddMoney.this, R.string.right_amount, Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(AddMoney.this, "Please enter valid amount", Toast.LENGTH_SHORT);
                 View view1 = toast.getView();
 
                 //Gets the actual oval background of the Toast then sets the colour filter
@@ -78,8 +73,28 @@ public class AddMoney extends AppCompatActivity {
                 toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
                 toast.show();
             } else {
-                // Check Input
-                startActivity(new Intent(getApplicationContext(), AddMoneyChooseProvider.class));
+                userAmountDouble = Double.parseDouble(userInputAmount);
+                amountToDeposit = userAmountDouble;
+                amountToDepositString = userInputAmount;
+
+                if (userAmountDouble > 5000 | userAmountDouble < 20) {
+                    // Custom Toast
+                    Toast toast = Toast.makeText(AddMoney.this, R.string.right_amount, Toast.LENGTH_SHORT);
+                    View view1 = toast.getView();
+
+                    //Gets the actual oval background of the Toast then sets the colour filter
+                    view1.getBackground().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.red), PorterDuff.Mode.SRC_IN);
+
+                    //Gets the TextView from the Toast so it can be edited
+                    TextView text = view1.findViewById(android.R.id.message);
+                    text.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                    toast.show();
+                } else {
+                    // Check Input
+                    startActivity(new Intent(getApplicationContext(), AddMoneyChooseProvider.class));
+                }
             }
         });
 
@@ -215,32 +230,17 @@ public class AddMoney extends AppCompatActivity {
 
     private void maxLengthToast() {
         // Custom Toast
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-            Toast toast = Toast.makeText(AddMoney.this, R.string.max_characters, Toast.LENGTH_SHORT);
-            View view1 = toast.getView();
+        Toast toast = Toast.makeText(AddMoney.this, R.string.max_characters, Toast.LENGTH_SHORT);
+        View view1 = toast.getView();
 
-            //Gets the actual oval background of the Toast then sets the colour filter
-            view1.getBackground().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.red), PorterDuff.Mode.SRC_IN);
+        //Gets the actual oval background of the Toast then sets the colour filter
+        view1.getBackground().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.red), PorterDuff.Mode.SRC_IN);
 
-            //Gets the TextView from the Toast so it can be edited
-            TextView text = view1.findViewById(android.R.id.message);
-            text.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+        //Gets the TextView from the Toast so it can be edited
+        TextView text = view1.findViewById(android.R.id.message);
+        text.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-            toast.show();
-        } else {
-            LayoutInflater inflater = getLayoutInflater();
-            View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container));
-            TextView textView = layout.findViewById(R.id.text);
-            textView.setText(R.string.max_characters);
-
-            Toast toast = new Toast(getApplicationContext());
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-            toast.setDuration(Toast.LENGTH_SHORT);
-            toast.setView(layout);
-            toast.show();
-        }
+        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+        toast.show();
     }
-
-
 }

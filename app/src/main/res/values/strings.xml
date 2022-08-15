@@ -388,5 +388,6 @@
     <string name="chat_bot">Chat Bot</string>
     <string name="write_a_message">Write a message…</string>
     <string name="update_profile">Update Profile</string>
+    <string name="platforms_description">Midas virtual credit card is a supported payment method across different platforms</string>
 
 </resources>

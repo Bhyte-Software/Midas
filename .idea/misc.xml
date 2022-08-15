@@ -165,13 +165,14 @@
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/fragment_onboarding_two.xml" value="0.1" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/fragment_other_faqs.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/fragment_user_cards.xml" value="0.2" />
-        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/fragment_user_home.xml" value="0.176" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/fragment_user_home.xml" value="0.4699527346387576" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/fragment_user_settings.xml" value="0.264" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/fragment_user_transactions.xml" value="0.12" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/fragment_virtual_card_faqs.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/language_bottom_sheet.xml" value="0.2" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/logout_popup.xml" value="0.2" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/medium_ads_shimmer.xml" value="0.536" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/platforms_layout.xml" value="0.5" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/profile_bottom_sheet.xml" value="0.264" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/profile_buttom_sheet.xml" value="0.25" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/quick_actions_layout.xml" value="0.536" />
@@ -180,11 +181,13 @@
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/remove_profile_picture_confirmation.xml" value="0.176" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/slides_layout.xml" value="0.152" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/spinner_items.xml" value="0.264" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/top_platforms.xml" value="0.32222222222222224" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/layout/top_platforms_layout.xml" value="0.32222222222222224" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/nativetemplates/src/main/res/drawable/ad_button.xml" value="0.13680555555555557" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/nativetemplates/src/main/res/drawable/gnt_ad_image_outline.xml" value="0.17743055555555556" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/nativetemplates/src/main/res/drawable/gnt_rounded_corners_shape.xml" value="0.1680921052631579" />
-        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/nativetemplates/src/main/res/layout-v21/gnt_small_template_view.xml" value="0.33" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/nativetemplates/src/main/res/layout-v21/gnt_small_template_view.xml" value="0.22" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/nativetemplates/src/main/res/layout/gnt_medium_template_view.xml" value="0.1875" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/nativetemplates/src/main/res/layout/gnt_small_template_view.xml" value="0.22" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/drawable/bottom_nav.xml" value="0.2635" />

@@ -48,12 +48,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginTop="5dp"
                 android:id="@+id/row_two"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/headline"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
                 android:layout_toEndOf="@id/icon"
                 android:orientation="horizontal">
 
@@ -113,10 +113,10 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/cta"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
                 android:layout_below="@id/row_two"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_toEndOf="@id/icon"
                 android:background="@drawable/gnt_ad_button"
                 android:lines="1"
