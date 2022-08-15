@@ -365,7 +365,7 @@
     <string name="select_deposit_method">Please select a deposit method</string>
     <string name="bank_transfer_not_available">Bank transfer not available</string>
     <string name="nothing">Nothing to delete</string>
-    <string name="right_amount">Enter the right amount</string>
+    <string name="right_amount">Please enter valid amount</string>
     <string name="max_characters">Max characters entered</string>
     <string name="dummy_number">0202280564</string>
     <string name="choose_your_provider">Choose your provider</string>
