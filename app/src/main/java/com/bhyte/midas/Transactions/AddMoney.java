@@ -44,6 +44,7 @@ public class AddMoney extends AppCompatActivity {
         back = findViewById(R.id.back);
         amount = findViewById(R.id.amount);
         currency = findViewById(R.id.currency);
+
         one = findViewById(R.id.one);
         two = findViewById(R.id.two);
         three = findViewById(R.id.three);
@@ -55,6 +56,7 @@ public class AddMoney extends AppCompatActivity {
         nine = findViewById(R.id.nine);
         zero = findViewById(R.id.zero);
         dot = findViewById(R.id.dot);
+
         backspace = findViewById(R.id.backspace);
         nextButton = findViewById(R.id.next);
 
@@ -109,7 +111,6 @@ public class AddMoney extends AppCompatActivity {
             bottomSheetDialog.setContentView(sheetView);
 
             bottomSheetDialog.show();
-
             // Hooks
         });
         back.setOnClickListener(v -> finish());

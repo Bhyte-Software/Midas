@@ -8,6 +8,10 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission
+        android:name="android.permission.CAMERA"
+        android:required="true"
+        android:requiredFeature="true" />
 
     <application
         android:allowBackup="true"
@@ -60,9 +64,6 @@
             android:exported="false" />
         <activity
             android:name=".Store.Store"
-            android:exported="false" />
-        <activity
-            android:name=".UserCards"
             android:exported="false" />
         <activity
             android:name=".User.GiftCardChooseLabel"
@@ -153,9 +154,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".AccountCreation.SignIn"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="false"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".AccountCreation.SignUpCredentials"
             android:exported="false"
