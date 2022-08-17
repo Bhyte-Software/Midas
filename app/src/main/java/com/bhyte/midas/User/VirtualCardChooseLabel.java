@@ -1,15 +1,17 @@
 package com.bhyte.midas.User;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.bhyte.midas.R;
 
@@ -18,16 +20,14 @@ import java.util.Calendar;
 
 public class VirtualCardChooseLabel extends AppCompatActivity {
 
-    public String chosenColor;
     public static String userFullName;
     public static String dateToday;
-
+    public String chosenColor;
     EditText nameInputLayout;
     String fullName;
-    TextView date;
+    TextView date, nameOnCard;
     RelativeLayout cardLayout;
 
-    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +36,30 @@ public class VirtualCardChooseLabel extends AppCompatActivity {
         // Hooks
         cardLayout = findViewById(R.id.card);
         date = findViewById(R.id.date);
+        nameOnCard = findViewById(R.id.card_name);
         nameInputLayout = findViewById(R.id.name_input_layout);
 
         // Data from Previous Activity
         chosenColor = VirtualCardChooseDesign.chosenColor;
+
+        nameInputLayout.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (nameInputLayout.getText().length() >= 0) {
+                    nameOnCard.setText(nameInputLayout.getText().toString());
+                    checkInputLayout();
+                }
+            }
+        });
 
         // Update Date
         updateDate();
@@ -71,16 +91,10 @@ public class VirtualCardChooseLabel extends AppCompatActivity {
         dateToday = currentDate;
     }
 
-    @Override
-    public void onUserInteraction() {
-        super.onUserInteraction();
-        checkInputLayout();
-    }
-
     private void checkInputLayout() {
 
         // Display check icon at end of EditText if user inputs whitespace
-        if (!nameInputLayout.getText().toString().matches("\\S+")) {
+        if (nameInputLayout.getText().toString().contains(" ") && nameInputLayout.getText().toString().length() >= 8) {
             nameInputLayout.setCompoundDrawablesWithIntrinsicBounds(R.drawable.user_icon, 0, R.drawable.green_tick, 0);
         }
 
@@ -101,7 +115,6 @@ public class VirtualCardChooseLabel extends AppCompatActivity {
         userFullName = fullName;
 
         startActivity(new Intent(getApplicationContext(), VirtualCardFundCard.class));
-        finish();
     }
 
     private boolean validateFullName() {

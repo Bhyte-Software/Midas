@@ -2,7 +2,6 @@ package com.bhyte.midas.User;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,29 +46,21 @@ public class VirtualCardChooseDesign extends AppCompatActivity {
         // Set Black default
         blackRadio.setChecked(true);
 
-        continueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callChooseCardLabel();
-            }
-        });
+        continueButton.setOnClickListener(v -> callChooseCardLabel());
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                int i = radioGroup.getCheckedRadioButtonId();
-                if (i == R.id.blue_radio) {
-                    cardImage.setImageResource(R.drawable.cards_blue);
-                }
-                if (i == R.id.red_radio) {
-                    cardImage.setImageResource(R.drawable.cards_red);
-                }
-                if (i == R.id.yellow_radio) {
-                    cardImage.setImageResource(R.drawable.cards_yellow);
-                }
-                if (i == R.id.black_radio) {
-                    cardImage.setImageResource(R.drawable.cards_black);
-                }
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            int i = radioGroup.getCheckedRadioButtonId();
+            if (i == R.id.blue_radio) {
+                cardImage.setImageResource(R.drawable.cards_blue);
+            }
+            if (i == R.id.red_radio) {
+                cardImage.setImageResource(R.drawable.cards_red);
+            }
+            if (i == R.id.yellow_radio) {
+                cardImage.setImageResource(R.drawable.cards_yellow);
+            }
+            if (i == R.id.black_radio) {
+                cardImage.setImageResource(R.drawable.cards_black);
             }
         });
 
@@ -103,11 +93,11 @@ public class VirtualCardChooseDesign extends AppCompatActivity {
             View view1 = toast.getView();
 
             //Gets the actual oval background of the Toast then sets the colour filter
-            view1.getBackground().setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_IN);
+            view1.getBackground().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.red), PorterDuff.Mode.SRC_IN);
 
             //Gets the TextView from the Toast so it can be edited
             TextView text = view1.findViewById(android.R.id.message);
-            text.setTextColor(getResources().getColor(R.color.white));
+            text.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
             toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
             toast.show();

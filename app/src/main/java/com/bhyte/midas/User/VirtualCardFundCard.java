@@ -1,8 +1,5 @@
 package com.bhyte.midas.User;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,18 +8,20 @@ import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import com.bhyte.midas.R;
 
 public class VirtualCardFundCard extends AppCompatActivity {
 
-    Animation animation;
+    public String chosenColor;
 
+    Animation animation;
     String fullName, currentDate;
     TextView cardName, date;
-    public String chosenColor;
     RelativeLayout cardLayout;
 
-    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,16 +50,16 @@ public class VirtualCardFundCard extends AppCompatActivity {
         // Update Card Background
         switch (chosenColor) {
             case "Black":
-                cardLayout.setBackground(getResources().getDrawable(R.drawable.black_card));
+                cardLayout.setBackground(ContextCompat.getDrawable(VirtualCardFundCard.this, R.drawable.black_card));
                 break;
             case "Blue":
-                cardLayout.setBackground(getResources().getDrawable(R.drawable.blue_card));
+                cardLayout.setBackground(ContextCompat.getDrawable(VirtualCardFundCard.this, R.drawable.blue_card));
                 break;
             case "Red":
-                cardLayout.setBackground(getResources().getDrawable(R.drawable.red_card));
+                cardLayout.setBackground(ContextCompat.getDrawable(VirtualCardFundCard.this, R.drawable.red_card));
                 break;
             case "Yellow":
-                cardLayout.setBackground(getResources().getDrawable(R.drawable.yellow_card));
+                cardLayout.setBackground(ContextCompat.getDrawable(VirtualCardFundCard.this, R.drawable.yellow_card));
                 break;
         }
 

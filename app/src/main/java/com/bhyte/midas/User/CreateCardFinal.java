@@ -1,12 +1,14 @@
 package com.bhyte.midas.User;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.bhyte.midas.Common.TermsOfService;
 import com.bhyte.midas.R;
@@ -14,6 +16,8 @@ import com.bhyte.midas.R;
 public class CreateCardFinal extends AppCompatActivity {
 
     public String chosenColor;
+
+    Context context;
     RelativeLayout cardLayout;
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -22,6 +26,8 @@ public class CreateCardFinal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_card_final);
 
+        this.context = getApplicationContext();
+
         // Hooks
         chosenColor = VirtualCardChooseDesign.chosenColor;
         cardLayout = findViewById(R.id.card);
@@ -29,19 +35,18 @@ public class CreateCardFinal extends AppCompatActivity {
         // Update Card Background
         switch (chosenColor) {
             case "Black":
-                cardLayout.setBackground(getResources().getDrawable(R.drawable.black_card));
+                cardLayout.setBackground(ContextCompat.getDrawable(context, R.drawable.black_card));
                 break;
             case "Blue":
-                cardLayout.setBackground(getResources().getDrawable(R.drawable.blue_card));
+                cardLayout.setBackground(ContextCompat.getDrawable(context, R.drawable.blue_card));
                 break;
             case "Red":
-                cardLayout.setBackground(getResources().getDrawable(R.drawable.red_card));
+                cardLayout.setBackground(ContextCompat.getDrawable(context, R.drawable.red_card));
                 break;
             case "Yellow":
-                cardLayout.setBackground(getResources().getDrawable(R.drawable.yellow_card));
+                cardLayout.setBackground(ContextCompat.getDrawable(context, R.drawable.yellow_card));
                 break;
         }
-
 
     }
 

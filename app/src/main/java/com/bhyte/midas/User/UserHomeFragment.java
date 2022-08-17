@@ -20,8 +20,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -72,20 +74,16 @@ import java.util.Calendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class UserHomeFragment extends Fragment implements QuickActionsAdapter.OnNoteListener {
+public class UserHomeFragment extends Fragment implements QuickActionsAdapter.OnNoteListener, View.OnTouchListener, ViewTreeObserver.OnScrollChangedListener {
 
     public static String key, usernameS;
     public int lengthOfAmount;
-    private AdLoader adLoader;
-
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
-
     RecyclerView.Adapter<?> adapter;
     RecyclerView.Adapter<?> platformsAdapter;
     ArrayList<QuickActionsHelperClass> viewQuickActions = new ArrayList<>();
     ArrayList<PlatformsHelperClass> viewPlatforms = new ArrayList<>();
-
     ScrollView scrollView;
     RecyclerView quickActionsRecycler, platformsRecycler;
     Context context;
@@ -97,13 +95,14 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
     CircleImageView profilePicture;
     String account_balance, fullName;
     BottomSheetDialog bottomSheetDialog;
-    RelativeLayout currencyView, verificationStatus, usdLayout, ghcLayout, gradientLayout, roundRec;
+    RelativeLayout currencyView, verificationStatus, usdLayout, ghcLayout, gradientLayout, roundRec, goUp;
     MaterialButton addMoney;
     ImageView toggleIcon, check1, check2;
     Animation animation, animation2, shakeAnimation;
     TextView currency, username, totalAssets, accountBalance, greetingText, recommendedText, text1, text2, text3;
+    private AdLoader adLoader;
 
-
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -118,6 +117,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         this.context = getContext();
 
         // Hooks
+        goUp = root.findViewById(R.id.go_up);
         scrollView = root.findViewById(R.id.scroll_layout);
         quickActionsRecycler = root.findViewById(R.id.quick_actions_recycler);
         platformsRecycler = root.findViewById(R.id.platforms_recycler);
@@ -147,8 +147,14 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         // Recycler
         quickActionsRecycler.setFocusable(false);
         platformsRecycler.setFocusable(false);
+
+        // Recycler View Functions
         quickActionsRecycler();
         platformsRecycler();
+
+        // Invoke touch listener to detect movement of ScrollView
+        scrollView.setOnTouchListener(this);
+        scrollView.getViewTreeObserver().addOnScrollChangedListener(this);
 
         // Save Account Balance in variable
         account_balance = accountBalance.getText().toString();
@@ -468,5 +474,24 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
             animation = AnimationUtils.loadAnimation(context, R.anim.fade_animation);
             greetingText.setAnimation(animation);
         }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return false;
+    }
+
+    @Override
+    public void onScrollChanged() {
+        View view = scrollView.getChildAt(scrollView.getChildCount() - 1);
+        int diff = view.getBottom() - (scrollView.getHeight() + scrollView.getScrollY());
+        if (diff == 0) {
+            goUp.setOnClickListener(v -> goToTop());
+        }
+    }
+
+    private void goToTop() {
+        scrollView.smoothScrollTo(0, 0);
     }
 }

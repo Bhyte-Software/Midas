@@ -166,7 +166,7 @@
     <string name="choose_card_design">Choose card design</string>
     <string name="card_design">Card design</string>
     <string name="choose_card_label">Choose card label</string>
-    <string name="card_label_description">A card label will allow you to identify your cards easily, when you have a couple of them</string>
+    <string name="card_label_description">A card name will allow you to identify your cards easily, when you have a couple of them</string>
     <string name="go_to_settings">Go to settings</string>
     <string name="no_internet_connection">Please check your internet connection</string>
     <string name="by_creating_this_card_you_agree_to">By creating this card, you agree to</string>
@@ -277,7 +277,7 @@
     <string name="title">Title</string>
     <string name="create_gift_card">Create Gift Card</string>
     <string name="back_to_exit">Press back again to exit midas</string>
-    <string name="card_label_title">What would you like to label\nyour card as?</string>
+    <string name="card_label_title">Please enter card name</string>
     <string name="enter_number_to_continue">Please enter your number to continue</string>
     <string name="enter_valid_digits">Please enter a valid 10 digit number</string>
     <string name="enter_valid_11_digits">Please enter a valid 11 digit number</string>
@@ -389,5 +389,9 @@
     <string name="write_a_message">Write a message…</string>
     <string name="update_profile">Update Profile</string>
     <string name="platforms_description">Midas virtual credit card is a supported payment method across different platforms</string>
+    <string name="date">Date</string>
+    <string name="fund_card">Fund card</string>
+    <string name="name">Full Name</string>
+    <string name="confirmation">Confirmation</string>
 
 </resources>

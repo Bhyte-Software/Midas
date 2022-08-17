@@ -105,7 +105,7 @@
                 android:layout_margin="@dimen/dimen_10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_block_ripple"
+                android:background="@drawable/circular_block_ripple"
                 android:clickable="true">
 
                 <EditText
@@ -160,7 +160,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/dimen_10"
-                android:background="@drawable/round_blue"
+                android:background="@drawable/blue_button_ripple"
                 android:clickable="true">
 
                 <ImageView

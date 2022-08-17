@@ -113,6 +113,7 @@ public class GetStarted extends AppCompatActivity {
     public void onBackPressed() {
         if (pressedTime + 2000 > System.currentTimeMillis()) {
             super.onBackPressed();
+            finish();
             System.exit(0);
         } else {
             // Make Custom Toast Instead
