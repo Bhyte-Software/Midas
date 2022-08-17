@@ -393,5 +393,6 @@
     <string name="fund_card">Fund card</string>
     <string name="name">Full Name</string>
     <string name="confirmation">Confirmation</string>
+    <string name="top_platforms">Top Platforms</string>
 
 </resources>

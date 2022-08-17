@@ -99,7 +99,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
     MaterialButton addMoney;
     ImageView toggleIcon, check1, check2;
     Animation animation, animation2, shakeAnimation;
-    TextView currency, username, totalAssets, accountBalance, greetingText, recommendedText, text1, text2, text3;
+    TextView currency, username, totalAssets, accountBalance, greetingText, recommendedText, text1, text2, text3, viewAllPlatforms;
     private AdLoader adLoader;
 
     @SuppressLint("ClickableViewAccessibility")
@@ -117,6 +117,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         this.context = getContext();
 
         // Hooks
+        viewAllPlatforms = root.findViewById(R.id.view_all_platforms);
         goUp = root.findViewById(R.id.go_up);
         scrollView = root.findViewById(R.id.scroll_layout);
         quickActionsRecycler = root.findViewById(R.id.quick_actions_recycler);
@@ -167,6 +168,8 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         } else {
             updateToDollar();
         }
+
+        viewAllPlatforms.setOnClickListener(v -> startActivity(new Intent(getActivity(), ViewAllPlatforms.class)));
 
         profilePicture.setOnClickListener(v -> startActivity(new Intent(getContext(), Profile.class)));
 
@@ -258,7 +261,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
 
         viewPlatforms.add(new PlatformsHelperClass(R.drawable.amazon_logo, "Amazon", "Shopping"));
         viewPlatforms.add(new PlatformsHelperClass(R.drawable.spotify_logo, "Spotify", "Music & Podcast"));
-        viewPlatforms.add(new PlatformsHelperClass(R.drawable.amazon_logo, "Amazon", "Shopping"));
+        viewPlatforms.add(new PlatformsHelperClass(R.drawable.netflix, "Netflix", "Entertainment"));
         viewPlatforms.add(new PlatformsHelperClass(R.drawable.spotify_logo, "Spotify", "Music & Podcast"));
 
         platformsAdapter = new PlatformsAdapter(viewPlatforms);
