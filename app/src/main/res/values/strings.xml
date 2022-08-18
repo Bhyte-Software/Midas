@@ -410,5 +410,8 @@
     <string name="_9">9</string>
     <string name="dot_value">.</string>
     <string name="delete_digit_content_description">Delete digit</string>
+    <string name="warning_icon_content_description">Warning icon</string>
+    <string name="accept_terms_of_service">Accept terms of service</string>
+    <string name="as_a_requirement_to_use_midas_you_have_to_accept_terms_of_service">As a requirement to use Midas you have to accept terms of service.</string>
 
 </resources>

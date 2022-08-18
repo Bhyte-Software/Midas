@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/accept_terms_popup"
     android:layout_width="360dp"
     android:layout_height="350dp"
@@ -14,14 +15,16 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        tools:ignore="UselessParent">
 
         <ImageView
-            android:layout_marginTop="@dimen/dimen_20"
             android:id="@+id/warning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:contentDescription="@string/warning_icon_content_description"
             android:src="@drawable/popup_info_image" />
 
         <TextView
@@ -32,7 +35,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto_medium"
-            android:text="Accept terms of service"
+            android:text="@string/accept_terms_of_service"
             android:textAlignment="center"
             android:textColor="@color/main_text"
             android:textSize="18sp" />
@@ -44,14 +47,13 @@
             android:layout_below="@id/title"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dimen_5"
-            android:textColor="@color/secondary_text"
             android:fontFamily="@font/roboto_regular"
-            android:text="As a requirement to use Midas you have to accept terms of service."
-            android:textAlignment="center" />
+            android:text="@string/as_a_requirement_to_use_midas_you_have_to_accept_terms_of_service"
+            android:textAlignment="center"
+            android:textColor="@color/secondary_text" />
 
 
         <com.google.android.material.button.MaterialButton
-            android:layout_marginBottom="@dimen/dimen_20"
             android:id="@+id/cancel"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -60,6 +62,7 @@
             android:layout_marginStart="@dimen/dimen_25"
             android:layout_marginTop="@dimen/dimen_20"
             android:layout_marginEnd="@dimen/dimen_25"
+            android:layout_marginBottom="@dimen/dimen_20"
             android:backgroundTint="@color/blue_200"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/cancel"
