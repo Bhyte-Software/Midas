@@ -86,69 +86,69 @@
                 android:orientation="vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    app:civ_border_width="4dp"
-                    app:civ_border_color="@color/skip_text"
-                    android:layout_width="@dimen/dimen_120"
                     android:id="@+id/profile_picture"
+                    android:layout_width="@dimen/dimen_120"
                     android:layout_height="@dimen/dimen_120"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/dimen_20"
-                    app:civ_circle_background_color="@color/white"
-                    android:src="@drawable/profile_picture_default" />
+                    android:src="@drawable/profile_picture_default"
+                    app:civ_border_color="@color/skip_text"
+                    app:civ_border_width="4dp"
+                    app:civ_circle_background_color="@color/white" />
 
                 <TextView
                     android:id="@+id/user_name"
-                    android:layout_gravity="center_horizontal"
-                    android:textColor="@color/main_text"
-                    android:fontFamily="@font/roboto_medium"
-                    android:textSize="22sp"
-                    android:layout_marginTop="@dimen/dimen_10"
-                    android:text=""
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text=""
+                    android:textColor="@color/main_text"
+                    android:textSize="22sp" />
 
                 <TextView
-                    android:textColor="@color/secondary_text"
                     android:id="@+id/user_email"
-                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/roboto_regular"
                     android:text=""
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:textColor="@color/secondary_text"
+                    android:textSize="18sp" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:onClick="callEditProfile"
-                    android:layout_gravity="center_horizontal"
-                    android:paddingStart="@dimen/dimen_25"
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
-                    android:drawableEnd="@drawable/ic_navigate_next"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginStart="@dimen/dimen_25"
                     android:layout_marginTop="@dimen/dimen_10"
                     android:layout_marginEnd="@dimen/dimen_25"
+                    android:drawableEnd="@drawable/ic_navigate_next"
                     android:fontFamily="@font/roboto_medium"
+                    android:onClick="callEditProfile"
+                    android:paddingStart="@dimen/dimen_25"
                     android:text="@string/edit_profile"
                     android:textAllCaps="false"
                     app:cornerRadius="35dp" />
 
                 <RelativeLayout
                     android:id="@+id/language_layout"
-                    android:layout_marginTop="@dimen/dimen_20"
-                    android:padding="@dimen/dimen_20"
-                    android:layout_marginEnd="@dimen/dimen_25"
-                    android:layout_marginStart="@dimen/dimen_25"
                     android:layout_width="match_parent"
-                    android:clickable="true"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_25"
+                    android:layout_marginTop="@dimen/dimen_20"
+                    android:layout_marginEnd="@dimen/dimen_25"
                     android:background="@drawable/ripple_top_block"
-                    android:layout_height="wrap_content">
+                    android:clickable="true"
+                    android:padding="@dimen/dimen_20">
 
                     <ImageView
-                        android:layout_centerVertical="true"
                         android:id="@+id/language"
-                        android:src="@drawable/language_icon"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/language_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -164,23 +164,23 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:onClick="callInviteFriends"
-                    android:layout_marginTop="@dimen/dimen_5"
-                    android:padding="@dimen/dimen_20"
-                    android:clickable="true"
                     android:id="@+id/invite_friends"
-                    android:layout_marginEnd="@dimen/dimen_25"
-                    android:layout_marginStart="@dimen/dimen_25"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_25"
+                    android:layout_marginTop="@dimen/dimen_5"
+                    android:layout_marginEnd="@dimen/dimen_25"
                     android:background="@drawable/ripple_normal_block"
-                    android:layout_height="wrap_content">
+                    android:clickable="true"
+                    android:onClick="callInviteFriends"
+                    android:padding="@dimen/dimen_20">
 
                     <ImageView
-                        android:layout_centerVertical="true"
                         android:id="@+id/invite"
-                        android:src="@drawable/invite_icon"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/invite_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -196,15 +196,15 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:layout_marginTop="@dimen/dimen_5"
-                    android:padding="@dimen/dimen_20"
                     android:id="@+id/rate_midas"
-                    android:clickable="true"
-                    android:layout_marginEnd="@dimen/dimen_25"
-                    android:layout_marginStart="@dimen/dimen_25"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_25"
+                    android:layout_marginTop="@dimen/dimen_5"
+                    android:layout_marginEnd="@dimen/dimen_25"
                     android:background="@drawable/ripple_bottom_block"
-                    android:layout_height="wrap_content">
+                    android:clickable="true"
+                    android:padding="@dimen/dimen_20">
 
                     <ImageView
                         android:id="@+id/rate"
@@ -227,25 +227,24 @@
                 </RelativeLayout>
 
                 <com.google.android.material.button.MaterialButton
-                    android:layout_gravity="center_horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:onClick="callChangePassword"
-                    app:iconGravity="textEnd"
-                    app:iconPadding="@dimen/dimen_20"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginStart="@dimen/dimen_25"
                     android:layout_marginTop="@dimen/dimen_20"
                     android:layout_marginEnd="@dimen/dimen_25"
                     android:fontFamily="@font/roboto_medium"
+                    android:onClick="callChangePassword"
                     android:text="@string/change_password"
                     android:textAllCaps="false"
-                    app:cornerRadius="35dp" />
+                    app:cornerRadius="35dp"
+                    app:iconGravity="textEnd"
+                    app:iconPadding="@dimen/dimen_20" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/logout_button"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    app:iconPadding="@dimen/dimen_20"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="@dimen/dimen_25"
                     android:layout_marginEnd="@dimen/dimen_25"
@@ -255,7 +254,8 @@
                     android:text="@string/log_out"
                     android:textAllCaps="false"
                     app:cornerRadius="35dp"
-                    app:iconGravity="textEnd" />
+                    app:iconGravity="textEnd"
+                    app:iconPadding="@dimen/dimen_20" />
 
             </LinearLayout>
 

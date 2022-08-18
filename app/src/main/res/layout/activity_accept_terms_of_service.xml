@@ -89,12 +89,12 @@
 
 
             <TextView
-                android:fontFamily="@font/roboto_regular"
-                android:textColor="@color/secondary_text"
                 android:id="@+id/desc1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/conditions_of_use" />
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/conditions_of_use"
+                android:textColor="@color/secondary_text" />
 
             <TextView
                 android:id="@+id/title3"
@@ -107,12 +107,12 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:fontFamily="@font/roboto_regular"
-                android:textColor="@color/secondary_text"
                 android:id="@+id/desc2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/privacy_policy" />
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/privacy_policy"
+                android:textColor="@color/secondary_text" />
 
             <TextView
                 android:id="@+id/title4"
@@ -125,12 +125,12 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:fontFamily="@font/roboto_regular"
-                android:textColor="@color/secondary_text"
                 android:id="@+id/desc3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/age_restriction" />
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/age_restriction"
+                android:textColor="@color/secondary_text" />
 
             <TextView
                 android:id="@+id/title5"
@@ -143,12 +143,12 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:fontFamily="@font/roboto_regular"
-                android:textColor="@color/secondary_text"
                 android:id="@+id/desc4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/intellectual_property" />
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/intellectual_property"
+                android:textColor="@color/secondary_text" />
 
             <TextView
                 android:id="@+id/title6"
@@ -161,12 +161,12 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:fontFamily="@font/roboto_regular"
-                android:textColor="@color/secondary_text"
                 android:id="@+id/desc5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/user_accounts" />
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/user_accounts"
+                android:textColor="@color/secondary_text" />
 
             <TextView
                 android:id="@+id/title7"
@@ -179,12 +179,12 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:fontFamily="@font/roboto_regular"
-                android:textColor="@color/secondary_text"
                 android:id="@+id/desc6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/applicable_law" />
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/applicable_law"
+                android:textColor="@color/secondary_text" />
 
             <TextView
                 android:id="@+id/title8"
@@ -197,12 +197,12 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:fontFamily="@font/roboto_regular"
-                android:textColor="@color/secondary_text"
                 android:id="@+id/desc7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/disputes" />
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/disputes"
+                android:textColor="@color/secondary_text" />
 
             <TextView
                 android:id="@+id/title9"
@@ -215,12 +215,12 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:fontFamily="@font/roboto_regular"
-                android:textColor="@color/secondary_text"
                 android:id="@+id/desc8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/indemnification" />
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/indemnification"
+                android:textColor="@color/secondary_text" />
 
             <TextView
                 android:id="@+id/title10"
@@ -233,12 +233,12 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:fontFamily="@font/roboto_regular"
-                android:textColor="@color/secondary_text"
                 android:id="@+id/desc9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/limitation_on_liability" />
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/limitation_on_liability"
+                android:textColor="@color/secondary_text" />
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -37,8 +37,8 @@
                 android:id="@+id/dot_indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
                 android:layout_marginStart="@dimen/dimen_15"
                 android:padding="@dimen/dimen_10"
                 android:src="@drawable/indicator1" />

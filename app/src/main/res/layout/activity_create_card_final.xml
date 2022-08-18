@@ -64,22 +64,22 @@
 
 
         <RelativeLayout
-            android:layout_marginTop="@dimen/dimen_30"
-            android:layout_marginEnd="@dimen/dimen_20"
-            android:layout_marginStart="@dimen/dimen_20"
             android:id="@+id/card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_20"
+            android:layout_marginTop="@dimen/dimen_30"
+            android:layout_marginEnd="@dimen/dimen_20"
             android:background="@drawable/black_card">
 
 
             <TextView
                 android:id="@+id/card_number"
-                android:layout_marginEnd="@dimen/dimen_30"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_30"
                 android:layout_marginTop="@dimen/dimen_90"
+                android:layout_marginEnd="@dimen/dimen_30"
                 android:fontFamily="@font/roboto_medium"
                 android:text="3672 8229 3829 0372"
                 android:textColor="@color/white"

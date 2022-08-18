@@ -8,13 +8,13 @@
     tools:context=".Common.UpdateRequired">
 
     <ImageView
-        android:layout_marginTop="@dimen/dimen_25"
-        android:padding="@dimen/dimen_30"
-        android:layout_centerHorizontal="true"
         android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_25"
         android:contentDescription="@string/image"
+        android:padding="@dimen/dimen_30"
         android:paddingStart="@dimen/dimen_15"
         android:paddingEnd="@dimen/dimen_15"
         android:src="@drawable/warning" />
