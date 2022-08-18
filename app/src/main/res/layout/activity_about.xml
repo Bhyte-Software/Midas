@@ -20,7 +20,8 @@
                     android:layout_marginStart="@dimen/dimen_10"
                     android:layout_marginTop="@dimen/dimen_5"
                     android:layout_marginEnd="@dimen/dimen_10"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
 
                     <ImageView
                         android:contentDescription="@string/image"
@@ -46,7 +47,8 @@
                         android:fontFamily="@font/roboto_medium"
                         android:text="@string/about"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        tools:ignore="RelativeOverlap" />
 
                     <ImageView
                         android:id="@+id/upload"

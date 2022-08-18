@@ -117,7 +117,7 @@
             android:textColor="@color/main_text"
             android:textIsSelectable="false"
             android:textSize="18sp"
-            tools:ignore="RtlSymmetry" />
+            tools:ignore="LabelFor,RtlSymmetry" />
 
         <Spinner
             android:id="@+id/simpleSpinner"

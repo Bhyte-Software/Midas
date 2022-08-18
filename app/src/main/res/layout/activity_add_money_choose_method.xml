@@ -8,10 +8,10 @@
     tools:context=".Transactions.AddMoneyChooseMethod">
 
     <RelativeLayout
-        android:layout_margin="@dimen/dimen_10"
         android:id="@+id/navigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_10">
 
         <ImageView
             android:id="@+id/back"
@@ -20,6 +20,7 @@
             android:layout_alignParentStart="true"
             android:background="?selectableItemBackgroundBorderless"
             android:clickable="true"
+            android:contentDescription="@string/back_button_content_description"
             android:padding="@dimen/dimen_10"
             android:src="@drawable/back_material"
             app:tint="@color/main_text"
@@ -32,6 +33,7 @@
             android:layout_alignParentEnd="true"
             android:background="?selectableItemBackgroundBorderless"
             android:clickable="true"
+            android:contentDescription="@string/help_icon_content_description"
             android:padding="@dimen/dimen_10"
             android:src="@drawable/help_outline"
             app:tint="@color/main_text"
@@ -57,7 +59,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dimen_20"
         android:fontFamily="@font/roboto_bold"
-        android:text="How would you like to deposit?"
+        android:text="@string/how_would_you_like_to_deposit"
         android:textAlignment="center"
         android:textColor="@color/main_text"
         android:textSize="27sp" />
@@ -72,49 +74,49 @@
         android:paddingTop="@dimen/dimen_5"
         android:paddingEnd="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_5"
-        android:text="Choose a method to deposit money into your Midas wallet"
+        android:text="@string/choose_a_method_to_deposit_money_into_your_midas_wallet"
         android:textAlignment="center"
         android:textColor="@color/secondary_text"
         android:textSize="20sp" />
 
     <RadioGroup
         android:id="@+id/radio_group"
-        android:layout_marginEnd="@dimen/dimen_15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/desc"
         android:layout_marginStart="@dimen/dimen_15"
         android:layout_marginTop="@dimen/dimen_20"
-        android:layout_below="@id/desc"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_marginEnd="@dimen/dimen_15"
+        android:orientation="vertical">
 
         <RadioButton
             android:id="@+id/mobile_money"
-            android:drawablePadding="@dimen/dimen_15"
-            android:padding="@dimen/dimen_20"
-            android:textSize="18sp"
-            android:fontFamily="@font/roboto_medium"
-            android:background="@drawable/radio_selector"
-            android:textColor="@drawable/radio_text"
-            android:drawableStart="@drawable/phone"
-            android:button="@color/transparent"
             android:layout_width="match_parent"
-            android:text="Mobile Money\nFee: 1.4%\nTakes a few minutes"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="@drawable/radio_selector"
+            android:button="@color/transparent"
+            android:drawableStart="@drawable/phone"
+            android:drawablePadding="@dimen/dimen_15"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="@dimen/dimen_20"
+            android:text="@string/mobile_money_nfee_1_4_ntakes_a_few_minutes"
+            android:textColor="@drawable/radio_text"
+            android:textSize="18sp" />
 
         <RadioButton
             android:id="@+id/bank_transfer"
-            android:layout_marginTop="@dimen/dimen_15"
-            android:drawablePadding="@dimen/dimen_15"
-            android:padding="@dimen/dimen_20"
-            android:textSize="18sp"
-            android:fontFamily="@font/roboto_medium"
-            android:background="@drawable/radio_selector"
-            android:textColor="@drawable/radio_text"
-            android:drawableStart="@drawable/bank"
-            android:button="@color/transparent"
             android:layout_width="match_parent"
-            android:text="Bank Transfer\nFee: 5.0%\nTakes a few hours"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:background="@drawable/radio_selector"
+            android:button="@color/transparent"
+            android:drawableStart="@drawable/bank"
+            android:drawablePadding="@dimen/dimen_15"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="@dimen/dimen_20"
+            android:text="@string/bank_transfer_nfee_5_0_ntakes_a_few_hours"
+            android:textColor="@drawable/radio_text"
+            android:textSize="18sp" />
 
     </RadioGroup>
 
