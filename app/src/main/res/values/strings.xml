@@ -413,5 +413,24 @@
     <string name="warning_icon_content_description">Warning icon</string>
     <string name="accept_terms_of_service">Accept terms of service</string>
     <string name="as_a_requirement_to_use_midas_you_have_to_accept_terms_of_service">As a requirement to use Midas you have to accept terms of service.</string>
+    <string name="terms_and_conditions_text_view">Terms and Conditions</string>
+    <string name="last_updated_january_21_2022">Last Updated January 21 2022</string>
+    <string name="read_these_terms_and_conditions_carefully_before_using_midas_operated_by_bhyte_llc">Read these terms and conditions carefully before using Midas operated by Bhyte LLC.</string>
+    <string name="conditions_of_use_tv_terms_and_conditions">Conditions of use</string>
+    <string name="privacy_policy_tv_terms_and_conditions">Privacy Policy</string>
+    <string name="age_restriction_tv_terms_and_conditions">Age restriction</string>
+    <string name="intellectual_property_tv_terms_and_conditions">Intellectual property</string>
+    <string name="user_accounts_tv_terms_and_conditions">User accounts</string>
+    <string name="applicable_law_tv_terms_and_conditions">Applicable law</string>
+    <string name="disputes_tv_terms_and_conditions">Disputes</string>
+    <string name="indemnification_tv_terms_and_conditions">Indemnification</string>
+    <string name="limitation_on_liability_tv_terms_and_conditions">Limitation on Liability</string>
+    <string name="decline_tv_material_btn">Decline</string>
+    <string name="accept_tv_material_btn">Accept</string>
+    <string name="how_would_you_like_to_deposit">How would you like to deposit?</string>
+    <string name="choose_a_method_to_deposit_money_into_your_midas_wallet">Choose a method to deposit money into your Midas wallet</string>
+    <string name="mobile_money_nfee_1_4_ntakes_a_few_minutes">Mobile Money\nFee: 1.4%\nTakes a few minutes</string>
+    <string name="bank_transfer_nfee_5_0_ntakes_a_few_hours">Bank Transfer\nFee: 5.0%\nTakes a few hours</string>
+    <string name="add_payment_method_tv_add_payment_method_activity">Add payment method</string>
 
 </resources>
