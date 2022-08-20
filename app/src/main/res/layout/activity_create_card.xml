@@ -18,18 +18,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <RelativeLayout
-        android:id="@+id/relative_layout"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="130dp">
+
 
         <RelativeLayout
+            android:id="@+id/relative_layout"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:paddingBottom="@dimen/dimen_20"
-            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -59,6 +56,5 @@
 
         </RelativeLayout>
 
-    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

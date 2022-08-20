@@ -22,7 +22,8 @@
             android:layout_marginStart="@dimen/dimen_10"
             android:layout_marginTop="@dimen/dimen_5"
             android:layout_marginEnd="@dimen/dimen_10"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
 
             <ImageView
                 android:id="@+id/menu_icon"
@@ -33,6 +34,7 @@
                 android:layout_gravity="center_vertical"
                 android:background="?selectableItemBackgroundBorderless"
                 android:clickable="true"
+                android:contentDescription="@string/back_button_content_description"
                 android:onClick="callBack"
                 android:padding="@dimen/dimen_10"
                 android:src="@drawable/back_material"
@@ -48,7 +50,8 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/chat_bot"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:ignore="RelativeOverlap" />
 
             <ImageView
                 android:id="@+id/upload"
@@ -96,15 +99,15 @@
 
         <RelativeLayout
             android:id="@+id/chat"
-            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
 
             <RelativeLayout
-                android:layout_toStartOf="@id/send_message"
-                android:layout_margin="@dimen/dimen_10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_10"
+                android:layout_toStartOf="@id/send_message"
                 android:background="@drawable/circular_block_ripple"
                 android:clickable="true">
 

@@ -24,7 +24,8 @@
                 android:layout_marginStart="@dimen/dimen_10"
                 android:layout_marginTop="@dimen/dimen_5"
                 android:layout_marginEnd="@dimen/dimen_10"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
                 <ImageView
                     android:id="@+id/menu_icon"
@@ -35,6 +36,7 @@
                     android:layout_gravity="center_vertical"
                     android:background="?selectableItemBackgroundBorderless"
                     android:clickable="true"
+                    android:contentDescription="@string/back_button_content_description"
                     android:onClick="finish"
                     android:padding="@dimen/dimen_10"
                     android:src="@drawable/back_material"
@@ -49,7 +51,8 @@
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/contact_support"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:ignore="RelativeOverlap" />
 
                 <ImageView
                     android:id="@+id/upload"
@@ -112,6 +115,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
+                            android:contentDescription="@string/phone_number_icon"
                             android:src="@drawable/icon_material_phone" />
 
                     </RelativeLayout>
@@ -128,7 +132,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Phone Number"
+                            android:text="@string/phone_number"
                             android:textColor="@color/main_text"
                             android:textSize="20sp" />
 
@@ -137,7 +141,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dimen_5"
                             android:fontFamily="@font/roboto_regular"
-                            android:text="+1-202-555-0162"
+                            android:text="@string/_1_202_555_0162"
                             android:textColor="@color/secondary_text"
                             android:textSize="18sp" />
 
@@ -186,7 +190,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="E-mail address"
+                            android:text="@string/e_mail_address"
                             android:textColor="@color/main_text"
                             android:textSize="20sp" />
 
@@ -195,7 +199,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dimen_5"
                             android:fontFamily="@font/roboto_regular"
-                            android:text="info@midas.app"
+                            android:text="@string/info_midas_app"
                             android:textColor="@color/secondary_text"
                             android:textSize="18sp" />
 
@@ -244,7 +248,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Website"
+                            android:text="@string/website"
                             android:textColor="@color/main_text"
                             android:textSize="20sp" />
 
@@ -253,7 +257,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dimen_5"
                             android:fontFamily="@font/roboto_regular"
-                            android:text="www.usemidas.app"
+                            android:text="@string/www_usemidas_app"
                             android:textColor="@color/secondary_text"
                             android:textSize="18sp" />
 
@@ -290,13 +294,14 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/dimen_20"
             android:layout_toEndOf="@id/live_chat_image"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="RelativeOverlap">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
-                android:text="Contact chat bot"
+                android:text="@string/contact_chat_bot"
                 android:textColor="@color/main_text"
                 android:textSize="20sp" />
 
@@ -304,7 +309,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
-                android:text="We are ready to answer you"
+                android:text="@string/we_are_ready_to_answer_you"
                 android:textColor="@color/secondary_text"
                 android:textSize="18sp" />
 
@@ -315,6 +320,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
+            android:contentDescription="@string/contact_chat_box_next_btn_content_description"
             android:src="@drawable/next_material"
             app:tint="@color/main_text" />
 

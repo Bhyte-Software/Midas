@@ -10,7 +10,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -44,7 +45,8 @@
                         android:onClick="callSettings"
                         android:padding="@dimen/dimen_10"
                         android:src="@drawable/back_material"
-                        app:tint="@color/white" />
+                        app:tint="@color/white"
+                        android:contentDescription="@string/back_button_content_description" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -55,7 +57,8 @@
                         android:fontFamily="@font/roboto_medium"
                         android:text="@string/app_theme"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        tools:ignore="RelativeOverlap" />
 
                     <ImageView
                         android:id="@+id/upload"
@@ -128,7 +131,7 @@
                     android:paddingTop="@dimen/dimen_30"
                     android:paddingEnd="@dimen/dimen_20"
                     android:paddingBottom="@dimen/dimen_30"
-                    android:text="Dark theme"
+                    android:text="@string/text_view_dark_theme"
                     android:textColor="@drawable/radio_text"
                     android:textSize="18sp" />
 

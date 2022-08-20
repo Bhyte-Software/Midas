@@ -198,12 +198,13 @@
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_about.xml" value="0.18" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_accept_terms_of_service.xml" value="0.15208333333333332" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_add_money.xml" value="0.2" />
-        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_add_money_choose_method.xml" value="0.17" />
+        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_add_money_choose_method.xml" value="0.13" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_add_money_choose_provider.xml" value="0.19054054054054054" />
-        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_add_payment_method.xml" value="0.19054054054054054" />
+        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_add_payment_method.xml" value="0.13" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_app_theme.xml" value="0.2" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_change_password_create_new_password.xml" value="0.19054054054054054" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_change_password_enter_email.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_change_password_open_email.xml" value="0.1935897435897436" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_change_password_success.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_chat_bot.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_contact_support.xml" value="0.19583333333333333" />
