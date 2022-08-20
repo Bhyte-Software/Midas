@@ -47,7 +47,8 @@
             android:layout_above="@id/skip_button"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/dimen_50"
-            android:src="@drawable/indicator_one" />
+            android:src="@drawable/indicator_one"
+            android:contentDescription="@string/indicator_slider_content_description" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/skip_button"

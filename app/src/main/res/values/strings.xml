@@ -446,5 +446,24 @@
     <string name="contact_chat_bot">Contact chat bot</string>
     <string name="website">Website</string>
     <string name="contact_chat_box_next_btn_content_description">Contact_chat_box_next_btn_content_description</string>
+    <string name="dot_indicator_content_description">Dot indicator</string>
+    <string name="_3672_8229_3829_0372">3672 8229 3829 0372</string>
+    <string name="confirm_card_creation">Confirm card creation</string>
+    <string name="text_view_name">Name</string>
+    <string name="register_image_image_view">Register image</string>
+    <string name="touch_fingerprint_sensor_on_your_device_to_register">Touch fingerprint sensor on your device to register</string>
+    <string name="fingerprint_content_description">Fingerprint_content_description</string>
+    <string name="enter_details_you_want_card_recipient_nto_see">Enter details you want card recipient\nto see</string>
+    <string name="gift_card_image">Gift card image</string>
+    <string name="red_gift_card_content_description">Red gift card</string>
+    <string name="green_gift_card_content_description">Green gift card</string>
+    <string name="blue_gift_card_image_content_description">blue gift card image</string>
+    <string name="black_gift_card_image_content_description">black gift card image</string>
+    <string name="name_text_view">Name</string>
+    <string name="how_much_do_you_want_to_fund_this_ncard_with">How much do you want to fund this\ncard with?</string>
+    <string name="indicator_slider_content_description">Indicator_slider</string>
+    <string name="language_logo_content_description">Language logo</string>
+    <string name="invite_friend_content_description">Invite friend</string>
+    <string name="rate_midas_content_description">Rate midas</string>
 
 </resources>
