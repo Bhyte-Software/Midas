@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/background_gradient"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     tools:context=".User.GiftCardChooseLabel">
 
     <RelativeLayout
@@ -53,7 +53,7 @@
             android:layout_marginStart="@dimen/dimen_80"
             android:layout_marginTop="@dimen/dimen_105"
             android:fontFamily="@font/roboto_black"
-            android:text="3672 8229 3829 0372"
+            android:text="@string/_3672_8229_3829_0372"
             android:textColor="@color/white"
             android:textSize="22sp" />
 
@@ -65,9 +65,9 @@
             android:layout_marginStart="@dimen/dimen_50"
             android:layout_marginTop="@dimen/dimen_40"
             android:fontFamily="@font/roboto_medium"
-            android:text="Date"
+            android:text="@string/date"
             android:textColor="@color/white"
-            android:textSize="18dp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/card_name"
@@ -78,7 +78,7 @@
             android:layout_marginTop="@dimen/dimen_40"
             android:layout_marginEnd="@dimen/dimen_50"
             android:fontFamily="@font/roboto_medium"
-            android:text="Name"
+            android:text="@string/name_text_view"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -103,6 +103,7 @@
         android:layout_marginStart="@dimen/dimen_15"
         android:layout_marginTop="@dimen/dimen_10"
         android:layout_marginEnd="@dimen/dimen_15"
+        android:autofillHints="Full name"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/custom_user_icon"
         android:drawablePadding="15dp"

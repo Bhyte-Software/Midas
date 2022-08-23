@@ -2,20 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
     android:id="@+id/bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@color/bg"
-    android:gravity="center_horizontal"
-    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="15dp"
     tools:context=".AccountCreation.GetStarted">
 
     <ImageView
-        android:contentDescription="@string/image"
         android:layout_width="match_parent"
-        android:src="@drawable/onboarding_image_one"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/image"
+        android:onClick="callComplete"
+        android:src="@drawable/onboarding_image_one" />
 
     <TextView
         android:id="@+id/title"
@@ -27,62 +30,68 @@
         android:textSize="27sp" />
 
     <TextView
-        android:textColor="@color/secondary_text"
         android:id="@+id/desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/dimen_5"
-        android:paddingBottom="@dimen/dimen_5"
-        android:paddingStart="@dimen/dimen_10"
-        android:paddingEnd="@dimen/dimen_10"
         android:fontFamily="@font/roboto_regular"
+        android:paddingStart="@dimen/dimen_10"
+        android:paddingTop="@dimen/dimen_5"
+        android:paddingEnd="@dimen/dimen_10"
+        android:paddingBottom="@dimen/dimen_5"
         android:text="@string/get_started_description"
         android:textAlignment="center"
+        android:textColor="@color/secondary_text"
         android:textSize="20sp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_marginStart="@dimen/dimen_25"
-        android:layout_marginEnd="@dimen/dimen_25"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="@dimen/dimen_90"
-        android:fontFamily="@font/roboto_medium"
-        android:id="@+id/create_account_button"
-        android:text="@string/create_account"
-        android:textAllCaps="false"
-        app:cornerRadius="35dp" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dimen_120">
 
-    <RelativeLayout
-        android:layout_marginTop="@dimen/dimen_5"
-        android:layout_width="match_parent"
-        android:layout_height="60dp">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/create_account_button"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/create_account"
+            android:textAllCaps="false"
+            app:cornerRadius="35dp"
+            app:layout_constraintBottom_toTopOf="@id/sign_in_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/sign_in_button"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="60dp"
-            android:layout_marginStart="@dimen/dimen_25"
-            android:layout_marginEnd="@dimen/dimen_25"
             android:backgroundTint="@color/bg"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/sign_in"
             android:textAllCaps="false"
             android:textColor="@color/blue_200"
             app:cornerRadius="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:strokeColor="@color/blue_200"
             app:strokeWidth="1dp" />
 
         <com.airbnb.lottie.LottieAnimationView
-            android:layout_centerInParent="true"
-            app:lottie_loop="true"
-            app:lottie_autoPlay="false"
-            android:elevation="@dimen/dimen_5"
             android:id="@+id/sign_in_button_animation"
             android:layout_width="@dimen/dimen_40"
             android:layout_height="@dimen/dimen_40"
+            android:layout_marginBottom="7dp"
+            android:elevation="@dimen/dimen_5"
             android:visibility="gone"
-            app:lottie_rawRes="@raw/button_loading_blue" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/button_loading_blue"
+            tools:visibility="visible" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </LinearLayout>

@@ -7,28 +7,29 @@
     tools:context=".User.ProcessingCardCreation">
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        tools:ignore="UselessParent">
 
         <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            android:layout_gravity="center"
-            app:lottie_rawRes="@raw/loading_liquid"
-            android:layout_width="100dp"
-            android:layout_height="100dp"/>
+            app:lottie_rawRes="@raw/loading_liquid" />
 
         <TextView
-            android:layout_marginTop="@dimen/dimen_50"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textSize="18sp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="@string/processing"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen_50"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="@string/processing"
+            android:textSize="18sp" />
     </LinearLayout>
 
 </RelativeLayout>

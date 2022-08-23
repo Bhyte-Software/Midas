@@ -13,7 +13,8 @@
         android:id="@+id/register_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/registration_image" />
+        android:src="@drawable/registration_image"
+        android:contentDescription="@string/register_image_image_view" />
 
     <TextView
         android:id="@+id/title"
@@ -22,7 +23,7 @@
         android:layout_below="@id/register_image"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/roboto_bold"
-        android:text="Registration"
+        android:text="@string/registration"
         android:textColor="@color/main_text"
         android:textSize="27sp" />
 

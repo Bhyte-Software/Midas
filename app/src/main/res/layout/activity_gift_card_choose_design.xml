@@ -10,7 +10,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -38,7 +39,8 @@
                     android:onClick="callBack"
                     android:padding="@dimen/dimen_10"
                     android:src="@drawable/back_material"
-                    app:tint="@color/white" />
+                    app:tint="@color/white"
+                    android:contentDescription="@string/back_button_content_description" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -76,7 +78,8 @@
                     android:layout_marginStart="@dimen/dimen_20"
                     android:layout_marginTop="@dimen/dimen_20"
                     android:layout_marginEnd="@dimen/dimen_20"
-                    android:src="@drawable/g_card" />
+                    android:src="@drawable/g_card"
+                    android:contentDescription="@string/gift_card_image" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -98,7 +101,8 @@
                             android:id="@+id/red"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/red_card_small_selected" />
+                            android:src="@drawable/red_card_small_selected"
+                            android:contentDescription="@string/red_gift_card_content_description" />
 
                     </RelativeLayout>
 
@@ -112,7 +116,8 @@
                             android:id="@+id/green"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/gift_card_green_small" />
+                            android:src="@drawable/gift_card_green_small"
+                            android:contentDescription="@string/green_gift_card_content_description" />
 
                     </RelativeLayout>
 
@@ -136,7 +141,8 @@
                             android:id="@+id/blue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/gift_card_blue_small" />
+                            android:src="@drawable/gift_card_blue_small"
+                            android:contentDescription="@string/blue_gift_card_image_content_description" />
 
                     </RelativeLayout>
 
@@ -150,7 +156,8 @@
                             android:id="@+id/black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/gift_card_black_small" />
+                            android:src="@drawable/gift_card_black_small"
+                            android:contentDescription="@string/black_gift_card_image_content_description" />
 
                     </RelativeLayout>
 

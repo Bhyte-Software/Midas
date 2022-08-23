@@ -31,7 +31,7 @@
             android:layout_marginStart="@dimen/dimen_15"
             android:layout_toEndOf="@id/back"
             android:fontFamily="@font/roboto_bold"
-            android:text="Fund card"
+            android:text="@string/fund_card"
             android:textColor="@color/blue_200"
             android:textSize="26sp" />
 
@@ -52,7 +52,7 @@
             android:layout_marginStart="@dimen/dimen_80"
             android:layout_marginTop="@dimen/dimen_105"
             android:fontFamily="@font/roboto_medium"
-            android:text="3672 8229 3829 0372"
+            android:text="@string/_3672_8229_3829_0372"
             android:textColor="@color/white"
             android:textSize="22sp" />
 
@@ -64,7 +64,7 @@
             android:layout_marginStart="@dimen/dimen_50"
             android:layout_marginTop="@dimen/dimen_40"
             android:fontFamily="@font/roboto_regular"
-            android:text="Date"
+            android:text="@string/date"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -77,7 +77,7 @@
             android:layout_marginTop="@dimen/dimen_40"
             android:layout_marginEnd="@dimen/dimen_50"
             android:fontFamily="@font/roboto_regular"
-            android:text="Name"
+            android:text="@string/name_text_view"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -90,7 +90,7 @@
         android:layout_below="@id/card"
         android:layout_marginStart="@dimen/dimen_15"
         android:fontFamily="@font/roboto_bold"
-        android:text="How much do you want to fund this\ncard with?"
+        android:text="@string/how_much_do_you_want_to_fund_this_ncard_with"
         android:textColor="@color/blue_200"
         android:textSize="22sp" />
 
@@ -111,7 +111,8 @@
         android:paddingStart="15dp"
         android:paddingEnd="@dimen/dimen_15"
         android:textColor="@color/blue_200"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:autofillHints="Enter amount" />
 
     <TextView
         android:layout_width="wrap_content"

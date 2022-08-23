@@ -10,7 +10,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -38,7 +39,8 @@
                     android:onClick="callUserMain"
                     android:padding="@dimen/dimen_10"
                     android:src="@drawable/back_material"
-                    app:tint="@color/white" />
+                    app:tint="@color/white"
+                    android:contentDescription="@string/back_button_content_description" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -49,7 +51,8 @@
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/profile"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:ignore="RelativeOverlap" />
 
                 <ImageView
                     android:id="@+id/upload"
@@ -130,7 +133,8 @@
                     android:paddingStart="@dimen/dimen_25"
                     android:text="@string/edit_profile"
                     android:textAllCaps="false"
-                    app:cornerRadius="35dp" />
+                    app:cornerRadius="35dp"
+                    tools:ignore="RtlSymmetry" />
 
                 <RelativeLayout
                     android:id="@+id/language_layout"
@@ -148,7 +152,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/language_icon" />
+                        android:src="@drawable/language_icon"
+                        android:contentDescription="@string/language_logo_content_description" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -180,7 +185,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/invite_icon" />
+                        android:src="@drawable/invite_icon"
+                        android:contentDescription="@string/invite_friend_content_description" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -211,7 +217,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/rate_icon" />
+                        android:src="@drawable/rate_icon"
+                        android:contentDescription="@string/rate_midas_content_description" />
 
                     <TextView
                         android:layout_width="wrap_content"

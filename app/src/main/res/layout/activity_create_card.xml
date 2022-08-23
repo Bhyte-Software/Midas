@@ -18,20 +18,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <RelativeLayout
-        android:id="@+id/relative_layout"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="130dp">
-
         <RelativeLayout
+            android:id="@+id/relative_layout"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:paddingBottom="@dimen/dimen_20"
-            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="130dp">
 
             <ImageView
                 android:id="@+id/dot_indicator"
@@ -41,7 +36,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="@dimen/dimen_15"
                 android:padding="@dimen/dimen_10"
-                android:src="@drawable/indicator1" />
+                android:src="@drawable/indicator1"
+                android:contentDescription="@string/dot_indicator_content_description" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/slider_button"
@@ -59,6 +55,5 @@
 
         </RelativeLayout>
 
-    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
