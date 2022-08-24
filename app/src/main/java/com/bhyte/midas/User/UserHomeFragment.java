@@ -26,6 +26,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -95,7 +96,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
     CircleImageView profilePicture;
     String account_balance, fullName;
     BottomSheetDialog bottomSheetDialog;
-    RelativeLayout currencyView, verificationStatus, usdLayout, ghcLayout, gradientLayout, roundRec, goUp;
+    RelativeLayout currencyView, verificationStatus, usdLayout, ghcLayout, gradientLayout, roundRec, goUp, viewAllPlatforms;
     MaterialButton addMoney;
     ImageView toggleIcon, check1, check2;
     Animation animation, animation2, shakeAnimation;
@@ -117,6 +118,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         this.context = getContext();
 
         // Hooks
+        viewAllPlatforms = root.findViewById(R.id.top_platforms);
         goUp = root.findViewById(R.id.go_up);
         scrollView = root.findViewById(R.id.scroll_layout);
         quickActionsRecycler = root.findViewById(R.id.quick_actions_recycler);
@@ -167,6 +169,8 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         } else {
             updateToDollar();
         }
+
+        viewAllPlatforms.setOnClickListener(v -> startActivity(new Intent(getActivity(), ViewAllPlatforms.class)));
 
         profilePicture.setOnClickListener(v -> startActivity(new Intent(getContext(), Profile.class)));
 
@@ -258,7 +262,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
 
         viewPlatforms.add(new PlatformsHelperClass(R.drawable.amazon_logo, "Amazon", "Shopping"));
         viewPlatforms.add(new PlatformsHelperClass(R.drawable.spotify_logo, "Spotify", "Music & Podcast"));
-        viewPlatforms.add(new PlatformsHelperClass(R.drawable.amazon_logo, "Amazon", "Shopping"));
+        viewPlatforms.add(new PlatformsHelperClass(R.drawable.netflix, "Netflix", "Entertainment"));
         viewPlatforms.add(new PlatformsHelperClass(R.drawable.spotify_logo, "Spotify", "Music & Podcast"));
 
         platformsAdapter = new PlatformsAdapter(viewPlatforms);
@@ -321,22 +325,22 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
 
         // Load Native Ads
         adLoader = new AdLoader.Builder(context, "ca-app-pub-3862971524430784/7025923215").forNativeAd(NativeAd -> {
-            // Show the ad
-            if (adLoader.isLoading()) {
-                //Show Shimmer
-                shimmerFrameLayout.setVisibility(View.VISIBLE);
-                shimmerFrameLayout.startShimmer();
-            }
+                    // Show the ad
+                    if (adLoader.isLoading()) {
+                        //Show Shimmer
+                        shimmerFrameLayout.setVisibility(View.VISIBLE);
+                        shimmerFrameLayout.startShimmer();
+                    }
 
-            // Destroy Ads
-            if (context == null) {
-                NativeAd.destroy();
-            }
+                    // Destroy Ads
+                    if (context == null) {
+                        NativeAd.destroy();
+                    }
 
-            NativeTemplateStyle styles = new NativeTemplateStyle.Builder().withMainBackgroundColor(new ColorDrawable(Color.TRANSPARENT)).build();
-            TemplateView template = view.findViewById(R.id.recommended);
-            template.setStyles(styles);
-            template.setNativeAd(NativeAd);
+                    NativeTemplateStyle styles = new NativeTemplateStyle.Builder().withMainBackgroundColor(new ColorDrawable(Color.TRANSPARENT)).build();
+                    TemplateView template = view.findViewById(R.id.recommended);
+                    template.setStyles(styles);
+                    template.setNativeAd(NativeAd);
 
                     /* Show Ads in custom Layout
                     final NativeAd.Image getIcon = NativeAd.getIcon();
@@ -347,7 +351,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
                     final double getRating = NativeAd.getStarRating();
                     final List<NativeAd.Image> images = NativeAd.getImages();
                     */
-        })
+                })
                 .withAdListener(new AdListener() {
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError adError) {
@@ -484,10 +488,17 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
 
     @Override
     public void onScrollChanged() {
-        View view = scrollView.getChildAt(scrollView.getChildCount() - 1);
-        int diff = view.getBottom() - (scrollView.getHeight() + scrollView.getScrollY());
-        if (diff == 0) {
+        if (scrollView.getChildAt(0).getBottom() == (scrollView.getHeight() + scrollView.getScrollY())) {
+            //scroll view is at bottom
+            goUp.setVisibility(View.VISIBLE);
+            ScaleAnimation anim = new ScaleAnimation(1, 1, 0, 1);
+            goUp.setAnimation(anim);
             goUp.setOnClickListener(v -> goToTop());
+        } else {
+            ScaleAnimation anim = new ScaleAnimation(1, 1, 1, 0);
+            goUp.setAnimation(anim);
+            goUp.setVisibility(View.INVISIBLE);
+            //scroll view is not at bottom
         }
     }
 

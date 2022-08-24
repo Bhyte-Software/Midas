@@ -294,11 +294,16 @@
             </LinearLayout>
 
             <RelativeLayout
+                android:id="@+id/top_platforms"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_25"
-                android:layout_marginTop="@dimen/dimen_25"
-                android:layout_marginEnd="@dimen/dimen_25">
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingBottom="@dimen/dimen_10"
+                android:paddingStart="@dimen/dimen_25"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:paddingEnd="@dimen/dimen_25">
 
                 <TextView
                     android:id="@+id/platforms"
@@ -307,7 +312,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Top Platforms"
+                    android:text="@string/top_platforms"
                     android:textColor="@color/main_text"
                     android:textSize="20sp" />
 
@@ -319,7 +324,7 @@
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/roboto_regular"
                     android:padding="@dimen/dimen_5"
-                    android:text="View All"
+                    android:text="@string/view_all"
                     android:textColor="@color/blue_200"
                     android:textSize="18sp" />
 

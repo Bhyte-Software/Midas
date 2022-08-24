@@ -1,5 +1,6 @@
 package com.bhyte.midas.AccountCreation;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -23,14 +24,18 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class GetStarted extends AppCompatActivity {
 
-    private static final int TIMER = 2000;
     LottieAnimationView signInButtonAnimation;
     MaterialButton createAccountButton, signInButton;
     FirebaseAnalytics firebaseAnalytics;
     BottomSheetDialog countryBottomSheet;
     RelativeLayout countryGhana, countryNigeria, closeLayout;
+
+    Context context;
     private long pressedTime;
 
     @Override
@@ -40,9 +45,13 @@ public class GetStarted extends AppCompatActivity {
         firebaseAnalytics = FirebaseAnalytics.getInstance(this);
         setContentView(R.layout.activity_get_started);
 
+        this.context = getApplicationContext();
+
         // Error Fix for Check Internet Connection
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
+        ExecutorService service = Executors.newSingleThreadExecutor();
 
         // Hooks
         signInButtonAnimation = findViewById(R.id.sign_in_button_animation);
@@ -56,11 +65,40 @@ public class GetStarted extends AppCompatActivity {
 
         // Click Listeners
         signInButton.setOnClickListener(v -> {
-            signInButton.setText("");
-            signInButtonAnimation.playAnimation();
-            signInButtonAnimation.setVisibility(View.VISIBLE);
-            // Handler
-            new Handler().postDelayed(this::signIn, TIMER);
+            service.execute(new Runnable() {
+                @Override
+                public void run() {
+                    boolean isConnected = CheckInternetConnection.isConnected(context);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            signInButtonAnimation.setVisibility(View.VISIBLE);
+                            signInButtonAnimation.playAnimation();
+                            signInButton.setText("");
+                            Handler handler = new Handler();
+                            if (isConnected) {
+                                handler.postDelayed(new Runnable() {
+                                    public void run() {
+                                        signInButtonAnimation.setVisibility(View.GONE);
+                                        signInButtonAnimation.pauseAnimation();
+                                        signInButton.setText(R.string.sign_in);
+                                        startActivity(new Intent(getApplicationContext(), SignIn.class));
+                                    }
+                                }, 3500);   //5 seconds
+                            } else {
+                                handler.postDelayed(new Runnable() {
+                                    public void run() {
+                                        signInButtonAnimation.setVisibility(View.GONE);
+                                        signInButtonAnimation.pauseAnimation();
+                                        signInButton.setText(R.string.sign_in);
+                                        startActivity(new Intent(getApplicationContext(), NoInternet.class));
+                                    }
+                                }, 5000);   //5 seconds
+                            }
+                        }
+                    });
+                }
+            });
         });
         createAccountButton.setOnClickListener(v -> {
             countryBottomSheet.show();
@@ -98,17 +136,6 @@ public class GetStarted extends AppCompatActivity {
         });
     }
 
-    private void signIn() {
-        signInButton.setText(R.string.sign_in);
-        signInButtonAnimation.pauseAnimation();
-        signInButtonAnimation.setVisibility(View.GONE);
-        if (CheckInternetConnection.isConnected(GetStarted.this)) {
-            startActivity(new Intent(getApplicationContext(), SignIn.class));
-        } else {
-            startActivity(new Intent(getApplicationContext(), NoInternet.class));
-        }
-    }
-
     @Override
     public void onBackPressed() {
         if (pressedTime + 2000 > System.currentTimeMillis()) {
@@ -133,7 +160,4 @@ public class GetStarted extends AppCompatActivity {
         pressedTime = System.currentTimeMillis();
     }
 
-    public void callComplete(View view) {
-        startActivity(new Intent(getApplicationContext(), SignUpBirthdate.class));
-    }
 }

@@ -24,6 +24,9 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".User.ViewAllPlatforms"
+            android:exported="false" />
+        <activity
             android:name=".Common.ChatBot"
             android:exported="false" />
         <activity
