@@ -197,9 +197,9 @@
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/accept_terms_popup.xml" value="0.2" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_about.xml" value="0.18" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_accept_terms_of_service.xml" value="0.15208333333333332" />
-        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_add_money.xml" value="0.2" />
-        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_add_money_choose_method.xml" value="0.13" />
-        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_add_money_choose_provider.xml" value="0.19054054054054054" />
+        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_add_money.xml" value="0.29375" />
+        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_add_money_choose_method.xml" value="0.24074074074074073" />
+        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_add_money_choose_provider.xml" value="0.24074074074074073" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_add_payment_method.xml" value="0.13" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_app_theme.xml" value="0.2" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_change_password_create_new_password.xml" value="0.19054054054054054" />
@@ -216,7 +216,7 @@
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_enter_otpnigeria.xml" value="0.24102564102564103" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_faq.xml" value="0.21" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_fingerprint_registration.xml" value="0.24102564102564103" />
-        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_get_started.xml" value="0.24102564102564103" />
+        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_get_started.xml" value="0.25" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_gift_card_add_details.xml" value="0.24102564102564103" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_gift_card_choose_design.xml" value="0.21" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_gift_card_choose_label.xml" value="0.24102564102564103" />
@@ -230,14 +230,15 @@
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_sign_in.xml" value="0.24102564102564103" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_sign_in_with_fingerprint.xml" value="0.24102564102564103" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_sign_up_birthdate.xml" value="0.24102564102564103" />
-        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_sign_up_complete.xml" value="0.24102564102564103" />
+        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_sign_up_complete.xml" value="0.24074074074074073" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_sign_up_credentials.xml" value="0.24102564102564103" />
+        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_sign_up_enable_fingerprint.xml" value="0.24074074074074073" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_sign_up_enter_number.xml" value="0.24102564102564103" />
-        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_sign_up_enter_otp.xml" value="0.29375" />
-        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_sign_up_verify_identity.xml" value="0.29375" />
+        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_sign_up_enter_otp.xml" value="0.25" />
+        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_sign_up_verify_identity.xml" value="0.24074074074074073" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_splash_screen.xml" value="0.29375" />
-        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_store.xml" value="0.29375" />
-        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_terms_of_service.xml" value="0.29375" />
+        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_store.xml" value="0.21" />
+        <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_terms_of_service.xml" value="0.25" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_update_required.xml" value="0.24102564102564103" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_virtual_card_choose_design.xml" value="0.2379746835443038" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/layout/activity_virtual_card_choose_label.xml" value="0.24102564102564103" />

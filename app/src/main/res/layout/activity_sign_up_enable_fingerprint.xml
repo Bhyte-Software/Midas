@@ -7,13 +7,14 @@
     android:background="@color/bg"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:padding="@dimen/dimen_3"
     tools:context=".AccountCreation.SignUpEnableFingerprint">
 
     <ImageView
-        android:contentDescription="@string/image"
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/image"
         android:src="@drawable/security_image" />
 
     <TextView
@@ -29,7 +30,6 @@
         android:textSize="27sp" />
 
     <TextView
-        android:textColor="@color/main_text"
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,16 +39,17 @@
         android:padding="5dp"
         android:text="@string/fingerprint_description"
         android:textAlignment="center"
+        android:textColor="@color/main_text"
         android:textSize="20sp" />
 
     <ImageView
-        android:contentDescription="@string/image"
         android:id="@+id/fingerprint_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/description"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
+        android:contentDescription="@string/image"
         android:src="@drawable/red_fingerprint_image"
         app:tint="@color/main_text" />
 
@@ -82,6 +83,6 @@
         android:textAllCaps="false"
         android:textColor="@color/skip_text"
         android:textSize="16sp"
-        android:visibility="visible"/>
+        android:visibility="visible" />
 
 </RelativeLayout>

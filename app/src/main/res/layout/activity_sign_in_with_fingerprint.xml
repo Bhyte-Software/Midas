@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
+    android:padding="@dimen/dimen_3"
     tools:context=".User.SignInWithFingerprint">
 
     <TextView
@@ -14,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dimen_50"
         android:fontFamily="@font/roboto_bold"
-        android:text="Quick Sign In"
+        android:text="@string/quick_sign_in"
         android:textColor="@color/main_text"
         android:textSize="27sp" />
 
@@ -26,7 +27,7 @@
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/roboto_regular"
         android:padding="5dp"
-        android:text="Touch fingerprint sensor on your device to\nsign in"
+        android:text="@string/touch_fingerprint_sensor_on_your_device_to_nsign_in"
         android:textAlignment="center"
         android:textColor="@color/secondary_text"
         android:textSize="20sp" />
@@ -38,7 +39,8 @@
         android:layout_below="@id/title_description"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dimen_50"
-        android:src="@drawable/fingerprint_error" />
+        android:src="@drawable/fingerprint_error"
+        android:contentDescription="@string/fingerprint_logo_content_description" />
 
     <TextView
         android:id="@+id/registration_status"

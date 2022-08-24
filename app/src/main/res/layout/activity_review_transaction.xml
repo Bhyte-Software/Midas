@@ -3,15 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/bg"
     android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:padding="@dimen/dimen_5"
     tools:context=".Transactions.ReviewTransaction">
 
     <RelativeLayout
-        android:layout_margin="@dimen/dimen_10"
         android:id="@+id/navigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_10">
 
         <ImageView
             android:id="@+id/back"
@@ -20,6 +21,7 @@
             android:layout_alignParentStart="true"
             android:background="?selectableItemBackgroundBorderless"
             android:clickable="true"
+            android:contentDescription="@string/back_button_content_description"
             android:padding="@dimen/dimen_10"
             android:src="@drawable/back_material"
             app:tint="@color/main_text"
@@ -32,6 +34,7 @@
             android:layout_alignParentEnd="true"
             android:background="?selectableItemBackgroundBorderless"
             android:clickable="true"
+            android:contentDescription="@string/help_icon_content_description"
             android:padding="@dimen/dimen_10"
             android:src="@drawable/help_outline"
             app:tint="@color/main_text"
@@ -46,7 +49,7 @@
         android:layout_below="@id/navigation"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/roboto_bold"
-        android:text="Here's your breakdown"
+        android:text="@string/here_s_your_breakdown"
         android:textAlignment="center"
         android:textColor="@color/main_text"
         android:textSize="27sp" />
@@ -61,7 +64,7 @@
         android:paddingTop="@dimen/dimen_5"
         android:paddingEnd="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_5"
-        android:text="Please note any fees, and the final amount you'll receive into your account"
+        android:text="@string/please_note_any_fees_and_the_final_amount_you_ll_receive_into_your_account"
         android:textAlignment="center"
         android:textColor="@color/secondary_text"
         android:textSize="20sp" />
@@ -78,7 +81,7 @@
         android:paddingTop="@dimen/dimen_5"
         android:paddingEnd="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_5"
-        android:text="Amount"
+        android:text="@string/amount"
         android:textAlignment="center"
         android:textColor="@color/main_text"
         android:textSize="22sp" />
@@ -94,7 +97,7 @@
         android:paddingTop="@dimen/dimen_5"
         android:paddingEnd="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_5"
-        android:text="GHS "
+        android:text="@string/ghs_text_view"
         android:textAlignment="center"
         android:textColor="@color/secondary_text"
         android:textSize="18sp" />
@@ -111,23 +114,23 @@
         android:paddingTop="@dimen/dimen_5"
         android:paddingEnd="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_5"
-        android:text="Transaction fee"
+        android:text="@string/transaction_fee"
         android:textAlignment="center"
         android:textColor="@color/main_text"
         android:textSize="22sp" />
 
     <TextView
-        android:layout_marginStart="@dimen/dimen_20"
         android:id="@+id/transaction_fee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/transaction_fee_title"
+        android:layout_marginStart="@dimen/dimen_20"
         android:fontFamily="@font/roboto_regular"
         android:paddingStart="@dimen/dimen_10"
         android:paddingTop="@dimen/dimen_5"
         android:paddingEnd="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_5"
-        android:text="GHS "
+        android:text="@string/ghs_text_view"
         android:textAlignment="center"
         android:textColor="@color/secondary_text"
         android:textSize="18sp" />
@@ -144,23 +147,23 @@
         android:paddingTop="@dimen/dimen_5"
         android:paddingEnd="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_5"
-        android:text="You receive"
+        android:text="@string/you_receive"
         android:textAlignment="center"
         android:textColor="@color/main_text"
         android:textSize="22sp" />
 
     <TextView
-        android:layout_marginStart="@dimen/dimen_20"
         android:id="@+id/you_receive_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/you_receive"
+        android:layout_marginStart="@dimen/dimen_20"
         android:fontFamily="@font/roboto_regular"
         android:paddingStart="@dimen/dimen_10"
         android:paddingTop="@dimen/dimen_5"
         android:paddingEnd="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_5"
-        android:text="GHS "
+        android:text="@string/ghs_text_view"
         android:textAlignment="center"
         android:textColor="@color/secondary_text"
         android:textSize="18sp" />
@@ -177,7 +180,7 @@
         android:paddingTop="@dimen/dimen_5"
         android:paddingEnd="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_5"
-        android:text="Phone number"
+        android:text="@string/phone_number"
         android:textAlignment="center"
         android:textColor="@color/main_text"
         android:textSize="22sp" />
@@ -193,7 +196,7 @@
         android:paddingTop="@dimen/dimen_5"
         android:paddingEnd="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_5"
-        android:text="0202280564"
+        android:text="@string/_0202280564"
         android:textAlignment="center"
         android:textColor="@color/secondary_text"
         android:textSize="18sp" />
@@ -210,7 +213,7 @@
         android:paddingTop="@dimen/dimen_5"
         android:paddingEnd="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_5"
-        android:text="Provider"
+        android:text="@string/provider"
         android:textAlignment="center"
         android:textColor="@color/main_text"
         android:textSize="22sp" />
@@ -226,7 +229,7 @@
         android:paddingTop="@dimen/dimen_5"
         android:paddingEnd="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_5"
-        android:text="VODAFONE"
+        android:text="@string/vodafone"
         android:textAlignment="center"
         android:textColor="@color/secondary_text"
         android:textSize="18sp" />
@@ -238,8 +241,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/dimen_25"
         android:layout_marginEnd="@dimen/dimen_25"
-        android:layout_marginBottom="@dimen/dimen_25"
-        android:text="Deposit"
+        android:layout_marginBottom="@dimen/dimen_7"
+        android:text="@string/deposit"
         android:textAllCaps="false"
         app:cornerRadius="35dp" />
 
