@@ -1,5 +1,4 @@
 <resources>
-
     <!-- APP INFO -->
     <string name="app_name">Midas</string>
     <string name="app_version">V 1.0.2</string>
@@ -480,5 +479,9 @@
     <string name="registration_image">registration image</string>
     <string name="national_details">National ID or Driver\'s licence for citizens of the country mainly</string>
     <string name="midas_logo_content_description">Midas logo</string>
+    <string name="update_required">Update Required</string>
+    <string name="this_version_of_the_app_is_no_longer_supported_please_update_to_the_latest_version_to_continue_using_midas">This version of the app is no longer supported. Please update to the latest version to continue using Midas</string>
+    <string name="update_now">Update Now</string>
+    <string name="top_platform">Top Platform</string>
 
 </resources>

@@ -38,7 +38,8 @@
                     android:onClick="callBack"
                     android:padding="@dimen/dimen_10"
                     android:src="@drawable/back_material"
-                    app:tint="@color/white" />
+                    app:tint="@color/white"
+                    android:contentDescription="@string/back_button_content_description" />
 
                 <TextView
                     android:layout_width="wrap_content"
