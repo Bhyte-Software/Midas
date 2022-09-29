@@ -24,7 +24,8 @@
                 android:layout_marginStart="@dimen/dimen_10"
                 android:layout_marginTop="@dimen/dimen_5"
                 android:layout_marginEnd="@dimen/dimen_10"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
                 <ImageView
                     android:id="@+id/menu_icon"
@@ -35,11 +36,11 @@
                     android:layout_gravity="center_vertical"
                     android:background="?selectableItemBackgroundBorderless"
                     android:clickable="true"
+                    android:contentDescription="@string/back_button_content_description"
                     android:onClick="callBack"
                     android:padding="@dimen/dimen_10"
                     android:src="@drawable/back_material"
-                    app:tint="@color/white"
-                    android:contentDescription="@string/back_button_content_description" />
+                    app:tint="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -75,6 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_20"
+                    android:contentDescription="@string/card_design"
                     android:src="@drawable/cards_black" />
 
                 <TextView
@@ -98,7 +100,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        tools:ignore="RelativeOverlap">
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -108,6 +111,7 @@
                                 android:id="@+id/standard"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:contentDescription="@string/black_card"
                                 android:src="@drawable/round_black" />
 
                             <TextView
@@ -118,7 +122,7 @@
                                 android:layout_marginStart="@dimen/dimen_10"
                                 android:layout_toEndOf="@id/standard"
                                 android:fontFamily="@font/roboto_regular"
-                                android:text="Standard"
+                                android:text="@string/standard"
                                 android:textColor="@color/main_text"
                                 android:textSize="18sp" />
 
@@ -133,6 +137,7 @@
                                 android:id="@+id/blue"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:contentDescription="@string/blue"
                                 android:src="@drawable/round_blue" />
 
                             <TextView
@@ -143,7 +148,7 @@
                                 android:layout_marginStart="@dimen/dimen_10"
                                 android:layout_toEndOf="@id/blue"
                                 android:fontFamily="@font/roboto_regular"
-                                android:text="Blue"
+                                android:text="@string/blue"
                                 android:textColor="@color/main_text"
                                 android:textSize="18sp" />
 
@@ -158,6 +163,7 @@
                                 android:id="@+id/red"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:contentDescription="@string/red"
                                 android:src="@drawable/round_red"
                                 app:tint="#EB3C3C" />
 
@@ -169,7 +175,7 @@
                                 android:layout_marginStart="@dimen/dimen_10"
                                 android:layout_toEndOf="@id/red"
                                 android:fontFamily="@font/roboto_regular"
-                                android:text="Red"
+                                android:text="@string/red"
                                 android:textColor="@color/main_text"
                                 android:textSize="18sp" />
 
@@ -184,6 +190,7 @@
                                 android:id="@+id/yellow"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:contentDescription="@string/gold"
                                 android:src="@drawable/round_gold" />
 
                             <TextView
@@ -194,12 +201,11 @@
                                 android:layout_marginStart="@dimen/dimen_10"
                                 android:layout_toEndOf="@id/yellow"
                                 android:fontFamily="@font/roboto_regular"
-                                android:text="Gold"
+                                android:text="@string/gold"
                                 android:textColor="@color/main_text"
                                 android:textSize="18sp" />
 
                         </RelativeLayout>
-
 
                     </LinearLayout>
 
@@ -213,7 +219,8 @@
                             android:id="@+id/radio_group"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            tools:ignore="UselessParent">
 
                             <com.google.android.material.radiobutton.MaterialRadioButton
                                 android:id="@+id/black_radio"
