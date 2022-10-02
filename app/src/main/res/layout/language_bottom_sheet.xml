@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/language_sheet"
     android:background="@drawable/bottom_sheet_background"
     android:layout_width="match_parent"
@@ -32,7 +33,8 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/ghana" />
+            android:src="@drawable/ghana"
+            android:contentDescription="@string/ghana_logo_content_description" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -43,7 +45,8 @@
             android:fontFamily="@font/roboto_regular"
             android:text="@string/english"
             android:textColor="@color/main_text"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            tools:ignore="RelativeOverlap" />
 
         <ImageView
             android:id="@+id/check1"
@@ -51,7 +54,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/green_tick" />
+            android:src="@drawable/green_tick"
+            android:contentDescription="@string/green_tick_content_description" />
 
     </RelativeLayout>
 

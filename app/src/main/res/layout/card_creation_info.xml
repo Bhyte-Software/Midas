@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_creation_info"
     android:layout_width="360dp"
     android:layout_height="350dp"
@@ -14,7 +15,8 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        tools:ignore="UselessParent">
 
         <ImageView
             android:id="@+id/warning"
@@ -22,7 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dimen_20"
-            android:src="@drawable/popup_info_image" />
+            android:src="@drawable/popup_info_image"
+            android:contentDescription="@string/help_icon_content_description" />
 
         <TextView
             android:id="@+id/title"
@@ -32,7 +35,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto_medium"
-            android:text="Creation fee"
+            android:text="@string/creation_fee_tv"
             android:textAlignment="center"
             android:textColor="@color/main_text"
             android:textSize="18sp" />
@@ -46,7 +49,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dimen_5"
             android:fontFamily="@font/roboto_regular"
-            android:text="As a requirement to pay for server cost and service provider costs."
+            android:text="@string/as_a_requirement_to_pay_for_server_cost_and_service_provider_costs"
             android:textAlignment="center" />
 
 

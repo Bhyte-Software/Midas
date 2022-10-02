@@ -59,7 +59,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:src="@drawable/profile_icon" />
+                android:src="@drawable/profile_icon"
+                android:contentDescription="@string/profile_icon" />
 
             <TextView
                 android:id="@+id/signed_in_as"
@@ -105,7 +106,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:src="@drawable/logout_image"
-                app:tint="@color/red" />
+                app:tint="@color/red"
+                android:contentDescription="@string/sign_out_icon" />
 
             <TextView
                 android:id="@+id/sign_out"
@@ -149,7 +151,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:src="@drawable/sun_icon" />
+                android:src="@drawable/sun_icon"
+                android:contentDescription="@string/app_theme_icon" />
 
             <TextView
                 android:id="@+id/theme_name"
@@ -159,7 +162,7 @@
                 android:layout_marginStart="@dimen/dimen_20"
                 android:layout_toEndOf="@id/theme"
                 android:fontFamily="@font/roboto_regular"
-                android:text="App Theme"
+                android:text="@string/app_theme"
                 android:textColor="@color/skip_text"
                 android:textSize="18sp" />
 
@@ -192,7 +195,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:src="@drawable/downlaod_icon" />
+                android:src="@drawable/download_icon"
+                android:contentDescription="@string/download_icon" />
 
             <TextView
                 android:id="@+id/download_statement"
@@ -235,7 +239,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:src="@drawable/faq_image" />
+                android:src="@drawable/faq_image"
+                android:contentDescription="@string/faq_icon" />
 
             <TextView
                 android:id="@+id/faq_txt"
@@ -267,7 +272,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:src="@drawable/contact_support_icon" />
+                android:src="@drawable/contact_support_icon"
+                android:contentDescription="@string/contact_support_icon" />
 
             <TextView
                 android:id="@+id/contact_support_txt"
@@ -299,7 +305,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:src="@drawable/terms_icon" />
+                android:src="@drawable/terms_icon"
+                android:contentDescription="@string/terms_icon_content_description" />
 
             <TextView
                 android:id="@+id/terms_and_conditions_txt"
@@ -332,7 +339,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:src="@drawable/about_icon" />
+                android:src="@drawable/about_icon"
+                android:contentDescription="@string/about_icon_content_description" />
 
             <TextView
                 android:id="@+id/about_txt"
