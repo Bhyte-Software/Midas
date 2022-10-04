@@ -48,7 +48,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/dimen_5"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="@string/top_platforms"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
