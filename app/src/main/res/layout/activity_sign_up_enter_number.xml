@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/bg"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     android:focusable="true"
     android:focusableInTouchMode="true"
     tools:context=".AccountCreation.SignUpEnterNumber">
@@ -13,6 +13,7 @@
         android:id="@+id/register_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/registration_image"
         android:src="@drawable/registration_image" />
 
     <TextView
@@ -22,7 +23,7 @@
         android:layout_below="@id/register_image"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/roboto_bold"
-        android:text="Registration"
+        android:text="@string/registration"
         android:textColor="@color/main_text"
         android:textSize="27sp" />
 
@@ -106,7 +107,6 @@
                 app:lottie_rawRes="@raw/button_loading_white" />
 
         </RelativeLayout>
-
 
 
     </RelativeLayout>

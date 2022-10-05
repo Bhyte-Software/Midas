@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/add_money_help"
     android:background="@drawable/bottom_sheet_background"
     android:layout_width="match_parent"
@@ -19,7 +18,7 @@
         android:layout_marginTop="@dimen/dimen_15"
         android:layout_marginStart="@dimen/dimen_15"
         android:textSize="22sp"
-        android:text="Get some help"
+        android:text="@string/get_some_help"
         android:textColor="@color/main_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -42,7 +41,8 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/learn"/>
+            android:src="@drawable/learn"
+            android:contentDescription="@string/how_do_i_deposit_money_icon" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@id/ghana"
             android:fontFamily="@font/roboto_regular"
-            android:text="How do I deposit money?"
+            android:text="@string/how_do_i_deposit_money"
             android:textColor="@color/main_text"
             android:textSize="18sp" />
 
@@ -74,7 +74,8 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/learn"/>
+            android:src="@drawable/learn"
+            android:contentDescription="@string/how_peer_to_peer_works_icon" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -83,7 +84,7 @@
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@id/united_states"
             android:fontFamily="@font/roboto_regular"
-            android:text="How Peer-To-Peer works"
+            android:text="@string/how_peer_to_peer_works"
             android:textColor="@color/main_text"
             android:textSize="18sp" />
 
@@ -107,7 +108,8 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/time"/>
+            android:src="@drawable/time"
+            android:contentDescription="@string/how_long_until_deposit_shows_in_my_midas_account_icon" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -117,7 +119,7 @@
             android:layout_marginEnd="@dimen/dimen_20"
             android:layout_toEndOf="@id/item3_image"
             android:fontFamily="@font/roboto_regular"
-            android:text="How long until deposit shows in my Midas account"
+            android:text="@string/how_long_until_deposit_shows_in_my_midas_account"
             android:textColor="@color/main_text"
             android:textSize="18sp" />
 

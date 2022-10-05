@@ -3,7 +3,6 @@ package com.bhyte.midas.Transactions;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -11,16 +10,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
 import com.bhyte.midas.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 
 public class AddMoney extends AppCompatActivity {
-
     public static Double amountToDeposit;
     public static String amountToDepositString;
 
@@ -66,18 +62,18 @@ public class AddMoney extends AppCompatActivity {
             String userInputAmount = amount.getText().toString();
             if (userInputAmount.equals("")) {
                 // Custom Toast
-                Toast toast = Toast.makeText(context, R.string.right_amount, Toast.LENGTH_SHORT);
-                View view1 = toast.getView();
+                Toast toast1 = Toast.makeText(context, R.string.right_amount, Toast.LENGTH_SHORT);
+                View view1 = toast1.getView();
 
                 //Gets the actual oval background of the Toast then sets the colour filter
-                view1.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_IN);
+                view1.setBackgroundResource(R.drawable.red_toast_bg);
 
                 //Gets the TextView from the Toast so it can be edited
                 TextView text = view1.findViewById(android.R.id.message);
                 text.setTextColor(ContextCompat.getColor(context, R.color.white));
 
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                toast.show();
+                toast1.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                toast1.show();
             } else {
                 userAmountDouble = Double.parseDouble(userInputAmount);
                 amountToDeposit = userAmountDouble;
@@ -85,18 +81,18 @@ public class AddMoney extends AppCompatActivity {
 
                 if (userAmountDouble > 5000 | userAmountDouble < 20) {
                     // Custom Toast
-                    Toast toast = Toast.makeText(context, R.string.right_amount, Toast.LENGTH_SHORT);
-                    View view1 = toast.getView();
+                    Toast toast2 = Toast.makeText(context, R.string.right_amount, Toast.LENGTH_SHORT);
+                    View view2 = toast2.getView();
 
                     //Gets the actual oval background of the Toast then sets the colour filter
-                    view1.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_IN);
+                    view2.setBackgroundResource(R.drawable.red_toast_bg);
 
                     //Gets the TextView from the Toast so it can be edited
-                    TextView text = view1.findViewById(android.R.id.message);
+                    TextView text = view2.findViewById(android.R.id.message);
                     text.setTextColor(ContextCompat.getColor(context, R.color.white));
 
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                    toast.show();
+                    toast2.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+                    toast2.show();
                 } else {
                     // Check Input
                     startActivity(new Intent(context, AddMoneyChooseProvider.class));
@@ -119,7 +115,6 @@ public class AddMoney extends AppCompatActivity {
                 amount.setText("0");
             } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
-                maxLengthToast();
             } else {
                 amount.setText(amount.getText().toString() + "0");
             }
@@ -129,7 +124,6 @@ public class AddMoney extends AppCompatActivity {
                 amount.setText("1");
             } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
-                maxLengthToast();
             } else {
                 amount.setText(amount.getText().toString() + "1");
             }
@@ -139,7 +133,6 @@ public class AddMoney extends AppCompatActivity {
                 amount.setText("2");
             } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
-                maxLengthToast();
             } else {
                 amount.setText(amount.getText().toString() + "2");
             }
@@ -149,7 +142,6 @@ public class AddMoney extends AppCompatActivity {
                 amount.setText("3");
             } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
-                maxLengthToast();
             } else {
                 amount.setText(amount.getText().toString() + "3");
             }
@@ -159,7 +151,6 @@ public class AddMoney extends AppCompatActivity {
                 amount.setText("4");
             } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
-                maxLengthToast();
             } else {
                 amount.setText(amount.getText().toString() + "4");
             }
@@ -169,7 +160,6 @@ public class AddMoney extends AppCompatActivity {
                 amount.setText("5");
             } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
-                maxLengthToast();
             } else {
                 amount.setText(amount.getText().toString() + "5");
             }
@@ -179,7 +169,6 @@ public class AddMoney extends AppCompatActivity {
                 amount.setText("6");
             } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
-                maxLengthToast();
             } else {
                 amount.setText(amount.getText().toString() + "6");
             }
@@ -189,7 +178,6 @@ public class AddMoney extends AppCompatActivity {
                 amount.setText("7");
             } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
-                maxLengthToast();
             } else {
                 amount.setText(amount.getText().toString() + "7");
             }
@@ -199,7 +187,6 @@ public class AddMoney extends AppCompatActivity {
                 amount.setText("8");
             } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
-                maxLengthToast();
             } else {
                 amount.setText(amount.getText().toString() + "8");
             }
@@ -209,7 +196,6 @@ public class AddMoney extends AppCompatActivity {
                 amount.setText("9");
             } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
-                maxLengthToast();
             } else {
                 amount.setText(amount.getText().toString() + "9");
             }
@@ -219,7 +205,6 @@ public class AddMoney extends AppCompatActivity {
                 amount.setText(".");
             } else if (amount.getText().toString().length() == 7) {
                 amount.setText(amount.getText().toString());
-                maxLengthToast();
             } else {
                 amount.setText(amount.getText().toString() + ".");
             }
@@ -231,21 +216,5 @@ public class AddMoney extends AppCompatActivity {
                 amount.setText(amount.getText().toString().substring(0, amount.getText().length() - 1));
             }
         });
-    }
-
-    private void maxLengthToast() {
-        // Custom Toast
-        Toast toast = Toast.makeText(AddMoney.this, R.string.max_characters, Toast.LENGTH_SHORT);
-        View view1 = toast.getView();
-
-        //Gets the actual oval background of the Toast then sets the colour filter
-        view1.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_IN);
-
-        //Gets the TextView from the Toast so it can be edited
-        TextView text = view1.findViewById(android.R.id.message);
-        text.setTextColor(ContextCompat.getColor(context, R.color.white));
-
-        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-        toast.show();
     }
 }

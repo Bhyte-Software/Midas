@@ -38,13 +38,15 @@
         <RelativeLayout
             android:id="@+id/greeting_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            tools:ignore="RelativeOverlap">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                tools:ignore="UselessParent">
 
                 <TextView
                     android:id="@+id/greetings"
@@ -95,7 +97,8 @@
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/total_assets_ghc"
                     android:textColor="@color/secondary_text"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:ignore="RelativeOverlap" />
 
                 <RelativeLayout
                     android:id="@+id/currency_view"
@@ -112,7 +115,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="GH₵"
+                        android:text="@string/gh_symbol"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -132,7 +135,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="0"
+                    android:text="@string/_0"
                     android:textColor="@color/main_text"
                     android:textSize="35sp"
                     android:visibility="visible" />
@@ -145,7 +148,8 @@
                     android:layout_marginStart="@dimen/dimen_10"
                     android:layout_toEndOf="@id/account_balance"
                     android:padding="@dimen/dimen_10"
-                    android:src="@drawable/toggle_balance" />
+                    android:src="@drawable/toggle_balance"
+                    android:contentDescription="@string/hide_icon_content_description" />
 
             </RelativeLayout>
 
@@ -217,7 +221,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/dimen_15"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    tools:ignore="UselessParent">
 
                     <TextView
                         android:id="@+id/title"
@@ -326,7 +331,8 @@
                     android:padding="@dimen/dimen_5"
                     android:text="Hello"
                     android:textColor="@color/blue_200"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:ignore="RelativeOverlap" />
 
             </RelativeLayout>
 
@@ -362,7 +368,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
-                android:text="Overview"
+                android:text="@string/overview"
                 android:textColor="@color/main_text"
                 android:textSize="20sp" />
 
@@ -389,7 +395,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="GHC 0"
+                            android:text="@string/ghc_0"
                             android:textColor="@color/main_text"
                             android:textSize="22sp" />
 
@@ -398,7 +404,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dimen_5"
                             android:fontFamily="@font/roboto_regular"
-                            android:text="/ Total Spent"
+                            android:text="@string/total_spent"
                             android:textColor="@color/secondary_text"
                             android:textSize="18sp" />
 
@@ -409,13 +415,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_centerVertical="true"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        tools:ignore="RelativeOverlap">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="0"
+                            android:text="@string/_0"
                             android:textColor="@color/main_text"
                             android:textSize="22sp" />
 
@@ -424,7 +431,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dimen_5"
                             android:fontFamily="@font/roboto_regular"
-                            android:text="/ Cards Created"
+                            android:text="@string/cards_created"
                             android:textColor="@color/secondary_text"
                             android:textSize="18sp" />
 

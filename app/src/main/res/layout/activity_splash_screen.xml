@@ -14,7 +14,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dimen_105"
-        android:src="@drawable/midas_logo" />
+        android:src="@drawable/midas_logo"
+        android:contentDescription="@string/midas_logo_content_description" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/loading_animation"

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
+    android:padding="@dimen/dimen_10"
     tools:context=".Transactions.AddMoneyChooseMethod">
 
     <RelativeLayout
@@ -85,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/desc"
         android:layout_marginStart="@dimen/dimen_15"
-        android:layout_marginTop="@dimen/dimen_20"
+        android:layout_marginTop="@dimen/dimen_3"
         android:layout_marginEnd="@dimen/dimen_15"
         android:orientation="vertical">
 
@@ -107,7 +108,7 @@
             android:id="@+id/bank_transfer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/dimen_15"
+            android:layout_marginTop="@dimen/dimen_4"
             android:background="@drawable/radio_selector"
             android:button="@color/transparent"
             android:drawableStart="@drawable/bank"
@@ -127,7 +128,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/dimen_25"
         android:layout_marginEnd="@dimen/dimen_25"
-        android:layout_marginBottom="@dimen/dimen_25"
+        android:layout_marginBottom="@dimen/dimen_3"
         android:text="@string/next"
         android:textAllCaps="false"
         app:cornerRadius="35dp" />

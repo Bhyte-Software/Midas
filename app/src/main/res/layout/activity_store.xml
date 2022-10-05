@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:id="@+id/bg"
+    android:padding="@dimen/dimen_3"
     android:background="@color/bg"
     android:layout_height="match_parent"
     tools:context=".Store.Store">
@@ -45,18 +46,18 @@
         android:textSize="20sp" />
 
     <com.google.android.material.button.MaterialButton
-        android:layout_alignParentBottom="true"
         android:id="@+id/create_card_button"
         android:layout_width="match_parent"
-        android:onClick="callMainDashboard"
-        android:textAllCaps="false"
-        android:text="@string/return_home"
-        android:layout_marginBottom="85dp"
+        android:layout_height="@dimen/dimen_60"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/dimen_25"
         android:layout_marginTop="@dimen/dimen_60"
         android:layout_marginEnd="@dimen/dimen_25"
-        android:layout_marginStart="@dimen/dimen_25"
-        app:cornerRadius="35dp"
-        android:layout_height="@dimen/dimen_60"/>
+        android:layout_marginBottom="85dp"
+        android:onClick="callMainDashboard"
+        android:text="@string/return_home"
+        android:textAllCaps="false"
+        app:cornerRadius="35dp" />
 
 </RelativeLayout>
