@@ -143,7 +143,6 @@ public class GetStarted extends AppCompatActivity {
             finish();
             System.exit(0);
         } else {
-            // Make Custom Toast Instead
             Toast toast = Toast.makeText(GetStarted.this, "Press back again to exit midas", Toast.LENGTH_SHORT);
             View view1 = toast.getView();
 

@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:fontFamily="@font/darker_grotesque_bold"
+        android:fontFamily="@font/roboto_bold"
         android:text="@string/do_you_enjoy_using_nmidas"
         android:textAlignment="center"
         android:textColor="@color/main_text"
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_5"
-        android:fontFamily="@font/darker_grotesque"
+        android:fontFamily="@font/roboto_regular"
         android:text="@string/we_really_value_your_feedback"
         android:textAlignment="center" />
 
@@ -53,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_20"
-        android:layout_marginBottom="@dimen/dimen_20">
+        android:layout_marginBottom="@dimen/dimen_25">
 
         <com.google.android.material.button.MaterialButton
             android:layout_weight="1"

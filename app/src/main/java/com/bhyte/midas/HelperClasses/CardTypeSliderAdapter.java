@@ -1,6 +1,5 @@
 package com.bhyte.midas.HelperClasses;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,17 +9,22 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bhyte.midas.R;
+import com.bhyte.midas.User.CreateCard;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 
 public class CardTypeSliderAdapter extends PagerAdapter {
 
     Context context;
-    Dialog infoDialog;
+    ImageView infoIcon;
+    BottomSheetDialog infoDialog;
     MaterialButton cancelButton;
     LayoutInflater layoutInflater;
+
     int[] images = {
             R.drawable.v_card,
             R.drawable.g_card
@@ -95,17 +99,25 @@ public class CardTypeSliderAdapter extends PagerAdapter {
         // Click Listeners
         cardCreationFeeInfo.setOnClickListener(v -> {
             // Show Info Dialog Popup
-            infoDialog = new Dialog(v.getContext(), R.style.BottomSheetTheme);
+            infoDialog = new BottomSheetDialog(v.getContext(), R.style.BottomSheetTheme);
 
-            View dialogView = LayoutInflater.from(context.getApplicationContext()).inflate(R.layout.card_creation_info, view.findViewById(R.id.card_creation_info));
+            View sheetView = LayoutInflater.from(context.getApplicationContext()).inflate(R.layout.card_creation_info, view.findViewById(R.id.card_creation_info));
 
-            infoDialog.setContentView(dialogView);
+            infoDialog.setContentView(sheetView);
             infoDialog.show();
 
             // Hooks
+            infoIcon = infoDialog.findViewById(R.id.info_icon);
             cancelButton = infoDialog.findViewById(R.id.cancel);
 
+            if (position == 1){
+                assert cancelButton != null;
+                cancelButton.setBackgroundColor(ContextCompat.getColor(v.getContext(), R.color.orange));
+                infoIcon.setImageDrawable(ContextCompat.getDrawable(v.getContext(), R.drawable.info_orange));
+            }
+
             // Click Listeners
+            assert cancelButton != null;
             cancelButton.setOnClickListener(view1 -> infoDialog.dismiss());
         });
 

@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/dimen_25" />
+        android:layout_marginTop="@dimen/dimen_25"
+        android:layout_marginBottom="@dimen/dimen_25"/>
 
     <TextView
         android:id="@+id/card_type"
@@ -37,11 +38,14 @@
         android:textSize="22sp" />
 
     <ImageView
+        android:padding="@dimen/dimen_5"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
         android:id="@+id/card_creation_fee_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/card_type"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="7dp"
         android:layout_toEndOf="@id/card_creation_fee"
         android:contentDescription="@string/image"
         android:src="@drawable/ic_info" />

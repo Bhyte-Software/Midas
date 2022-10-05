@@ -19,17 +19,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:layout_marginTop="@dimen/dimen_20"
         android:id="@+id/user_icon"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginStart="8dp"
-        app:shapeAppearanceOverlay="@style/roundImageView"
-        app:srcCompat="@color/shimmerColor"
+        android:layout_marginTop="@dimen/dimen_20"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
-        tools:ignore="ContentDescription" />
+        app:shapeAppearanceOverlay="@style/roundImageView"
+        app:srcCompat="@color/shimmerColor"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
 
     <RelativeLayout
         android:id="@+id/user_name"

@@ -9,15 +9,12 @@
     android:background="@color/bg"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="15dp"
     tools:context=".AccountCreation.GetStarted">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:contentDescription="@string/image"
-        android:onClick="callComplete"
         android:src="@drawable/onboarding_image_one" />
 
     <TextView
@@ -44,6 +41,9 @@
         android:textSize="20sp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginBottom="@dimen/dimen_20"
+        android:layout_marginStart="@dimen/dimen_25"
+        android:layout_marginEnd="@dimen/dimen_25"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/dimen_120">

@@ -2,46 +2,60 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/card_creation_info"
-    android:layout_width="360dp"
-    android:layout_height="350dp"
-    android:layout_gravity="center"
-    android:background="@drawable/blue_popup_border"
-    android:elevation="8dp"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:theme="@style/Theme.MaterialComponents.Light">
+    android:id="@+id/rate_popup"
+    android:layout_below="@+id/card_creation_info"
+    android:background="@drawable/bottom_sheet_background"
+    android:layout_width="match_parent"
+    android:theme="@style/Theme.MaterialComponents.Light"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/handle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_15"
+        android:background="@drawable/bottom_sheet_handle"
+        android:layout_width="40dp"
+        android:layout_height="5dp"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/handle"
         android:layout_centerInParent="true"
         tools:ignore="UselessParent">
 
-        <ImageView
-            android:id="@+id/warning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <RelativeLayout
+            android:id="@+id/info"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dimen_20"
-            android:src="@drawable/popup_info_image"
-            android:contentDescription="@string/help_icon_content_description" />
+            android:background="@drawable/bottom_sheet_circle"
+            android:layout_width="@dimen/dimen_70"
+            android:layout_height="@dimen/dimen_70">
+
+            <ImageView
+                android:id="@+id/info_icon"
+                android:layout_centerInParent="true"
+                android:src="@drawable/info_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/warning"
+            android:layout_below="@id/info"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/roboto_medium"
+            android:fontFamily="@font/roboto_bold"
             android:text="@string/creation_fee_tv"
             android:textAlignment="center"
             android:textColor="@color/main_text"
-            android:textSize="18sp" />
+            android:textSize="28sp" />
 
         <TextView
-            android:textColor="@color/secondary_text"
             android:id="@+id/message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +64,9 @@
             android:layout_marginTop="@dimen/dimen_5"
             android:fontFamily="@font/roboto_regular"
             android:text="@string/as_a_requirement_to_pay_for_server_cost_and_service_provider_costs"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/secondary_text"
+            android:textSize="18sp" />
 
 
         <com.google.android.material.button.MaterialButton
@@ -62,7 +78,7 @@
             android:layout_marginStart="@dimen/dimen_25"
             android:layout_marginTop="@dimen/dimen_20"
             android:layout_marginEnd="@dimen/dimen_25"
-            android:layout_marginBottom="@dimen/dimen_20"
+            android:layout_marginBottom="@dimen/dimen_25"
             android:backgroundTint="@color/blue_200"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/okay"

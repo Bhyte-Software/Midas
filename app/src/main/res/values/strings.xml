@@ -151,8 +151,8 @@
     <string name="create_new_card">Create New Card</string>
     <string name="virtual_card">Midas Virtual Debit\nCard</string>
     <string name="virtual_card2">Midas Virtual Debit Card</string>
-    <string name="gift_card">Midas Gift Credit\nCard</string>
-    <string name="gift_card2">Midas Gift Credit Card</string>
+    <string name="gift_card">Midas Gift Debit\nCard</string>
+    <string name="gift_card2">Midas Gift Debit Card</string>
     <string name="create_virtual_card">Create Virtual Card</string>
     <!-- Cards -->
 
@@ -394,7 +394,7 @@
     <string name="confirmation">Confirmation</string>
     <string name="back_button_content_description">Back Button</string>
     <string name="help_icon_content_description">Help Icon</string>
-    <string name="enter_amount_you_would_like_to_deposit">Enter amount you would like to deposit?</string>
+    <string name="enter_amount_you_would_like_to_deposit">Enter amount to deposit?</string>
     <string name="ghs">GHS</string>
     <string name="_0">0</string>
     <string name="min_ghs_20_max_ghs_5_000">Min: GHS 20 | Max: GHS 5,000</string>
@@ -501,7 +501,7 @@
     <string name="how_long_until_deposit_shows_in_my_midas_account_icon">How long until deposit shows in my Midas account icon</string>
     <string name="master_card_text_view">Master Card</string>
     <string name="creation_fee_tv">Creation fee</string>
-    <string name="as_a_requirement_to_pay_for_server_cost_and_service_provider_costs">As a requirement to pay for server cost and service provider costs.</string>
+    <string name="as_a_requirement_to_pay_for_server_cost_and_service_provider_costs">As a requirement to pay for\nserver cost and service provider costs.</string>
     <string name="ghana_logo_content_description">ghana_logo_content_description</string>
     <string name="usd_tv">USD</string>
     <string name="green_tick_content_description">green tick content description</string>

@@ -1,61 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bg"
-    android:id="@+id/bg"
     tools:context=".User.UserCardsFragment">
 
-    <LinearLayout
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/image"
+                android:padding="@dimen/dimen_20"
+                android:src="@drawable/no_cards_image" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/no_cards"
+                android:textColor="@color/main_text"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:padding="@dimen/dimen_5"
+                android:paddingStart="@dimen/dimen_10"
+                android:paddingEnd="@dimen/dimen_10"
+                android:text="@string/no_cards_description"
+                android:textAlignment="center"
+                android:textColor="@color/secondary_text"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_alignParentBottom="true"
+        android:id="@+id/create_card_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:textAllCaps="false"
+        android:layout_marginBottom="@dimen/dimen_90"
+        android:text="@string/create_new_card"
+        android:layout_marginTop="@dimen/dimen_90"
+        android:layout_marginEnd="@dimen/dimen_25"
+        android:layout_marginStart="@dimen/dimen_25"
+        app:cornerRadius="35dp"
+        android:layout_height="@dimen/dimen_60"/>
 
-        <ImageView
-            android:contentDescription="@string/image"
-            android:padding="@dimen/dimen_20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/no_cards_image" />
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/dimen_20"
-            android:fontFamily="@font/roboto_medium"
-            android:text="@string/no_cards"
-            android:textColor="@color/main_text"
-            android:textSize="22sp" />
-
-        <TextView
-            android:textColor="@color/secondary_text"
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
-            android:padding="@dimen/dimen_5"
-            android:paddingEnd="@dimen/dimen_10"
-            android:paddingStart="@dimen/dimen_10"
-            android:text="@string/no_cards_description"
-            android:textAlignment="center"
-            android:textSize="18sp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/create_card_button"
-            android:layout_width="match_parent"
-            android:textAllCaps="false"
-            android:layout_marginBottom="@dimen/dimen_70"
-            android:text="@string/create_new_card"
-            android:layout_marginTop="@dimen/dimen_90"
-            android:layout_marginEnd="@dimen/dimen_25"
-            android:layout_marginStart="@dimen/dimen_25"
-            app:cornerRadius="35dp"
-            android:layout_height="@dimen/dimen_60"/>
-
-    </LinearLayout>
-
-</ScrollView>
+</RelativeLayout>
