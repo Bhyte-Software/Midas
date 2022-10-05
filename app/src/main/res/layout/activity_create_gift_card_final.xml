@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    tools:context=".User.CreateGiftCardFinal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/menu_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/dimen_5"
+            android:padding="@dimen/dimen_15">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:onClick="callBack"
+                android:src="@drawable/back_icon"
+                app:tint="@color/blue_200"
+                tools:ignore="ContentDescription,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dimen_15"
+                android:layout_toEndOf="@id/back"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/confirm_card_creation"
+                android:textColor="@color/blue_200"
+                android:textSize="26sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:background="@drawable/black_card_final">
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/card2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-15dp"
+            android:background="@drawable/black_card_gift">
+
+            <TextView
+                android:id="@+id/card_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_80"
+                android:layout_marginTop="@dimen/dimen_105"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/_3672_8229_3829_0372"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_number"
+                android:layout_marginStart="@dimen/dimen_50"
+                android:layout_marginTop="@dimen/dimen_40"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/date"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/card_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_number"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/dimen_40"
+                android:layout_marginEnd="@dimen/dimen_50"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/text_view_name"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+
+        </RelativeLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/create_button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginTop="@dimen/dimen_25"
+            android:layout_marginEnd="@dimen/dimen_25"
+            android:layout_marginBottom="@dimen/dimen_30"
+            android:backgroundTint="@color/orange"
+            android:onClick="callProcessingCardCreation"
+            android:text="@string/create_gift_card"
+            android:textAllCaps="false"
+            app:cornerRadius="35dp" />
+
+        <LinearLayout
+            android:id="@+id/txt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/dimen_15"
+            android:gravity="center_horizontal"
+            android:onClick="callTermsConditions"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/by_creating_this_card_you_agree_to"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_10"
+                android:gravity="center"
+                android:text="@string/our_terms_amp_conditions"
+                android:textAlignment="center"
+                android:textColor="@color/blue_200" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

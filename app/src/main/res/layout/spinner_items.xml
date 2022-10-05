@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:paddingStart="@dimen/dimen_15"
+    android:paddingEnd="@dimen/dimen_15"
+    android:layout_height="@dimen/dimen_60"
+    android:orientation="horizontal"
+    tools:ignore="UseCompoundDrawables">
+
+    <ImageView
+        android:contentDescription="@string/image"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/imageView"
+        android:layout_width="47.741dp"
+        android:layout_height="29.953dp"
+        android:src="@drawable/mtn" /><!--Make sure image is present in Drawable folder-->
+
+    <TextView
+        android:textSize="18sp"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center_vertical"
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="@dimen/dimen_15"
+        android:text="@string/next"
+        android:textColor="@color/main_text" />
+
+</LinearLayout>

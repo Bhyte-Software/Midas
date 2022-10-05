@@ -1,0 +1,530 @@
+<resources>
+    <!-- APP INFO -->
+    <string name="app_name">Midas</string>
+    <string name="app_version">V 1.0.2</string>
+    <string name="developer">Bhyte</string>
+    <string name="slogan">Explore your limits</string>
+    <!-- APP INFO -->
+
+    <!-- IMAGEVIEW CONTENT DESCRIPTION -->
+    <string name="bhyte_text_logo">Bhyte text logo</string>
+    <string name="slider_image">Slider Image</string>
+    <string name="sign_up_complete_image">Sign up complete image</string>
+    <string name="verify_identity_image">Verify identity image</string>
+    <!-- APP INFO -->
+
+    <!-- ONBOARDING -->
+
+    <!-- Titles -->
+    <string name="onboarding_title_one">Create Virtual Credit Cards</string>
+    <string name="onboarding_title_two">Buy &amp; Sell Gift Cards</string>
+    <string name="onboarding_title_three">Manage Cards</string>
+    <string name="onboarding_title_four">Top Up Easily</string>
+    <string name="onboarding_title_five">Accepted on 100+ Platforms</string>
+    <!-- Titles -->
+
+    <!-- Descriptions -->
+    <string name="onboarding_description_one">Midas allows you to create virtual cards that can be used online to make purchases and complete payments</string>
+    <string name="onboarding_description_two">Trade gift cards from most stores around the world</string>
+    <string name="onboarding_description_three">Set limits and cancel subscriptions made with your virtual cards</string>
+    <string name="onboarding_description_four">Add money to your card easily using various methods like mobile money transfer</string>
+    <string name="onboarding_description_five">Cards created with Midas can be used on over 100 platforms and websites</string>
+    <!-- Descriptions -->
+
+    <!-- Others -->
+    <string name="get_started">Get Started</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <!-- Others -->
+
+    <!-- ONBOARDING -->
+
+    <!-- ACCOUNT CREATION -->
+
+    <!-- Get started -->
+    <string name="get_started_title">Lets Get Started!</string>
+    <string name="growing_community">Join The Growing Community</string>
+    <string name="get_started_description">Join Midas now and enjoy all the perks that come with it</string>
+    <!-- Get started -->
+
+    <!-- Common -->
+    <string name="create_account">Create Account</string>
+    <string name="sign_in">Sign In</string>
+    <!-- Common -->
+
+    <!-- Sign Up -->
+    <string name="sign_up">Sign Up</string>
+    <string name="get_code">Get Code</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="enter_number">Enter your mobile number to receive a verification code</string>
+    <!-- Sign Up -->
+
+    <!-- Fingerprint -->
+    <string name="fingerprint">Fingerprint</string>
+    <string name="go">Continue</string>
+    <string name="fingerprint_description">Continue to fingerprint registration screen</string>
+    <string name="skip_step">Skip This Step</string>
+    <string name="try_fingerprint">Try Fingerprint</string>
+    <string name="try_fingerprint_description">Touch fingerprint sensor to sign into your account</string>
+    <string name="just_use_pass">or just use password instead</string>
+    <string name="having_problems">Having problems? Click Here</string>
+    <!-- Fingerprint -->
+
+
+    <!-- Welcome -->
+    <string name="welcome">Welcome!!!</string>
+    <string name="hooray">Hooray!</string>
+    <string name="welcome_description">Well you have thus come this far! Thanks for choosing us enjoy your experience!</string>
+    <!-- Welcome -->
+
+    <!-- Verify Identity -->
+    <string name="identity">Identity</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="national">National</string>
+    <string name="passport">Passport</string>
+    <string name="recommended">Recommended</string>
+    <string name="done">Done</string>
+    <string name="passport_description">Required passport for non citizens of Ghana</string>
+    <string name="identity_description">We need to verify your identity (Required)</string>
+    <!-- Verify Identity -->
+
+    <!-- Enter OTP -->
+    <string name="verification">Verification</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="verify">Verify</string>
+    <string name="verification_description">Enter a 4 digit number that \nwas sent to </string>
+    <!-- Enter OTP -->
+
+    <!-- ACCOUNT CREATION -->
+
+    <!-- USER -->
+    <string name="profile">Profile</string>
+    <string name="preferences">Preferences</string>
+    <string name="language">Language</string>
+    <string name="invite_friends">Invite friends</string>
+    <string name="rate_midas">Rate Midas</string>
+    <string name="rate">Rate</string>
+    <string name="rate_midas_description">Are you sure you want to rate the app? You would be redirected to the Play Store</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="profile_default_name">John Doe</string>
+    <string name="profile_default_email">johndoe@gmail.com</string>
+    <string name="change_password">Change Password</string>
+    <string name="log_out">Logout</string>
+    <string name="take_picture">Take a picture</string>
+    <string name="choose_picture">Choose picture from gallery</string>
+    <string name="remove_picture">Remove picture</string>
+    <string name="cancel">Cancel</string>
+    <string name="sign_out_title">Sign out from app</string>
+    <string name="logout_confirmation">Are you sure you would like to sign out of your account?</string>
+    <!-- USER -->
+
+    <!-- BOTTOM NAVIGATION -->
+    <string name="home">Home</string>
+    <string name="transaction">Transactions</string>
+    <string name="cards">Cards</string>
+    <string name="settings">Settings</string>
+    <!-- BOTTOM NAVIGATION -->
+
+    <!-- SETTINGS -->
+    <string name="signed_in">Signed in as</string>
+    <string name="sign_out">Sign out</string>
+    <string name="placeholder_name">john doe</string>
+    <string name="personalize">Personalize</string>
+    <string name="light_theme">Light theme</string>
+    <string name="dark_theme">Dark theme</string>
+    <string name="advanced">Advanced</string>
+    <string name="download_statement">Download my account statement</string>
+    <string name="help">Help</string>
+    <string name="about">About</string>
+    <string name="faq">FAQ</string>
+    <string name="contact_support">Contact Support</string>
+    <string name="terms_and_conditions">Terms &amp; Conditions</string>
+    <!-- SETTINGS -->
+
+
+    <!-- FRAGMENT -->
+
+    <!-- Cards -->
+    <string name="no_cards">You currently have no cards!</string>
+    <string name="no_cards_description">Create a new card to start exploring your boundaries with Midas</string>
+    <string name="create_new_card">Create New Card</string>
+    <string name="virtual_card">Midas Virtual Debit\nCard</string>
+    <string name="virtual_card2">Midas Virtual Debit Card</string>
+    <string name="gift_card">Midas Gift Credit\nCard</string>
+    <string name="gift_card2">Midas Gift Credit Card</string>
+    <string name="create_virtual_card">Create Virtual Card</string>
+    <!-- Cards -->
+
+    <!-- Transactions -->
+    <string name="no_transactions">You have no transactions!</string>
+    <string name="no_transactions_description">You have not made any transactions yet when you do they will appear here</string>
+    <string name="yes">Yes</string>
+    <string name="are_you_sure">Are you sure about this?</string>
+    <string name="choose_card_design">Choose card design</string>
+    <string name="card_design">Card design</string>
+    <string name="choose_card_label">Choose card label</string>
+    <string name="card_label_description">A card name will allow you to identify your cards easily, when you have a couple of them</string>
+    <string name="go_to_settings">Go to settings</string>
+    <string name="no_internet_connection">Please check your internet connection</string>
+    <string name="by_creating_this_card_you_agree_to">By creating this card, you agree to</string>
+    <string name="our_terms_amp_conditions"><![CDATA[Our Terms & Conditions]]></string>
+    <string name="processing">Processing…</string>
+    <string name="about_tagline">Create virtual credit cards for use on various platforms in your gadget with this app</string>
+    <string name="dummy_text">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?</string>
+    <string name="enter_credentials">Enter Credentials</string>
+    <string name="credentials_description">Enter your name, email and password</string>
+    <string name="email">Email</string>
+    <string name="full_name">Full Name</string>
+    <string name="password">Password</string>
+    <string name="_233_phone_number">+ (233) Phone Number</string>
+    <string name="_234_phone_number">+ (234) Phone Number</string>
+    <string name="enter_amount">Enter amount</string>
+    <string name="creation_fee_virtual_card">$1.00 creation fee</string>
+    <string name="creation_fee_gift_card">$2.00 creation fee</string>
+    <!-- Transactions -->
+
+    <!-- Card Features -->
+    <string name="virtual_card_feature_one">• Make purchases online</string>
+    <string name="virtual_card_feature_two">• Reminders on your subscriptions</string>
+    <string name="virtual_card_feature_three">• Control how you spend</string>
+    <string name="virtual_card_feature_four">• Deactivate card at your own convenience</string>
+
+    <string name="gift_card_feature_one">• Gift friends with virtual cards</string>
+    <string name="gift_card_feature_two">• Delivered instantly by email</string>
+    <string name="gift_card_feature_three">• Redeemable for online purchases</string>
+    <string name="gift_card_feature_four"> </string>
+    <!-- Card Features -->
+
+    <!-- FRAGMENT -->
+
+    <!-- CARD DETAILS -->
+    <string name="card_holder">Cardholder Name</string>
+    <string name="card_number">Card Number</string>
+    <string name="card_cvv">CVV</string>
+    <string name="delete_card">Delete Card</string>
+    <string name="card_details">Card Details</string>
+    <!-- CARD DETAILS -->
+
+    <!-- CHANGE PASSWORD -->
+    <string name="check_mail">Check your mail</string>
+    <string name="check_mail_description">We have sent password recovery instructions to your email</string>
+    <string name="open_email_app">Open Email App</string>
+    <string name="skip_confirm_later">Skip, I\'ll confirm later</string>
+    <string name="help_bottom">Did not receive the email? Check your spam filter,</string>
+    <string name="help_bottom2">or try another email address</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="send_instructions">Send Instructions</string>
+    <string name="reset_password_description">Enter the email associated with your account and we\'ll send an email with instructions to reset your password</string>
+    <!-- CHANGE PASSWORD -->
+
+    <!-- HOME -->
+    <string name="good_morning">Good Morning,</string>
+    <string name="good_afternoon">Good Afternoon,</string>
+    <string name="good_evening">Good Evening,</string>
+    <string name="total_assets_ghc">Total assets (GH₵)</string>
+    <string name="total_assets_dollar">Total assets ($)</string>
+    <string name="add_money">Add Money</string>
+    <string name="us_dollar">US Dollar</string>
+    <string name="cedi">GH₵</string>
+    <string name="dollar">$</string>
+    <string name="dollar_usd">USD$</string>
+    <string name="ghana_cedi">Ghana Cedi</string>
+    <string name="phone">Phone</string>
+    <string name="midas_gmail_com">midas@gmail.com</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="recovery_code">Recovery code</string>
+    <string name="successful">Successful!</string>
+    <string name="password_change_successful_description">You have successfully changed your password,go ahead and sign in to your account with the new password</string>
+    <string name="choose_a_method">Choose a method</string>
+    <string name="mobile_transfers">Mobile Transfers</string>
+    <string name="mtn_mobile_money">MTN Mobile Money</string>
+    <string name="_0_00">0.00</string>
+    <string name="john_doe">John Doe 👋</string>
+    <string name="john_doe_2">John Doe</string>
+    <string name="okay">Okay</string>
+    <string name="morning">Good Morning,</string>
+    <string name="afternoon">Good Afternoon,</string>
+    <string name="evening">Good Evening,</string>
+    <string name="night">Good Night,</string>
+    <string name="not_verified">Your account is not yet verified</string>
+    <string name="start_verification">Click here to start account verification process</string>
+    <string name="already_have_an_account_sign_in">Already have an account? Sign In</string>
+    <string name="select_birthdate">Please select your correct birthday from the field below</string>
+    <string name="registration">Registration</string>
+    <string name="or_use_just_password_instead">or use just password instead.</string>
+    <string name="forgot_password"><u>Forgot Password</u></string>
+    <string name="verify_me">Verify Me</string>
+    <string name="resend_email">Resend Email</string>
+    <string name="your_fingerprint_registration_is_25_complete">Your fingerprint registration is 25% complete</string>
+    <string name="register_fingerprint">Register Fingerprint</string>
+    <string name="add_payment_method">Add payment method</string>
+    <string name="usd">Total assets (USD$)</string>
+    <string name="recommended_for_you">Recommended for you</string>
+    <string name="confirm_deletion_description">Are you sure you want to delete this card? You will loose all information and the money on this card!</string>
+    <string name="confirm_deletion">Confirm Deletion</string>
+    <string name="my_cards">My Cards</string>
+    <string name="shuffle">Shuffle</string>
+    <string name="return_home">Return Home</string>
+    <string name="coming_soon_description">Midas store would be available in future update. Stay posted for updates.</string>
+    <string name="coming_soon">Coming Soon</string>
+    <string name="quick_actions">Quick actions</string>
+    <string name="no_data">No data to download</string>
+    <string name="sign_in_error">Error signing in, please try again</string>
+    <string name="recipient_email">Recipient Email</string>
+    <string name="message">Message</string>
+    <string name="title">Title</string>
+    <string name="create_gift_card">Create Gift Card</string>
+    <string name="back_to_exit">Press back again to exit midas</string>
+    <string name="card_label_title">Please enter card name</string>
+    <string name="enter_number_to_continue">Please enter your number to continue</string>
+    <string name="enter_valid_digits">Please enter a valid 10 digit number</string>
+    <string name="enter_valid_11_digits">Please enter a valid 11 digit number</string>
+    <string name="enter_valid_number">Please enter a valid 10 digit number</string>
+    <string name="enter_valid_number_ng">Please enter a valid 11 digit number</string>
+    <string name="incorrect_code">Incorrect code, try again</string>
+    <string name="enter_sms">Enter SMS code sent to your number</string>
+    <string name="code_verification_error">Error verifying code</string>
+    <string name="ineligible">You are ineligible to Sign Up</string>
+    <string name="error_try_again">Error, try again</string>
+    <string name="registration_failed">User registration failed</string>
+    <string name="back_exit">Please press back again to exit midas</string>
+    <string name="back_quit">Please press back again to exit midas</string>
+    <!-- HOME -->
+
+    <!-- TERMS & CONDITIONS -->
+    <string name="conditions_of_use">
+        By using this app, you certify that you have read and reviewed this Agreement and that you agree to comply with its terms. 
+        If you do not want to be bound by the terms of this Agreement, you are advised to leave the app accordingly.Midas only grants 
+        use and access of this app, its products, and its services to those who have accepted its terms.
+    </string>
+    <string name="privacy_policy">
+        Before you continue using our website, we advise you to read our privacy policy [link to privacy policy] regarding our user data collection.
+        It will help you better understand our practices.
+    </string>
+    <string name="age_restriction">
+        You must be at least 18 (eighteen) years of age before you can use this website. By using this website,
+        you warrant that you are at least 18 years of age and you may legally adhere to this Agreement.
+        Midas assumes no responsibility for liabilities related to age misrepresentation.
+    </string>
+    <string name="intellectual_property">
+        You agree that all materials, products, and services provided on this app are the property of
+        Midas, its affiliates, directors, officers, employees, agents, suppliers, or licensors including all
+        copyrights, trade secrets, trademarks, patents, and other intellectual property. You also agree
+        that you will not reproduce or redistribute the [name]’s intellectual property in any way,
+        including electronic, digital, or new trademark registrations.
+        You grant Midas a royalty-free and non-exclusive license to display, use, copy, transmit, and
+        broadcast the content you upload and publish. For issues regarding intellectual property claims,
+        you should contact the company in order to come to an agreement.
+    </string>
+    <string name="user_accounts">
+        As a user of this app, you may be asked to register with us and provide private information.
+        You are responsible for ensuring the accuracy of this information, and you are responsible for
+        maintaining the safety and security of your identifying information. You are also responsible for
+        all activities that occur under your account or password.
+        If you think there are any possible issues regarding the security of your account on the app,
+        inform us immediately so we may address them accordingly.
+        We reserve all rights to terminate accounts, edit or remove content and cancel orders at our sole
+        discretion.
+    </string>
+    <string name="applicable_law">
+        By using this app, you agree that the laws of Ghana, without regard to principles of
+        conflict laws, will govern these terms and conditions, or any dispute of any sort that might come
+        between Midas and you, or its business partners and associates.
+    </string>
+    <string name="disputes">
+        Any dispute related in any way to your visit to this website or to products you purchase from us
+        shall be arbitrated by state or federal court [location] and you consent to exclusive jurisdiction
+        and venue of such courts
+    </string>
+    <string name="indemnification">
+        You agree to indemnify Midas and its affiliates and hold Midas harmless against legal claims
+        and demands that may arise from your use or misuse of our services. We reserve the right to
+        select our own legal counsel.
+    </string>
+    <string name="limitation_on_liability">
+        Midas is not liable for any damages that may occur to you as a result of your misuse of our app.
+        Midas reserves the right to edit, modify, and change this Agreement at any time. We shall let
+        our users know of these changes through electronic mail. This Agreement is an understanding
+        between Midas and the user, and this supersedes and replaces all prior agreements regarding
+        the use of this app.
+    </string>
+    <string name="try_again">Try Again</string>
+    <string name="no_internet">Error, No Internet</string>
+    <string name="image">image</string>
+    <string name="enter_your_name_email_and_password">Enter your name, email and password</string>
+    <string name="use_password">Use Password</string>
+    <string name="save">Save</string>
+    <string name="english">English</string>
+    <string name="create">Create</string>
+    <string name="gh">Ghana</string>
+    <string name="ng">Nigeria</string>
+    <string name="residence">What is your country of residence?</string>
+    <string name="no_available_ng">Midas is not available in Nigeria</string>
+    <string name="select_deposit_method">Please select a deposit method</string>
+    <string name="bank_transfer_not_available">Bank transfer not available</string>
+    <string name="nothing">Nothing to delete</string>
+    <string name="right_amount">Please enter valid amount</string>
+    <string name="max_characters">Max characters entered</string>
+    <string name="dummy_number">0202280564</string>
+    <string name="choose_your_provider">Choose your provider</string>
+    <string name="use_same_number">You have to use the same number that\'s verified on your Midas account</string>
+    <string name="update_number">Contact support if you need to update your number</string>
+    <string name="app_theme">App Theme</string>
+    <!-- TERMS & CONDITIONS -->
+
+    <string name="virtual_card_faq_one_title">1. What is a virtual credit card?</string>
+    <string name="get_started_faq_one_title">1. How do I get started?</string>
+    <string name="get_started_faq_one_detail">To get started with Midas you first need to create an account and make sure it is verified. After that simply navigate to the cards section using the bottom navigation and click on create card. Select the type of card you want to create and follow the prompt.</string>
+    <string name="virtual_card_faq_two_title">2. How do Midas virtual cards\nwork?</string>
+    <string name="virtual_card_faq_one_detail">A virtual credit card is basically the same as its traditional physical counterpart; it has a 16-digit code, CVV, and an expiration date. The main difference is that virtual credit cards are digital and can only be used for online payments and purchases, money cannot be withdrawn from them.</string>
+    <string name="virtual_card_faq_two_detail">Midas works in 3 simple steps:\nOpen Midas and add your mobile money number and account details\nTap "Create a card" to create a new virtual card and fund it with the money existing in your mobile money wallet\nUse the virtual card anywhere online for all your purchases and subscriptions</string>
+    <string name="all">All</string>
+    <string name="virtual_credit_card">Virtual Credit Card</string>
+    <string name="other">Other</string>
+    <string name="top_questions">Top Questions</string>
+    <string name="nothing_to_show">Nothing to show</string>
+    <string name="chat_bot">Chat Bot</string>
+    <string name="write_a_message">Write a message…</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="platforms_description">Midas virtual credit card is a supported payment method across different platforms</string>
+    <string name="date">Date</string>
+    <string name="fund_card">Fund card</string>
+    <string name="name">Full Name</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="back_button_content_description">Back Button</string>
+    <string name="help_icon_content_description">Help Icon</string>
+    <string name="enter_amount_you_would_like_to_deposit">Enter amount you would like to deposit?</string>
+    <string name="ghs">GHS</string>
+    <string name="_0">0</string>
+    <string name="min_ghs_20_max_ghs_5_000">Min: GHS 20 | Max: GHS 5,000</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="dot_value">.</string>
+    <string name="delete_digit_content_description">Delete digit</string>
+    <string name="warning_icon_content_description">Warning icon</string>
+    <string name="accept_terms_of_service">Accept terms of service</string>
+    <string name="as_a_requirement_to_use_midas_you_have_to_accept_terms_of_service">As a requirement to use Midas you have to accept terms of service.</string>
+    <string name="terms_and_conditions_text_view">Terms and Conditions</string>
+    <string name="last_updated_january_21_2022">Last Updated January 21 2022</string>
+    <string name="read_these_terms_and_conditions_carefully_before_using_midas_operated_by_bhyte_llc">Read these terms and conditions carefully before using Midas operated by Bhyte LLC.</string>
+    <string name="conditions_of_use_tv_terms_and_conditions">Conditions of use</string>
+    <string name="privacy_policy_tv_terms_and_conditions">Privacy Policy</string>
+    <string name="age_restriction_tv_terms_and_conditions">Age restriction</string>
+    <string name="intellectual_property_tv_terms_and_conditions">Intellectual property</string>
+    <string name="user_accounts_tv_terms_and_conditions">User accounts</string>
+    <string name="applicable_law_tv_terms_and_conditions">Applicable law</string>
+    <string name="disputes_tv_terms_and_conditions">Disputes</string>
+    <string name="indemnification_tv_terms_and_conditions">Indemnification</string>
+    <string name="limitation_on_liability_tv_terms_and_conditions">Limitation on Liability</string>
+    <string name="decline_tv_material_btn">Decline</string>
+    <string name="accept_tv_material_btn">Accept</string>
+    <string name="how_would_you_like_to_deposit">How would you like to deposit?</string>
+    <string name="choose_a_method_to_deposit_money_into_your_midas_wallet">Choose a method to deposit money into your Midas wallet</string>
+    <string name="mobile_money_nfee_1_4_ntakes_a_few_minutes">Mobile Money\nFee: 1.4%\nTakes a few minutes</string>
+    <string name="bank_transfer_nfee_5_0_ntakes_a_few_hours">Bank Transfer\nFee: 5.0%\nTakes a few hours</string>
+    <string name="add_payment_method_tv_add_payment_method_activity">Add payment method</string>
+    <string name="text_view_dark_theme">Dark theme</string>
+    <string name="create_new_password">Create new password</string>
+    <string name="email_image">Email_image</string>
+    <string name="successful_mark_icon">Successful mark icon</string>
+    <string name="phone_number_icon">Phone number icon</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="_1_202_555_0162">+1–202–555–0162</string>
+    <string name="e_mail_address">E-mail address</string>
+    <string name="info_midas_app">info@midas.app</string>
+    <string name="www_usemidas_app">www.usemidas.app</string>
+    <string name="we_are_ready_to_answer_you">We are ready to answer you</string>
+    <string name="contact_chat_bot">Contact chat bot</string>
+    <string name="website">Website</string>
+    <string name="contact_chat_box_next_btn_content_description">Contact_chat_box_next_btn_content_description</string>
+    <string name="dot_indicator_content_description">Dot indicator</string>
+    <string name="_3672_8229_3829_0372">3672 8229 3829 0372</string>
+    <string name="confirm_card_creation">Confirm card creation</string>
+    <string name="text_view_name">Name</string>
+    <string name="register_image_image_view">Register image</string>
+    <string name="touch_fingerprint_sensor_on_your_device_to_register">Touch fingerprint sensor on your device to register</string>
+    <string name="fingerprint_content_description">Fingerprint_content_description</string>
+    <string name="enter_details_you_want_card_recipient_nto_see">Enter details you want card recipient\nto see</string>
+    <string name="gift_card_image">Gift card image</string>
+    <string name="red_gift_card_content_description">Red gift card</string>
+    <string name="green_gift_card_content_description">Green gift card</string>
+    <string name="blue_gift_card_image_content_description">blue gift card image</string>
+    <string name="black_gift_card_image_content_description">black gift card image</string>
+    <string name="name_text_view">Name</string>
+    <string name="how_much_do_you_want_to_fund_this_ncard_with">How much do you want to fund this\ncard with?</string>
+    <string name="indicator_slider_content_description">Indicator_slider</string>
+    <string name="language_logo_content_description">Language logo</string>
+    <string name="invite_friend_content_description">Invite friend</string>
+    <string name="rate_midas_content_description">Rate midas</string>
+    <string name="quick_sign_in">Quick Sign In</string>
+    <string name="touch_fingerprint_sensor_on_your_device_to_nsign_in">Touch fingerprint sensor on your device to\nsign in</string>
+    <string name="fingerprint_logo_content_description">Fingerprint_logo</string>
+    <string name="here_s_your_breakdown">Here\'s your breakdown</string>
+    <string name="please_note_any_fees_and_the_final_amount_you_ll_receive_into_your_account">Please note any fees, and the final amount you\'ll receive into your account</string>
+    <string name="amount">Amount</string>
+    <string name="transaction_fee">Transaction fee</string>
+    <string name="ghs_text_view">GHS</string>
+    <string name="you_receive">You receive</string>
+    <string name="_0202280564">0202280564</string>
+    <string name="provider">Provider</string>
+    <string name="vodafone">VODAFONE</string>
+    <string name="deposit">Deposit</string>
+    <string name="registration_image">registration image</string>
+    <string name="national_details">National ID or Driver\'s licence for citizens of the country mainly</string>
+    <string name="midas_logo_content_description">Midas logo</string>
+    <string name="update_required">Update Required</string>
+    <string name="this_version_of_the_app_is_no_longer_supported_please_update_to_the_latest_version_to_continue_using_midas">This version of the app is no longer supported. Please update to the latest version to continue using Midas</string>
+    <string name="update_now">Update Now</string>
+    <string name="top_platform">Top Platform</string>
+    <string name="black_card">black_card</string>
+    <string name="standard">Standard</string>
+    <string name="blue">Blue</string>
+    <string name="red">Red</string>
+    <string name="gold">Gold</string>
+    <string name="copy_icon">copy icon</string>
+    <string name="_649">649</string>
+    <string name="enter_amount_you_want_to_fund_this_card_with">Enter amount you want to fund this card with</string>
+    <string name="get_some_help">Get some help</string>
+    <string name="how_do_i_deposit_money_icon">How do I deposit money icon</string>
+    <string name="how_do_i_deposit_money">How do I deposit money?</string>
+    <string name="how_peer_to_peer_works">How Peer-To-Peer works</string>
+    <string name="how_peer_to_peer_works_icon">How Peer-To-Peer works icon</string>
+    <string name="how_long_until_deposit_shows_in_my_midas_account">How long until deposit shows in my Midas account</string>
+    <string name="how_long_until_deposit_shows_in_my_midas_account_icon">How long until deposit shows in my Midas account icon</string>
+    <string name="master_card_text_view">Master Card</string>
+    <string name="creation_fee_tv">Creation fee</string>
+    <string name="as_a_requirement_to_pay_for_server_cost_and_service_provider_costs">As a requirement to pay for server cost and service provider costs.</string>
+    <string name="ghana_logo_content_description">ghana_logo_content_description</string>
+    <string name="usd_tv">USD</string>
+    <string name="green_tick_content_description">green tick content description</string>
+    <string name="us_logo">US LOGO</string>
+    <string name="green_tick_2_content_description">green tick 2 content description</string>
+    <string name="delete">Delete</string>
+    <string name="gh_symbol">GH₵</string>
+    <string name="hide_icon_content_description">hide icon content description</string>
+    <string name="total_spent">/ Total Spent</string>
+    <string name="ghc_0">GHC 0</string>
+    <string name="overview">Overview</string>
+    <string name="cards_created">/ Cards Created</string>
+    <string name="view_all">View all</string>
+    <string name="top_platforms">Top Platforms</string>
+    <string name="profile_icon">profile icon</string>
+    <string name="sign_out_icon">sign out icon</string>
+    <string name="app_theme_icon">app theme icon</string>
+    <string name="download_icon">download icon</string>
+    <string name="contact_support_icon">contact support icon</string>
+    <string name="faq_icon">FAQ icon</string>
+    <string name="terms_icon_content_description">terms icon content description</string>
+    <string name="about_icon_content_description">about icon content description</string>
+    <string name="platforms_icon_content_description">platforms icon content description</string>
+    <string name="rate_icon_content_description">rate icon content description</string>
+
+</resources>

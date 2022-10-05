@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    tools:context=".User.VirtualCardChooseDesign">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/blue_200"
+            android:elevation="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginEnd="@dimen/dimen_10"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:id="@+id/menu_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:contentDescription="@string/back_button_content_description"
+                    android:onClick="callBack"
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/back_material"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dimen_5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/choose_card_design"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-70dp"
+            android:background="@drawable/top_round_corner_overlay"
+            android:elevation="10dp"
+            android:orientation="vertical"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/card_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_20"
+                    android:contentDescription="@string/card_design"
+                    android:src="@drawable/cards_black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_15"
+                    android:layout_marginTop="@dimen/dimen_25"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/card_design"
+                    android:textColor="@color/skip_text"
+                    android:textSize="22sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:orientation="horizontal"
+                    android:padding="15dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:orientation="vertical"
+                        tools:ignore="RelativeOverlap">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/standard"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:contentDescription="@string/black_card"
+                                android:src="@drawable/round_black" />
+
+                            <TextView
+                                android:id="@+id/text1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/dimen_10"
+                                android:layout_toEndOf="@id/standard"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="@string/standard"
+                                android:textColor="@color/main_text"
+                                android:textSize="18sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_20">
+
+                            <ImageView
+                                android:id="@+id/blue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:contentDescription="@string/blue"
+                                android:src="@drawable/round_blue" />
+
+                            <TextView
+                                android:id="@+id/text2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/dimen_10"
+                                android:layout_toEndOf="@id/blue"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="@string/blue"
+                                android:textColor="@color/main_text"
+                                android:textSize="18sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_20">
+
+                            <ImageView
+                                android:id="@+id/red"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:contentDescription="@string/red"
+                                android:src="@drawable/round_red"
+                                app:tint="#EB3C3C" />
+
+                            <TextView
+                                android:id="@+id/text3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/dimen_10"
+                                android:layout_toEndOf="@id/red"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="@string/red"
+                                android:textColor="@color/main_text"
+                                android:textSize="18sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_20">
+
+                            <ImageView
+                                android:id="@+id/yellow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:contentDescription="@string/gold"
+                                android:src="@drawable/round_gold" />
+
+                            <TextView
+                                android:id="@+id/text4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/dimen_10"
+                                android:layout_toEndOf="@id/yellow"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="@string/gold"
+                                android:textColor="@color/main_text"
+                                android:textSize="18sp" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:orientation="vertical">
+
+                        <RadioGroup
+                            android:id="@+id/radio_group"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            tools:ignore="UselessParent">
+
+                            <com.google.android.material.radiobutton.MaterialRadioButton
+                                android:id="@+id/black_radio"
+                                android:layout_width="@dimen/dimen_30"
+                                android:layout_height="@dimen/dimen_30"
+                                android:buttonTint="@color/black" />
+
+                            <com.google.android.material.radiobutton.MaterialRadioButton
+                                android:id="@+id/blue_radio"
+                                android:layout_width="@dimen/dimen_30"
+                                android:layout_height="@dimen/dimen_30"
+                                android:layout_marginTop="@dimen/dimen_20"
+                                android:buttonTint="@color/blue_200" />
+
+                            <com.google.android.material.radiobutton.MaterialRadioButton
+                                android:id="@+id/red_radio"
+                                android:layout_width="@dimen/dimen_30"
+                                android:layout_height="@dimen/dimen_30"
+                                android:layout_marginTop="@dimen/dimen_20"
+                                android:buttonTint="#EB3C3C" />
+
+                            <com.google.android.material.radiobutton.MaterialRadioButton
+                                android:id="@+id/yellow_radio"
+                                android:layout_width="@dimen/dimen_30"
+                                android:layout_height="@dimen/dimen_30"
+                                android:layout_marginTop="@dimen/dimen_20"
+                                android:buttonTint="@color/orange_light" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/next"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/dimen_25"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginEnd="@dimen/dimen_25"
+        android:layout_marginBottom="@dimen/dimen_25"
+        android:text="@string/next"
+        android:textAllCaps="false"
+        app:cornerRadius="35dp" />
+
+</RelativeLayout>

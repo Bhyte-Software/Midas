@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    tools:context=".Common.UpdateRequired">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_25"
+        android:contentDescription="@string/image"
+        android:padding="@dimen/dimen_30"
+        android:paddingStart="@dimen/dimen_15"
+        android:paddingEnd="@dimen/dimen_15"
+        android:src="@drawable/warning" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/update_required"
+        android:textAlignment="center"
+        android:textColor="@color/main_text"
+        android:textSize="27sp" />
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingStart="@dimen/dimen_10"
+        android:paddingTop="@dimen/dimen_5"
+        android:paddingEnd="@dimen/dimen_10"
+        android:paddingBottom="@dimen/dimen_5"
+        android:text="@string/this_version_of_the_app_is_no_longer_supported_please_update_to_the_latest_version_to_continue_using_midas"
+        android:textAlignment="center"
+        android:textColor="@color/secondary_text"
+        android:textSize="20sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/next"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_60"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/dimen_25"
+        android:layout_marginEnd="@dimen/dimen_25"
+        android:layout_marginBottom="@dimen/dimen_25"
+        android:text="@string/update_now"
+        android:textAllCaps="false"
+        app:cornerRadius="35dp" />
+
+
+</RelativeLayout>

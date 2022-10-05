@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_20"
+    tools:context=".User.VirtualCardDetails">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:paddingEnd="@dimen/dimen_5"
+                android:paddingStart="@dimen/dimen_5"
+                android:paddingBottom="@dimen/dimen_5"
+                android:paddingTop="@dimen/dimen_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:onClick="goBack"
+                    android:padding="@dimen/dimen_20"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/back_icon"
+                    app:tint="@color/black"
+                    android:contentDescription="@string/back_button_content_description" />
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/card_details"
+                    android:textColor="@color/black"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-15dp"
+                android:background="@drawable/black_card">
+
+                <TextView
+                    android:id="@+id/card_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_80"
+                    android:layout_marginTop="@dimen/dimen_105"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/_3672_8229_3829_0372"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/card_number"
+                    android:layout_marginStart="@dimen/dimen_50"
+                    android:layout_marginTop="@dimen/dimen_40"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/date"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/card_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/card_number"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/dimen_40"
+                    android:layout_marginEnd="@dimen/dimen_50"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/name_text_view"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/card_holder"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_60"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginEnd="@dimen/dimen_20"
+                android:clickable="true"
+                android:background="@drawable/ripple_round_box">
+
+                <TextView
+                    android:textSize="18sp"
+                    android:id="@+id/cardholder_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_20"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/john_doe_2"
+                    android:textColor="@color/black"
+                    tools:ignore="RelativeOverlap" />
+
+                <ImageView
+                    android:id="@+id/copy_cardholder_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/dimen_20"
+                    android:src="@drawable/copy"
+                    android:contentDescription="@string/copy_icon" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/card_number" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_60"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:clickable="true"
+                android:layout_marginEnd="@dimen/dimen_20"
+                android:background="@drawable/ripple_round_box">
+
+                <TextView
+                    android:id="@+id/card_number_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_20"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/_3672_8229_3829_0372"
+                    android:textColor="@color/black"
+                    tools:ignore="RelativeOverlap" />
+
+                <ImageView
+                    android:id="@+id/copy_card_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/dimen_20"
+                    android:src="@drawable/copy"
+                    android:contentDescription="@string/copy_icon" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/card_cvv" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_60"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginEnd="@dimen/dimen_20"
+                android:clickable="true"
+                android:background="@drawable/ripple_round_box">
+
+                <TextView
+                    android:id="@+id/cvv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_20"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/_649"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    tools:ignore="RelativeOverlap" />
+
+                <ImageView
+                    android:id="@+id/copy_cvv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/dimen_20"
+                    android:src="@drawable/copy"
+                    android:contentDescription="@string/copy_icon" />
+
+            </RelativeLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/delete_button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_60"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:layout_marginEnd="@dimen/dimen_25"
+                android:layout_marginTop="@dimen/dimen_25"
+                android:layout_marginBottom="@dimen/dimen_25"
+                android:backgroundTint="@color/red"
+                android:text="@string/delete_card"
+                android:textAllCaps="false"
+                app:cornerRadius="35dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

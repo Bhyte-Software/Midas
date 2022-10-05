@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    android:orientation="vertical"
+    tools:context=".User.UserHomeFragment">
+
+    <RelativeLayout
+        android:id="@+id/gradient_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient"
+        android:paddingStart="@dimen/dimen_25"
+        android:paddingTop="10dp"
+        android:paddingEnd="@dimen/dimen_25">
+
+        <RelativeLayout
+            android:id="@+id/home_title_icons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_picture"
+                android:layout_width="@dimen/dimen_40"
+                android:layout_height="@dimen/dimen_40"
+                android:layout_centerVertical="true"
+                android:src="@drawable/home_profile_default"
+                app:civ_border_color="@color/white_light"
+                app:civ_border_width="2dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/greeting_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="RelativeOverlap">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:id="@+id/greetings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_black"
+                    android:text="@string/good_morning"
+                    android:textColor="@color/white"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text=""
+                    android:textColor="@color/white_light"
+                    android:textSize="22sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/round_rec"
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            android:layout_below="@id/greeting_view"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:background="@drawable/ripple_round_box"
+            android:clickable="true"
+            android:paddingStart="@dimen/dimen_20"
+            android:paddingTop="@dimen/dimen_15"
+            android:paddingEnd="@dimen/dimen_20"
+            android:paddingBottom="@dimen/dimen_15">
+
+            <RelativeLayout
+                android:id="@+id/assets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/total_assets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/total_assets_ghc"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="18sp"
+                    tools:ignore="RelativeOverlap" />
+
+                <RelativeLayout
+                    android:id="@+id/currency_view"
+                    android:layout_width="@dimen/dimen_70"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/light_green_circle"
+                    android:padding="@dimen/dimen_5">
+
+                    <TextView
+                        android:id="@+id/currency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/gh_symbol"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/assets">
+
+                <TextView
+                    android:id="@+id/account_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/_0"
+                    android:textColor="@color/main_text"
+                    android:textSize="35sp"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/toggle_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_10"
+                    android:layout_toEndOf="@id/account_balance"
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/toggle_balance"
+                    android:contentDescription="@string/hide_icon_content_description" />
+
+            </RelativeLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/add_money_button"
+                android:layout_width="150dp"
+                android:layout_height="@dimen/dimen_55"
+                android:layout_below="@id/balance"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:text="@string/add_money"
+                android:textAllCaps="false"
+                app:cornerRadius="35dp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-130dp"
+        android:background="@drawable/bottom_sheet_background"
+        android:elevation="@dimen/dimen_50"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="@dimen/dimen_25"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/quick_actions"
+                android:textColor="@color/main_text"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/quick_actions_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:clipToPadding="false"
+                android:elevation="2dp"
+                android:focusable="false"
+                android:paddingStart="@dimen/dimen_25"
+                android:paddingTop="@dimen/dimen_20"
+                android:paddingEnd="@dimen/dimen_25"
+                android:paddingBottom="@dimen/dimen_20" />
+
+            <RelativeLayout
+                android:id="@+id/verification_status"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:layout_marginEnd="@dimen/dimen_25"
+                android:layout_marginBottom="@dimen/dimen_15"
+                android:background="@drawable/not_verified_rec_ripple"
+                android:clickable="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimen_15"
+                    android:orientation="vertical"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/not_verified"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/start_verification"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_10"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:layout_marginEnd="@dimen/dimen_10"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/medium_ads_shimmer" />
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <TextView
+                android:id="@+id/recommended_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/recommended_for_you"
+                android:textColor="@color/main_text"
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/recommended_layout"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:layout_marginEnd="@dimen/dimen_25"
+                android:background="@drawable/quick_actions_border_ripple"
+                android:clickable="true"
+                android:visibility="gone">
+
+                <com.google.android.ads.nativetemplates.TemplateView
+                    android:id="@+id/recommended"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    app:gnt_template_type="@layout/gnt_small_template_view" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/top_platforms"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingBottom="@dimen/dimen_10"
+                android:paddingStart="@dimen/dimen_25"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:paddingEnd="@dimen/dimen_25">
+
+                <TextView
+                    android:id="@+id/platforms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Hi"
+                    android:textColor="@color/main_text"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/view_all_platforms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/roboto_regular"
+                    android:padding="@dimen/dimen_5"
+                    android:text="Hello"
+                    android:textColor="@color/blue_200"
+                    android:textSize="18sp"
+                    tools:ignore="RelativeOverlap" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/platforms_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:fontFamily="@font/roboto_regular"
+                android:paddingStart="@dimen/dimen_25"
+                android:paddingEnd="@dimen/dimen_25"
+                android:text="@string/platforms_description"
+                android:textColor="@color/secondary_text"
+                android:textSize="18sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/platforms_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:clipToPadding="false"
+                android:elevation="2dp"
+                android:focusable="false"
+                android:paddingStart="@dimen/dimen_25"
+                android:paddingTop="@dimen/dimen_20"
+                android:paddingEnd="@dimen/dimen_25"
+                android:paddingBottom="@dimen/dimen_20" />
+
+            <TextView
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginEnd="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/overview"
+                android:textColor="@color/main_text"
+                android:textSize="20sp" />
+
+
+
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/dimen_15"
+                    android:layout_marginEnd="@dimen/dimen_25"
+                    android:layout_marginStart="@dimen/dimen_25"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ripple_round_box"
+                    android:clickable="true"
+                    android:padding="@dimen/dimen_25">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/ghc_0"
+                            android:textColor="@color/main_text"
+                            android:textSize="22sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_5"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="@string/total_spent"
+                            android:textColor="@color/secondary_text"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        tools:ignore="RelativeOverlap">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/_0"
+                            android:textColor="@color/main_text"
+                            android:textSize="22sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_5"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="@string/cards_created"
+                            android:textColor="@color/secondary_text"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginBottom="@dimen/dimen_85"
+                android:layout_marginTop="@dimen/dimen_25"
+                android:visibility="visible"
+                android:elevation="@dimen/dimen_20"
+                android:id="@+id/go_up"
+                android:layout_width="@dimen/dimen_40"
+                android:layout_height="@dimen/dimen_40"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/round_blue_ripple"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_10"
+                    android:layout_height="@dimen/dimen_10"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/image"
+                    android:src="@drawable/chevrons_up" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

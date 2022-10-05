@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.gms.ads.nativead.NativeAdView
+        android:id="@+id/native_ad_view"
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_centerInParent="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/gnt_no_margin"
+                android:layout_marginEnd="@dimen/gnt_no_margin"
+                android:layout_marginBottom="@dimen/gnt_no_margin" />
+
+            <LinearLayout
+                android:id="@+id/headline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/icon"
+                android:background="@color/gnt_test_background_color"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/primary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/gnt_no_margin"
+                    android:layout_marginTop="@dimen/gnt_no_margin"
+                    android:layout_marginEnd="@dimen/gnt_no_margin"
+                    android:layout_marginBottom="@dimen/gnt_no_margin"
+                    android:lines="2"
+                    android:textColor="@color/gnt_main_text"
+                    android:textSize="@dimen/gnt_text_size_large"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:id="@+id/row_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/headline"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/icon"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ad_notification_view"
+                    android:layout_width="@dimen/gnt_ad_indicator_width"
+                    android:layout_height="@dimen/gnt_ad_indicator_height"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/gnt_no_margin"
+                    android:layout_marginTop="@dimen/gnt_ad_indicator_top_margin"
+                    android:layout_marginEnd="@dimen/gnt_default_margin"
+                    android:background="@drawable/gnt_rounded_corners_shape"
+                    android:gravity="center"
+                    android:text="Ad"
+                    android:textColor="@color/gnt_main_text"
+                    android:textSize="@dimen/gnt_ad_indicator_text_size"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RatingBar
+                    android:id="@+id/rating_bar"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:lines="1"
+                    android:numStars="5"
+                    android:stepSize="0.1"
+                    android:textSize="@dimen/gnt_text_size_small"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ad_notification_view"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </RatingBar>
+
+                <TextView
+                    android:id="@+id/secondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/gnt_no_margin"
+                    android:layout_marginTop="@dimen/gnt_no_margin"
+                    android:layout_marginEnd="@dimen/gnt_no_margin"
+                    android:layout_marginBottom="@dimen/gnt_no_margin"
+                    android:background="@color/gnt_white"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:textColor="@color/gnt_gray"
+                    android:textSize="@dimen/gnt_text_size_small" />
+
+            </LinearLayout>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cta"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@id/row_two"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/icon"
+                android:background="@drawable/gnt_ad_button"
+                android:lines="1"
+                android:textColor="@color/gnt_white" />
+
+
+        </RelativeLayout>
+
+    </com.google.android.gms.ads.nativead.NativeAdView>
+
+</merge>

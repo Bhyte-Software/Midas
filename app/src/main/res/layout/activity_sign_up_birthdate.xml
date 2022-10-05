@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:padding="@dimen/dimen_5"
+    tools:context=".AccountCreation.SignUpBirthdate">
+
+    <ImageView
+        android:id="@+id/register_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-25dp"
+        android:contentDescription="@string/image"
+        android:src="@drawable/registration_image" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-30dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/registration"
+        android:textColor="@color/main_text"
+        android:textSize="27sp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingStart="@dimen/dimen_10"
+        android:paddingTop="5dp"
+        android:paddingEnd="@dimen/dimen_10"
+        android:paddingBottom="@dimen/dimen_5"
+        android:text="@string/select_birthdate"
+        android:textAlignment="center"
+        android:textColor="@color/secondary_text"
+        android:textSize="20sp" />
+
+    <RelativeLayout
+        android:id="@+id/ripple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/dimen_20"
+        android:layout_marginEnd="@dimen/dimen_20"
+        android:layout_marginBottom="@dimen/dimen_15"
+        android:background="@drawable/ripple_round_box"
+        android:clickable="true"
+        android:elevation="@dimen/dimen_5"
+        android:paddingStart="@dimen/dimen_20"
+        android:paddingTop="@dimen/dimen_10"
+        android:paddingEnd="@dimen/dimen_20"
+        android:paddingBottom="@dimen/dimen_20">
+
+        <DatePicker
+            android:id="@+id/birthday_picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            android:hapticFeedbackEnabled="true"
+            android:spinnersShown="true" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/birthday_picker"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/dimen_25"
+            android:layout_marginEnd="@dimen/dimen_25"
+            android:fontFamily="@font/roboto_medium"
+            android:onClick="callNext"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            app:cornerRadius="35dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

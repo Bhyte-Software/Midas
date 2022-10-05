@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.bhyte.midas"
+    tools:ignore="LockedOrientationActivity">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission
+        android:name="android.permission.CAMERA"
+        android:required="true"
+        android:requiredFeature="true" />
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Midas"
+        android:usesCleartextTraffic="true"
+        tools:ignore="AllowBackup">
+        <activity
+            android:name=".User.ViewAllPlatforms"
+            android:exported="false" />
+        <activity
+            android:name=".Common.ChatBot"
+            android:exported="false" />
+        <activity
+            android:name=".User.FAQ"
+            android:exported="false" />
+        <activity
+            android:name=".Common.AppTheme"
+            android:exported="false" />
+        <activity
+            android:name=".Transactions.ReviewTransaction"
+            android:exported="false" />
+        <activity
+            android:name=".Transactions.AddMoneyChooseProvider"
+            android:exported="false" />
+        <activity
+            android:name=".Common.UpdateRequired"
+            android:exported="false" />
+        <activity
+            android:name=".Transactions.AddMoney"
+            android:exported="false" />
+        <activity
+            android:name=".AccountCreation.EnterOTPNigeria"
+            android:exported="false" />
+        <activity
+            android:name=".AccountCreation.EnterNumberNigeria"
+            android:exported="false" />
+        <activity
+            android:name=".User.CreateGiftCardFinal"
+            android:exported="false" />
+        <activity
+            android:name=".User.GiftCardAddDetails"
+            android:exported="false" />
+        <activity
+            android:name=".AccountCreation.SignUpBirthdate"
+            android:exported="false" />
+        <activity
+            android:name=".User.GiftCardFundCard"
+            android:exported="false" />
+        <activity
+            android:name=".Store.Store"
+            android:exported="false" />
+        <activity
+            android:name=".User.GiftCardChooseLabel"
+            android:exported="false" />
+        <activity
+            android:name=".User.SignInWithFingerprint"
+            android:exported="false" />
+        <activity
+            android:name=".User.EditProfile"
+            android:exported="false" />
+        <activity
+            android:name=".AccountCreation.FingerprintRegistration"
+            android:exported="false" />
+        <activity
+            android:name=".Transactions.AddPaymentMethod"
+            android:exported="false" />
+        <activity
+            android:name=".Transactions.AddMoneyChooseMethod"
+            android:exported="false" />
+        <activity
+            android:name=".User.ChangePasswordSuccess"
+            android:exported="false" />
+        <activity
+            android:name=".User.ChangePasswordCreateNewPassword"
+            android:exported="false" />
+        <activity
+            android:name=".User.ChangePasswordOpenEmail"
+            android:exported="false"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".User.ChangePasswordEnterEmail"
+            android:exported="false" />
+        <activity
+            android:name=".User.VirtualCardDetails"
+            android:exported="false" />
+        <activity
+            android:name=".Common.TermsOfService"
+            android:exported="false" />
+        <activity
+            android:name=".Common.AcceptTermsOfService"
+            android:exported="false" />
+        <activity
+            android:name=".Common.About"
+            android:exported="false" />
+        <activity
+            android:name=".User.ProcessingCardCreation"
+            android:exported="false" />
+        <activity
+            android:name=".User.CreateCardFinal"
+            android:exported="false" />
+        <activity
+            android:name=".Common.NoInternet"
+            android:exported="false" />
+        <activity
+            android:name=".User.VirtualCardFundCard"
+            android:exported="false" />
+        <activity
+            android:name=".User.VirtualCardChooseLabel"
+            android:exported="false" />
+        <activity
+            android:name=".User.GiftCardChooseDesign"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".User.VirtualCardChooseDesign"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".User.CreateCard"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AccountCreation.SignUpEnterOTP"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Common.ContactSupport"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Common.MainDashboard"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".User.Profile"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AccountCreation.SignIn"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".AccountCreation.SignUpCredentials"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".AccountCreation.SignUpEnableFingerprint"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AccountCreation.SignUpComplete"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AccountCreation.SignUpVerifyIdentity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AccountCreation.SignUpEnterNumber"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".AccountCreation.GetStarted"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Common.OnBoarding"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3862971524430784~7943472965" />
+    </application>
+
+</manifest>

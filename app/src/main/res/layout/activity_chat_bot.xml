@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    tools:context=".Common.ChatBot">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/blue_200">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <ImageView
+                android:id="@+id/menu_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:contentDescription="@string/back_button_content_description"
+                android:onClick="callBack"
+                android:padding="@dimen/dimen_10"
+                android:src="@drawable/back_material"
+                app:tint="@color/white"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/dimen_5"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/chat_bot"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                tools:ignore="RelativeOverlap" />
+
+            <ImageView
+                android:id="@+id/upload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:contentDescription="@string/image"
+                android:paddingStart="@dimen/dimen_10"
+                android:paddingTop="@dimen/dimen_5"
+                android:paddingEnd="@dimen/dimen_10"
+                android:paddingBottom="@dimen/dimen_5"
+                android:src="@drawable/help_outline"
+                app:tint="@color/white"
+                tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header"
+        android:layout_marginTop="-70dp"
+        android:background="@drawable/top_round_corner_overlay">
+
+        <RelativeLayout
+            android:id="@+id/chat_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/chat">
+
+            <!--recycler view to display our chats-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/chat_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/chat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_10"
+                android:layout_toStartOf="@id/send_message"
+                android:background="@drawable/circular_block_ripple"
+                android:clickable="true">
+
+                <EditText
+                    android:id="@+id/write_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_50"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/smile_icon"
+                    android:background="@color/transparent"
+                    android:fontFamily="@font/roboto_medium"
+                    android:hint="@string/write_a_message"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:padding="@dimen/dimen_15"
+                    android:textColor="@color/main_text"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/smile_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/dimen_5"
+                    android:layout_toStartOf="@id/attachment_icon"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:contentDescription="@string/image"
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/ic_smile"
+                    app:tint="@color/main_text" />
+
+                <ImageView
+                    android:id="@+id/attachment_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_50"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/dimen_5"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:contentDescription="@string/image"
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/ic_attachment"
+                    app:tint="@color/main_text" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/send_message"
+                android:layout_width="@dimen/dimen_50"
+                android:layout_height="@dimen/dimen_50"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/dimen_10"
+                android:background="@drawable/blue_button_ripple"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/image"
+                    android:src="@drawable/ic_send" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

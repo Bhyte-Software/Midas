@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/bg"
+    android:background="@drawable/background_gradient"
+    tools:context=".AccountCreation.FingerprintRegistration">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/register_fingerprint"
+            android:textColor="@color/black"
+            android:textSize="27sp" />
+
+        <TextView
+            android:id="@+id/title_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/touch_fingerprint_sensor_on_your_device_to_register"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/fingerprint_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_description"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_50"
+            android:src="@drawable/fingerprint_normal"
+            android:contentDescription="@string/fingerprint_content_description" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_10"
+            android:layout_below="@id/fingerprint_icon"
+            android:layout_marginStart="@dimen/dimen_50"
+            android:layout_marginTop="@dimen/dimen_50"
+            android:layout_marginEnd="@dimen/dimen_50"
+            android:progress="5"
+            android:progressDrawable="@drawable/custom_horizontal_progress" />
+
+
+        <TextView
+            android:id="@+id/registration_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progress"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:fontFamily="@font/roboto_regular"
+            android:padding="@dimen/dimen_15"
+            android:text="@string/your_fingerprint_registration_is_25_complete" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/skip_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_60"
+            android:layout_below="@id/registration_status"
+            android:layout_marginStart="@dimen/dimen_50"
+            android:layout_marginTop="@dimen/dimen_50"
+            android:layout_marginEnd="@dimen/dimen_50"
+            android:onClick="callVerifyIdentity"
+            android:text="@string/skip"
+            android:textAllCaps="false"
+            app:cornerRadius="35dp" />
+
+        <TextView
+            android:id="@+id/data_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/skip_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:fontFamily="@font/roboto_regular"
+            android:padding="@dimen/dimen_15"
+            android:text="@string/date"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

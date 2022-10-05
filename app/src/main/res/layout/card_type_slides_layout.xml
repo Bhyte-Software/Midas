@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:contentDescription="@string/image"
+        android:id="@+id/card_type_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/dimen_25" />
+
+    <TextView
+        android:id="@+id/card_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card_type_image"
+        android:layout_alignParentStart="true"
+        android:fontFamily="@font/roboto_bold"
+        android:paddingStart="@dimen/dimen_25"
+        android:paddingEnd="@dimen/dimen_25"
+        android:textColor="@color/main_text"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/card_creation_fee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card_type"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:fontFamily="@font/roboto_bold"
+        android:paddingStart="@dimen/dimen_25"
+        android:paddingEnd="@dimen/dimen_15"
+        android:textColor="@color/main_text"
+        android:textSize="22sp" />
+
+    <ImageView
+        android:id="@+id/card_creation_fee_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card_type"
+        android:layout_marginTop="11dp"
+        android:layout_toEndOf="@id/card_creation_fee"
+        android:contentDescription="@string/image"
+        android:src="@drawable/ic_info" />
+
+    <TextView
+        android:id="@+id/feature_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card_creation_fee"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingStart="@dimen/dimen_25"
+        android:paddingEnd="@dimen/dimen_25"
+        android:textColor="@color/secondary_text"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/feature_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/feature_one"
+        android:layout_alignParentStart="true"
+        android:paddingStart="@dimen/dimen_25"
+        android:paddingEnd="@dimen/dimen_25"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/secondary_text"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/feature_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/feature_two"
+        android:layout_alignParentStart="true"
+        android:paddingStart="@dimen/dimen_25"
+        android:paddingEnd="@dimen/dimen_25"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/secondary_text"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/feature_four"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/feature_three"
+        android:layout_alignParentStart="true"
+        android:paddingStart="@dimen/dimen_25"
+        android:paddingEnd="@dimen/dimen_25"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/secondary_text"
+        android:textSize="18sp" />
+
+</RelativeLayout>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/add_money_help"
+    android:background="@drawable/bottom_sheet_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_marginTop="@dimen/dimen_15"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bottom_sheet_handle"
+        android:layout_width="40dp"
+        android:layout_height="5dp"/>
+
+    <TextView
+        android:fontFamily="@font/roboto_medium"
+        android:layout_marginTop="@dimen/dimen_15"
+        android:layout_marginStart="@dimen/dimen_15"
+        android:textSize="22sp"
+        android:text="@string/get_some_help"
+        android:textColor="@color/main_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:paddingTop="@dimen/dimen_10"
+        android:paddingBottom="@dimen/dimen_10"
+        android:layout_marginTop="@dimen/dimen_15"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:paddingStart="15dp"
+        android:paddingEnd="@dimen/dimen_15"
+        android:id="@+id/ghana_cedi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/ghana"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/learn"
+            android:contentDescription="@string/how_do_i_deposit_money_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/ghana"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/how_do_i_deposit_money"
+            android:textColor="@color/main_text"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:paddingTop="@dimen/dimen_10"
+        android:paddingBottom="@dimen/dimen_10"
+        android:id="@+id/united_states_dollar"
+        android:paddingStart="@dimen/dimen_15"
+        android:paddingEnd="@dimen/dimen_15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/united_states"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/learn"
+            android:contentDescription="@string/how_peer_to_peer_works_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/united_states"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/how_peer_to_peer_works"
+            android:textColor="@color/main_text"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginBottom="@dimen/dimen_15"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:paddingTop="@dimen/dimen_10"
+        android:paddingBottom="@dimen/dimen_10"
+        android:id="@+id/item3"
+        android:paddingStart="@dimen/dimen_15"
+        android:paddingEnd="@dimen/dimen_15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/item3_image"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/time"
+            android:contentDescription="@string/how_long_until_deposit_shows_in_my_midas_account_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="@dimen/dimen_20"
+            android:layout_toEndOf="@id/item3_image"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/how_long_until_deposit_shows_in_my_midas_account"
+            android:textColor="@color/main_text"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

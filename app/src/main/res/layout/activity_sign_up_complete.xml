@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_3"
+    tools:context=".AccountCreation.SignUpComplete">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/sign_up_complete_image"
+        android:src="@drawable/sign_up_complete_image" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-320dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/welcome"
+        android:textColor="@color/main_text"
+        android:textSize="27sp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_5"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/welcome_description"
+        android:textAlignment="center"
+        android:textColor="@color/secondary_text"
+        android:textSize="20sp" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/confetti_animation"
+        android:layout_width="500dp"
+        android:layout_height="870dp"
+        android:layout_marginTop="-400dp"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/confetti_large" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="@dimen/dimen_25"
+        android:layout_marginTop="-420dp"
+        android:layout_marginEnd="@dimen/dimen_25"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/hooray"
+        android:textAllCaps="false"
+        app:cornerRadius="35dp" />
+
+</LinearLayout>

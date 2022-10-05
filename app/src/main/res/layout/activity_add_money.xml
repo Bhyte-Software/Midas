@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:padding="@dimen/dimen_5"
+    tools:context=".Transactions.AddMoney">
+
+    <RelativeLayout
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_10"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginEnd="@dimen/dimen_10">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/back_button_content_description"
+            android:padding="@dimen/dimen_10"
+            android:src="@drawable/back_material"
+            app:tint="@color/main_text"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <ImageView
+            android:id="@+id/deposit_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/help_icon_content_description"
+            android:padding="@dimen/dimen_10"
+            android:src="@drawable/help_outline"
+            app:tint="@color/main_text"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/navigation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/dimen_25"
+        android:layout_marginEnd="@dimen/dimen_25"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/enter_amount_you_would_like_to_deposit"
+        android:textAlignment="center"
+        android:textColor="@color/main_text"
+        android:textSize="27sp" />
+
+    <RelativeLayout
+        android:id="@+id/amount_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <TextView
+                android:id="@+id/currency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_black"
+                android:padding="@dimen/dimen_20"
+                android:paddingStart="@dimen/dimen_10"
+                android:paddingTop="@dimen/dimen_5"
+                android:paddingEnd="@dimen/dimen_10"
+                android:paddingBottom="@dimen/dimen_5"
+                android:text="@string/ghs"
+                android:textAlignment="center"
+                android:textColor="@color/main_text"
+                android:textSize="40sp" />
+
+            <TextView
+                android:id="@+id/amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-20dp"
+                android:fontFamily="@font/roboto_black"
+                android:padding="@dimen/dimen_20"
+                android:paddingTop="@dimen/dimen_5"
+                android:paddingBottom="@dimen/dimen_5"
+                android:text="@string/_0"
+                android:textAlignment="center"
+                android:textColor="@color/main_text"
+                android:textSize="40sp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/min_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/amount_section"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dimen_40"
+        android:background="@drawable/red_bg"
+        android:paddingStart="@dimen/dimen_25"
+        android:paddingTop="@dimen/dimen_10"
+        android:paddingEnd="@dimen/dimen_25"
+        android:paddingBottom="@dimen/dimen_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/min_ghs_20_max_ghs_5_000"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/next"
+        android:layout_marginStart="@dimen/dimen_25"
+        android:layout_marginEnd="@dimen/dimen_25">
+
+        <RelativeLayout
+            android:id="@+id/row1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingStart="@dimen/dimen_20"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingEnd="@dimen/dimen_20"
+                android:paddingBottom="@dimen/dimen_10"
+                android:text="@string/_1"
+                android:textColor="@color/main_text"
+                android:textSize="27sp" />
+
+            <TextView
+                android:id="@+id/two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingStart="@dimen/dimen_20"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingEnd="@dimen/dimen_20"
+                android:paddingBottom="@dimen/dimen_10"
+                android:text="@string/_2"
+                android:textColor="@color/main_text"
+                android:textSize="27sp" />
+
+            <TextView
+                android:id="@+id/three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingStart="@dimen/dimen_20"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingEnd="@dimen/dimen_20"
+                android:paddingBottom="@dimen/dimen_10"
+                android:text="@string/_3"
+                android:textColor="@color/main_text"
+                android:textSize="27sp"
+                tools:ignore="RelativeOverlap" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/row2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/row1"
+            android:layout_marginTop="@dimen/dimen_30">
+
+            <TextView
+                android:id="@+id/four"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingStart="@dimen/dimen_20"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingEnd="@dimen/dimen_20"
+                android:paddingBottom="@dimen/dimen_10"
+                android:text="@string/_4"
+                android:textColor="@color/main_text"
+                android:textSize="27sp" />
+
+            <TextView
+                android:id="@+id/five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingStart="@dimen/dimen_20"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingEnd="@dimen/dimen_20"
+                android:paddingBottom="@dimen/dimen_10"
+                android:text="@string/_5"
+                android:textColor="@color/main_text"
+                android:textSize="27sp" />
+
+            <TextView
+                android:id="@+id/six"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingStart="@dimen/dimen_20"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingEnd="@dimen/dimen_20"
+                android:paddingBottom="@dimen/dimen_10"
+                android:text="@string/_6"
+                android:textColor="@color/main_text"
+                android:textSize="27sp"
+                tools:ignore="RelativeOverlap" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/row3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/row2"
+            android:layout_marginTop="@dimen/dimen_30">
+
+            <TextView
+                android:id="@+id/seven"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingStart="@dimen/dimen_20"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingEnd="@dimen/dimen_20"
+                android:paddingBottom="@dimen/dimen_10"
+                android:text="@string/_7"
+                android:textColor="@color/main_text"
+                android:textSize="27sp" />
+
+            <TextView
+                android:id="@+id/eight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingStart="@dimen/dimen_20"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingEnd="@dimen/dimen_20"
+                android:paddingBottom="@dimen/dimen_10"
+                android:text="@string/_8"
+                android:textColor="@color/main_text"
+                android:textSize="27sp" />
+
+            <TextView
+                android:id="@+id/nine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingStart="@dimen/dimen_20"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingEnd="@dimen/dimen_20"
+                android:paddingBottom="@dimen/dimen_10"
+                android:text="@string/_9"
+                android:textColor="@color/main_text"
+                android:textSize="27sp"
+                tools:ignore="RelativeOverlap" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/row4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/row3"
+            android:layout_marginTop="@dimen/dimen_30">
+
+            <TextView
+                android:id="@+id/dot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingStart="@dimen/dimen_20"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingEnd="@dimen/dimen_20"
+                android:paddingBottom="@dimen/dimen_10"
+                android:text="@string/dot_value"
+                android:textColor="@color/main_text"
+                android:textSize="27sp"
+                tools:ignore="RelativeOverlap" />
+
+            <TextView
+                android:id="@+id/zero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingStart="@dimen/dimen_20"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingEnd="@dimen/dimen_20"
+                android:paddingBottom="@dimen/dimen_10"
+                android:text="@string/_0"
+                android:textColor="@color/main_text"
+                android:textSize="27sp"
+                tools:ignore="RelativeOverlap" />
+
+            <ImageView
+                android:id="@+id/backspace"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/dimen_5"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:contentDescription="@string/delete_digit_content_description"
+                android:paddingStart="@dimen/dimen_10"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingEnd="@dimen/dimen_10"
+                android:paddingBottom="@dimen/dimen_10"
+                android:src="@drawable/backspace"
+                app:tint="@color/main_text"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/next"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_60"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/dimen_25"
+        android:layout_marginEnd="@dimen/dimen_25"
+        android:layout_marginBottom="@dimen/dimen_25"
+        android:text="@string/next"
+        android:textAllCaps="false"
+        app:cornerRadius="35dp" />
+
+</RelativeLayout>

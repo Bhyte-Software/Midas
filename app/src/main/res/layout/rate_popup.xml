@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rate_popup"
+    android:background="@drawable/bottom_sheet_background"
+    android:layout_width="match_parent"
+    android:theme="@style/Theme.MaterialComponents.Light"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_marginTop="@dimen/dimen_15"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bottom_sheet_handle"
+        android:layout_width="40dp"
+        android:layout_height="5dp"/>
+
+    <ImageView
+        android:layout_marginTop="@dimen/dimen_20"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/midas_logo"
+        android:layout_width="@dimen/dimen_60"
+        android:layout_height="@dimen/dimen_60"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Do you enjoy using\nMidas?"
+        android:textAlignment="center"
+        android:textColor="@color/main_text"
+        android:textSize="28sp" />
+
+    <TextView
+        android:textSize="18sp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/secondary_text"
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_5"
+        android:fontFamily="@font/roboto_regular"
+        android:text="We really value your feedback."
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:layout_marginEnd="@dimen/dimen_60"
+        android:layout_marginStart="@dimen/dimen_60"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:layout_marginBottom="@dimen/dimen_20">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_weight="1"
+            android:id="@+id/cancel"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:backgroundTint="@color/blue_200"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:layout_marginEnd="@dimen/dimen_10"
+            app:cornerRadius="35dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_weight="1"
+            android:id="@+id/rate"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/blue_200"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/rate"
+            android:textAllCaps="false"
+            app:cornerRadius="35dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- MAIN -->
+    <color name="blue_200">#357BE2</color>
+    <color name="purple_500">#357BE2</color>
+    <color name="blue_light">#AFC4E3</color>
+    <color name="purple_700">#357BE2</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="light_green">#3ACC6C</color>
+    <color name="red">#F1291A</color>
+    <color name="red_dark">#EB3C3C</color>
+    <color name="red_light">#E04564</color>
+    <color name="gold">#FFDE09</color>
+    <color name="shimmerColor">#C2C2C2</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="light_white">#F8F8F8</color>
+    <color name="light_gray">#CFCFCF</color>
+    <color name="orange">#CC7C3B</color>
+    <color name="orange_light">#FF9900</color>
+    <color name="transparent">#00000000</color>
+    <color name="divider">#F0F0F0</color>
+    <color name="handle">#C6C6C6</color>
+    <!-- MAIN -->
+
+    <!-- BACKGROUND GRADIENT -->
+    <color name="end_color">#E4E9F7</color>
+    <color name="start_color">#F8F8FA</color>
+    <!-- BACKGROUND GRADIENT -->
+
+    <!-- BOTTOM NAV -->
+    <color name="nav_one">#81ABE8</color>
+    <color name="nav_two">#FF9900</color>
+    <color name="nav_three">#FF4242</color>
+    <color name="nav_four">#81E8B5</color>
+    <!-- BOTTOM NAV -->
+
+    <!-- OTHER COLORS -->
+    <color name="dark_background">#2D313D</color>
+    <color name="dark">#232630</color>
+    <color name="dark_background_light">#3E4355</color>
+    <color name="white_light">#EBEBEB</color>
+    <color name="default_text_color">#808080</color>
+    <!-- OTHER COLORS -->
+
+    <!-- MAIN -->
+    <color name="bg">#FFFFFF</color>
+    <color name="main_text">#000000</color>
+    <color name="secondary_text">#3B3B3B</color>
+    <color name="skip_text">#357BE2</color>
+    <color name="ripple_round_box">#F8F8FA</color>
+    <color name="light_stroke">#CFCFCF</color>
+    <color name="bottom_nav_bg">#EBEBEB</color>
+    <color name="tab_unselected">#EBEBEB</color>
+    <!-- MAIN -->
+
+</resources>
