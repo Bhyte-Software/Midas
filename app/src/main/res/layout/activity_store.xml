@@ -54,7 +54,7 @@
         android:layout_marginStart="@dimen/dimen_25"
         android:layout_marginTop="@dimen/dimen_60"
         android:layout_marginEnd="@dimen/dimen_25"
-        android:layout_marginBottom="85dp"
+        android:layout_marginBottom="@dimen/dimen_20"
         android:onClick="callMainDashboard"
         android:text="@string/return_home"
         android:textAllCaps="false"
