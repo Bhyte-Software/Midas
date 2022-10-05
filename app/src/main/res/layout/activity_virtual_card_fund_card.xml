@@ -21,7 +21,8 @@
             android:layout_marginStart="@dimen/dimen_10"
             android:layout_marginTop="@dimen/dimen_5"
             android:layout_marginEnd="@dimen/dimen_10"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
 
             <ImageView
                 android:id="@+id/menu_icon"
@@ -35,7 +36,8 @@
                 android:onClick="callBack"
                 android:padding="@dimen/dimen_10"
                 android:src="@drawable/back_material"
-                app:tint="@color/white" />
+                app:tint="@color/white"
+                android:contentDescription="@string/back_button_content_description" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -59,6 +61,7 @@
         android:layout_below="@id/header"
         android:layout_marginTop="-70dp"
         android:background="@drawable/bottom_sheet_background"
+        android:padding="@dimen/dimen_5"
         android:elevation="@dimen/dimen_10"
         android:orientation="vertical">
 
@@ -80,7 +83,7 @@
                 android:layout_marginTop="@dimen/dimen_90"
                 android:layout_marginEnd="@dimen/dimen_30"
                 android:fontFamily="@font/roboto_medium"
-                android:text="3672 8229 3829 0372"
+                android:text="@string/_3672_8229_3829_0372"
                 android:textColor="@color/white"
                 android:textSize="28sp" />
 
@@ -122,7 +125,7 @@
             android:layout_marginStart="@dimen/dimen_20"
             android:layout_marginTop="@dimen/dimen_15"
             android:fontFamily="@font/roboto_bold"
-            android:text="Enter amount you want to fund this card with"
+            android:text="@string/enter_amount_you_want_to_fund_this_card_with"
             android:textColor="@color/main_text"
             android:textSize="22sp" />
 
@@ -134,6 +137,7 @@
             android:layout_marginStart="@dimen/dimen_20"
             android:layout_marginTop="@dimen/dimen_15"
             android:layout_marginEnd="@dimen/dimen_20"
+            android:autofillHints=""
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_cedi_icon"
             android:drawablePadding="15dp"

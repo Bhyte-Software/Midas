@@ -50,7 +50,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/create_account_button"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/create_account"
@@ -62,7 +62,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/sign_in_button"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:backgroundTint="@color/bg"
             android:fontFamily="@font/roboto_medium"
@@ -80,7 +80,8 @@
             android:id="@+id/sign_in_button_animation"
             android:layout_width="@dimen/dimen_40"
             android:layout_height="@dimen/dimen_40"
-            android:layout_marginBottom="7dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="@dimen/dimen_10"
             android:elevation="@dimen/dimen_5"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -92,6 +93,5 @@
             tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </LinearLayout>

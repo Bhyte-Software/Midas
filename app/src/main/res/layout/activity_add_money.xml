@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
+    android:padding="@dimen/dimen_5"
     tools:context=".Transactions.AddMoney">
 
     <RelativeLayout
@@ -133,8 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/next"
         android:layout_marginStart="@dimen/dimen_25"
-        android:layout_marginEnd="@dimen/dimen_25"
-        android:layout_marginBottom="@dimen/dimen_50">
+        android:layout_marginEnd="@dimen/dimen_25">
 
         <RelativeLayout
             android:id="@+id/row1"

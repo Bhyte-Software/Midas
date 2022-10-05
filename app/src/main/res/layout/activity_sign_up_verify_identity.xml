@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:orientation="vertical"
+    android:padding="@dimen/dimen_5"
     android:scrollbars="none"
     tools:context=".AccountCreation.SignUpVerifyIdentity">
 
@@ -54,9 +55,10 @@
             android:padding="@dimen/dimen_20">
 
             <RelativeLayout
-                android:layout_centerInParent="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                tools:ignore="UselessParent">
 
                 <RelativeLayout
                     android:id="@+id/linear"
@@ -130,7 +132,7 @@
                     android:layout_marginStart="@dimen/dimen_40"
                     android:layout_marginTop="@dimen/dimen_5"
                     android:fontFamily="@font/roboto_regular"
-                    android:text="@string/national_description"
+                    android:text="@string/national_details"
                     android:textColor="@color/secondary_text"
                     android:textSize="16sp" />
 
@@ -152,9 +154,10 @@
             android:padding="@dimen/dimen_20">
 
             <RelativeLayout
-                android:layout_centerInParent="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                tools:ignore="UselessParent">
 
                 <LinearLayout
                     android:id="@+id/linear2"

@@ -31,7 +31,8 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/ghana" />
+            android:src="@drawable/ghana"
+            android:contentDescription="@string/ghana_logo_content_description" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -40,7 +41,7 @@
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@id/ghana"
             android:fontFamily="@font/roboto_regular"
-            android:text="GHS"
+            android:text="@string/ghs"
             android:textColor="@color/main_text"
             android:textSize="18sp" />
 
@@ -51,7 +52,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/green_tick" />
+            android:src="@drawable/green_tick"
+            android:contentDescription="@string/green_tick_content_description" />
 
     </RelativeLayout>
 
@@ -73,7 +75,8 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/united_states" />
+            android:src="@drawable/united_states"
+            android:contentDescription="@string/us_logo" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -82,7 +85,7 @@
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@id/united_states"
             android:fontFamily="@font/roboto_regular"
-            android:text="USD"
+            android:text="@string/usd_tv"
             android:textColor="@color/main_text"
             android:textSize="18sp" />
 
@@ -93,7 +96,8 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:src="@drawable/green_tick"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:contentDescription="@string/green_tick_2_content_description" />
 
     </RelativeLayout>
 

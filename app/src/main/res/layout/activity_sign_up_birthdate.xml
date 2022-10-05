@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/bg"
     android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:padding="@dimen/dimen_5"
     tools:context=".AccountCreation.SignUpBirthdate">
 
     <ImageView
@@ -34,13 +35,13 @@
         android:layout_below="@id/title"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/roboto_regular"
+        android:paddingStart="@dimen/dimen_10"
         android:paddingTop="5dp"
         android:paddingEnd="@dimen/dimen_10"
-        android:paddingStart="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_5"
-        android:textColor="@color/secondary_text"
         android:text="@string/select_birthdate"
         android:textAlignment="center"
+        android:textColor="@color/secondary_text"
         android:textSize="20sp" />
 
     <RelativeLayout
@@ -50,7 +51,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/dimen_20"
         android:layout_marginEnd="@dimen/dimen_20"
-        android:layout_marginBottom="@dimen/dimen_20"
+        android:layout_marginBottom="@dimen/dimen_15"
         android:background="@drawable/ripple_round_box"
         android:clickable="true"
         android:elevation="@dimen/dimen_5"
