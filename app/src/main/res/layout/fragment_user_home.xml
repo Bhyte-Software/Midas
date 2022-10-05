@@ -317,7 +317,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Hi"
+                    android:text="@string/top_platforms"
                     android:textColor="@color/main_text"
                     android:textSize="20sp" />
 
@@ -329,7 +329,7 @@
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/roboto_regular"
                     android:padding="@dimen/dimen_5"
-                    android:text="Hello"
+                    android:text="@string/view_all"
                     android:textColor="@color/blue_200"
                     android:textSize="18sp"
                     tools:ignore="RelativeOverlap" />
@@ -374,71 +374,71 @@
 
 
 
-                <RelativeLayout
-                    android:layout_marginTop="@dimen/dimen_15"
-                    android:layout_marginEnd="@dimen/dimen_25"
-                    android:layout_marginStart="@dimen/dimen_25"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ripple_round_box"
-                    android:clickable="true"
-                    android:padding="@dimen/dimen_25">
+            <RelativeLayout
+                android:layout_marginTop="@dimen/dimen_15"
+                android:layout_marginEnd="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/dimen_25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_round_box"
+                android:clickable="true"
+                android:padding="@dimen/dimen_25">
 
-                    <LinearLayout
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical">
+
+                    <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:orientation="vertical">
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/ghc_0"
+                        android:textColor="@color/main_text"
+                        android:textSize="22sp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_medium"
-                            android:text="@string/ghc_0"
-                            android:textColor="@color/main_text"
-                            android:textSize="22sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dimen_5"
-                            android:fontFamily="@font/roboto_regular"
-                            android:text="@string/total_spent"
-                            android:textColor="@color/secondary_text"
-                            android:textSize="18sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_alignParentEnd="true"
+                    <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_centerVertical="true"
-                        android:orientation="vertical"
-                        tools:ignore="RelativeOverlap">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/total_spent"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="18sp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_medium"
-                            android:text="@string/_0"
-                            android:textColor="@color/main_text"
-                            android:textSize="22sp" />
+                </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dimen_5"
-                            android:fontFamily="@font/roboto_regular"
-                            android:text="@string/cards_created"
-                            android:textColor="@color/secondary_text"
-                            android:textSize="18sp" />
+                <LinearLayout
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    tools:ignore="RelativeOverlap">
 
-                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/_0"
+                        android:textColor="@color/main_text"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/cards_created"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
 
 
-                </RelativeLayout>
+            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_marginBottom="@dimen/dimen_85"
