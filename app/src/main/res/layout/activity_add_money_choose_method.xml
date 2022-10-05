@@ -12,7 +12,10 @@
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_10">
+        android:layout_marginStart="@dimen/dimen_10"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginEnd="@dimen/dimen_10"
+        android:layout_marginBottom="@dimen/dimen_10">
 
         <ImageView
             android:id="@+id/back"
@@ -108,7 +111,7 @@
             android:id="@+id/bank_transfer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/dimen_4"
+            android:layout_marginTop="@dimen/dimen_10"
             android:background="@drawable/radio_selector"
             android:button="@color/transparent"
             android:drawableStart="@drawable/bank"

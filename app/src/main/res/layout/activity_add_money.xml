@@ -27,7 +27,7 @@
             android:padding="@dimen/dimen_10"
             android:src="@drawable/back_material"
             app:tint="@color/main_text"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,RedundantDescriptionCheck" />
 
         <ImageView
             android:id="@+id/deposit_help"
@@ -130,6 +130,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_marginBottom="@dimen/dimen_10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/next"
@@ -347,7 +348,7 @@
                 android:text="@string/_0"
                 android:textColor="@color/main_text"
                 android:textSize="27sp"
-                tools:ignore="RelativeOverlap" />
+                tools:ignore="RelativeOverlap,DuplicateSpeakableTextCheck" />
 
             <ImageView
                 android:id="@+id/backspace"
@@ -382,6 +383,7 @@
         android:layout_marginBottom="@dimen/dimen_25"
         android:text="@string/next"
         android:textAllCaps="false"
-        app:cornerRadius="35dp" />
+        app:cornerRadius="35dp"
+        tools:ignore="TextContrastCheck" />
 
 </RelativeLayout>

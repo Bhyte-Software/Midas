@@ -526,5 +526,7 @@
     <string name="about_icon_content_description">about icon content description</string>
     <string name="platforms_icon_content_description">platforms icon content description</string>
     <string name="rate_icon_content_description">rate icon content description</string>
+    <string name="do_you_enjoy_using_nmidas">Do you enjoy using\nMidas?</string>
+    <string name="we_really_value_your_feedback">We really value your feedback.</string>
 
 </resources>
