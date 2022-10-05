@@ -30,7 +30,7 @@
                     android:id="@+id/title1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
+                    android:fontFamily="@font/darker_grotesque_black"
                     android:text="@string/terms_and_conditions_text_view"
                     android:textColor="@color/main_text"
                     android:textSize="26sp" />
@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/title"
-                android:fontFamily="@font/roboto_medium"
+                android:fontFamily="@font/darker_grotesque_medium"
                 android:text="@string/last_updated_january_21_2022"
                 android:textColor="@color/blue_200" />
 
@@ -51,6 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/date"
+                android:fontFamily="@font/darker_grotesque_medium"
                 android:text="@string/read_these_terms_and_conditions_carefully_before_using_midas_operated_by_bhyte_llc"
                 android:textColor="@color/secondary_text" />
 
@@ -82,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
-                android:fontFamily="@font/roboto_medium"
+                android:fontFamily="@font/darker_grotesque_black"
                 android:text="@string/conditions_of_use_tv_terms_and_conditions"
                 android:textColor="@color/main_text"
                 android:textSize="20sp" />
@@ -92,7 +93,7 @@
                 android:id="@+id/desc1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
+                android:fontFamily="@font/darker_grotesque"
                 android:text="@string/conditions_of_use"
                 android:textColor="@color/secondary_text" />
 
@@ -101,7 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
-                android:fontFamily="@font/roboto_medium"
+                android:fontFamily="@font/darker_grotesque_black"
                 android:text="@string/privacy_policy_tv_terms_and_conditions"
                 android:textColor="@color/main_text"
                 android:textSize="20sp" />
@@ -110,7 +111,7 @@
                 android:id="@+id/desc2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
+                android:fontFamily="@font/darker_grotesque"
                 android:text="@string/privacy_policy"
                 android:textColor="@color/secondary_text" />
 
@@ -119,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
-                android:fontFamily="@font/roboto_medium"
+                android:fontFamily="@font/darker_grotesque_black"
                 android:text="@string/age_restriction_tv_terms_and_conditions"
                 android:textColor="@color/main_text"
                 android:textSize="20sp" />
@@ -128,7 +129,7 @@
                 android:id="@+id/desc3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
+                android:fontFamily="@font/darker_grotesque"
                 android:text="@string/age_restriction"
                 android:textColor="@color/secondary_text" />
 
@@ -137,7 +138,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
-                android:fontFamily="@font/roboto_medium"
+                android:fontFamily="@font/darker_grotesque_black"
                 android:text="@string/intellectual_property_tv_terms_and_conditions"
                 android:textColor="@color/main_text"
                 android:textSize="20sp" />
@@ -146,7 +147,7 @@
                 android:id="@+id/desc4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
+                android:fontFamily="@font/darker_grotesque"
                 android:text="@string/intellectual_property"
                 android:textColor="@color/secondary_text" />
 
@@ -155,7 +156,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
-                android:fontFamily="@font/roboto_medium"
+                android:fontFamily="@font/darker_grotesque_black"
                 android:text="@string/user_accounts_tv_terms_and_conditions"
                 android:textColor="@color/main_text"
                 android:textSize="20sp" />
@@ -164,7 +165,7 @@
                 android:id="@+id/desc5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
+                android:fontFamily="@font/darker_grotesque"
                 android:text="@string/user_accounts"
                 android:textColor="@color/secondary_text" />
 
@@ -173,7 +174,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
-                android:fontFamily="@font/roboto_medium"
+                android:fontFamily="@font/darker_grotesque_black"
                 android:text="@string/applicable_law_tv_terms_and_conditions"
                 android:textColor="@color/main_text"
                 android:textSize="20sp" />
@@ -182,7 +183,7 @@
                 android:id="@+id/desc6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
+                android:fontFamily="@font/darker_grotesque"
                 android:text="@string/applicable_law"
                 android:textColor="@color/secondary_text" />
 
@@ -191,7 +192,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
-                android:fontFamily="@font/roboto_medium"
+                android:fontFamily="@font/darker_grotesque_black"
                 android:text="@string/disputes_tv_terms_and_conditions"
                 android:textColor="@color/main_text"
                 android:textSize="20sp" />
@@ -200,7 +201,7 @@
                 android:id="@+id/desc7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
+                android:fontFamily="@font/darker_grotesque"
                 android:text="@string/disputes"
                 android:textColor="@color/secondary_text" />
 
@@ -209,7 +210,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
-                android:fontFamily="@font/roboto_medium"
+                android:fontFamily="@font/darker_grotesque_black"
                 android:text="@string/indemnification_tv_terms_and_conditions"
                 android:textColor="@color/main_text"
                 android:textSize="20sp" />
@@ -218,7 +219,7 @@
                 android:id="@+id/desc8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
+                android:fontFamily="@font/darker_grotesque"
                 android:text="@string/indemnification"
                 android:textColor="@color/secondary_text" />
 
@@ -227,7 +228,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
-                android:fontFamily="@font/roboto_medium"
+                android:fontFamily="@font/darker_grotesque_black"
                 android:text="@string/limitation_on_liability_tv_terms_and_conditions"
                 android:textColor="@color/main_text"
                 android:textSize="20sp" />
@@ -236,7 +237,7 @@
                 android:id="@+id/desc9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
+                android:fontFamily="@font/darker_grotesque"
                 android:text="@string/limitation_on_liability"
                 android:textColor="@color/secondary_text" />
 
@@ -254,6 +255,7 @@
                     android:layout_marginEnd="@dimen/dimen_10"
                     android:layout_weight="1"
                     android:backgroundTint="@color/bg"
+                    android:fontFamily="@font/darker_grotesque"
                     android:onClick="callPopup"
                     android:text="@string/decline_tv_material_btn"
                     android:textAllCaps="false"
@@ -268,13 +270,13 @@
                     android:layout_height="60dp"
                     android:layout_marginStart="@dimen/dimen_10"
                     android:layout_weight="1"
+                    android:fontFamily="@font/darker_grotesque"
                     android:onClick="callSignIn"
                     android:text="@string/accept_tv_material_btn"
                     android:textAllCaps="false"
                     app:cornerRadius="35dp" />
 
             </LinearLayout>
-
 
         </LinearLayout>
 

@@ -34,7 +34,7 @@
             android:layout_below="@id/warning"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/roboto_medium"
+            android:fontFamily="@font/darker_grotesque_black"
             android:text="@string/accept_terms_of_service"
             android:textAlignment="center"
             android:textColor="@color/main_text"
@@ -47,7 +47,7 @@
             android:layout_below="@id/title"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dimen_5"
-            android:fontFamily="@font/roboto_regular"
+            android:fontFamily="@font/darker_grotesque"
             android:text="@string/as_a_requirement_to_use_midas_you_have_to_accept_terms_of_service"
             android:textAlignment="center"
             android:textColor="@color/secondary_text" />
@@ -64,7 +64,7 @@
             android:layout_marginEnd="@dimen/dimen_25"
             android:layout_marginBottom="@dimen/dimen_20"
             android:backgroundTint="@color/blue_200"
-            android:fontFamily="@font/roboto_medium"
+            android:fontFamily="@font/darker_grotesque"
             android:text="@string/cancel"
             android:textAllCaps="false"
             app:cornerRadius="35dp" />
