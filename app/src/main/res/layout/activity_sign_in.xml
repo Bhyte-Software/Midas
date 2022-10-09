@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:focusable="true"
+    android:id="@+id/activity_root"
     android:focusableInTouchMode="true"
     android:padding="@dimen/dimen_5"
     tools:context=".AccountCreation.SignIn">
