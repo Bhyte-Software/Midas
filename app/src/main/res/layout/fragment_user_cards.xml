@@ -18,7 +18,21 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:nestedScrollingEnabled="false"
+                android:layout_marginBottom="@dimen/dimen_90"
+                android:clickable="true"
+                android:clipToPadding="false"
+                android:elevation="2dp"
+                android:focusable="false"
+                android:id="@+id/cards_recycler"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content"/>
+
             <ImageView
+                android:id="@+id/no_cards_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/image"
@@ -54,16 +68,16 @@
     </ScrollView>
 
     <com.google.android.material.button.MaterialButton
-        android:layout_alignParentBottom="true"
         android:id="@+id/create_card_button"
         android:layout_width="match_parent"
-        android:textAllCaps="false"
-        android:layout_marginBottom="@dimen/dimen_90"
-        android:text="@string/create_new_card"
+        android:layout_height="@dimen/dimen_60"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/dimen_25"
         android:layout_marginTop="@dimen/dimen_90"
         android:layout_marginEnd="@dimen/dimen_25"
-        android:layout_marginStart="@dimen/dimen_25"
-        app:cornerRadius="35dp"
-        android:layout_height="@dimen/dimen_60"/>
+        android:layout_marginBottom="@dimen/dimen_90"
+        android:text="@string/create_new_card"
+        android:textAllCaps="false"
+        app:cornerRadius="35dp" />
 
 </RelativeLayout>

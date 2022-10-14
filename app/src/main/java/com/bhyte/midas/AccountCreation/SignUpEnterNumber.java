@@ -3,6 +3,7 @@ package com.bhyte.midas.AccountCreation;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
@@ -10,6 +11,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -36,6 +38,7 @@ public class SignUpEnterNumber extends AppCompatActivity {
     public Context context;
     EditText enterNumberLayout;
     RelativeLayout getCode;
+    ImageView registerImage;
     LottieAnimationView lottieAnimationView;
     TextView textView;
 
@@ -49,6 +52,7 @@ public class SignUpEnterNumber extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         // Hooks
+        registerImage = findViewById(R.id.register_image);
         enterNumberLayout = findViewById(R.id.input_number_field);
         getCode = findViewById(R.id.button);
         lottieAnimationView = findViewById(R.id.button_animation);
@@ -65,6 +69,21 @@ public class SignUpEnterNumber extends AppCompatActivity {
                 new Handler().postDelayed(this::resetButton, TIMER);
             } else {
                 startActivity(new Intent(getApplicationContext(), NoInternet.class));
+            }
+        });
+
+        final View activityRootView = findViewById(R.id.main_layout);
+        activityRootView.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+            Rect r = new Rect();
+            //r will be populated with the coordinates of your view that area still visible.
+            activityRootView.getWindowVisibleDisplayFrame(r);
+
+            int heightDiff = activityRootView.getRootView().getHeight() - r.height();
+            if (heightDiff > 0.25*activityRootView.getRootView().getHeight()) {
+                // if more than 25% of the screen, its probably a keyboard...
+                registerImage.setVisibility(View.GONE);
+            } else {
+                registerImage.setVisibility(View.VISIBLE);
             }
         });
 

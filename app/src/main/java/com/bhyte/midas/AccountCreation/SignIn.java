@@ -2,10 +2,13 @@ package com.bhyte.midas.AccountCreation;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +27,10 @@ public class SignIn extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     String email, password;
+    ImageView fingerprintSignIn;
+    TextView title, description, forgotPassword;
     EditText passwordField, emailField;
+    LinearLayout signInTextLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +41,35 @@ public class SignIn extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         // Hooks
+        forgotPassword = findViewById(R.id.forgot_password);
+        signInTextLayout = findViewById(R.id.sign_in_layout);
+        fingerprintSignIn = findViewById(R.id.fingerprint_image);
+        title = findViewById(R.id.title);
+        description = findViewById(R.id.description);
         passwordField = findViewById(R.id.input_password);
         emailField = findViewById(R.id.email_input_layout);
+
+        final View activityRootView = findViewById(R.id.activity_root);
+        activityRootView.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+            Rect r = new Rect();
+            //r will be populated with the coordinates of your view that area still visible.
+            activityRootView.getWindowVisibleDisplayFrame(r);
+
+            int heightDiff = activityRootView.getRootView().getHeight() - r.height();
+            if (heightDiff > 0.25*activityRootView.getRootView().getHeight()) {
+                // if more than 25% of the screen, its probably a keyboard...
+                signInTextLayout.setVisibility(View.VISIBLE);
+                fingerprintSignIn.setVisibility(View.GONE);
+                title.setVisibility(View.GONE);
+                description.setVisibility(View.GONE);
+            } else {
+                signInTextLayout.setVisibility(View.GONE);
+                fingerprintSignIn.setVisibility(View.VISIBLE);
+                title.setVisibility(View.VISIBLE);
+                description.setVisibility(View.VISIBLE);
+            }
+        });
+
     }
 
     @Override

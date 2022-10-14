@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
+    android:id="@+id/main_layout"
     android:focusable="true"
     android:focusableInTouchMode="true"
     tools:context=".AccountCreation.SignUpEnterNumber">

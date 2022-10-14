@@ -15,7 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "945619515981-r43j1tdrlcuquvem3l97k7nseje8a8nd.apps.googleusercontent.com",
+          "client_id": "945619515981-7kejeb2pogh14i6cpjno0kovrubld7eq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.bhyte.midas",
@@ -41,7 +41,8 @@
             }
           ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-3862971524430784~7943472965"
     }
   ],
   "configuration_version": "1"

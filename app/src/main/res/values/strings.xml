@@ -85,7 +85,7 @@
     <string name="passport">Passport</string>
     <string name="recommended">Recommended</string>
     <string name="done">Done</string>
-    <string name="passport_description">Required passport for non citizens of Ghana</string>
+    <string name="passport_description">Required passport for non citizens of Ghana or if you do not have a national ID</string>
     <string name="identity_description">We need to verify your identity (Required)</string>
     <!-- Verify Identity -->
 
@@ -528,5 +528,6 @@
     <string name="rate_icon_content_description">rate icon content description</string>
     <string name="do_you_enjoy_using_nmidas">Do you enjoy using\nMidas?</string>
     <string name="we_really_value_your_feedback">We really value your feedback.</string>
+    <string name="enter_email_and_password_to_access_your_account">Enter email and password to access your account</string>
 
 </resources>

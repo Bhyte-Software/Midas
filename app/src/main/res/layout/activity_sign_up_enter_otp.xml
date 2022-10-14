@@ -76,7 +76,8 @@
             app:itemWidth="@dimen/dimen_40"
             app:lineColor="@color/blue_200"
             app:lineWidth="2.5dp"
-            app:viewType="line" />
+            app:viewType="line"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/verify"
@@ -88,20 +89,22 @@
             android:fontFamily="@font/roboto_medium"
             android:text="@string/verify"
             android:textAllCaps="false"
-            app:cornerRadius="35dp" />
+            app:cornerRadius="35dp"
+            tools:ignore="TextContrastCheck" />
 
     </RelativeLayout>
 
     <TextView
-        android:padding="@dimen/dimen_10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/dimen_25"
         android:fontFamily="@font/roboto_medium"
+        android:padding="@dimen/dimen_10"
         android:text="@string/resend_code"
         android:textColor="@color/skip_text"
-        android:textSize="17sp" />
+        android:textSize="17sp"
+        tools:ignore="TextContrastCheck" />
 
 </RelativeLayout>
