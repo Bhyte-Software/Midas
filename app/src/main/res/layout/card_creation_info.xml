@@ -27,18 +27,18 @@
 
         <RelativeLayout
             android:id="@+id/info"
+            android:layout_width="@dimen/dimen_60"
+            android:layout_height="@dimen/dimen_60"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dimen_20"
-            android:background="@drawable/bottom_sheet_circle"
-            android:layout_width="@dimen/dimen_70"
-            android:layout_height="@dimen/dimen_70">
+            android:background="@drawable/bottom_sheet_circle">
 
             <ImageView
                 android:id="@+id/info_icon"
-                android:layout_centerInParent="true"
-                android:src="@drawable/info_blue"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/info_blue" />
 
         </RelativeLayout>
 

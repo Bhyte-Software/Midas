@@ -1,12 +1,8 @@
 package com.bhyte.midas.User;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -28,12 +24,13 @@ import com.bhyte.midas.Common.AppTheme;
 import com.bhyte.midas.Common.ContactSupport;
 import com.bhyte.midas.Common.TermsOfService;
 import com.bhyte.midas.R;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class UserSettingsFragment extends Fragment {
 
     RelativeLayout profile, signOut, contactSupport, aboutLayout, termsLayout, faqLayout, downloadLayout, themeLayout;
-    Dialog logoutDialog;
+    BottomSheetDialog logoutDialog;
     Button positive, negative;
     String userFullName;
     ImageView themeIcon;
@@ -66,7 +63,7 @@ public class UserSettingsFragment extends Fragment {
         userFullName = UserHomeFragment.usernameS;
 
         // Theme
-        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             themeIcon.setImageResource(R.drawable.moon_icon);
         } else {
             themeIcon.setImageResource(R.drawable.sun_icon);
@@ -77,52 +74,31 @@ public class UserSettingsFragment extends Fragment {
         username.setText(userFullName);
 
         // Click Listeners
-        themeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getContext(), AppTheme.class));
-            }
-        });
+        themeLayout.setOnClickListener(v -> startActivity(new Intent(getContext(), AppTheme.class)));
 
         aboutLayout.setOnClickListener(v -> startActivity(new Intent(getContext(), About.class)));
 
         termsLayout.setOnClickListener(v -> startActivity(new Intent(getContext(), TermsOfService.class)));
 
-        faqLayout.setOnClickListener(v -> {
-            startActivity(new Intent(getActivity(), FAQ.class));
-        });
+        faqLayout.setOnClickListener(v -> startActivity(new Intent(getActivity(), FAQ.class)));
 
         downloadLayout.setOnClickListener(v -> {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-                Toast toast = Toast.makeText(getContext(), R.string.no_data, Toast.LENGTH_SHORT);
-                View view1 = toast.getView();
+            Toast toast = Toast.makeText(getContext(), R.string.no_data, Toast.LENGTH_SHORT);
+            View view1 = toast.getView();
 
-                //Gets the actual oval background of the Toast then sets the colour filter
-                view1.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_IN);
-                //Gets the TextView from the Toast so it can be edited
-                TextView text = view1.findViewById(android.R.id.message);
-                text.setTextColor(ContextCompat.getColor(context, R.color.white));
+            //Gets the actual oval background of the Toast then sets the colour filter
+            view1.getBackground().setColorFilter(ContextCompat.getColor(context, R.color.red), PorterDuff.Mode.SRC_IN);
+            //Gets the TextView from the Toast so it can be edited
+            TextView text = view1.findViewById(android.R.id.message);
+            text.setTextColor(ContextCompat.getColor(context, R.color.white));
 
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                toast.show();
-            } else {
-                LayoutInflater inflater1 = getLayoutInflater();
-                View layout = inflater1.inflate(R.layout.custom_toast, root.findViewById(R.id.custom_toast_container));
-                TextView textView = layout.findViewById(R.id.text);
-                textView.setText(R.string.no_data);
-
-                Toast toast = new Toast(getContext());
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                toast.setDuration(Toast.LENGTH_SHORT);
-                toast.setView(layout);
-                toast.show();
-            }
-
+            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+            toast.show();
         });
 
         profile.setOnClickListener(v -> startActivity(new Intent(context, Profile.class)));
         signOut.setOnClickListener(v -> {
-            logoutDialog = new Dialog(context, R.style.BottomSheetTheme);
+            logoutDialog = new BottomSheetDialog(context, R.style.BottomSheetTheme);
 
             View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.logout_popup,
                     root.findViewById(R.id.logout_popup));

@@ -115,7 +115,7 @@
     <string name="choose_picture">Choose picture from gallery</string>
     <string name="remove_picture">Remove picture</string>
     <string name="cancel">Cancel</string>
-    <string name="sign_out_title">Sign out from app</string>
+    <string name="sign_out_title">Sign out from\nMidas</string>
     <string name="logout_confirmation">Are you sure you would like to sign out of your account?</string>
     <!-- USER -->
 
@@ -529,5 +529,6 @@
     <string name="do_you_enjoy_using_nmidas">Do you enjoy using\nMidas?</string>
     <string name="we_really_value_your_feedback">We really value your feedback.</string>
     <string name="enter_email_and_password_to_access_your_account">Enter email and password to access your account</string>
+    <string name="info">info</string>
 
 </resources>

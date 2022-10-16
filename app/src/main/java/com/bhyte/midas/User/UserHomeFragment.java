@@ -72,6 +72,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -95,9 +96,9 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
     String val = "visible";
     CircleImageView profilePicture;
     String account_balance, fullName;
-    BottomSheetDialog bottomSheetDialog;
+    BottomSheetDialog bottomSheetDialog, logoutDialog;
     RelativeLayout currencyView, verificationStatus, usdLayout, ghcLayout, gradientLayout, roundRec, goUp, viewAllPlatforms;
-    MaterialButton addMoney;
+    MaterialButton addMoney, positive, negative;
     ImageView toggleIcon, check1, check2;
     Animation animation, animation2, shakeAnimation;
     TextView currency, username, totalAssets, accountBalance, greetingText, recommendedText, text1, text2, text3;
@@ -300,8 +301,24 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         }
         if (position == 4) {
             // Sign Out
-            firebaseAuth.signOut();
-            startActivity(new Intent(getActivity(), GetStarted.class));
+            logoutDialog = new BottomSheetDialog(context, R.style.BottomSheetTheme);
+
+            View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.logout_popup,
+                    requireView().findViewById(R.id.logout_popup));
+
+            logoutDialog.setContentView(dialogView);
+            logoutDialog.show();
+
+            //Hooks
+            positive = dialogView.findViewById(R.id.cancel);
+            negative = dialogView.findViewById(R.id.logout);
+
+            positive.setOnClickListener(v1 -> logoutDialog.dismiss());
+            negative.setOnClickListener(v12 -> {
+                logoutDialog.dismiss();
+                firebaseAuth.signOut();
+                startActivity(new Intent(getContext(), GetStarted.class));
+            });
         }
     }
 

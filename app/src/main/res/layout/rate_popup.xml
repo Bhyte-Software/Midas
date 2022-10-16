@@ -48,8 +48,8 @@
         android:textAlignment="center" />
 
     <LinearLayout
-        android:layout_marginEnd="@dimen/dimen_60"
-        android:layout_marginStart="@dimen/dimen_60"
+        android:layout_marginEnd="@dimen/dimen_50"
+        android:layout_marginStart="@dimen/dimen_50"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_20"

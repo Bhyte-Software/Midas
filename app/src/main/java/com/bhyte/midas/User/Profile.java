@@ -58,8 +58,8 @@ public class Profile extends AppCompatActivity {
     int PICK_IMAGE_CODE = 1002;
 
 
-    BottomSheetDialog rateDialog;
-    Dialog logoutDialog, dialog;
+    BottomSheetDialog rateDialog, logoutDialog;
+    Dialog dialog;
     RelativeLayout takePhoto, choosePhoto, removePhoto, rateMidas, languageLayout;
     CircleImageView profilePicture;
     Button positive, negative;
@@ -118,7 +118,7 @@ public class Profile extends AppCompatActivity {
         });
 
         logoutButton.setOnClickListener(v -> {
-            logoutDialog = new Dialog(Profile.this, R.style.BottomSheetTheme);
+            logoutDialog = new BottomSheetDialog(Profile.this, R.style.BottomSheetTheme);
 
             View dialogView = LayoutInflater.from(context).inflate(R.layout.logout_popup,
                     findViewById(R.id.logout_popup));

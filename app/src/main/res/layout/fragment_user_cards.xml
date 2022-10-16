@@ -18,6 +18,26 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/page_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/dimen_5"
+                android:paddingTop="@dimen/dimen_20"
+                android:paddingEnd="@dimen/dimen_20"
+                android:paddingStart="@dimen/dimen_20">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/cards"
+                    android:textColor="@color/main_text"
+                    android:textSize="26sp" />
+
+            </RelativeLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:nestedScrollingEnabled="false"
                 android:layout_marginBottom="@dimen/dimen_90"

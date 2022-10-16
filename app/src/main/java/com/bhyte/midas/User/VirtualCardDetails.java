@@ -46,31 +46,28 @@ public class VirtualCardDetails extends AppCompatActivity {
         copyToClipboard();
 
         // Click Listeners
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Show Confirm Delete Dialog
-                dialog = new Dialog(VirtualCardDetails.this, R.style.BottomSheetTheme);
+        deleteButton.setOnClickListener(v -> {
+            // Show Confirm Delete Dialog
+            dialog = new Dialog(VirtualCardDetails.this, R.style.BottomSheetTheme);
 
-                View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.delete_virtual_card_confirmation,
-                        findViewById(R.id.confirm_deletion_popup));
+            View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.delete_virtual_card_confirmation,
+                    findViewById(R.id.confirm_deletion_popup));
 
-                dialog.setContentView(dialogView);
-                dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                dialog.show();
+            dialog.setContentView(dialogView);
+            dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            dialog.show();
 
-                // Hooks
-                confirmDeleteButton = dialogView.findViewById(R.id.delete);
-                cancelButton = dialogView.findViewById(R.id.cancel);
+            // Hooks
+            confirmDeleteButton = dialogView.findViewById(R.id.delete);
+            cancelButton = dialogView.findViewById(R.id.cancel);
 
-                // Click Listeners
-                confirmDeleteButton.setOnClickListener(v1 -> {
-                    // TODO DELETE VIRTUAL CARD
-                });
+            // Click Listeners
+            confirmDeleteButton.setOnClickListener(v1 -> {
+                // TODO DELETE VIRTUAL CARD
+            });
 
-                cancelButton.setOnClickListener(v12 -> dialog.dismiss());
+            cancelButton.setOnClickListener(v12 -> dialog.dismiss());
 
-            }
         });
 
     }

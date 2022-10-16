@@ -1,6 +1,5 @@
 package com.bhyte.midas.Common;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,11 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bhyte.midas.AccountCreation.SignUpComplete;
 import com.bhyte.midas.R;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 
 public class AcceptTermsOfService extends AppCompatActivity {
 
-    Dialog acceptTermsDialog;
+    BottomSheetDialog acceptTermsDialog;
     MaterialButton cancelButton, declineButton;
 
     @Override
@@ -31,7 +31,7 @@ public class AcceptTermsOfService extends AppCompatActivity {
     }
 
     private void acceptTermsOfServicePopup() {
-        acceptTermsDialog = new Dialog(AcceptTermsOfService.this, R.style.BottomSheetTheme);
+        acceptTermsDialog = new BottomSheetDialog(AcceptTermsOfService.this, R.style.BottomSheetTheme);
 
         View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.accept_terms_popup, findViewById(R.id.accept_terms_popup));
 
@@ -42,6 +42,7 @@ public class AcceptTermsOfService extends AppCompatActivity {
         cancelButton = acceptTermsDialog.findViewById(R.id.cancel);
 
         // Click Listeners
+        assert cancelButton != null;
         cancelButton.setOnClickListener(v -> acceptTermsDialog.dismiss());
     }
 

@@ -30,11 +30,10 @@
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,RedundantDescriptionCheck" />
 
         <TextView
-            android:layout_centerVertical="true"
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
             android:layout_marginStart="@dimen/dimen_25"
             android:layout_marginEnd="@dimen/dimen_25"
             android:fontFamily="@font/roboto_bold"

@@ -4,10 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
+    android:background="@color/bg"
     android:orientation="vertical"
-    android:padding="@dimen/dimen_20"
     tools:context=".User.VirtualCardDetails">
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dimen_10"
+        android:paddingEnd="@dimen/dimen_5"
+        android:paddingStart="@dimen/dimen_5"
+        android:paddingBottom="@dimen/dimen_5"
+        android:paddingTop="@dimen/dimen_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:layout_marginStart="@dimen/dimen_10"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:layout_centerVertical="true"
+            android:onClick="goBack"
+            android:padding="@dimen/dimen_10"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_material"
+            app:tint="@color/main_text"
+            android:contentDescription="@string/back_button_content_description" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/card_details"
+            android:textColor="@color/main_text"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:id="@+id/deposit_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/help_icon_content_description"
+            android:padding="@dimen/dimen_10"
+            android:src="@drawable/help_outline"
+            app:tint="@color/main_text"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,63 +71,35 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:paddingEnd="@dimen/dimen_5"
-                android:paddingStart="@dimen/dimen_5"
-                android:paddingBottom="@dimen/dimen_5"
-                android:paddingTop="@dimen/dimen_5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                tools:ignore="UseCompoundDrawables">
-
-                <ImageView
-                    android:onClick="goBack"
-                    android:padding="@dimen/dimen_20"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/back_icon"
-                    app:tint="@color/black"
-                    android:contentDescription="@string/back_button_content_description" />
-
-                <TextView
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="@string/card_details"
-                    android:textColor="@color/black"
-                    android:textSize="26sp" />
-
-            </LinearLayout>
-
             <RelativeLayout
-                android:id="@+id/card"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-15dp"
-                android:background="@drawable/black_card">
+                android:layout_width="match_parent"
+                android:id="@+id/card_layout"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:background="@drawable/red_card"
+                android:layout_marginEnd="@dimen/dimen_20"
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/card_number"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dimen_80"
-                    android:layout_marginTop="@dimen/dimen_105"
+                    android:layout_marginStart="@dimen/dimen_30"
+                    android:layout_marginTop="@dimen/dimen_90"
+                    android:layout_marginEnd="@dimen/dimen_30"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/_3672_8229_3829_0372"
                     android:textColor="@color/white"
-                    android:textSize="22sp" />
+                    android:textSize="28sp" />
 
                 <TextView
                     android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/card_number"
-                    android:layout_marginStart="@dimen/dimen_50"
-                    android:layout_marginTop="@dimen/dimen_40"
-                    android:fontFamily="@font/roboto_regular"
+                    android:layout_marginStart="@dimen/dimen_30"
+                    android:layout_marginTop="@dimen/dimen_30"
+                    android:fontFamily="@font/roboto_medium"
                     android:text="@string/date"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
@@ -87,16 +110,18 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/card_number"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="@dimen/dimen_40"
+                    android:layout_marginTop="@dimen/dimen_30"
                     android:layout_marginEnd="@dimen/dimen_50"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/name_text_view"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/name"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
             </RelativeLayout>
 
             <TextView
+                android:textColor="@color/secondary_text"
+                android:layout_marginTop="@dimen/dimen_25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_20"
@@ -113,7 +138,6 @@
                 android:background="@drawable/ripple_round_box">
 
                 <TextView
-                    android:textSize="18sp"
                     android:id="@+id/cardholder_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -121,7 +145,8 @@
                     android:layout_marginStart="@dimen/dimen_20"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/john_doe_2"
-                    android:textColor="@color/black"
+                    android:textColor="@color/main_text"
+                    android:textSize="18sp"
                     tools:ignore="RelativeOverlap" />
 
                 <ImageView
@@ -130,13 +155,16 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/dimen_20"
+                    android:layout_marginEnd="@dimen/dimen_10"
+                    android:contentDescription="@string/copy_icon"
+                    android:padding="@dimen/dimen_10"
                     android:src="@drawable/copy"
-                    android:contentDescription="@string/copy_icon" />
+                    app:tint="@color/main_text" />
 
             </RelativeLayout>
 
             <TextView
+                android:textColor="@color/secondary_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_20"
@@ -162,22 +190,25 @@
                     android:textSize="18sp"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/_3672_8229_3829_0372"
-                    android:textColor="@color/black"
+                    android:textColor="@color/main_text"
                     tools:ignore="RelativeOverlap" />
 
                 <ImageView
+                    android:padding="@dimen/dimen_10"
                     android:id="@+id/copy_card_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/dimen_20"
+                    android:layout_marginEnd="@dimen/dimen_10"
+                    android:contentDescription="@string/copy_icon"
                     android:src="@drawable/copy"
-                    android:contentDescription="@string/copy_icon" />
+                    app:tint="@color/main_text" />
 
             </RelativeLayout>
 
             <TextView
+                android:textColor="@color/secondary_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_20"
@@ -202,19 +233,21 @@
                     android:layout_marginStart="@dimen/dimen_20"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/_649"
-                    android:textColor="@color/black"
+                    android:textColor="@color/main_text"
                     android:textSize="18sp"
                     tools:ignore="RelativeOverlap" />
 
                 <ImageView
+                    android:padding="@dimen/dimen_10"
+                    app:tint="@color/main_text"
                     android:id="@+id/copy_cvv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/dimen_20"
-                    android:src="@drawable/copy"
-                    android:contentDescription="@string/copy_icon" />
+                    android:layout_marginEnd="@dimen/dimen_10"
+                    android:contentDescription="@string/copy_icon"
+                    android:src="@drawable/copy" />
 
             </RelativeLayout>
 
