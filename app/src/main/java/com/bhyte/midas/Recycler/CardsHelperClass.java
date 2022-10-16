@@ -1,7 +1,5 @@
 package com.bhyte.midas.Recycler;
 
-import android.graphics.drawable.Drawable;
-
 public class CardsHelperClass {
 
     int cardImage;

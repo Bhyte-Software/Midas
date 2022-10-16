@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +26,7 @@ import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 
-public class UserCardsFragment extends Fragment {
+public class UserCardsFragment extends Fragment implements CardsAdapter.OnNoteListener {
 
     RecyclerView.Adapter<?> cardsAdapter;
     ArrayList<CardsHelperClass> viewCards = new ArrayList<>();
@@ -72,8 +73,11 @@ public class UserCardsFragment extends Fragment {
             title.setVisibility(View.GONE);
             desc.setVisibility(View.GONE);
         }
+        
         viewCards.add(new CardsHelperClass(R.drawable.red_card, "John Doe", "2142 2131 1423", "21/04/2022"));
-        cardsAdapter = new CardsAdapter(viewCards);
+        viewCards.add(new CardsHelperClass(R.drawable.blue_card, "Duke Opoku", "9802 5689 2346", "16/10/2022"));
+
+        cardsAdapter = new CardsAdapter(viewCards, this);
         cardsRecycler.setAdapter(cardsAdapter);
     }
 
@@ -82,4 +86,8 @@ public class UserCardsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
+    @Override
+    public void onNoteClick(int position) {
+        startActivity(new Intent(getActivity(), VirtualCardDetails.class));
+    }
 }
