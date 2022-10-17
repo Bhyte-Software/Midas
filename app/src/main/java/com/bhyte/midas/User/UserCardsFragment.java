@@ -21,7 +21,18 @@ import com.bhyte.midas.Recycler.CardsAdapter;
 import com.bhyte.midas.Recycler.CardsHelperClass;
 import com.google.android.material.button.MaterialButton;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class UserCardsFragment extends Fragment implements CardsAdapter.OnNoteListener {
 
@@ -79,6 +90,43 @@ public class UserCardsFragment extends Fragment implements CardsAdapter.OnNoteLi
 
         cardsAdapter = new CardsAdapter(viewCards, this);
         cardsRecycler.setAdapter(cardsAdapter);
+
+
+        /*OkHttpClient client = new OkHttpClient();
+
+        MediaType mediaType = MediaType.parse("application/json");
+        JSONObject actualData = new JSONObject();
+        try {
+            actualData.put("currency", "USD");
+            actualData.put("amount", 100);
+            actualData.put("first_name", "Charles");
+            actualData.put("last_name", "Xavier");
+            actualData.put("date_of_birth", "1996/12/30");
+            actualData.put("email", "dukeopoku@gmail.com");
+            actualData.put("phone", "0240369071");
+            actualData.put("gender", "M");
+            actualData.put("title", "Mr");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        RequestBody body = RequestBody.create(actualData.toString(), mediaType);
+        Request request = new Request.Builder()
+                .url("https://api.flutterwave.com/v3/virtual-cards")
+                .post(body)
+                .addHeader("content-type", "application/json")
+                .addHeader("Authorization", "Bearer FLWSECK_TEST-a6281194ef4ca095e794a1681fe32d69-X")
+                .build();
+        try {
+            Response response = client.newCall(request).execute();
+
+            TextView tv = new TextView(getActivity());
+            // Create and pass the response
+            tv.setText(Objects.requireNonNull(response.body()).string());
+
+            cardsListLayout.addView(tv);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
     }
 
     @Override
