@@ -2,65 +2,62 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:background="@color/bg"
-    android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="@dimen/dimen_3"
-    tools:context=".AccountCreation.SignUpComplete">
+    tools:context=".User.InviteFriends">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/refer_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/sign_up_complete_image"
-        android:src="@drawable/sign_up_complete_image" />
+        android:contentDescription="@string/image"
+        android:src="@drawable/onboarding_image_one" />
 
     <TextView
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/image"
+        android:layout_below="@id/refer_image"
+        android:layout_gravity="center_horizontal"
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-300dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="@string/welcome"
+        android:textAlignment="center"
+        android:text="Get paid for being a good\nfriend"
         android:textColor="@color/main_text"
         android:textSize="27sp" />
 
     <TextView
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/title"
-        android:id="@+id/description"
+        android:id="@+id/desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_5"
         android:fontFamily="@font/roboto_regular"
-        android:text="@string/welcome_description"
+        android:paddingStart="@dimen/dimen_10"
+        android:paddingTop="@dimen/dimen_5"
+        android:paddingEnd="@dimen/dimen_10"
+        android:paddingBottom="@dimen/dimen_5"
+        android:text="Get no charges on your virtual debit card creation. Terms apply."
         android:textAlignment="center"
         android:textColor="@color/secondary_text"
         android:textSize="20sp" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/confetti_animation"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        app:lottie_autoPlay="false"
-        app:lottie_loop="false"
-        app:lottie_rawRes="@raw/confetti_large" />
-
     <com.google.android.material.button.MaterialButton
-        android:layout_marginBottom="@dimen/dimen_30"
-        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/dimen_25"
+        android:id="@+id/create_account_button"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="@dimen/dimen_25"
-        android:layout_marginEnd="@dimen/dimen_25"
         android:fontFamily="@font/roboto_medium"
-        android:text="@string/hooray"
+        android:text="@string/invite_friends"
         android:textAllCaps="false"
-        app:cornerRadius="35dp" />
+        app:cornerRadius="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </RelativeLayout>

@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/description"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/dimen_60"
         android:contentDescription="@string/image"
         android:src="@drawable/red_fingerprint_image"
         app:tint="@color/main_text" />

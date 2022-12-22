@@ -51,6 +51,7 @@
     <color name="secondary_text">#3B3B3B</color>
     <color name="skip_text">#357BE2</color>
     <color name="ripple_round_box">#F8F8FA</color>
+    <color name="ripple_quick_actions_box">#EBEBEB</color>
     <color name="light_stroke">#CFCFCF</color>
     <color name="bottom_nav_bg">#EBEBEB</color>
     <color name="tab_unselected">#EBEBEB</color>

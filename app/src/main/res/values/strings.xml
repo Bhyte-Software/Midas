@@ -392,7 +392,7 @@
     <string name="fund_card">Fund card</string>
     <string name="name">Full Name</string>
     <string name="confirmation">Confirmation</string>
-    <string name="back_button_content_description">Back Button</string>
+    <string name="back_button_content_description">Back</string>
     <string name="help_icon_content_description">Help Icon</string>
     <string name="enter_amount_you_would_like_to_deposit">Enter amount to deposit?</string>
     <string name="ghs">GHS</string>
@@ -483,7 +483,7 @@
     <string name="update_required">Update Required</string>
     <string name="this_version_of_the_app_is_no_longer_supported_please_update_to_the_latest_version_to_continue_using_midas">This version of the app is no longer supported. Please update to the latest version to continue using Midas</string>
     <string name="update_now">Update Now</string>
-    <string name="top_platform">Top Platform</string>
+    <string name="top_platform">Top Platforms</string>
     <string name="black_card">black_card</string>
     <string name="standard">Standard</string>
     <string name="blue">Blue</string>
@@ -530,5 +530,6 @@
     <string name="we_really_value_your_feedback">We really value your feedback.</string>
     <string name="enter_email_and_password_to_access_your_account">Enter email and password to access your account</string>
     <string name="info">info</string>
+    <string name="plus_icon">plus icon</string>
 
 </resources>

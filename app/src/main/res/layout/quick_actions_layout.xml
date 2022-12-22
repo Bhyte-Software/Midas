@@ -5,10 +5,10 @@
     android:layout_height="wrap_content">
 
     <RelativeLayout
-        android:layout_centerHorizontal="true"
         android:id="@+id/round"
         android:layout_width="@dimen/dimen_60"
         android:layout_height="@dimen/dimen_60"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/quick_actions_border_ripple"
         android:clickable="true">
 

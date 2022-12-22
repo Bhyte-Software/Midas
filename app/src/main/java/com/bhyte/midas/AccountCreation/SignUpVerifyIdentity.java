@@ -61,7 +61,6 @@ public class SignUpVerifyIdentity extends AppCompatActivity {
             @Override
             public void onFinish(@Nullable String identityAccessKey) {
                 key = "no skip";
-
                 // Get Data from Passbase
                 passbaseIdentityAccessKey = identityAccessKey;
             }

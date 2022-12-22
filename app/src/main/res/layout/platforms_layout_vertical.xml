@@ -6,7 +6,7 @@
     android:layout_marginBottom="@dimen/dimen_20"
     android:layout_marginStart="@dimen/dimen_20"
     android:layout_marginEnd="@dimen/dimen_20"
-    android:background="@drawable/ripple_round_box"
+    android:background="@drawable/quick_actions_border_ripple"
     android:clickable="true"
     android:padding="@dimen/dimen_20">
 

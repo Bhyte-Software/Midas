@@ -3,7 +3,6 @@ package com.bhyte.midas.AccountCreation;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
@@ -72,6 +71,7 @@ public class SignUpEnterNumber extends AppCompatActivity {
             }
         });
 
+        /* Detect soft keyboard and hide
         final View activityRootView = findViewById(R.id.main_layout);
         activityRootView.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
             Rect r = new Rect();
@@ -86,6 +86,7 @@ public class SignUpEnterNumber extends AppCompatActivity {
                 registerImage.setVisibility(View.VISIBLE);
             }
         });
+         */
 
     }
 

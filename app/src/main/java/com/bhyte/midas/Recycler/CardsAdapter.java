@@ -52,7 +52,7 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.CardsViewHol
     }
 
 
-    public static class CardsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class CardsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         RelativeLayout relativeLayout;
         TextView card_number, card_name, date;
@@ -69,6 +69,17 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.CardsViewHol
             relativeLayout = itemView.findViewById(R.id.card_layout);
 
             relativeLayout.setOnClickListener(this);
+
+            // Long Press
+            relativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    cards.remove(getAbsoluteAdapterPosition());
+                    notifyItemRemoved(getAbsoluteAdapterPosition());
+                    return true;
+                }
+            });
+
         }
 
         @Override

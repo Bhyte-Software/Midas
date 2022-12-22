@@ -1,7 +1,5 @@
 package com.bhyte.midas.User;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.ClipData;
@@ -17,7 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import com.bhyte.midas.R;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 
 public class VirtualCardDetails extends AppCompatActivity {
@@ -48,7 +50,7 @@ public class VirtualCardDetails extends AppCompatActivity {
         // Click Listeners
         deleteButton.setOnClickListener(v -> {
             // Show Confirm Delete Dialog
-            dialog = new Dialog(VirtualCardDetails.this, R.style.BottomSheetTheme);
+            dialog = new BottomSheetDialog(VirtualCardDetails.this, R.style.BottomSheetTheme);
 
             View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.delete_virtual_card_confirmation,
                     findViewById(R.id.confirm_deletion_popup));
@@ -81,17 +83,17 @@ public class VirtualCardDetails extends AppCompatActivity {
             clipboard.setPrimaryClip(clip);
 
             // Display Message
-            toast1 = Toast.makeText(VirtualCardDetails.this, "Cardholder Name copied to clipboard", Toast.LENGTH_SHORT);
+            toast1 = Toast.makeText(VirtualCardDetails.this, "Cardholder name copied to clipboard", Toast.LENGTH_SHORT);
 
             // Customize Toast
             View view1 = toast1.getView();
 
             //Gets the actual oval background of the Toast then sets the colour filter
-            view1.getBackground().setColorFilter(getResources().getColor(R.color.light_green), PorterDuff.Mode.SRC_IN);
+            view1.getBackground().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.light_green), PorterDuff.Mode.SRC_IN);
 
             //Gets the TextView from the Toast so it can be edited
             TextView text = view1.findViewById(android.R.id.message);
-            text.setTextColor(getResources().getColor(R.color.white));
+            text.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
             toast1.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
 
@@ -100,9 +102,9 @@ public class VirtualCardDetails extends AppCompatActivity {
 
 
             // Change Image Resource
-            copyName.setImageDrawable(getResources().getDrawable(R.drawable.green_tick));
-            copyNumber.setImageDrawable(getResources().getDrawable(R.drawable.copy));
-            copyCvv.setImageDrawable(getResources().getDrawable(R.drawable.copy));
+            copyName.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.green_tick));
+            copyNumber.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_content_copy));
+            copyCvv.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_content_copy));
         });
 
         copyNumber.setOnClickListener(v -> {
@@ -112,17 +114,17 @@ public class VirtualCardDetails extends AppCompatActivity {
             clipboard.setPrimaryClip(clip);
 
             // Display Message
-            toast2 = Toast.makeText(VirtualCardDetails.this, "Card Number copied to clipboard", Toast.LENGTH_SHORT);
+            toast2 = Toast.makeText(VirtualCardDetails.this, "Card number copied to clipboard", Toast.LENGTH_SHORT);
 
             // Customize Toast
             View view2 = toast2.getView();
 
             //Gets the actual oval background of the Toast then sets the colour filter
-            view2.getBackground().setColorFilter(getResources().getColor(R.color.light_green), PorterDuff.Mode.SRC_IN);
+            view2.getBackground().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.light_green), PorterDuff.Mode.SRC_IN);
 
             //Gets the TextView from the Toast so it can be edited
             TextView text = view2.findViewById(android.R.id.message);
-            text.setTextColor(getResources().getColor(R.color.white));
+            text.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
             toast2.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
 
@@ -131,9 +133,9 @@ public class VirtualCardDetails extends AppCompatActivity {
             toast2.show();
 
             // Change Image Resource
-            copyName.setImageDrawable(getResources().getDrawable(R.drawable.copy));
-            copyNumber.setImageDrawable(getResources().getDrawable(R.drawable.green_tick));
-            copyCvv.setImageDrawable(getResources().getDrawable(R.drawable.copy));
+            copyName.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_content_copy));
+            copyNumber.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.green_tick));
+            copyCvv.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_content_copy));
         });
 
         copyCvv.setOnClickListener(v -> {
@@ -149,11 +151,11 @@ public class VirtualCardDetails extends AppCompatActivity {
             View view3 = toast3.getView();
 
             //Gets the actual oval background of the Toast then sets the colour filter
-            view3.getBackground().setColorFilter(getResources().getColor(R.color.light_green), PorterDuff.Mode.SRC_IN);
+            view3.getBackground().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.light_green), PorterDuff.Mode.SRC_IN);
 
             //Gets the TextView from the Toast so it can be edited
             TextView text = view3.findViewById(android.R.id.message);
-            text.setTextColor(getResources().getColor(R.color.white));
+            text.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
             toast3.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
 
@@ -161,9 +163,9 @@ public class VirtualCardDetails extends AppCompatActivity {
             toast3.show();
 
             // Change Image Resource
-            copyName.setImageDrawable(getResources().getDrawable(R.drawable.copy));
-            copyNumber.setImageDrawable(getResources().getDrawable(R.drawable.copy));
-            copyCvv.setImageDrawable(getResources().getDrawable(R.drawable.green_tick));
+            copyName.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_content_copy));
+            copyNumber.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_content_copy));
+            copyCvv.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.green_tick));
         });
 
     }

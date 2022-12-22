@@ -5,7 +5,7 @@
     android:layout_width="150dp"
     android:layout_height="200dp"
     android:layout_marginEnd="@dimen/dimen_20"
-    android:background="@drawable/ripple_round_box"
+    android:background="@drawable/quick_actions_border_ripple"
     android:clickable="true"
     android:padding="@dimen/dimen_20">
 

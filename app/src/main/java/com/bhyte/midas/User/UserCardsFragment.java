@@ -2,6 +2,7 @@ package com.bhyte.midas.User;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +14,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bhyte.midas.R;
 import com.bhyte.midas.Recycler.CardsAdapter;
 import com.bhyte.midas.Recycler.CardsHelperClass;
+import com.bhyte.midas.Recycler.SwipeToDeleteCallback;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,7 +43,7 @@ public class UserCardsFragment extends Fragment implements CardsAdapter.OnNoteLi
     RecyclerView.Adapter<?> cardsAdapter;
     ArrayList<CardsHelperClass> viewCards = new ArrayList<>();
 
-    RelativeLayout pageTitle;
+    RelativeLayout pageTitle, bg, floatingActionButton;
     ImageView noCardsImg;
     TextView title, desc;
     RecyclerView cardsRecycler;
@@ -53,6 +57,8 @@ public class UserCardsFragment extends Fragment implements CardsAdapter.OnNoteLi
         View root = inflater.inflate(R.layout.fragment_user_cards, container, false);
 
         // Hooks
+        floatingActionButton = root.findViewById(R.id.floating_action_button);
+        bg = root.findViewById(R.id.bg);
         pageTitle = root.findViewById(R.id.page_title);
         noCardsImg = root.findViewById(R.id.no_cards_img);
         title = root.findViewById(R.id.title);
@@ -67,19 +73,48 @@ public class UserCardsFragment extends Fragment implements CardsAdapter.OnNoteLi
 
 
         // Click Listeners
-        createCardButton.setOnClickListener(v -> {
-            createCard();
-        });
+        floatingActionButton.setOnClickListener(view -> createCard());
+        createCardButton.setOnClickListener(v -> createCard());
 
+        enableSwipeToDeleteAndUndo();
 
         return root;
+    }
+
+    private void enableSwipeToDeleteAndUndo() {
+        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+
+                final int position = viewHolder.getAbsoluteAdapterPosition();
+
+                viewCards.remove(position);
+
+
+                Snackbar snackbar = Snackbar
+                        .make(bg, "Item was removed from the list.", Snackbar.LENGTH_LONG);
+                snackbar.setAction("UNDO", view -> {
+
+                });
+
+                snackbar.setActionTextColor(Color.YELLOW);
+                snackbar.show();
+
+            }
+        };
+
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+        itemTouchhelper.attachToRecyclerView(cardsRecycler);
     }
 
     private void createCard() {
         if(cardsRecycler.getVisibility() == View.GONE){
             pageTitle.setVisibility(View.VISIBLE);
             cardsRecycler.setVisibility(View.VISIBLE);
+            floatingActionButton.setVisibility(View.VISIBLE);
+
             // Hide Other items
+            createCardButton.setVisibility(View.GONE);
             noCardsImg.setVisibility(View.GONE);
             title.setVisibility(View.GONE);
             desc.setVisibility(View.GONE);
@@ -91,8 +126,8 @@ public class UserCardsFragment extends Fragment implements CardsAdapter.OnNoteLi
         cardsAdapter = new CardsAdapter(viewCards, this);
         cardsRecycler.setAdapter(cardsAdapter);
 
-
-        /*OkHttpClient client = new OkHttpClient();
+        /* FLUTTERWAVE API
+        OkHttpClient client = new OkHttpClient();
 
         MediaType mediaType = MediaType.parse("application/json");
         JSONObject actualData = new JSONObject();
@@ -120,13 +155,14 @@ public class UserCardsFragment extends Fragment implements CardsAdapter.OnNoteLi
             Response response = client.newCall(request).execute();
 
             TextView tv = new TextView(getActivity());
-            // Create and pass the response
+            //Create and pass the response
             tv.setText(Objects.requireNonNull(response.body()).string());
 
-            cardsListLayout.addView(tv);
+            //bg.addView(tv);
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
+        */
     }
 
     @Override

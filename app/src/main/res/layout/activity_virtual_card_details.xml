@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,6 +9,7 @@
     tools:context=".User.VirtualCardDetails">
 
     <RelativeLayout
+        android:id="@+id/header"
         android:layout_marginTop="@dimen/dimen_10"
         android:paddingEnd="@dimen/dimen_5"
         android:paddingStart="@dimen/dimen_5"
@@ -20,18 +21,19 @@
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/dimen_10"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
-            android:layout_centerVertical="true"
+            android:contentDescription="@string/back_button_content_description"
             android:onClick="goBack"
             android:padding="@dimen/dimen_10"
-            android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:src="@drawable/back_material"
             app:tint="@color/main_text"
-            android:contentDescription="@string/back_button_content_description" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -41,7 +43,8 @@
             android:fontFamily="@font/roboto_bold"
             android:text="@string/card_details"
             android:textColor="@color/main_text"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            tools:ignore="RelativeOverlap" />
 
         <ImageView
             android:layout_marginEnd="@dimen/dimen_10"
@@ -61,6 +64,7 @@
     </RelativeLayout>
 
     <ScrollView
+        android:layout_below="@id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
@@ -121,7 +125,7 @@
 
             <TextView
                 android:textColor="@color/secondary_text"
-                android:layout_marginTop="@dimen/dimen_25"
+                android:layout_marginTop="@dimen/dimen_30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_20"
@@ -156,10 +160,12 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/dimen_10"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
                     android:contentDescription="@string/copy_icon"
                     android:padding="@dimen/dimen_10"
-                    android:src="@drawable/copy"
-                    app:tint="@color/main_text" />
+                    android:src="@drawable/ic_content_copy"
+                    tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
 
             </RelativeLayout>
 
@@ -177,9 +183,10 @@
                 android:layout_height="@dimen/dimen_60"
                 android:layout_marginStart="@dimen/dimen_20"
                 android:layout_marginTop="@dimen/dimen_10"
-                android:clickable="true"
                 android:layout_marginEnd="@dimen/dimen_20"
-                android:background="@drawable/ripple_round_box">
+                android:background="@drawable/ripple_round_box"
+                android:clickable="true"
+                tools:ignore="DuplicateSpeakableTextCheck">
 
                 <TextView
                     android:id="@+id/card_number_"
@@ -187,23 +194,25 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/dimen_20"
-                    android:textSize="18sp"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/_3672_8229_3829_0372"
                     android:textColor="@color/main_text"
+                    android:textSize="18sp"
                     tools:ignore="RelativeOverlap" />
 
                 <ImageView
-                    android:padding="@dimen/dimen_10"
                     android:id="@+id/copy_card_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/dimen_10"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
                     android:contentDescription="@string/copy_icon"
-                    android:src="@drawable/copy"
-                    app:tint="@color/main_text" />
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/ic_content_copy"
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </RelativeLayout>
 
@@ -238,34 +247,38 @@
                     tools:ignore="RelativeOverlap" />
 
                 <ImageView
-                    android:padding="@dimen/dimen_10"
-                    app:tint="@color/main_text"
                     android:id="@+id/copy_cvv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/dimen_10"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
                     android:contentDescription="@string/copy_icon"
-                    android:src="@drawable/copy" />
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/ic_content_copy"
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </RelativeLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/delete_button"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_60"
-                android:layout_marginStart="@dimen/dimen_25"
-                android:layout_marginEnd="@dimen/dimen_25"
-                android:layout_marginTop="@dimen/dimen_25"
-                android:layout_marginBottom="@dimen/dimen_25"
-                android:backgroundTint="@color/red"
-                android:text="@string/delete_card"
-                android:textAllCaps="false"
-                app:cornerRadius="35dp" />
 
         </LinearLayout>
 
     </ScrollView>
 
-</LinearLayout>
+    <com.google.android.material.button.MaterialButton
+        android:layout_alignParentBottom="true"
+        android:id="@+id/delete_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_60"
+        android:layout_marginStart="@dimen/dimen_25"
+        android:layout_marginTop="@dimen/dimen_25"
+        android:layout_marginEnd="@dimen/dimen_25"
+        android:layout_marginBottom="@dimen/dimen_25"
+        android:backgroundTint="@color/red"
+        android:text="@string/delete_card"
+        android:textAllCaps="false"
+        app:cornerRadius="35dp"
+        tools:ignore="TextContrastCheck" />
+
+</RelativeLayout>

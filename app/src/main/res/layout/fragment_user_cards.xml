@@ -39,17 +39,18 @@
             </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+
                 android:nestedScrollingEnabled="false"
-                android:layout_marginBottom="@dimen/dimen_90"
                 android:clickable="true"
                 android:clipToPadding="false"
+                android:layout_marginBottom="@dimen/dimen_90"
                 android:elevation="2dp"
                 android:focusable="false"
                 android:id="@+id/cards_recycler"
                 android:visibility="gone"
                 android:layout_width="match_parent"
                 android:orientation="vertical"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"/>
 
             <ImageView
                 android:id="@+id/no_cards_img"
@@ -93,11 +94,33 @@
         android:layout_height="@dimen/dimen_60"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/dimen_25"
-        android:layout_marginTop="@dimen/dimen_90"
         android:layout_marginEnd="@dimen/dimen_25"
         android:layout_marginBottom="@dimen/dimen_90"
         android:text="@string/create_new_card"
         android:textAllCaps="false"
-        app:cornerRadius="35dp" />
+        app:cornerRadius="35dp"
+        tools:ignore="TextContrastCheck" />
+
+    <RelativeLayout
+        android:id="@+id/floating_action_button"
+        android:layout_width="@dimen/dimen_60"
+        android:layout_height="@dimen/dimen_60"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="@dimen/dimen_25"
+        android:layout_marginBottom="@dimen/dimen_90"
+        android:background="@drawable/round_blue_ripple"
+        android:elevation="5dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/add"
+            app:tint="@color/white"
+            android:contentDescription="@string/plus_icon" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

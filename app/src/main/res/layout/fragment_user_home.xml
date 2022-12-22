@@ -380,7 +380,7 @@
                 android:layout_marginStart="@dimen/dimen_25"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ripple_round_box"
+                android:background="@drawable/quick_actions_border_ripple"
                 android:clickable="true"
                 android:padding="@dimen/dimen_25">
 
@@ -444,7 +444,6 @@
                 android:layout_marginBottom="@dimen/dimen_85"
                 android:layout_marginTop="@dimen/dimen_25"
                 android:visibility="visible"
-                android:elevation="@dimen/dimen_20"
                 android:id="@+id/go_up"
                 android:layout_width="@dimen/dimen_40"
                 android:layout_height="@dimen/dimen_40"
