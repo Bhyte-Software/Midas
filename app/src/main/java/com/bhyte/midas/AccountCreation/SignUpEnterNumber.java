@@ -60,12 +60,13 @@ public class SignUpEnterNumber extends AppCompatActivity {
         getCode.setOnClickListener(v -> {
             if (CheckInternetConnection.isConnected(SignUpEnterNumber.this)) {
                 // Make animation visible
-                lottieAnimationView.setVisibility(View.VISIBLE);
-                lottieAnimationView.playAnimation();
+                //lottieAnimationView.setVisibility(View.VISIBLE);
+                //lottieAnimationView.playAnimation();
                 // Make text invisible
-                textView.setVisibility(View.GONE);
+                //textView.setVisibility(View.GONE);
                 // Handler
-                new Handler().postDelayed(this::resetButton, TIMER);
+                //new Handler().postDelayed(this::resetButton, TIMER);
+                startActivity(new Intent(getApplicationContext(), SignUpCredentials.class));
             } else {
                 startActivity(new Intent(getApplicationContext(), NoInternet.class));
             }
@@ -128,7 +129,7 @@ public class SignUpEnterNumber extends AppCompatActivity {
             fullPhoneNumber = "+" + countryCode + completeNumber;
 
             country = "Ghana";
-            startActivity(new Intent(getApplicationContext(), SignUpEnterOTP.class));
+            startActivity(new Intent(getApplicationContext(), SignUpCredentials.class));
             finish();
         } else if (lengthOfVal == 0) {
             // Custom Toast for Android Versions < 11

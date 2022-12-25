@@ -3,6 +3,8 @@ package com.bhyte.midas.AccountCreation;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
@@ -24,6 +26,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
+import java.io.Console;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -68,7 +71,11 @@ public class GetStarted extends AppCompatActivity {
             service.execute(new Runnable() {
                 @Override
                 public void run() {
-                    boolean isConnected = CheckInternetConnection.isConnected(context);
+                    //boolean isConnected = CheckInternetConnection.isConnected(context);
+                    ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                    NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+                    boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -109,10 +116,24 @@ public class GetStarted extends AppCompatActivity {
             countryNigeria = countryBottomSheet.findViewById(R.id.nigeria);
 
             countryGhana.setOnClickListener(v12 -> {
-                if (CheckInternetConnection.isConnected(GetStarted.this)) {
+                /*if (CheckInternetConnection.isConnected(GetStarted.this)) {
                     countryBottomSheet.dismiss();
-                    startActivity(new Intent(getApplicationContext(), SignUpEnterNumber.class));
+                    startActivity(new Intent(getApplicationContext(), SignUpCredentials.class));
                 } else {
+                    startActivity(new Intent(getApplicationContext(), NoInternet.class));
+                }*/
+
+                // This can be refactored later
+                ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+                boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+
+                if (isConnected) {
+                    // Do something here
+                    countryBottomSheet.dismiss();
+                    startActivity(new Intent(getApplicationContext(), SignUpCredentials.class));
+                } else {
+                    // No internet connection
                     startActivity(new Intent(getApplicationContext(), NoInternet.class));
                 }
             });

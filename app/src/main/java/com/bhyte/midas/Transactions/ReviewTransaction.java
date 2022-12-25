@@ -1,6 +1,7 @@
 package com.bhyte.midas.Transactions;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,7 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
+import com.bhyte.midas.Common.AcceptTermsOfService;
+import com.bhyte.midas.Database.ReadWriteUserDetails;
+import com.bhyte.midas.Database.ReadWriteUserMainBalance;
 import com.bhyte.midas.R;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -18,16 +25,31 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.Objects;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class ReviewTransaction extends AppCompatActivity {
+
+    LottieAnimationView depositAnimation;
 
     FirebaseAuth firebaseAuth;
     FirebaseDatabase database;
 
-    TextView amountText, receiveText, numberText, providerText, transactionFeeText;
-    String provider, phoneNumber, amount, transactionFee, youReceive;
+    TextView amountText, amountToPayText, numberText, providerText, transactionFeeText;
+    String provider, phoneNumber, amount, transactionFee, amountToPay, newBalance;
     Double amountDouble;
     ImageView back;
-    double youReceiveInt;
+    MaterialButton deposit;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -41,10 +63,11 @@ public class ReviewTransaction extends AppCompatActivity {
 
         // Hooks
         back = findViewById(R.id.back);
+        deposit = findViewById(R.id.deposit);
         transactionFeeText = findViewById(R.id.transaction_fee);
         providerText = findViewById(R.id.provider);
         amountText = findViewById(R.id.amount);
-        receiveText = findViewById(R.id.you_receive_amount);
+        amountToPayText = findViewById(R.id.amount_to_pay_amount);
         numberText = findViewById(R.id.phone_number);
 
         // Get Data from previous Activities
@@ -73,22 +96,28 @@ public class ReviewTransaction extends AppCompatActivity {
             });
         }
 
+        //Formats Transaction Fee to only 2 decimal places
+        DecimalFormat df = new DecimalFormat("0.00");
+
         // Calculations
         // Transaction Fee
-        double transactionFeeInt = 0.014 * amountDouble;
-        transactionFee = String.valueOf(transactionFeeInt);
+        double transactionFeeInt = 0.009 * amountDouble;
+        transactionFee = String.valueOf(df.format(transactionFeeInt));
 
-        // Amount you will receive
-        youReceiveInt = amountDouble - transactionFeeInt;
-        youReceive = String.valueOf(youReceiveInt);
+
+
+        // Amount you will have to pay
+        double amountToPayDouble = amountDouble + transactionFeeInt; // The amount to pay displayed as a double
+        amountToPay = String.valueOf(df.format(amountToPayDouble));
 
         // Set TextView Texts
         providerText.setText(provider);
         amountText.setText("GHS " + amount);
         transactionFeeText.setText("GHS " + transactionFee);
-        receiveText.setText("GHS " + youReceive);
+        amountToPayText.setText("GHS " + amountToPay);
 
         // Click Listeners
+        // Back Button
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,5 +125,78 @@ public class ReviewTransaction extends AppCompatActivity {
             }
         });
 
+        // Deposit Button
+        deposit.setOnClickListener(v -> {
+
+            // Initialize http client
+            OkHttpClient client = new OkHttpClient();
+
+            MediaType mediaType = MediaType.parse("application/json");
+            JSONObject actualData = new JSONObject();
+            JSONObject mobileMoney = new JSONObject();
+
+            try {
+                mobileMoney.put("phone", "0551234987");
+                mobileMoney.put("provider", "mtn");
+
+                actualData.put("amount", (int) (amountToPayDouble * 100));
+                actualData.put("email", "fekome7338@razuz.com");
+                actualData.put("currency", "GHS");
+                actualData.put("mobile_money", mobileMoney);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            RequestBody body = RequestBody.create(actualData.toString(), mediaType);
+            Request request = new Request.Builder()
+                    .url("https://api.paystack.co/charge")
+                    .post(body)
+                    .addHeader("content-type", "application/json")
+                    .addHeader("Authorization", "Bearer sk_test_c87485f78655da06ffdd385fcda8f0a53bfa9f86")
+                    .build();
+            try {
+                Response response = client.newCall(request).execute();
+
+                System.out.println(Objects.requireNonNull(response.body()).string());// This prints the response body to the console
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // All this should be for when the deposit works/goes through
+
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+            assert firebaseUser != null;
+            databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addListenerForSingleValueEvent(new ValueEventListener() {
+
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String currentBalance = snapshot.getValue(String.class);
+                    assert currentBalance != null;
+                    int amountToAdd = Integer.parseInt(currentBalance) + Integer.parseInt(amount);
+                    String newBalance = Integer.toString(amountToAdd);
+
+                    databaseReference.child(firebaseUser.getUid()).child("userMainBalance").setValue(newBalance).addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(getApplicationContext(), DepositSuccessPage.class));
+                            finish();
+                        } else {
+                            // Print an error message
+                            System.out.println("Error updating user main balance: " + task.getException());
+                            // It could be a page that says; "There was a problem making a deposit, please try again"
+                        }
+                    });
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Print an error message
+                    System.out.println("Error retrieving user main balance: " + error.getMessage());
+                }
+            });
+
+
+
+
+            // A loading animation should be added when clicked
+        });
     }
 }

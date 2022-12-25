@@ -182,6 +182,9 @@
     <string name="enter_amount">Enter amount</string>
     <string name="creation_fee_virtual_card">$1.00 creation fee</string>
     <string name="creation_fee_gift_card">$2.00 creation fee</string>
+
+    <string name="success_from_success_page">Cool, You\'ve deposited successfully!</string>
+    <string name="great">Great</string>
     <!-- Transactions -->
 
     <!-- Card Features -->
@@ -428,8 +431,8 @@
     <string name="accept_tv_material_btn">Accept</string>
     <string name="how_would_you_like_to_deposit">How would you like to deposit?</string>
     <string name="choose_a_method_to_deposit_money_into_your_midas_wallet">Choose a method to deposit money into your Midas wallet</string>
-    <string name="mobile_money_nfee_1_4_ntakes_a_few_minutes">Mobile Money\nFee: 1.4%\nTakes a few minutes</string>
-    <string name="bank_transfer_nfee_5_0_ntakes_a_few_hours">Bank Transfer\nFee: 5.0%\nTakes a few hours</string>
+    <string name="mobile_money_nfee_0_9_ntakes_a_few_minutes">Mobile Money\nFee: 0.9%\nTakes a few minutes</string>
+    <string name="bank_transfer_nfee_4_9_ntakes_a_few_hours">Bank Transfer\nFee: 4.9%\nTakes a few hours</string>
     <string name="add_payment_method_tv_add_payment_method_activity">Add payment method</string>
     <string name="text_view_dark_theme">Dark theme</string>
     <string name="create_new_password">Create new password</string>
@@ -473,6 +476,7 @@
     <string name="transaction_fee">Transaction fee</string>
     <string name="ghs_text_view">GHS</string>
     <string name="you_receive">You receive</string>
+    <string name="amount_to_pay">Amount to Pay</string>
     <string name="_0202280564">0202280564</string>
     <string name="provider">Provider</string>
     <string name="vodafone">VODAFONE</string>

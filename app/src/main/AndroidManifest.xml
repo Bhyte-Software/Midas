@@ -42,6 +42,9 @@
             android:name=".Transactions.ReviewTransaction"
             android:exported="false" />
         <activity
+        android:name=".Transactions.DepositSuccessPage"
+        android:exported="false" />
+        <activity
             android:name=".Transactions.AddMoneyChooseProvider"
             android:exported="false" />
         <activity
