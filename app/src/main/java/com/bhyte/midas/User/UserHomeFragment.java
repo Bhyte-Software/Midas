@@ -50,6 +50,7 @@ import com.bhyte.midas.Recycler.QuickActionsAdapter;
 import com.bhyte.midas.Recycler.QuickActionsHelperClass;
 import com.bhyte.midas.Store.Store;
 import com.bhyte.midas.Transactions.AddMoneyChooseMethod;
+import com.bhyte.midas.Transactions.DepositSuccessPage;
 import com.bumptech.glide.Glide;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.ads.nativetemplates.NativeTemplateStyle;
@@ -98,7 +99,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
     String account_balance, fullName;
     BottomSheetDialog bottomSheetDialog, logoutDialog;
     RelativeLayout currencyView, verificationStatus, usdLayout, ghcLayout, gradientLayout, roundRec, goUp, viewAllPlatforms;
-    MaterialButton addMoney, positive, negative;
+    MaterialButton addMoney, withdraw, positive, negative;
     ImageView toggleIcon, check1, check2;
     Animation animation, animation2, shakeAnimation;
     TextView currency, username, totalAssets, accountBalance, greetingText, recommendedText, text1, text2, text3;
@@ -135,6 +136,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         currencyView = root.findViewById(R.id.currency_view);
         currency = root.findViewById(R.id.currency);
         addMoney = root.findViewById(R.id.add_money_button);
+        withdraw = root.findViewById(R.id.withdraw_button);
         accountBalance = root.findViewById(R.id.account_balance);
         toggleIcon = root.findViewById(R.id.toggle_icon);
         verificationStatus = root.findViewById(R.id.verification_status);
@@ -159,8 +161,6 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         scrollView.setOnTouchListener(this);
         scrollView.getViewTreeObserver().addOnScrollChangedListener(this);
 
-        // Save Account Balance in variable
-        account_balance = accountBalance.getText().toString();
 
         selectedCurrency = context.getSharedPreferences("selectedCurrency", Context.MODE_PRIVATE);
         boolean currencyBoolean = selectedCurrency.getBoolean("Currency", true);
@@ -239,7 +239,12 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
 
         });
 
+        // Display main balance gotten
+        getMainBalance();
+
         addMoney.setOnClickListener(v -> startActivity(new Intent(getActivity(), AddMoneyChooseMethod.class)));
+
+        //withdraw.setOnClickListener(); //Send user to Add money page
 
         toggleIcon.setOnClickListener(v -> {
             if (val.equals("visible")) {
@@ -424,6 +429,10 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         adLoader.loadAd(new AdRequest.Builder().build());
     }
 
+
+
+
+    // ----- FUNCTIONS ----- //
     private void updateToDollar() {
         totalAssets.setText(R.string.usd);
         currency.setText(R.string.dollar_usd);
@@ -495,6 +504,29 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
             animation = AnimationUtils.loadAnimation(context, R.anim.fade_animation);
             greetingText.setAnimation(animation);
         }
+    }
+
+    private void getMainBalance() {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        assert firebaseUser != null;
+        databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String currentBalance = snapshot.getValue(String.class);
+                assert currentBalance != null;
+
+                // Save Account Balance in variable
+                account_balance = currentBalance;
+                accountBalance.setText(account_balance);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Print an error message
+                System.out.println("Error retrieving user main balance: " + error.getMessage());
+            }
+        });
     }
 
     @SuppressLint("ClickableViewAccessibility")

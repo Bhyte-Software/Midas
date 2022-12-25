@@ -46,7 +46,7 @@ public class ReviewTransaction extends AppCompatActivity {
     FirebaseDatabase database;
 
     TextView amountText, amountToPayText, numberText, providerText, transactionFeeText;
-    String provider, phoneNumber, amount, transactionFee, amountToPay, newBalance;
+    String provider, phoneNumber, amount, transactionFee, amountToPay, userEmail;
     Double amountDouble;
     ImageView back;
     MaterialButton deposit;
@@ -79,6 +79,7 @@ public class ReviewTransaction extends AppCompatActivity {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if (firebaseUser != null) {
             DatabaseReference databaseReference = database.getReference("Users").child(firebaseUser.getUid()).child("phone");
+            DatabaseReference databaseEmailReference = database.getReference("Users").child(firebaseUser.getUid()).child("mail");
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -87,6 +88,18 @@ public class ReviewTransaction extends AppCompatActivity {
                     if (!(numberText == null)) {
                         numberText.setText(phoneNumber);
                     }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            databaseEmailReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    userEmail = snapshot.getValue(String.class);
                 }
 
                 @Override
@@ -140,7 +153,7 @@ public class ReviewTransaction extends AppCompatActivity {
                 mobileMoney.put("provider", "mtn");
 
                 actualData.put("amount", (int) (amountToPayDouble * 100));
-                actualData.put("email", "fekome7338@razuz.com");
+                actualData.put("email", "femke@gmail.com");
                 actualData.put("currency", "GHS");
                 actualData.put("mobile_money", mobileMoney);
             } catch (JSONException e) {
@@ -192,8 +205,6 @@ public class ReviewTransaction extends AppCompatActivity {
                     System.out.println("Error retrieving user main balance: " + error.getMessage());
                 }
             });
-
-
 
 
             // A loading animation should be added when clicked
