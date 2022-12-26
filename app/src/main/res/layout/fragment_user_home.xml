@@ -166,10 +166,10 @@
                 android:id="@+id/withdraw_button"
                 android:layout_width="150dp"
                 android:layout_height="@dimen/dimen_55"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:layout_marginStart="@dimen/dimen_10"
-                android:layout_toEndOf="@+id/add_money_button"
                 android:layout_below="@+id/balance"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_toEndOf="@+id/add_money_button"
                 android:text="@string/withdraw_money"
                 android:textAllCaps="false"
                 app:cornerRadius="35dp" />

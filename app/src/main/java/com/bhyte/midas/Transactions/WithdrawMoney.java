@@ -95,46 +95,11 @@ public class WithdrawMoney extends AppCompatActivity {
         });
 
         withdrawButton.setOnClickListener(v -> {
-            // Get Input
-            // Convert String to int
-            String userInputAmount = amount.getText().toString();
-            if (userInputAmount.equals("")) {
-                // Custom Toast
-                Toast toast = Toast.makeText(WithdrawMoney.this, R.string.right_amount, Toast.LENGTH_SHORT);
-                View view1 = toast.getView();
+            bottomSheetDialog = new BottomSheetDialog(WithdrawMoney.this, R.style.BottomSheetTheme);
+            View sheetView = LayoutInflater.from(context).inflate(R.layout.withdrawal_method_bottom_sheet, findViewById(R.id.withdrawal_method));
+            bottomSheetDialog.setContentView(sheetView);
 
-                //Gets the actual oval background of the Toast then sets the colour filter
-                view1.getBackground().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.red), PorterDuff.Mode.SRC_IN);
-
-                //Gets the TextView from the Toast so it can be edited
-                TextView text = view1.findViewById(android.R.id.message);
-                text.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
-
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                toast.show();
-            } else {
-                userAmountDouble = Double.parseDouble(userInputAmount);
-                amountToWithdraw = userAmountDouble;
-                amountToWithdrawString = userInputAmount;
-
-                if (userAmountDouble > 5000 | userAmountDouble < 20) {
-                    Toast toast = Toast.makeText(WithdrawMoney.this, R.string.right_amount, Toast.LENGTH_SHORT);
-                    View view1 = toast.getView();
-
-                    //Gets the actual oval background of the Toast then sets the colour filter
-                    view1.getBackground().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.red), PorterDuff.Mode.SRC_IN);
-
-                    //Gets the TextView from the Toast so it can be edited
-                    TextView text = view1.findViewById(android.R.id.message);
-                    text.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
-
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                    toast.show();
-                } else {
-                    // Check Input
-                    startActivity(new Intent(context, AddMoneyChooseProvider.class));
-                }
-            }
+            bottomSheetDialog.show();
         });
 
         // Click Listeners

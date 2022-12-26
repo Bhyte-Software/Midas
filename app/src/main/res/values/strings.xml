@@ -498,6 +498,7 @@
     <string name="_649">649</string>
     <string name="enter_amount_you_want_to_fund_this_card_with">Enter amount you want to fund this card with</string>
     <string name="get_some_help">Get some help</string>
+    <string name="select_withdrawal_method">Select a withdrawal method</string>
     <string name="how_do_i_deposit_money_icon">How do I deposit money icon</string>
     <string name="how_do_i_deposit_money">How do I deposit money?</string>
     <string name="how_peer_to_peer_works">How Peer-To-Peer works</string>
