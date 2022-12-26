@@ -77,6 +77,7 @@ public class WithdrawMoney extends AppCompatActivity {
         backspace = findViewById(R.id.backspace);
         withdrawButton = findViewById(R.id.withdraw_button);
 
+        // Connect to the database
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         assert firebaseUser != null;
         databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addValueEventListener(new ValueEventListener() {
@@ -94,12 +95,24 @@ public class WithdrawMoney extends AppCompatActivity {
             }
         });
 
+        // Withdraw Button
         withdrawButton.setOnClickListener(v -> {
             bottomSheetDialog = new BottomSheetDialog(WithdrawMoney.this, R.style.BottomSheetTheme);
             View sheetView = LayoutInflater.from(context).inflate(R.layout.withdrawal_method_bottom_sheet, findViewById(R.id.withdrawal_method));
+            MaterialButton withdrawButtonBottom = sheetView.findViewById(R.id.withdraw_button_bottom_sheet);
             bottomSheetDialog.setContentView(sheetView);
 
-            bottomSheetDialog.show();
+            String userInputAmount = amount.getText().toString(); // This gets the user input
+            if (userInputAmount.equals("") || userInputAmount.equals("0")) {
+                Toast.makeText(getApplicationContext(),"Please Enter an amount",Toast.LENGTH_SHORT).show();
+            } else {
+                withdrawButtonBottom.setText("Withdraw GH₵"+ userInputAmount);
+                bottomSheetDialog.show();
+            }
+
+            withdrawButtonBottom.setOnClickListener(w -> {
+                startActivity(new Intent(context, WithdrawalSuccessPage.class));
+            });
         });
 
         // Click Listeners

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/withdrawal_method"
     android:background="@drawable/bottom_sheet_background"
-    android:theme="@style/Theme.MaterialComponents.Light"
+    android:theme="@style/Theme.MaterialComponents"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -58,7 +58,6 @@
         android:layout_marginEnd="@dimen/dimen_20"
         android:layout_marginBottom="@dimen/dimen_20"
         android:layout_marginTop="@dimen/dimen_20"
-        android:text="@string/withdraw_money"
         android:textAllCaps="false"
         app:cornerRadius="@dimen/dimen_50"/>
 
