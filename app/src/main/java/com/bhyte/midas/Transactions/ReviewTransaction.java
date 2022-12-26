@@ -184,8 +184,8 @@ public class ReviewTransaction extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     String currentBalance = snapshot.getValue(String.class);
                     assert currentBalance != null;
-                    int amountToAdd = Integer.parseInt(currentBalance) + Integer.parseInt(amount);
-                    String newBalance = Integer.toString(amountToAdd);
+                    double amountToAdd = Double.parseDouble(currentBalance) + Double.parseDouble(amount);
+                    String newBalance = Double.toString(Double.parseDouble(df.format(amountToAdd)));
 
                     databaseReference.child(firebaseUser.getUid()).child("userMainBalance").setValue(newBalance).addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {

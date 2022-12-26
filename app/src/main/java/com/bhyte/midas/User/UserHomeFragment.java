@@ -51,6 +51,7 @@ import com.bhyte.midas.Recycler.QuickActionsHelperClass;
 import com.bhyte.midas.Store.Store;
 import com.bhyte.midas.Transactions.AddMoneyChooseMethod;
 import com.bhyte.midas.Transactions.DepositSuccessPage;
+import com.bhyte.midas.Transactions.WithdrawMoney;
 import com.bumptech.glide.Glide;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.ads.nativetemplates.NativeTemplateStyle;
@@ -244,7 +245,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
 
         addMoney.setOnClickListener(v -> startActivity(new Intent(getActivity(), AddMoneyChooseMethod.class)));
 
-        //withdraw.setOnClickListener(); //Send user to Add money page
+        withdraw.setOnClickListener(v -> startActivity(new Intent(getActivity(), WithdrawMoney.class))); //Send user to Withdraw money page
 
         toggleIcon.setOnClickListener(v -> {
             if (val.equals("visible")) {
