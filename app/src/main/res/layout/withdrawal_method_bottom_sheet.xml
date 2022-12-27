@@ -44,7 +44,6 @@
             android:drawablePadding="@dimen/dimen_15"
             android:fontFamily="@font/roboto_medium"
             android:padding="@dimen/dimen_20"
-            android:text="@string/mobile_money_nfee_0_9_ntakes_a_few_minutes"
             android:textColor="@drawable/radio_text"
             android:textSize="18sp" />
 

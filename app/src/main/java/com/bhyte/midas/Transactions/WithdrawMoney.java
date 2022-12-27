@@ -4,11 +4,17 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +34,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 public class WithdrawMoney extends AppCompatActivity {
     public static Double amountToWithdraw;
     public static String amountToWithdrawString;
@@ -38,10 +46,12 @@ public class WithdrawMoney extends AppCompatActivity {
 
     Context context;
     BottomSheetDialog bottomSheetDialog;
+    RadioGroup radioGroup;
     Double userAmountDouble;
     MaterialButton withdrawButton;
     ImageView backspace, back;
     TextView amount, currentBalanceText, currency, one, two, three, four, five, six, seven, eight, nine, zero, dot;
+    String phoneNumber;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -95,22 +105,71 @@ public class WithdrawMoney extends AppCompatActivity {
             }
         });
 
+        DatabaseReference databasePhoneReference = database.getReference("Users").child(firebaseUser.getUid()).child("phone");
+        databasePhoneReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                phoneNumber = snapshot.getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         // Withdraw Button
         withdrawButton.setOnClickListener(v -> {
             bottomSheetDialog = new BottomSheetDialog(WithdrawMoney.this, R.style.BottomSheetTheme);
             View sheetView = LayoutInflater.from(context).inflate(R.layout.withdrawal_method_bottom_sheet, findViewById(R.id.withdrawal_method));
+            RadioButton selectMobileMoney = sheetView.findViewById(R.id.withdraw_by_mobile_money);
             MaterialButton withdrawButtonBottom = sheetView.findViewById(R.id.withdraw_button_bottom_sheet);
             bottomSheetDialog.setContentView(sheetView);
 
-            String userInputAmount = amount.getText().toString(); // This gets the user input
+            String text = "Mobile Money Transfer\n" + "Account Number:\n" + phoneNumber + "\n" + "Instant Transfer";
+            SpannableString spannableString = new SpannableString(text);
+
+            // This selects a specific text
+            int startIndex = text.indexOf("Mobile Money Transfer");
+            int endIndex = startIndex + "Mobile Money Transfer".length();
+
+            // This sets the selected text to bold
+            spannableString.setSpan(new StyleSpan(Typeface.BOLD), startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+
+            // This gets the user input
+            String userInputAmount = amount.getText().toString();
+
             if (userInputAmount.equals("") || userInputAmount.equals("0")) {
-                Toast.makeText(getApplicationContext(),"Please Enter an amount",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Please enter an amount",Toast.LENGTH_SHORT).show();
             } else {
-                withdrawButtonBottom.setText("Withdraw GH₵"+ userInputAmount);
-                bottomSheetDialog.show();
+                userAmountDouble = Double.parseDouble(userInputAmount);
+
+                if (userAmountDouble >= 1000) {
+                    Toast.makeText(getApplicationContext(),"Insufficient Balance",Toast.LENGTH_SHORT).show();
+                } else {
+                    selectMobileMoney.setText(spannableString);
+                    withdrawButtonBottom.setText("Withdraw GH₵"+ userInputAmount);
+                    bottomSheetDialog.show();
+                }
             }
 
             withdrawButtonBottom.setOnClickListener(w -> {
+                assert firebaseUser != null;
+                databaseReference.child(firebaseUser.getUid()).child("transactions").child("withdrawalTransactions").child(Objects.requireNonNull(databaseReference.push().getKey())).child("amount").setValue(userInputAmount);
+
+                // Get a reference to the "transactions" collection
+                DatabaseReference transactionsRef = database.getReference("Transactions");
+
+                // Get a reference to the "withdrawalTransactions" sub-collection
+                DatabaseReference withdrawalTransactionsRef = transactionsRef.child("withdrawalTransactions");
+
+                // Generate a unique ID for the new transaction
+                String transactionUID = withdrawalTransactionsRef.push().getKey();
+
+                // Add the new transaction to the "withdrawalTransactions" sub-collection
+                assert transactionUID != null;
+                withdrawalTransactionsRef.child(transactionUID).child("amount").setValue(userInputAmount);
                 startActivity(new Intent(context, WithdrawalSuccessPage.class));
             });
         });
