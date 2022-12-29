@@ -51,6 +51,7 @@ import com.bhyte.midas.Recycler.QuickActionsHelperClass;
 import com.bhyte.midas.Store.Store;
 import com.bhyte.midas.Transactions.AddMoneyChooseMethod;
 import com.bhyte.midas.Transactions.DepositSuccessPage;
+import com.bhyte.midas.Transactions.SendMoney;
 import com.bhyte.midas.Transactions.WithdrawMoney;
 import com.bumptech.glide.Glide;
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -281,7 +282,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         quickActionsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         viewQuickActions.add(new QuickActionsHelperClass(R.drawable.add, "Create Card"));
-        viewQuickActions.add(new QuickActionsHelperClass(R.drawable.check, "Deposit"));
+        viewQuickActions.add(new QuickActionsHelperClass(R.drawable.check, "Send Money"));
         viewQuickActions.add(new QuickActionsHelperClass(R.drawable.card, "Cards"));
         viewQuickActions.add(new QuickActionsHelperClass(R.drawable.store, "Store"));
         viewQuickActions.add(new QuickActionsHelperClass(R.drawable.logout, "Sign Out"));
@@ -296,7 +297,7 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
             startActivity(new Intent(getActivity(), CreateCard.class));
         }
         if (position == 1) {
-            startActivity(new Intent(getActivity(), AddMoneyChooseMethod.class));
+            startActivity(new Intent(getActivity(), SendMoney.class));
         }
         if (position == 2) {
             // Cards Fragment

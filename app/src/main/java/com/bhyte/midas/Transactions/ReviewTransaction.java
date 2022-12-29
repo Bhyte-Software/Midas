@@ -118,7 +118,6 @@ public class ReviewTransaction extends AppCompatActivity {
         transactionFee = String.valueOf(df.format(transactionFeeInt));
 
 
-
         // Amount you will have to pay
         double amountToPayDouble = amountDouble + transactionFeeInt; // The amount to pay displayed as a double
         amountToPay = String.valueOf(df.format(amountToPayDouble));
@@ -174,19 +173,23 @@ public class ReviewTransaction extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            // All this should be for when the deposit works/goes through
+            // TODO All this should be for when the deposit works/goes through
 
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
             assert firebaseUser != null;
+            // Get user main balance and add the deposit amount to it
             databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addListenerForSingleValueEvent(new ValueEventListener() {
 
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     String currentBalance = snapshot.getValue(String.class);
                     assert currentBalance != null;
+
+                    // The amount deposited plus the current balance
                     double amountToAdd = Double.parseDouble(currentBalance) + Double.parseDouble(amount);
                     String newBalance = Double.toString(Double.parseDouble(df.format(amountToAdd)));
 
+                    // Write the new balance to the database
                     databaseReference.child(firebaseUser.getUid()).child("userMainBalance").setValue(newBalance).addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             startActivity(new Intent(getApplicationContext(), DepositSuccessPage.class));
@@ -205,6 +208,23 @@ public class ReviewTransaction extends AppCompatActivity {
                     System.out.println("Error retrieving user main balance: " + error.getMessage());
                 }
             });
+
+            // Write deposit amount to users database, as a Deposit Transaction
+            databaseReference.child(firebaseUser.getUid()).child("transactions").child("depositTransactions").child(Objects.requireNonNull(databaseReference.push().getKey())).child("amount").setValue(amount);
+
+            /* Write deposit amount to transactions database */
+            // Get a reference to the "transactions" collection
+            DatabaseReference transactionsRef = database.getReference("Transactions");
+
+            // Get a reference to the "withdrawalTransactions" sub-collection
+            DatabaseReference depositTransactionsRef = transactionsRef.child("depositTransactions");
+
+            // Generate a unique ID for the new transaction
+            String transactionUID = depositTransactionsRef.push().getKey();
+
+            // Add the new transaction to the "withdrawalTransactions" sub-collection
+            assert transactionUID != null;
+            depositTransactionsRef.child(transactionUID).child("amount").setValue(amount);
 
 
             // A loading animation should be added when clicked

@@ -72,8 +72,6 @@ public class WithdrawalSuccessPage extends AppCompatActivity {
                             System.out.println("Error retrieving user main balance: " + error.getMessage());
                         }
                     });
-
-                    //withdrawSuccessText.setText("GH₵" + lastTransactionKey + " has been sent to your mobile money account");
                 }
             }
 

@@ -34,6 +34,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class WithdrawMoney extends AppCompatActivity {
@@ -145,16 +146,34 @@ public class WithdrawMoney extends AppCompatActivity {
             } else {
                 userAmountDouble = Double.parseDouble(userInputAmount);
 
-                if (userAmountDouble >= 1000) {
-                    Toast.makeText(getApplicationContext(),"Insufficient Balance",Toast.LENGTH_SHORT).show();
-                } else {
-                    selectMobileMoney.setText(spannableString);
-                    withdrawButtonBottom.setText("Withdraw GH₵"+ userInputAmount);
-                    bottomSheetDialog.show();
-                }
+                databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String currentBalance = snapshot.getValue(String.class);
+                        assert currentBalance != null;
+                        double currentBalanceDouble = Double.parseDouble(currentBalance);
+
+                        if (userAmountDouble >= currentBalanceDouble) {
+                            Toast.makeText(getApplicationContext(),"Insufficient Balance",Toast.LENGTH_SHORT).show();
+                        } else {
+                            selectMobileMoney.setText(spannableString);
+                            withdrawButtonBottom.setText("Withdraw GH₵"+ userInputAmount);
+                            bottomSheetDialog.show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Print an error message
+                        System.out.println("Error retrieving user main balance: " + error.getMessage());
+                    }
+                });
             }
 
+            // When the second withdraw button is pressed
             withdrawButtonBottom.setOnClickListener(w -> {
+                // TODO FINGERPRINT VERIFICATION BEFORE ANY OF THIS
+
                 assert firebaseUser != null;
                 databaseReference.child(firebaseUser.getUid()).child("transactions").child("withdrawalTransactions").child(Objects.requireNonNull(databaseReference.push().getKey())).child("amount").setValue(userInputAmount);
 
@@ -170,7 +189,38 @@ public class WithdrawMoney extends AppCompatActivity {
                 // Add the new transaction to the "withdrawalTransactions" sub-collection
                 assert transactionUID != null;
                 withdrawalTransactionsRef.child(transactionUID).child("amount").setValue(userInputAmount);
-                startActivity(new Intent(context, WithdrawalSuccessPage.class));
+
+                // Get current balance to be subtracted from
+                databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addListenerForSingleValueEvent(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String currentBalance = snapshot.getValue(String.class);
+                        DecimalFormat df = new DecimalFormat("0.00");
+                        assert currentBalance != null;
+
+                        // The current balance minus the amount withdrawn
+                        double amountToSubtract = Double.parseDouble(currentBalance) - Double.parseDouble(userInputAmount);
+                        String newBalance = Double.toString(Double.parseDouble(df.format(amountToSubtract)));
+
+                        // Write the new balance to the database
+                        databaseReference.child(firebaseUser.getUid()).child("userMainBalance").setValue(newBalance).addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                startActivity(new Intent(context, WithdrawalSuccessPage.class));
+                                finish();
+                            } else {
+                                // Print an error message
+                                System.out.println("Error updating user main balance: " + task.getException());
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Print an error message
+                        System.out.println("Error retrieving user main balance: " + error.getMessage());
+                    }
+                });
             });
         });
 

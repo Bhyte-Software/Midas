@@ -4,13 +4,23 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.TextWatcher;
+import android.text.style.StyleSpan;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -18,31 +28,51 @@ import com.bhyte.midas.AccountCreation.GetStarted;
 import com.bhyte.midas.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class AddMoney extends AppCompatActivity {
-    public static Double amountToDeposit;
-    public static String amountToDepositString;
+import java.text.DecimalFormat;
+import java.util.Objects;
+
+public class SendMoney extends AppCompatActivity {
+    public static Double amountToWithdraw;
+    public static String amountToWithdrawString;
+
+    FirebaseUser firebaseUser;
+    FirebaseAuth firebaseAuth;
+    FirebaseDatabase database;
 
     Context context;
     BottomSheetDialog bottomSheetDialog;
+    RadioGroup radioGroup;
     Double userAmountDouble;
-    MaterialButton nextButton;
-    ImageView backspace, back, help;
-    TextView amount, currency, one, two, three, four, five, six, seven, eight, nine, zero, dot;
+    MaterialButton sendMoneyButton;
+    ImageView backspace, back;
+    TextView amount, currentBalanceText, currency, one, two, three, four, five, six, seven, eight, nine, zero, dot;
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_money);
+        setContentView(R.layout.activity_send_money);
 
         this.context = getApplicationContext();
 
+        // Instance of FirebaseAuth and Database
+        firebaseAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+
         // Hooks
-        help = findViewById(R.id.deposit_help);
         back = findViewById(R.id.back);
         amount = findViewById(R.id.amount);
         currency = findViewById(R.id.currency);
+        currentBalanceText = findViewById(R.id.current_balance);
 
         one = findViewById(R.id.one);
         two = findViewById(R.id.two);
@@ -57,62 +87,53 @@ public class AddMoney extends AppCompatActivity {
         dot = findViewById(R.id.dot);
 
         backspace = findViewById(R.id.backspace);
-        nextButton = findViewById(R.id.next);
+        sendMoneyButton = findViewById(R.id.send_money_button);
 
-        nextButton.setOnClickListener(v -> {
-            // Get Input
-            // Convert String to int
-            String userInputAmount = amount.getText().toString();
-            if (userInputAmount.equals("")) {
-                // Custom Toast
-                Toast toast = Toast.makeText(AddMoney.this, R.string.right_amount, Toast.LENGTH_SHORT);
-                View view1 = toast.getView();
+        // Display send amount on button, in realtime
+        amount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //
+            }
 
-                //Gets the actual oval background of the Toast then sets the colour filter
-                view1.getBackground().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.red), PorterDuff.Mode.SRC_IN);
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // This method is called whenever the text in the EditText changes
+                String userInputAmount = amount.getText().toString();
+                sendMoneyButton.setText("Send GH₵" + userInputAmount);
+            }
 
-                //Gets the TextView from the Toast so it can be edited
-                TextView text = view1.findViewById(android.R.id.message);
-                text.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
-
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                toast.show();
-            } else {
-                userAmountDouble = Double.parseDouble(userInputAmount);
-                amountToDeposit = userAmountDouble;
-                amountToDepositString = userInputAmount;
-
-                if (userAmountDouble > 5000 | userAmountDouble < 20) {
-                    /*Toast toast = Toast.makeText(AddMoney.this, R.string.right_amount, Toast.LENGTH_SHORT);
-                    View view1 = toast.getView();
-
-                    //Gets the actual oval background of the Toast then sets the colour filter
-                    view1.getBackground().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.red), PorterDuff.Mode.SRC_IN);
-
-                    //Gets the TextView from the Toast so it can be edited
-                    TextView text = view1.findViewById(android.R.id.message);
-                    text.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
-
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                    toast.show();*/
-
-                    Toast.makeText(getApplicationContext(),"Please enter valid amount",Toast.LENGTH_SHORT).show();
-                } else {
-                    // Check Input
-                    startActivity(new Intent(context, AddMoneyChooseProvider.class));
-                }
+            @Override
+            public void afterTextChanged(Editable editable) {
+//
             }
         });
 
-        // Click Listeners
-        help.setOnClickListener(v -> {
-            bottomSheetDialog = new BottomSheetDialog(AddMoney.this, R.style.BottomSheetTheme);
-            View sheetView = LayoutInflater.from(context).inflate(R.layout.add_money_help_bottom_sheet, findViewById(R.id.add_money_help));
-            bottomSheetDialog.setContentView(sheetView);
+        // Connect to the database
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        assert firebaseUser != null;
+        // Get and show available balance
+        databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String currentBalance = snapshot.getValue(String.class);
+                assert currentBalance != null;
+                currentBalanceText.setText("GH₵"+ currentBalance + " AVAILABLE");
+            }
 
-            bottomSheetDialog.show();
-            // Hooks
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Print an error message
+                System.out.println("Error retrieving user main balance: " + error.getMessage());
+            }
         });
+
+        // Withdraw Button
+        sendMoneyButton.setOnClickListener(v -> {
+            //
+        });
+
+        // Click Listeners
         back.setOnClickListener(v -> finish());
         zero.setOnClickListener(v -> {
             if (amount.getText().toString().equals("0")) {

@@ -107,6 +107,7 @@ public class GetStarted extends AppCompatActivity {
                 }
             });
         });
+
         createAccountButton.setOnClickListener(v -> {
             countryBottomSheet.show();
 

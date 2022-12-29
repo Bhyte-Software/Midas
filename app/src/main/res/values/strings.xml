@@ -229,6 +229,7 @@
     <string name="total_assets_dollar">Total assets ($)</string>
     <string name="add_money">Add Money</string>
     <string name="withdraw_money">Withdraw</string>
+    <string name="send_money">Send Money</string>
     <string name="us_dollar">US Dollar</string>
     <string name="cedi">GH₵</string>
     <string name="dollar">$</string>
