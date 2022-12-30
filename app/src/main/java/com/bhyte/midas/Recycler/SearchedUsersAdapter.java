@@ -9,13 +9,9 @@ import com.bhyte.midas.DataModels.SearchedUsersModel;
 import com.bhyte.midas.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,18 +22,16 @@ import com.bhyte.midas.R;
 public class SearchedUsersAdapter extends RecyclerView.Adapter<SearchedUsersAdapter.SearchedUsersViewHolder>{
 
     ArrayList<SearchedUsersModel> searchedUsers;
-    private final SearchedUsersAdapter.OnNoteListener mOnNoteListener;
 
-    public SearchedUsersAdapter(ArrayList<SearchedUsersModel> searchedUsers, OnNoteListener onNoteListener) {
+    public SearchedUsersAdapter(ArrayList<SearchedUsersModel> searchedUsers) {
         this.searchedUsers = searchedUsers;
-        this.mOnNoteListener = onNoteListener;
     }
 
     @NonNull
     @Override
     public SearchedUsersAdapter.SearchedUsersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.searcheduser_list_item, parent, false);
-        return new SearchedUsersAdapter.SearchedUsersViewHolder(view, mOnNoteListener);
+        return new SearchedUsersAdapter.SearchedUsersViewHolder(view);
     }
 
     @Override
@@ -59,9 +53,8 @@ public class SearchedUsersAdapter extends RecyclerView.Adapter<SearchedUsersAdap
         TextView tvUsersName;
         TextView tvUsersEmail;
 
-        public SearchedUsersViewHolder(@NonNull View itemView, OnNoteListener mOnNoteListener) {
+        public SearchedUsersViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.onNoteListener = onNoteListener;
 
             //Hooks
             tvUsersName = itemView.findViewById(R.id.tvUsersName);
@@ -70,7 +63,7 @@ public class SearchedUsersAdapter extends RecyclerView.Adapter<SearchedUsersAdap
 
         @Override
         public void onClick(View view) {
-            onNoteListener.onNoteClick(getAbsoluteAdapterPosition());
+            //onNoteListener.onNoteClick(getAbsoluteAdapterPosition());
         }
 
     }
