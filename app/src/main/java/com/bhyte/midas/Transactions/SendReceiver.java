@@ -79,6 +79,8 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
         searchedUsersRecycler = findViewById(R.id.recyclerUsers);
         svSearch = findViewById(R.id.svSearch);
 
+        svSearch.setQueryHint("Enter name or email of user");
+
     }
 
     @Override
@@ -86,28 +88,9 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
         super.onStart();
 
         // Connect to the database
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        assert firebaseUser != null;
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    searchedUsersModel = new ArrayList<>();
-                    for (DataSnapshot ds : snapshot.getChildren()) {
-                        searchedUsersModel.add(ds.getValue(SearchedUsersModel.class));
-                    }
-                    SearchedUsersAdapter searchedUsersAdapterClass = new SearchedUsersAdapter(searchedUsersModel);
-                    searchedUsersRecycler.setAdapter(searchedUsersAdapterClass);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
         if (svSearch != null) {
+            //svSearch.setQueryHint("Enter name or email of user");
             svSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String s) {
@@ -116,25 +99,72 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
 
                 @Override
                 public boolean onQueryTextChange(String s) {
-                    search(s);
+
+                    svSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                        @Override
+                        public boolean onQueryTextSubmit(String query) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onQueryTextChange(String newText) {
+                            if (!newText.isEmpty()) {
+                                // Connect to the database
+                                String currentUserId = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getEmail();
+
+                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+                                assert firebaseUser != null;
+                                databaseReference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        if(snapshot.exists()){
+                                            searchedUsersModel = new ArrayList<>();
+                                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                                //searchedUsersModel.add(ds.getValue(SearchedUsersModel.class));
+
+                                                // Removes current user from list
+                                                SearchedUsersModel user = ds.getValue(SearchedUsersModel.class);
+                                                assert user != null;
+                                                if (!user.getMail().equals(currentUserId)) {  // check if user's ID does not match current user's ID
+                                                    searchedUsersModel.add(user);  // add this user to the list of searched users
+                                                }
+                                            }
+
+                                            //Filter through the users based on Name or Email
+                                            ArrayList<SearchedUsersModel> myList = new ArrayList<>();
+                                            for(SearchedUsersModel object : searchedUsersModel) {
+                                                if(object.getMail().toLowerCase().contains(newText.toLowerCase())) {
+                                                    myList.add(object);
+                                                }
+                                                else if(object.getName().toLowerCase().contains(newText.toLowerCase())) {
+                                                    myList.add(object);
+                                                }
+                                            }
+                                            SearchedUsersAdapter searchedUsersAdapter = new SearchedUsersAdapter(myList);
+                                            searchedUsersRecycler.setAdapter(searchedUsersAdapter);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                            } else {
+                                // Clear the data from the RecyclerView
+                                searchedUsersModel = new ArrayList<>();
+                                SearchedUsersAdapter searchedUsersAdapterClass = new SearchedUsersAdapter(searchedUsersModel);
+                                searchedUsersRecycler.setAdapter(searchedUsersAdapterClass);
+                            }
+                            return false;
+                        }
+                    });
+
+
                     return true;
                 }
             });
         }
-    }
-
-    private void search(String str) {
-        ArrayList<SearchedUsersModel> myList = new ArrayList<>();
-        for(SearchedUsersModel object : searchedUsersModel) {
-            if(object.getEmail().toLowerCase().contains(str.toLowerCase())) {
-                myList.add(object);
-            }
-            else if(object.getName().toLowerCase().contains(str.toLowerCase())) {
-                myList.add(object);
-            }
-        }
-        SearchedUsersAdapter searchedUsersAdapter = new SearchedUsersAdapter(myList);
-        searchedUsersRecycler.setAdapter(searchedUsersAdapter);
     }
 
     @Override

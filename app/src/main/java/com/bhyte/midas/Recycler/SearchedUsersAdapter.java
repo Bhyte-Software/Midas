@@ -39,7 +39,7 @@ public class SearchedUsersAdapter extends RecyclerView.Adapter<SearchedUsersAdap
         SearchedUsersModel searchedUsersModel = searchedUsers.get(position);
 
         holder.tvUsersName.setText(searchedUsersModel.getName());
-        holder.tvUsersEmail.setText(searchedUsersModel.getEmail());
+        holder.tvUsersEmail.setText(searchedUsersModel.getMail());
     }
 
     @Override

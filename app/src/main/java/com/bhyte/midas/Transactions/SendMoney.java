@@ -40,16 +40,12 @@ import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class SendMoney extends AppCompatActivity {
-    public static Double amountToWithdraw;
-    public static String amountToWithdrawString;
 
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
     FirebaseDatabase database;
 
     Context context;
-    BottomSheetDialog bottomSheetDialog;
-    RadioGroup radioGroup;
     Double userAmountDouble;
     MaterialButton sendMoneyButton;
     ImageView backspace, back;
@@ -131,8 +127,34 @@ public class SendMoney extends AppCompatActivity {
 
         // Send Money Button
         sendMoneyButton.setOnClickListener(v -> {
-            //
-            startActivity(new Intent(context, SendReceiver.class));
+            String userInputAmount = amount.getText().toString();
+
+            if (userInputAmount.equals("") || userInputAmount.equals("0")) {
+                Toast.makeText(getApplicationContext(),"Please enter an amount",Toast.LENGTH_SHORT).show();
+            } else {
+                userAmountDouble = Double.parseDouble(userInputAmount);
+
+                databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String currentBalance = snapshot.getValue(String.class);
+                        assert currentBalance != null;
+                        double currentBalanceDouble = Double.parseDouble(currentBalance);
+
+                        if (userAmountDouble >= currentBalanceDouble) {
+                            Toast.makeText(getApplicationContext(),"Insufficient Balance",Toast.LENGTH_SHORT).show();
+                        } else {
+                            startActivity(new Intent(context, SendReceiver.class));
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Print an error message
+                        System.out.println("Error retrieving user main balance: " + error.getMessage());
+                    }
+                });
+            }
         });
 
         // Click Listeners

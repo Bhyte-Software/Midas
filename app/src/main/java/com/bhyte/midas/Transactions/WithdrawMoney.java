@@ -38,16 +38,12 @@ import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class WithdrawMoney extends AppCompatActivity {
-    public static Double amountToWithdraw;
-    public static String amountToWithdrawString;
-
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
     FirebaseDatabase database;
 
     Context context;
     BottomSheetDialog bottomSheetDialog;
-    RadioGroup radioGroup;
     Double userAmountDouble;
     MaterialButton withdrawButton;
     ImageView backspace, back;

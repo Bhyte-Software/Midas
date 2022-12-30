@@ -3,16 +3,16 @@ package com.bhyte.midas.DataModels;
 public class SearchedUsersModel {
     private String id;
     private String name;
-    private String email;
+    private String mail;
 
     public SearchedUsersModel() {
         // Default constructor required for calls to DataSnapshot.getValue(Students.class)
     }
 
-    public SearchedUsersModel(String id, String name, String email) {
+    public SearchedUsersModel(String id, String name, String mail) {
         this.id = id;
         this.name = name;
-        this.email = email;
+        this.mail = mail;
     }
 
     public String getId() {
@@ -31,12 +31,12 @@ public class SearchedUsersModel {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getMail() {
+        return mail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 }
 
