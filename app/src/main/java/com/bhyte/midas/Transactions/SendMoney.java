@@ -88,12 +88,13 @@ public class SendMoney extends AppCompatActivity {
 
         backspace = findViewById(R.id.backspace);
         sendMoneyButton = findViewById(R.id.send_money_button);
+        sendMoneyButton.setText("Send GH₵0");
 
         // Display send amount on button, in realtime
         amount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                //
+                //sendMoneyButton.setText("Send GH₵0");
             }
 
             @Override
@@ -105,7 +106,7 @@ public class SendMoney extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-//
+                //
             }
         });
 
@@ -128,9 +129,10 @@ public class SendMoney extends AppCompatActivity {
             }
         });
 
-        // Withdraw Button
+        // Send Money Button
         sendMoneyButton.setOnClickListener(v -> {
             //
+            startActivity(new Intent(context, SendReceiver.class));
         });
 
         // Click Listeners

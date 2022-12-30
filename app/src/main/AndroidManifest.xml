@@ -58,9 +58,13 @@
             android:exported="false" />
         <activity
             android:name=".Transactions.WithdrawalSuccessPage"
-            android:exported="false" /><activity
-        android:name=".Transactions.SendMoney"
-        android:exported="false" />
+            android:exported="false" />
+        <activity
+            android:name=".Transactions.SendMoney"
+            android:exported="false" />
+        <activity
+            android:name=".Transactions.SendReceiver"
+            android:exported="false" />
         <activity
             android:name=".AccountCreation.EnterOTPNigeria"
             android:exported="false" />
