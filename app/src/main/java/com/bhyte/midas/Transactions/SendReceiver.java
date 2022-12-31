@@ -62,6 +62,7 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
     ArrayList<SearchedUsersModel> searchedUsersModel;
     RecyclerView searchedUsersRecycler;
     SearchView svSearch;
+    MaterialButton finalSendBtn;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -78,6 +79,7 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
 
         searchedUsersRecycler = findViewById(R.id.recyclerUsers);
         svSearch = findViewById(R.id.svSearch);
+        finalSendBtn = findViewById(R.id.final_send_button);
 
         svSearch.setQueryHint("Enter name or email of user");
 
@@ -120,7 +122,6 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
                                         if(snapshot.exists()){
                                             searchedUsersModel = new ArrayList<>();
                                             for (DataSnapshot ds : snapshot.getChildren()) {
-                                                //searchedUsersModel.add(ds.getValue(SearchedUsersModel.class));
 
                                                 // Removes current user from list
                                                 SearchedUsersModel user = ds.getValue(SearchedUsersModel.class);
@@ -140,7 +141,7 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
                                                     myList.add(object);
                                                 }
                                             }
-                                            SearchedUsersAdapter searchedUsersAdapter = new SearchedUsersAdapter(myList);
+                                            SearchedUsersAdapter searchedUsersAdapter = new SearchedUsersAdapter(myList, finalSendBtn);
                                             searchedUsersRecycler.setAdapter(searchedUsersAdapter);
                                         }
                                     }
@@ -153,8 +154,11 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
                             } else {
                                 // Clear the data from the RecyclerView
                                 searchedUsersModel = new ArrayList<>();
-                                SearchedUsersAdapter searchedUsersAdapterClass = new SearchedUsersAdapter(searchedUsersModel);
+                                SearchedUsersAdapter searchedUsersAdapterClass = new SearchedUsersAdapter(searchedUsersModel, finalSendBtn);
                                 searchedUsersRecycler.setAdapter(searchedUsersAdapterClass);
+
+                                //Set buttoo to disabled
+                                finalSendBtn.setEnabled(false);
                             }
                             return false;
                         }

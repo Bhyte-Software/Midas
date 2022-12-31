@@ -2,7 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/dimen_80"
+    android:id="@+id/clLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
 
     <TextView
         android:id="@+id/tvUsersName"
