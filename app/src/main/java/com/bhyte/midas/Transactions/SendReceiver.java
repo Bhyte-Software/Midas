@@ -29,6 +29,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bhyte.midas.AccountCreation.GetStarted;
+import com.bhyte.midas.Common.MainDashboard;
 import com.bhyte.midas.DataModels.SearchedUsersModel;
 import com.bhyte.midas.R;
 import com.bhyte.midas.Recycler.QuickActionsAdapter;
@@ -56,13 +57,36 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
 
     Context context;
 
-    RecyclerView.Adapter<?> adapter;
-    RecyclerView.Adapter<?> platformsAdapter;
-    ArrayList<SearchedUsersAdapter> viewSearchedUsers = new ArrayList<>();
     ArrayList<SearchedUsersModel> searchedUsersModel;
     RecyclerView searchedUsersRecycler;
     SearchView svSearch;
     MaterialButton finalSendBtn;
+
+    public static String userInputAmount;
+
+    public void receiveAmount() {
+        // Instance of FirebaseAuth and Database
+        firebaseAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+
+        DatabaseReference databaseReference = database.getReference("Users");
+        assert firebaseUser != null;
+        databaseReference.child(firebaseUser.getUid()).child("transactions").child("sendTransactions").child(Objects.requireNonNull(databaseReference.push().getKey())).child("amount").setValue(userInputAmount);
+
+        // Get a reference to the "transactions" collection
+        DatabaseReference transactionsRef = database.getReference("Transactions");
+
+        // Get a reference to the "sendTransactions" sub-collection
+        DatabaseReference sendTransactionsRef = transactionsRef.child("sendTransactions");
+
+        // Generate a unique ID for the new transaction
+        String transactionUID = sendTransactionsRef.push().getKey();
+
+        // Add the new transaction to the "sendTransactions" sub-collection
+        assert transactionUID != null;
+        sendTransactionsRef.child(transactionUID).child("amount").setValue(userInputAmount);
+    }
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -77,12 +101,19 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
         database = FirebaseDatabase.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
+        // Hooks
         searchedUsersRecycler = findViewById(R.id.recyclerUsers);
         svSearch = findViewById(R.id.svSearch);
         finalSendBtn = findViewById(R.id.final_send_button);
 
+        // Set the hint for the search bar
         svSearch.setQueryHint("Enter name or email of user");
 
+        // On click listener for when you hit the Send button
+        finalSendBtn.setOnClickListener(v -> {
+            receiveAmount();
+            startActivity(new Intent(getApplicationContext(), SendReceiverSuccessPage.class));
+        });
     }
 
     @Override
@@ -141,7 +172,7 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
                                                     myList.add(object);
                                                 }
                                             }
-                                            SearchedUsersAdapter searchedUsersAdapter = new SearchedUsersAdapter(myList, finalSendBtn);
+                                            SearchedUsersAdapter searchedUsersAdapter = new SearchedUsersAdapter(myList, finalSendBtn, svSearch);
                                             searchedUsersRecycler.setAdapter(searchedUsersAdapter);
                                         }
                                     }
@@ -154,10 +185,10 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
                             } else {
                                 // Clear the data from the RecyclerView
                                 searchedUsersModel = new ArrayList<>();
-                                SearchedUsersAdapter searchedUsersAdapterClass = new SearchedUsersAdapter(searchedUsersModel, finalSendBtn);
+                                SearchedUsersAdapter searchedUsersAdapterClass = new SearchedUsersAdapter(searchedUsersModel, finalSendBtn, svSearch);
                                 searchedUsersRecycler.setAdapter(searchedUsersAdapterClass);
 
-                                //Set buttoo to disabled
+                                //Set button to disabled
                                 finalSendBtn.setEnabled(false);
                             }
                             return false;

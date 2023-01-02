@@ -1,10 +1,12 @@
 package com.bhyte.midas.Recycler;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,22 +17,26 @@ import java.util.ArrayList;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bhyte.midas.R;
+import com.bhyte.midas.Transactions.SendReceiverSuccessPage;
 import com.google.android.material.button.MaterialButton;
 
 public class SearchedUsersAdapter extends RecyclerView.Adapter<SearchedUsersAdapter.SearchedUsersViewHolder>{
 
     ArrayList<SearchedUsersModel> searchedUsers;
     private MaterialButton finalSendButton;
+    private SearchView searchView;
 
-    public SearchedUsersAdapter(ArrayList<SearchedUsersModel> searchedUsers, MaterialButton finalSendButton) {
+    public SearchedUsersAdapter(ArrayList<SearchedUsersModel> searchedUsers, MaterialButton finalSendButton, SearchView searchView) {
         this.searchedUsers = searchedUsers;
         this.finalSendButton = finalSendButton;
+        this.searchView = searchView;
     }
 
     @NonNull
@@ -67,10 +73,14 @@ public class SearchedUsersAdapter extends RecyclerView.Adapter<SearchedUsersAdap
             notifyDataSetChanged();
             // Enable the send money button if selected
             finalSendButton.setEnabled(true);
+
+            //Hide keyboard
+            searchView.clearFocus();
         });
 
         if (searchedUsersModel.isSelected()) {
             holder.clLayout.setBackgroundColor(Color.parseColor("#70AEFF"));
+            SendReceiverSuccessPage.usersName = searchedUsersModel.getName();
         } else {
             holder.clLayout.setBackgroundColor(Color.parseColor("#00000000"));
         }
