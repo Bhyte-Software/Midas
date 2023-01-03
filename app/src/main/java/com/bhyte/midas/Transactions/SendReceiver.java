@@ -112,7 +112,40 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
         // On click listener for when you hit the Send button
         finalSendBtn.setOnClickListener(v -> {
             receiveAmount();
-            startActivity(new Intent(getApplicationContext(), SendReceiverSuccessPage.class));
+
+            // This deducts the same amount from the current users main balance
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+            databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addListenerForSingleValueEvent(new ValueEventListener() {
+
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String currentBalance = snapshot.getValue(String.class);
+                    DecimalFormat df = new DecimalFormat("0.00");
+                    assert currentBalance != null;
+
+                    // The current balance minus the amount withdrawn
+                    double amountToSubtract = Double.parseDouble(currentBalance) - Double.parseDouble(userInputAmount);
+                    String newBalance = Double.toString(Double.parseDouble(df.format(amountToSubtract)));
+
+                    // Write the new balance to the database
+                    databaseReference.child(firebaseUser.getUid()).child("userMainBalance").setValue(newBalance).addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(getApplicationContext(), SendReceiverSuccessPage.class));
+                            finish();
+                        } else {
+                            // Print an error message
+                            System.out.println("Error updating user main balance: " + task.getException());
+                        }
+                    });
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Print an error message
+                    System.out.println("Error retrieving user main balance: " + error.getMessage());
+                }
+            });
+            //startActivity(new Intent(getApplicationContext(), SendReceiverSuccessPage.class));
         });
     }
 

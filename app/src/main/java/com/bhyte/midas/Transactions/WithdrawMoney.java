@@ -149,7 +149,7 @@ public class WithdrawMoney extends AppCompatActivity {
                         assert currentBalance != null;
                         double currentBalanceDouble = Double.parseDouble(currentBalance);
 
-                        if (userAmountDouble >= currentBalanceDouble) {
+                        if (userAmountDouble > currentBalanceDouble) {
                             Toast.makeText(getApplicationContext(),"Insufficient Balance",Toast.LENGTH_SHORT).show();
                         } else {
                             selectMobileMoney.setText(spannableString);

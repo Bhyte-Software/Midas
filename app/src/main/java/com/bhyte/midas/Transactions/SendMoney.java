@@ -50,7 +50,6 @@ public class SendMoney extends AppCompatActivity {
     MaterialButton sendMoneyButton;
     ImageView backspace, back;
     TextView amount, currentBalanceText, currency, one, two, three, four, five, six, seven, eight, nine, zero, dot;
-    public static String userInputAmountPublic;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -131,10 +130,8 @@ public class SendMoney extends AppCompatActivity {
             String userInputAmount = amount.getText().toString();
 
             // Pass the user input amount to the SendReceiver class
-            //String userInputAmountPublic = amount.getText().toString();
-            Intent sendReceiverIntent = new Intent(SendMoney.this, SendReceiver.class);
+            Intent sendReceiverIntent = new Intent(getApplicationContext(), SendReceiver.class);
             SendReceiver.userInputAmount = userInputAmount;
-            startActivity(sendReceiverIntent);
 
             if (userInputAmount.equals("") || userInputAmount.equals("0")) {
                 Toast.makeText(getApplicationContext(),"Please enter an amount",Toast.LENGTH_SHORT).show();
@@ -148,10 +145,11 @@ public class SendMoney extends AppCompatActivity {
                         assert currentBalance != null;
                         double currentBalanceDouble = Double.parseDouble(currentBalance);
 
-                        if (userAmountDouble >= currentBalanceDouble) {
+                        if (userAmountDouble > currentBalanceDouble) {
                             Toast.makeText(getApplicationContext(),"Insufficient Balance",Toast.LENGTH_SHORT).show();
                         } else {
-                            startActivity(new Intent(context, SendReceiver.class));
+                            //startActivity(sendReceiverIntent);
+                            startActivity(new Intent(getApplicationContext(), SendReceiver.class));
                         }
                     }
 
