@@ -64,10 +64,10 @@
             android:exported="false" />
         <activity
             android:name=".Transactions.SendReceiver"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".Transactions.SendReceiverSuccessPage"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".AccountCreation.EnterOTPNigeria"
             android:exported="false" />

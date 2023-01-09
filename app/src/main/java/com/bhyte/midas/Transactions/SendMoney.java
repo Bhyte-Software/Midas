@@ -86,6 +86,7 @@ public class SendMoney extends AppCompatActivity {
         sendMoneyButton = findViewById(R.id.send_money_button);
         sendMoneyButton.setText("Send GH₵0");
 
+
         // Display send amount on button, in realtime
         amount.addTextChangedListener(new TextWatcher() {
             @Override
@@ -103,6 +104,7 @@ public class SendMoney extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 //
+
             }
         });
 
@@ -126,12 +128,9 @@ public class SendMoney extends AppCompatActivity {
         });
 
         // Send Money Button
+        final boolean[] activityLaunched = {false};
         sendMoneyButton.setOnClickListener(v -> {
             String userInputAmount = amount.getText().toString();
-
-            // Pass the user input amount to the SendReceiver class
-            Intent sendReceiverIntent = new Intent(getApplicationContext(), SendReceiver.class);
-            SendReceiver.userInputAmount = userInputAmount;
 
             if (userInputAmount.equals("") || userInputAmount.equals("0")) {
                 Toast.makeText(getApplicationContext(),"Please enter an amount",Toast.LENGTH_SHORT).show();
@@ -148,8 +147,16 @@ public class SendMoney extends AppCompatActivity {
                         if (userAmountDouble > currentBalanceDouble) {
                             Toast.makeText(getApplicationContext(),"Insufficient Balance",Toast.LENGTH_SHORT).show();
                         } else {
-                            //startActivity(sendReceiverIntent);
-                            startActivity(new Intent(getApplicationContext(), SendReceiver.class));
+                            if (!activityLaunched[0]) {
+                                // Create an Intent and include the value of userInputAmount
+                                Intent sendReceiverIntent = new Intent(getApplicationContext(), SendReceiver.class);
+                                sendReceiverIntent.putExtra("USER_INPUT_AMOUNT", amount.getText().toString());
+                                sendReceiverIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                sendReceiverIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                                startActivity(sendReceiverIntent);
+                                activityLaunched[0] = true;
+                            }
                         }
                     }
 
@@ -159,6 +166,7 @@ public class SendMoney extends AppCompatActivity {
                         System.out.println("Error retrieving user main balance: " + error.getMessage());
                     }
                 });
+
             }
         });
 

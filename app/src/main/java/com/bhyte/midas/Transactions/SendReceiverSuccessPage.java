@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 public class SendReceiverSuccessPage extends AppCompatActivity {
     MaterialButton greatNextButton;
@@ -67,6 +68,8 @@ public class SendReceiverSuccessPage extends AppCompatActivity {
                             String sentAmount = snapshot.getValue(String.class);
                             sendSuccessText.setText("GH₵" + sentAmount + " has been sent to " + usersName);
 
+                            //TODO This can also be where receiveTransactions document is created in the users database
+
                             // This sends the money to the chosen user by their name
                             databaseReference.orderByChild("name").equalTo(usersName).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
@@ -74,6 +77,7 @@ public class SendReceiverSuccessPage extends AppCompatActivity {
                                     for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                                         // Get the main balance of the chosen user
                                         String mainBalance = userSnapshot.child("userMainBalance").getValue(String.class);
+                                        DecimalFormat df = new DecimalFormat("0.00");
 
                                         // Convert the main balance and amount sent to doubles
                                         assert mainBalance != null;
@@ -85,10 +89,13 @@ public class SendReceiverSuccessPage extends AppCompatActivity {
                                         double updatedMainBalance = mainBalanceDouble + amountSentDouble;
 
                                         // Convert the updated main balance back to a string
-                                        String updatedMainBalanceString = String.valueOf(updatedMainBalance);
+                                        String updatedMainBalanceString = Double.toString(Double.parseDouble(df.format(updatedMainBalance)));
 
                                         // Update the main balance in the database for the chosen user
                                         userSnapshot.getRef().child("userMainBalance").setValue(updatedMainBalanceString);
+
+                                        userSnapshot.getRef().child("transactions").child("receivedTransactions").child(Objects.requireNonNull(databaseReference.push().getKey())).child("amount").setValue(sentAmount);
+
                                     }
                                 }
 

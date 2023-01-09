@@ -50,7 +50,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
 
-public class SendReceiver extends AppCompatActivity implements QuickActionsAdapter.OnNoteListener{
+public class SendReceiver extends AppCompatActivity{
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
     FirebaseDatabase database;
@@ -62,37 +62,16 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
     SearchView svSearch;
     MaterialButton finalSendBtn;
 
-    public static String userInputAmount;
-
-    public void receiveAmount() {
-        // Instance of FirebaseAuth and Database
-        firebaseAuth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
-
-        DatabaseReference databaseReference = database.getReference("Users");
-        assert firebaseUser != null;
-        databaseReference.child(firebaseUser.getUid()).child("transactions").child("sendTransactions").child(Objects.requireNonNull(databaseReference.push().getKey())).child("amount").setValue(userInputAmount);
-
-        // Get a reference to the "transactions" collection
-        DatabaseReference transactionsRef = database.getReference("Transactions");
-
-        // Get a reference to the "sendTransactions" sub-collection
-        DatabaseReference sendTransactionsRef = transactionsRef.child("sendTransactions");
-
-        // Generate a unique ID for the new transaction
-        String transactionUID = sendTransactionsRef.push().getKey();
-
-        // Add the new transaction to the "sendTransactions" sub-collection
-        assert transactionUID != null;
-        sendTransactionsRef.child(transactionUID).child("amount").setValue(userInputAmount);
-    }
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sendreceiver);
+
+        // Retrieve the value of userInputAmount from the Intent
+        Intent intent = getIntent();
+        String userInputAmount = intent.getStringExtra("USER_INPUT_AMOUNT");
 
         this.context = getApplicationContext();
 
@@ -109,12 +88,27 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
         // Set the hint for the search bar
         svSearch.setQueryHint("Enter name or email of user");
 
+
         // On click listener for when you hit the Send button
         finalSendBtn.setOnClickListener(v -> {
-            receiveAmount();
+            DatabaseReference databaseReference = database.getReference("Users");
+            assert firebaseUser != null;
+            databaseReference.child(firebaseUser.getUid()).child("transactions").child("sendTransactions").child(Objects.requireNonNull(databaseReference.push().getKey())).child("amount").setValue(userInputAmount);
+
+            // Get a reference to the "transactions" collection
+            DatabaseReference transactionsRef = database.getReference("Transactions");
+
+            // Get a reference to the "sendTransactions" sub-collection
+            DatabaseReference sendTransactionsRef = transactionsRef.child("sendTransactions");
+
+            // Generate a unique ID for the new transaction
+            String transactionUID = sendTransactionsRef.push().getKey();
+
+            // Add the new transaction to the "sendTransactions" sub-collection
+            assert transactionUID != null;
+            sendTransactionsRef.child(transactionUID).child("amount").setValue(userInputAmount);
 
             // This deducts the same amount from the current users main balance
-            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
             databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addListenerForSingleValueEvent(new ValueEventListener() {
 
                 @Override
@@ -130,8 +124,7 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
                     // Write the new balance to the database
                     databaseReference.child(firebaseUser.getUid()).child("userMainBalance").setValue(newBalance).addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            startActivity(new Intent(getApplicationContext(), SendReceiverSuccessPage.class));
-                            finish();
+                            System.out.println("Error updating user main balance: " + task.getException());
                         } else {
                             // Print an error message
                             System.out.println("Error updating user main balance: " + task.getException());
@@ -145,18 +138,13 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
                     System.out.println("Error retrieving user main balance: " + error.getMessage());
                 }
             });
-            //startActivity(new Intent(getApplicationContext(), SendReceiverSuccessPage.class));
-        });
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
+            finish();
+            startActivity(new Intent(getApplicationContext(), SendReceiverSuccessPage.class));
+        });
 
         // Connect to the database
-
         if (svSearch != null) {
-            //svSearch.setQueryHint("Enter name or email of user");
             svSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String s) {
@@ -233,10 +221,5 @@ public class SendReceiver extends AppCompatActivity implements QuickActionsAdapt
                 }
             });
         }
-    }
-
-    @Override
-    public void onNoteClick(int position) {
-
     }
 }
