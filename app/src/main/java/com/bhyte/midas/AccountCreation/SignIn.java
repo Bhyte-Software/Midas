@@ -82,9 +82,7 @@ public class SignIn extends AppCompatActivity {
     }
 
     public void callSignIn(View view) {
-        if (!validatePassword() | !validateEmail()) {
-            return;
-        }
+
 
         // Get Data
         email = emailField.getText().toString();

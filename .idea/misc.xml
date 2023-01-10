@@ -240,6 +240,27 @@
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Midas/nativetemplates/src/main/res/layout/gnt_small_template_view.xml" value="0.22" />
         <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas/app/src/main/res/layout/activity_view_all_platforms.xml" value="0.1" />
         <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas/app/src/main/res/layout/fragment_user_home.xml" value="0.1" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/activity_about.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/activity_add_money.xml" value="0.1109375" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/activity_add_money_choose_method.xml" value="0.1" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/activity_get_started.xml" value="0.1078125" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/activity_main_dashboard.xml" value="0.13541666666666666" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/activity_review_transaction.xml" value="0.1109375" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/activity_send_money.xml" value="0.16799999999999998" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/activity_sendreceiver.xml" value="0.264" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/activity_sign_in.xml" value="0.1109375" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/activity_sign_up_credentials.xml" value="0.2" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/activity_sign_up_enable_fingerprint.xml" value="0.1078125" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/activity_sign_up_enter_number.xml" value="0.1078125" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/activity_sign_up_verify_identity.xml" value="0.21675392670157068" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/activity_withdraw_money.xml" value="0.2" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/add_money_help_bottom_sheet.xml" value="0.13541666666666666" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/deposit_success_page.xml" value="0.11145833333333334" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/fragment_user_home.xml" value="0.13541666666666666" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/searcheduser_list_item.xml" value="0.264" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/sendreceiver_success_page.xml" value="0.13541666666666666" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/withdrawal_method_bottom_sheet.xml" value="0.11145833333333334" />
+        <entry key="..\:/Users/Jojo/AndroidStudioProjects/Midas6/app/src/main/res/layout/withdrawal_success_page.xml" value="0.11145833333333334" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/drawable/bottom_nav.xml" value="0.2635" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.216" />
         <entry key="..\:/Users/Nnamdi6000/Midas Project/Midas/app/src/main/res/drawable/custom_cedi_icon.xml" value="0.216" />

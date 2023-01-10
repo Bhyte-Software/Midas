@@ -42,6 +42,9 @@
             android:name=".Transactions.ReviewTransaction"
             android:exported="false" />
         <activity
+        android:name=".Transactions.DepositSuccessPage"
+        android:exported="false" />
+        <activity
             android:name=".Transactions.AddMoneyChooseProvider"
             android:exported="false" />
         <activity
@@ -50,6 +53,21 @@
         <activity
             android:name=".Transactions.AddMoney"
             android:exported="false" />
+        <activity
+            android:name=".Transactions.WithdrawMoney"
+            android:exported="false" />
+        <activity
+            android:name=".Transactions.WithdrawalSuccessPage"
+            android:exported="false" />
+        <activity
+            android:name=".Transactions.SendMoney"
+            android:exported="false" />
+        <activity
+            android:name=".Transactions.SendReceiver"
+            android:exported="false"/>
+        <activity
+            android:name=".Transactions.SendReceiverSuccessPage"
+            android:exported="false"/>
         <activity
             android:name=".AccountCreation.EnterOTPNigeria"
             android:exported="false" />
