@@ -50,6 +50,8 @@
     </RadioGroup>
 
     <com.google.android.material.button.MaterialButton
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue_200"
         android:id="@+id/withdraw_button_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_60"

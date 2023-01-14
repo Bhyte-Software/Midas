@@ -24,9 +24,6 @@ import com.bhyte.midas.Common.NoInternet;
 import com.bhyte.midas.R;
 import com.bhyte.midas.Util.CheckInternetConnection;
 import com.bhyte.midas.Util.Common;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class SignUpEnterNumber extends AppCompatActivity {
 
@@ -61,15 +58,17 @@ public class SignUpEnterNumber extends AppCompatActivity {
         textView = findViewById(R.id.button_text);
 
         getCode.setOnClickListener(v -> {
-            //Make animation visible
-            lottieAnimationView.setVisibility(View.VISIBLE);
-            lottieAnimationView.playAnimation();
-
-            //Make text invisible
-            textView.setVisibility(View.GONE);
-
-            //Handler
-            new Handler().postDelayed(this::resetButton, TIMER);
+            if (CheckInternetConnection.isConnected(SignUpEnterNumber.this)) {
+                // Make animation visible
+                lottieAnimationView.setVisibility(View.VISIBLE);
+                lottieAnimationView.playAnimation();
+                // Make text invisible
+                textView.setVisibility(View.GONE);
+                // Handler
+                new Handler().postDelayed(this::resetButton, TIMER);
+            } else {
+                startActivity(new Intent(getApplicationContext(), NoInternet.class));
+            }
         });
 
         /* Detect soft keyboard and hide
@@ -91,18 +90,14 @@ public class SignUpEnterNumber extends AppCompatActivity {
 
     }
 
-    private void resetButton(){
+    private void resetButton() {
         // Make animation invisible
         lottieAnimationView.pauseAnimation();
         lottieAnimationView.setVisibility(View.GONE);
         // Make text visible
         textView.setVisibility(View.VISIBLE);
         // Start New Activity
-        try {
-            getCode();
-        } catch (UnirestException e) {
-            //
-        }
+        getCode();
     }
 
     @Override
@@ -126,37 +121,14 @@ public class SignUpEnterNumber extends AppCompatActivity {
         }
     }
 
-    public void getCode() throws UnirestException {
+    public void getCode() {
         if (lengthOfVal == 10) {
             countryCode = "233";
             completeNumber = phoneNumber.substring(1);
             fullPhoneNumber = "+" + countryCode + completeNumber;
 
             country = "Ghana";
-            //startActivity(new Intent(getApplicationContext(), SignUpCredentials.class));
-
-            try {
-                Unirest.setTimeouts(0, 0);
-                HttpResponse<String> response = Unirest.post("https://api.ng.termii.com/api/sms/otp/send")
-                        .header("Content-Type", "application/json")
-                        .body(
-                                "{\r\n  \"api_key\" : \"TLFFfMS22bquNxA0cDHLrEkX7h0zbcZvD0fTmw0nWEiRWokOAykqlnQXnI3ds2\", " +
-                                        "\r\n \"message_type\" : \"NUMERIC\"," +
-                                        "\r\n \"to\" : \"eg. 233240369071\"," +
-                                        "\r\n \"from\" : \"Midas Inc\"," +
-                                        "\r\n \"channel\" : \"generic\"," +
-                                        "\r\n \"pin_attempts\" : 3," +
-                                        "\r\n \"pin_time_to_live\" :  10," +
-                                        "\r\n \"pin_length\" : 6," +
-                                        "\r\n \"pin_placeholder\" : \"< 1234 >\"," +
-                                        "\r\n \"message_text\" : \"Your pin is < 1234 >\"," +
-                                        "\r\n \"pin_type\" : \"NUMERIC\"\r\n   }\r\n      ")
-                        .asString();
-                System.out.println(response);
-            } catch (UnirestException e) {
-                //
-            }
-
+            startActivity(new Intent(getApplicationContext(), SignUpEnterOTP.class));
             finish();
         } else if (lengthOfVal == 0) {
             // Custom Toast for Android Versions < 11

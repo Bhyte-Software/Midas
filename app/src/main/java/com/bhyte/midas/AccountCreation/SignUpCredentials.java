@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SignUpCredentials extends AppCompatActivity {
 
     String fullName, email, password, phoneNumber, newPhoneNumber, newNewPhoneNumber, completeNumber, newUserMainBalance;
-    EditText fullNameField, emailField, passwordField, newPhoneNumberField;
+    EditText fullNameField, emailField, passwordField;
     FirebaseAuth firebaseAuth;
 
     @Override
@@ -40,7 +40,6 @@ public class SignUpCredentials extends AppCompatActivity {
         fullNameField = findViewById(R.id.name_input_layout);
         emailField = findViewById(R.id.email_input_layout);
         passwordField = findViewById(R.id.password_input_layout);
-        newPhoneNumberField = findViewById(R.id.input_number_field);
     }
 
     public void callSignIn(View view) {
@@ -58,10 +57,9 @@ public class SignUpCredentials extends AppCompatActivity {
         fullName = fullNameField.getText().toString();
         email = emailField.getText().toString();
         password = passwordField.getText().toString();
-        newPhoneNumber = newPhoneNumberField.getText().toString();
 
-        completeNumber = newPhoneNumber.substring(1);
-        newNewPhoneNumber = "+" + "233" + completeNumber;
+        completeNumber = phoneNumber.substring(1);
+        newPhoneNumber = "+" + "233" + completeNumber;
         newUserMainBalance = "0";
 
         // Create User
@@ -97,7 +95,7 @@ public class SignUpCredentials extends AppCompatActivity {
 
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-        ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(newNewPhoneNumber, fullName, email, newUserMainBalance);
+        ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(newPhoneNumber, fullName, email, newUserMainBalance);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         assert firebaseUser != null;
         databaseReference.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(task -> {

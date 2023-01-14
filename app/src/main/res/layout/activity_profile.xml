@@ -54,23 +54,6 @@
                     android:textSize="20sp"
                     tools:ignore="RelativeOverlap" />
 
-                <ImageView
-                    android:id="@+id/upload"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center_vertical"
-                    android:background="?selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:contentDescription="@string/image"
-                    android:paddingStart="@dimen/dimen_10"
-                    android:paddingTop="@dimen/dimen_5"
-                    android:paddingEnd="@dimen/dimen_10"
-                    android:paddingBottom="@dimen/dimen_5"
-                    android:src="@drawable/ic_baseline_upgrade_24"
-                    app:tint="@color/white" />
-
             </RelativeLayout>
 
         </RelativeLayout>
@@ -90,10 +73,10 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profile_picture"
-                    android:layout_width="@dimen/dimen_120"
-                    android:layout_height="@dimen/dimen_120"
+                    android:layout_width="@dimen/dimen_150"
+                    android:layout_height="@dimen/dimen_150"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/dimen_20"
+                    android:layout_marginTop="@dimen/dimen_50"
                     android:src="@drawable/profile_picture_default"
                     app:civ_border_color="@color/skip_text"
                     app:civ_border_width="4dp"

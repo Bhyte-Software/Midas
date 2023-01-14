@@ -58,11 +58,11 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_marginTop="@dimen/dimen_20"
         android:id="@+id/amount_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/navigation">
+        android:layout_below="@id/navigation"
+        android:layout_marginTop="@dimen/dimen_20">
 
         <LinearLayout
             android:layout_width="wrap_content"

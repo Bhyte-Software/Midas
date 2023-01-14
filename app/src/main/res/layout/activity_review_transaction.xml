@@ -234,16 +234,39 @@
         android:textColor="@color/secondary_text"
         android:textSize="18sp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/deposit"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_60"
-        android:layout_alignParentBottom="true"
+
+
+    <RelativeLayout
         android:layout_marginStart="@dimen/dimen_25"
         android:layout_marginEnd="@dimen/dimen_25"
-        android:layout_marginBottom="@dimen/dimen_7"
-        android:text="@string/deposit"
-        android:textAllCaps="false"
-        app:cornerRadius="35dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_60">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/deposit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_60"
+            android:text="@string/deposit"
+            android:textAllCaps="false"
+            app:cornerRadius="35dp" />
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/deposit_animation"
+            android:layout_width="@dimen/dimen_40"
+            android:layout_height="@dimen/dimen_40"
+            android:elevation="@dimen/dimen_5"
+            android:visibility="gone"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/button_loading_white"
+            tools:visibility="visible" />
+
+    </RelativeLayout>
+
+
 
 </RelativeLayout>

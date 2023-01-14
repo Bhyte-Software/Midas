@@ -15,8 +15,8 @@
 
             <ImageView
                 android:id="@+id/icon"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="@dimen/gnt_no_margin"
                 android:layout_marginEnd="@dimen/gnt_no_margin"
@@ -25,7 +25,7 @@
             <LinearLayout
                 android:id="@+id/headline"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/icon"
@@ -40,7 +40,8 @@
                     android:layout_marginTop="@dimen/gnt_no_margin"
                     android:layout_marginEnd="@dimen/gnt_no_margin"
                     android:layout_marginBottom="@dimen/gnt_no_margin"
-                    android:lines="2"
+                    android:lines="1"
+                    android:text=""
                     android:textColor="@color/gnt_main_text"
                     android:textSize="@dimen/gnt_text_size_large"
                     android:textStyle="bold" />
@@ -48,12 +49,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="5dp"
                 android:id="@+id/row_two"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/headline"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_toEndOf="@id/icon"
                 android:orientation="horizontal">
 
@@ -111,10 +112,10 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
+                android:layout_alignParentBottom="true"
                 android:id="@+id/cta"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:layout_below="@id/row_two"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_toEndOf="@id/icon"

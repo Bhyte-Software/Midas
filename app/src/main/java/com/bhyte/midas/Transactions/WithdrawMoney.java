@@ -123,9 +123,10 @@ public class WithdrawMoney extends AppCompatActivity {
             MaterialButton withdrawButtonBottom = sheetView.findViewById(R.id.withdraw_button_bottom_sheet);
             bottomSheetDialog.setContentView(sheetView);
 
-            String text = "Mobile Money Transfer\n" + "Account Number:\n" + phoneNumber + "\n" + "Instant Transfer";
+            String text = "Mobile Money Transfer\n" + "(Instant)";
             SpannableString spannableString = new SpannableString(text);
 
+            /* Bold Styling
             // This selects a specific text
             int startIndex = text.indexOf("Mobile Money Transfer");
             int endIndex = startIndex + "Mobile Money Transfer".length();
@@ -133,6 +134,7 @@ public class WithdrawMoney extends AppCompatActivity {
             // This sets the selected text to bold
             spannableString.setSpan(new StyleSpan(Typeface.BOLD), startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
+             */
 
             // This gets the user input
             String userInputAmount = amount.getText().toString();

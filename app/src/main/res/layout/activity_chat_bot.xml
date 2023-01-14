@@ -126,34 +126,6 @@
                     android:textColor="@color/main_text"
                     android:textSize="18sp" />
 
-                <ImageView
-                    android:id="@+id/smile_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dimen_50"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/dimen_5"
-                    android:layout_toStartOf="@id/attachment_icon"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:contentDescription="@string/image"
-                    android:padding="@dimen/dimen_10"
-                    android:src="@drawable/ic_smile"
-                    app:tint="@color/main_text" />
-
-                <ImageView
-                    android:id="@+id/attachment_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dimen_50"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/dimen_5"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:contentDescription="@string/image"
-                    android:padding="@dimen/dimen_10"
-                    android:src="@drawable/ic_attachment"
-                    app:tint="@color/main_text" />
-
             </RelativeLayout>
 
             <RelativeLayout

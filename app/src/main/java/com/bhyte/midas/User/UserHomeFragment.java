@@ -282,9 +282,9 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
         quickActionsRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         viewQuickActions.add(new QuickActionsHelperClass(R.drawable.add, "Create Card"));
-        viewQuickActions.add(new QuickActionsHelperClass(R.drawable.check, "Send Money"));
-        viewQuickActions.add(new QuickActionsHelperClass(R.drawable.card, "Cards"));
-        viewQuickActions.add(new QuickActionsHelperClass(R.drawable.store, "Store"));
+        viewQuickActions.add(new QuickActionsHelperClass(R.drawable.send_icon, "Send Money"));
+        viewQuickActions.add(new QuickActionsHelperClass(R.drawable.card, "My Cards"));
+        viewQuickActions.add(new QuickActionsHelperClass(R.drawable.store, "Visit Store"));
         viewQuickActions.add(new QuickActionsHelperClass(R.drawable.logout, "Sign Out"));
 
         adapter = new QuickActionsAdapter(viewQuickActions, this);
@@ -516,7 +516,19 @@ public class UserHomeFragment extends Fragment implements QuickActionsAdapter.On
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String currentBalance = snapshot.getValue(String.class);
+
+                /*
+                // Handle assertion error
+                try {
+                    assert currentBalance != null;
+                }
+                catch (AssertionError error){
+                    Toast.makeText(context, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+                 */
+
                 assert currentBalance != null;
+
 
                 // Save Account Balance in variable
                 account_balance = currentBalance;

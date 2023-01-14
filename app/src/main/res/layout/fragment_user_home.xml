@@ -26,8 +26,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_picture"
-                android:layout_width="@dimen/dimen_40"
-                android:layout_height="@dimen/dimen_40"
+                android:layout_width="@dimen/dimen_50"
+                android:layout_height="@dimen/dimen_50"
                 android:layout_centerVertical="true"
                 android:src="@drawable/home_profile_default"
                 app:civ_border_color="@color/white_light"
@@ -153,8 +153,9 @@
             </RelativeLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:layout_alignParentStart="true"
                 android:id="@+id/add_money_button"
-                android:layout_width="140dp"
+                android:layout_width="150dp"
                 android:layout_height="@dimen/dimen_55"
                 android:layout_below="@id/balance"
                 android:layout_marginTop="@dimen/dimen_10"
@@ -166,10 +167,15 @@
                 android:id="@+id/withdraw_button"
                 android:layout_width="150dp"
                 android:layout_height="@dimen/dimen_55"
+                android:textColor="@color/blue_200"
                 android:layout_below="@+id/balance"
+                android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/dimen_10"
                 android:layout_marginTop="@dimen/dimen_10"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/blue_200"
                 android:layout_toEndOf="@+id/add_money_button"
+                android:backgroundTint="@color/ripple_round_box"
                 android:text="@string/withdraw_money"
                 android:textAllCaps="false"
                 app:cornerRadius="35dp" />
@@ -292,7 +298,7 @@
             <LinearLayout
                 android:id="@+id/recommended_layout"
                 android:layout_width="match_parent"
-                android:layout_height="135dp"
+                android:layout_height="140dp"
                 android:layout_marginStart="@dimen/dimen_25"
                 android:layout_marginTop="@dimen/dimen_15"
                 android:layout_marginEnd="@dimen/dimen_25"
@@ -311,7 +317,6 @@
 
             <RelativeLayout
                 android:id="@+id/top_platforms"
-                android:background="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

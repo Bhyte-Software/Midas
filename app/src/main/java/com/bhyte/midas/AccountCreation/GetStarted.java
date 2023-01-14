@@ -132,7 +132,7 @@ public class GetStarted extends AppCompatActivity {
                 if (isConnected) {
                     // Do something here
                     countryBottomSheet.dismiss();
-                    startActivity(new Intent(getApplicationContext(), SignUpCredentials.class));
+                    startActivity(new Intent(getApplicationContext(), SignUpEnterNumber.class));
                 } else {
                     // No internet connection
                     startActivity(new Intent(getApplicationContext(), NoInternet.class));

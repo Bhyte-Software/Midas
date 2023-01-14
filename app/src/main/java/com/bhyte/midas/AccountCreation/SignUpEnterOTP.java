@@ -212,5 +212,3 @@ public class SignUpEnterOTP extends AppCompatActivity {
         signInWithCredential(credential);
     }
 }
-
-
