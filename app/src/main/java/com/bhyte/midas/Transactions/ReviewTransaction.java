@@ -3,7 +3,6 @@ package com.bhyte.midas.Transactions;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,11 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.bhyte.midas.Common.AcceptTermsOfService;
-import com.bhyte.midas.Database.ReadWriteUserDetails;
-import com.bhyte.midas.Database.ReadWriteUserMainBalance;
+import com.bhyte.midas.Database.ReadWriteAllTransactions;
 import com.bhyte.midas.R;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,7 +27,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Objects;
 
 import okhttp3.MediaType;
@@ -48,7 +47,7 @@ public class ReviewTransaction extends AppCompatActivity {
     FirebaseDatabase database;
 
     TextView amountText, amountToPayText, numberText, providerText, transactionFeeText;
-    String provider, phoneNumber, amount, transactionFee, amountToPay, userEmail;
+    String provider, phoneNumber, amount, transactionFee, amountToPay, userEmail, date;
     Double amountDouble;
     ImageView back;
     MaterialButton deposit;
@@ -185,6 +184,9 @@ public class ReviewTransaction extends AppCompatActivity {
 
                 // TODO All this should be for when the deposit works/goes through
 
+                // Set has Transactions to true
+                String transaction = "True";
+
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
                 assert firebaseUser != null;
                 // Get user main balance and add the deposit amount to it
@@ -219,8 +221,19 @@ public class ReviewTransaction extends AppCompatActivity {
                     }
                 });
 
+                // Transaction Preferences
+                String transactionCurrency = "GH₵";
+                // Transaction Type
+                String transactionType = "Deposit";
+                // Transaction Amount
+                String transactionAmount = "+ " + amount;
+
+                // Generate Date in Wed, 4 Jul 2001 12:08 Format
+                @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm");
+                String transactionDate = dateFormat.format(Calendar.getInstance().getTime());
+
                 // Write deposit amount to users database, as a Deposit Transaction
-                databaseReference.child(firebaseUser.getUid()).child("transactions").child("depositTransactions").child(Objects.requireNonNull(databaseReference.push().getKey())).child("amount").setValue(amount);
+                databaseReference.child(firebaseUser.getUid()).child("transactions").child("depositTransactions").child(firebaseUser.getUid()).child("amount").setValue(amount);
 
                 /* Write deposit amount to transactions database */
                 // Get a reference to the "transactions" collection
@@ -232,8 +245,17 @@ public class ReviewTransaction extends AppCompatActivity {
                 // Generate a unique ID for the new transaction
                 String transactionUID = depositTransactionsRef.push().getKey();
 
-                // Add the new transaction to the "withdrawalTransactions" sub-collection
+                // Set transaction to True
+                databaseReference.child(firebaseUser.getUid()).child("transaction").setValue(transaction);
+
+                // Save to all transactions
+                ReadWriteAllTransactions readWriteAllTransactions = new ReadWriteAllTransactions(transactionType, transactionDate, transactionCurrency, transactionAmount);
+                DatabaseReference allTransactionsRef = database.getReference("Users");
                 assert transactionUID != null;
+                allTransactionsRef.child(firebaseUser.getUid()).child("All Transactions").child(transactionUID).setValue(readWriteAllTransactions);
+
+
+                // Add the new transaction to the "withdrawalTransactions" sub-collection
                 depositTransactionsRef.child(transactionUID).child("amount").setValue(amount);
                 try{
                     runOnUiThread(() -> {

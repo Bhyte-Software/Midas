@@ -11,6 +11,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bhyte.midas.DataModels.SearchedUsersModel;
+import com.bhyte.midas.Database.ReadWriteAllTransactions;
 import com.bhyte.midas.R;
 import com.bhyte.midas.Recycler.SearchedUsersAdapter;
 import com.google.android.material.button.MaterialButton;
@@ -22,8 +23,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Objects;
 
 public class SendReceiver extends AppCompatActivity{
@@ -79,6 +83,22 @@ public class SendReceiver extends AppCompatActivity{
             // Add the new transaction to the "sendTransactions" sub-collection
             assert transactionUID != null;
             sendTransactionsRef.child(transactionUID).child("amount").setValue(userInputAmount);
+
+            // Transaction Preferences
+            String transactionCurrency = "GH₵";
+            // Transaction Type
+            String transactionType = "Send";
+            // Transaction Amount
+            String transactionAmount = "- " + userInputAmount;
+
+            // Generate Date in Wed, 4 Jul 2001 12:08 Format
+            @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm");
+            String transactionDate = dateFormat.format(Calendar.getInstance().getTime());
+
+            // Save to all transactions
+            ReadWriteAllTransactions readWriteAllTransactions = new ReadWriteAllTransactions(transactionType, transactionDate, transactionCurrency, transactionAmount);
+            DatabaseReference allTransactionsRef = database.getReference("Users");
+            allTransactionsRef.child(firebaseUser.getUid()).child("All Transactions").child(transactionUID).setValue(readWriteAllTransactions);
 
             // This deducts the same amount from the current users main balance
             databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addListenerForSingleValueEvent(new ValueEventListener() {

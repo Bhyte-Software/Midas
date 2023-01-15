@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpCredentials extends AppCompatActivity {
 
-    String fullName, email, password, phoneNumber, newPhoneNumber, newNewPhoneNumber, completeNumber, newUserMainBalance;
+    String fullName, email, password, phoneNumber, newPhoneNumber, completeNumber, newUserMainBalance, transaction;
     EditText fullNameField, emailField, passwordField;
     FirebaseAuth firebaseAuth;
 
@@ -61,6 +61,7 @@ public class SignUpCredentials extends AppCompatActivity {
         completeNumber = phoneNumber.substring(1);
         newPhoneNumber = "+" + "233" + completeNumber;
         newUserMainBalance = "0";
+        transaction = "False";
 
         // Create User
         createUser();
@@ -95,7 +96,7 @@ public class SignUpCredentials extends AppCompatActivity {
 
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-        ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(newPhoneNumber, fullName, email, newUserMainBalance);
+        ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(newPhoneNumber, fullName, email, newUserMainBalance, transaction);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         assert firebaseUser != null;
         databaseReference.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(task -> {

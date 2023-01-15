@@ -111,7 +111,7 @@
             android:enabled="false"
             android:fontFamily="@font/roboto_medium"
             android:inputType="none"
-            android:maxLength="10"
+            android:maxLength="13"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:text=""

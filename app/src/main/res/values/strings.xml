@@ -540,5 +540,7 @@
     <string name="enter_email_and_password_to_access_your_account">Enter email and password to access your account</string>
     <string name="info">info</string>
     <string name="plus_icon">plus icon</string>
+    <string name="cedi_sign">GH₵</string>
+    <string name="transactions">Transactions</string>
 
 </resources>
