@@ -49,8 +49,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/navigation"
         android:layout_centerInParent="true"
-        android:layout_marginStart="@dimen/dimen_25"
-        android:layout_marginEnd="@dimen/dimen_25"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/withdraw_money"
         android:textAlignment="center"
@@ -124,7 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/roboto_regular"
-            android:text="@string/min_ghs_20_max_ghs_5_000"
+            android:text="@string/min_ghs_20_max_ghs_1_000"
             android:textColor="@color/white"
             android:textSize="18sp" />
 

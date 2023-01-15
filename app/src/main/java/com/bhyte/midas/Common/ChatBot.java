@@ -1,20 +1,17 @@
 package com.bhyte.midas.Common;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bhyte.midas.R;
 import com.bhyte.midas.Util.Common;
 
 public class ChatBot extends AppCompatActivity {
 
-    ImageView emojiIcon, attachmentIcon;
     EditText writeMessage;
     String userInputMessage;
     RelativeLayout sendMessage, mainLayout;
@@ -26,8 +23,6 @@ public class ChatBot extends AppCompatActivity {
 
         // Hooks
         mainLayout = findViewById(R.id.mainLayout);
-        emojiIcon = findViewById(R.id.smile_icon);
-        attachmentIcon = findViewById(R.id.attachment_icon);
         writeMessage = findViewById(R.id.write_message);
         sendMessage = findViewById(R.id.send_message);
 
@@ -36,10 +31,6 @@ public class ChatBot extends AppCompatActivity {
             mainLayout.requestFocus();
             Common.hideKeyboard(ChatBot.this);
         });
-
-        emojiIcon.setOnClickListener(v -> Toast.makeText(ChatBot.this, "Emoji Button Clicked", Toast.LENGTH_SHORT).show());
-
-        attachmentIcon.setOnClickListener(v -> Toast.makeText(ChatBot.this, "Attachment Button Clicked", Toast.LENGTH_SHORT).show());
 
         sendMessage.setOnClickListener(v -> {
             // Send Message

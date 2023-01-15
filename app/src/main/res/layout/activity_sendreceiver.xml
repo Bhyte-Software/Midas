@@ -1,47 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
+    tools:context=".Transactions.SendReceiver"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.SearchView
+        app:queryBackground="@color/transparent"
+        app:queryHint="Enter name or email of user"
+        app:iconifiedByDefault="false"
         android:id="@+id/svSearch"
-        android:layout_width="410dp"
-        android:layout_height="52dp"
-        tools:ignore="MissingConstraints"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="@dimen/dimen_10"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginEnd="@dimen/dimen_10"
+        android:background="@drawable/circular_block_ripple"
         android:importantForAutofill="no"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:inputType="text" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerUsers"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/final_send_button"
+        android:layout_below="@id/svSearch"
+        android:paddingTop="@dimen/dimen_10"
+        android:paddingBottom="@dimen/dimen_10"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/svSearch"
-        app:layout_constraintVertical_bias="0.252"
         tools:listitem="@layout/searcheduser_list_item" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/final_send_button"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:enabled="false"
-        app:layout_constraintTop_toBottomOf="@id/recyclerUsers"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/dimen_25"
-        android:layout_marginTop="15dp"
         android:layout_marginEnd="@dimen/dimen_25"
+        android:layout_marginBottom="@dimen/dimen_25"
+        android:elevation="20dp"
+        android:enabled="false"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/send_money"
         android:textAllCaps="false"
-        app:cornerRadius="35dp"
-        android:elevation="20dp"
-        tools:ignore="MissingConstraints" />
+        app:cornerRadius="35dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

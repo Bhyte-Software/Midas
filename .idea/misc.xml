@@ -12,10 +12,11 @@
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/drawable/ripple_round_box.xml" value="0.363" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/drawable/round_box.xml" value="0.363" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/accept_terms_popup.xml" value="0.33" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_about.xml" value="0.32175925925925924" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_add_money.xml" value="0.33" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_add_money_choose_method.xml" value="0.21" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_app_theme.xml" value="0.32175925925925924" />
-        <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_chat_bot.xml" value="0.32175925925925924" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_chat_bot.xml" value="0.5" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_create_card.xml" value="0.24131944444444445" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_create_card_final.xml" value="0.18" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_fingerprint_registration.xml" value="0.1673611111111111" />
@@ -26,7 +27,8 @@
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_on_boarding.xml" value="0.24131944444444445" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_profile.xml" value="0.33" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_review_transaction.xml" value="0.5" />
-        <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_send_money.xml" value="0.25" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_send_money.xml" value="0.18" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_sendreceiver.xml" value="0.22" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_sign_in.xml" value="0.21" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_sign_up_complete.xml" value="0.24131944444444445" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/activity_sign_up_credentials.xml" value="0.25" />
@@ -56,7 +58,9 @@
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/platforms_layout_vertical.xml" value="0.24131944444444445" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/quick_actions_layout.xml" value="0.24131944444444445" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/rate_popup.xml" value="0.33" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/searcheduser_list_item.xml" value="0.67" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/slides_layout.xml" value="0.24131944444444445" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/transactions_shimmer.xml" value="0.32083333333333336" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/withdrawal_method_bottom_sheet.xml" value="0.5" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/app/src/main/res/layout/withdrawal_success_page.xml" value="0.32175925925925924" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Midas/nativetemplates/src/main/res/layout-v21/gnt_small_template_view.xml" value="0.5" />

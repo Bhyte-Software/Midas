@@ -2,7 +2,6 @@ package com.bhyte.midas.Common;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
@@ -124,10 +123,6 @@ public class About extends AppCompatActivity {
                 .build();
         // Make Single  Ad Request
         adLoader.loadAd(new AdRequest.Builder().build());
-    }
-
-    public void updateRequired(View view) {
-        startActivity(new Intent(context, UpdateRequired.class));
     }
 
     public void finish(View view) {

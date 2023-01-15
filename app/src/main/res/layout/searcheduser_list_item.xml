@@ -7,18 +7,22 @@
 
 
     <TextView
+        android:textColor="@color/main_text"
         android:id="@+id/tvUsersName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:textSize="16sp"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="18sp"
         android:text="@string/deposit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/secondary_text"
         android:id="@+id/tvUsersEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

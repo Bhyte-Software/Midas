@@ -404,6 +404,7 @@
     <string name="ghs">GHS</string>
     <string name="_0">0</string>
     <string name="min_ghs_20_max_ghs_5_000">Min: GHS 20 | Max: GHS 5,000</string>
+    <string name="min_ghs_20_max_ghs_1_000">Min: GHS 20 | Max: GHS 1,000</string>
     <string name="_1">1</string>
     <string name="_2">2</string>
     <string name="_3">3</string>

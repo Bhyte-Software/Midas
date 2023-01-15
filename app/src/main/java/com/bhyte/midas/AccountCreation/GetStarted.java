@@ -3,11 +3,8 @@ package com.bhyte.midas.AccountCreation;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.StrictMode;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,10 +22,6 @@ import com.bhyte.midas.Util.CheckInternetConnection;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
-
-import java.io.Console;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class GetStarted extends AppCompatActivity {
 
@@ -50,11 +43,6 @@ public class GetStarted extends AppCompatActivity {
 
         this.context = getApplicationContext();
 
-        // Error Fix for Check Internet Connection
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        ExecutorService service = Executors.newSingleThreadExecutor();
 
         // Hooks
         signInButtonAnimation = findViewById(R.id.sign_in_button_animation);
@@ -68,6 +56,34 @@ public class GetStarted extends AppCompatActivity {
 
         // Click Listeners
         signInButton.setOnClickListener(v -> {
+
+            signInButtonAnimation.setVisibility(View.VISIBLE);
+            signInButtonAnimation.playAnimation();
+            signInButton.setText("");
+
+
+
+            new Thread(() -> {
+                boolean isConnected = CheckInternetConnection.isConnected(getApplicationContext());
+
+                try {
+                    Thread.sleep(1000);
+                    runOnUiThread(() -> {
+                        signInButtonAnimation.setVisibility(View.GONE);
+                        signInButtonAnimation.pauseAnimation();
+                        signInButton.setText(R.string.sign_in);
+                        if (isConnected){
+                            startActivity(new Intent(getApplicationContext(), SignIn.class));
+                        } else {
+                            startActivity(new Intent(getApplicationContext(), NoInternet.class));
+                        }
+                    });
+                } catch (final Exception exception){
+                    Log.i("---", "Exception in thread");
+                }
+            }).start();
+
+            /* Improper Implementation
             service.execute(new Runnable() {
                 @Override
                 public void run() {
@@ -106,6 +122,7 @@ public class GetStarted extends AppCompatActivity {
                     });
                 }
             });
+             */
         });
 
         createAccountButton.setOnClickListener(v -> {
@@ -117,17 +134,8 @@ public class GetStarted extends AppCompatActivity {
             countryNigeria = countryBottomSheet.findViewById(R.id.nigeria);
 
             countryGhana.setOnClickListener(v12 -> {
-                /*if (CheckInternetConnection.isConnected(GetStarted.this)) {
-                    countryBottomSheet.dismiss();
-                    startActivity(new Intent(getApplicationContext(), SignUpCredentials.class));
-                } else {
-                    startActivity(new Intent(getApplicationContext(), NoInternet.class));
-                }*/
 
-                // This can be refactored later
-                ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-                NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-                boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+                boolean isConnected = CheckInternetConnection.isConnected(getApplicationContext());
 
                 if (isConnected) {
                     // Do something here

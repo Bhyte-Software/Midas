@@ -147,110 +147,104 @@ public class ReviewTransaction extends AppCompatActivity {
             depositAnimation.playAnimation();
             deposit.setText("");
 
-            new Thread(){
-                @Override
-                public void run(){
-                    // Api Request(Long Operation)
+            new Thread(() -> {
+                // Api Request(Long Operation)
 
-                    // Initialize http client
-                    OkHttpClient client = new OkHttpClient();
+                // Initialize http client
+                OkHttpClient client = new OkHttpClient();
 
-                    MediaType mediaType = MediaType.parse("application/json");
-                    JSONObject actualData = new JSONObject();
-                    JSONObject mobileMoney = new JSONObject();
+                MediaType mediaType = MediaType.parse("application/json");
+                JSONObject actualData = new JSONObject();
+                JSONObject mobileMoney = new JSONObject();
 
-                    try {
-                        mobileMoney.put("phone", "0551234987");
-                        mobileMoney.put("provider", "mtn");
+                try {
+                    mobileMoney.put("phone", "0551234987");
+                    mobileMoney.put("provider", "mtn");
 
-                        actualData.put("amount", (int) (amountToPayDouble * 100));
-                        actualData.put("email", "femke@gmail.com");
-                        actualData.put("currency", "GHS");
-                        actualData.put("mobile_money", mobileMoney);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    RequestBody body = RequestBody.create(actualData.toString(), mediaType);
-                    Request request = new Request.Builder()
-                            .url("https://api.paystack.co/charge")
-                            .post(body)
-                            .addHeader("content-type", "application/json")
-                            .addHeader("Authorization", "Bearer sk_test_c87485f78655da06ffdd385fcda8f0a53bfa9f86")
-                            .build();
-                    try {
-                        Response response = client.newCall(request).execute();
+                    actualData.put("amount", (int) (amountToPayDouble * 100));
+                    actualData.put("email", "femke@gmail.com");
+                    actualData.put("currency", "GHS");
+                    actualData.put("mobile_money", mobileMoney);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                RequestBody body = RequestBody.create(actualData.toString(), mediaType);
+                Request request = new Request.Builder()
+                        .url("https://api.paystack.co/charge")
+                        .post(body)
+                        .addHeader("content-type", "application/json")
+                        .addHeader("Authorization", "Bearer sk_test_c87485f78655da06ffdd385fcda8f0a53bfa9f86")
+                        .build();
+                try {
+                    Response response = client.newCall(request).execute();
 
-                        System.out.println(Objects.requireNonNull(response.body()).string());// This prints the response body to the console
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    System.out.println(Objects.requireNonNull(response.body()).string());// This prints the response body to the console
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-                    // TODO All this should be for when the deposit works/goes through
+                // TODO All this should be for when the deposit works/goes through
 
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-                    assert firebaseUser != null;
-                    // Get user main balance and add the deposit amount to it
-                    databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addListenerForSingleValueEvent(new ValueEventListener() {
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+                assert firebaseUser != null;
+                // Get user main balance and add the deposit amount to it
+                databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addListenerForSingleValueEvent(new ValueEventListener() {
 
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            String currentBalance = snapshot.getValue(String.class);
-                            assert currentBalance != null;
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String currentBalance = snapshot.getValue(String.class);
+                        assert currentBalance != null;
 
-                            // The amount deposited plus the current balance
-                            double amountToAdd = Double.parseDouble(currentBalance) + Double.parseDouble(amount);
-                            String newBalance = Double.toString(Double.parseDouble(df.format(amountToAdd)));
+                        // The amount deposited plus the current balance
+                        double amountToAdd = Double.parseDouble(currentBalance) + Double.parseDouble(amount);
+                        String newBalance = Double.toString(Double.parseDouble(df.format(amountToAdd)));
 
-                            // Write the new balance to the database
-                            databaseReference.child(firebaseUser.getUid()).child("userMainBalance").setValue(newBalance).addOnCompleteListener(task -> {
-                                if (task.isSuccessful()) {
-                                    startActivity(new Intent(getApplicationContext(), DepositSuccessPage.class));
-                                    finish();
-                                } else {
-                                    // Print an error message
-                                    System.out.println("Error updating user main balance: " + task.getException());
-                                    // It could be a page that says; "There was a problem making a deposit, please try again"
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            // Print an error message
-                            System.out.println("Error retrieving user main balance: " + error.getMessage());
-                        }
-                    });
-
-                    // Write deposit amount to users database, as a Deposit Transaction
-                    databaseReference.child(firebaseUser.getUid()).child("transactions").child("depositTransactions").child(Objects.requireNonNull(databaseReference.push().getKey())).child("amount").setValue(amount);
-
-                    /* Write deposit amount to transactions database */
-                    // Get a reference to the "transactions" collection
-                    DatabaseReference transactionsRef = database.getReference("Transactions");
-
-                    // Get a reference to the "withdrawalTransactions" sub-collection
-                    DatabaseReference depositTransactionsRef = transactionsRef.child("depositTransactions");
-
-                    // Generate a unique ID for the new transaction
-                    String transactionUID = depositTransactionsRef.push().getKey();
-
-                    // Add the new transaction to the "withdrawalTransactions" sub-collection
-                    assert transactionUID != null;
-                    depositTransactionsRef.child(transactionUID).child("amount").setValue(amount);
-                    try{
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                depositAnimation.setVisibility(View.GONE);
-                                depositAnimation.pauseAnimation();
-                                deposit.setText("Deposit");
+                        // Write the new balance to the database
+                        databaseReference.child(firebaseUser.getUid()).child("userMainBalance").setValue(newBalance).addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                startActivity(new Intent(getApplicationContext(), DepositSuccessPage.class));
+                                finish();
+                            } else {
+                                // Print an error message
+                                System.out.println("Error updating user main balance: " + task.getException());
+                                // It could be a page that says; "There was a problem making a deposit, please try again"
                             }
                         });
-                    } catch (final Exception exception){
-                        Log.i("---", "Exception in thread");
                     }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Print an error message
+                        System.out.println("Error retrieving user main balance: " + error.getMessage());
+                    }
+                });
+
+                // Write deposit amount to users database, as a Deposit Transaction
+                databaseReference.child(firebaseUser.getUid()).child("transactions").child("depositTransactions").child(Objects.requireNonNull(databaseReference.push().getKey())).child("amount").setValue(amount);
+
+                /* Write deposit amount to transactions database */
+                // Get a reference to the "transactions" collection
+                DatabaseReference transactionsRef = database.getReference("Transactions");
+
+                // Get a reference to the "withdrawalTransactions" sub-collection
+                DatabaseReference depositTransactionsRef = transactionsRef.child("depositTransactions");
+
+                // Generate a unique ID for the new transaction
+                String transactionUID = depositTransactionsRef.push().getKey();
+
+                // Add the new transaction to the "withdrawalTransactions" sub-collection
+                assert transactionUID != null;
+                depositTransactionsRef.child(transactionUID).child("amount").setValue(amount);
+                try{
+                    runOnUiThread(() -> {
+                        depositAnimation.setVisibility(View.GONE);
+                        depositAnimation.pauseAnimation();
+                        deposit.setText("Deposit");
+                    });
+                } catch (final Exception exception){
+                    Log.i("---", "Exception in thread");
                 }
-            }.start();
+            }).start();
         });
     }
 }
