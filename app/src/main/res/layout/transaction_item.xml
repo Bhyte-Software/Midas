@@ -47,33 +47,33 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginEnd="@dimen/dimen_15"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"
-        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/dimen_15"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/transaction_currency"
-            android:textColor="@color/secondary_text"
-            android:textSize="16sp"
-            android:fontFamily="@font/roboto_regular"
-            android:layout_gravity="end"
-            android:text="@string/cedi_sign"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/cedi_sign"
+            android:textColor="@color/secondary_text"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/transaction_amount"
-            android:layout_marginTop="@dimen/dimen_5"
-            android:textColor="@color/main_text"
-            android:fontFamily="@font/roboto_regular"
-            android:textSize="16sp"
-            android:layout_gravity="end"
-            android:text="-20.00"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:fontFamily="@font/roboto_medium"
+            android:text="-20.00"
+            android:textColor="@color/main_text"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

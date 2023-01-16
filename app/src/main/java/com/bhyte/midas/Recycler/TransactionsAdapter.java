@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bhyte.midas.R;
@@ -39,6 +40,26 @@ public class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapte
         holder.transactionDate.setText(transactionsHelperClass.getTransactionDate());
         holder.transactionCurrency.setText(transactionsHelperClass.getTransactionCurrency());
         holder.transactionAmount.setText(transactionsHelperClass.getTransactionAmount());
+
+        String transactionType;
+        transactionType = transactionsHelperClass.getTransactionType();
+
+        switch (transactionType) {
+            case "Deposit":
+                holder.transactionCurrency.setTextColor(ContextCompat.getColor(holder.transactionCurrency.getContext(), R.color.green));
+                holder.transactionAmount.setTextColor(ContextCompat.getColor(holder.transactionAmount.getContext(), R.color.green));
+                holder.transactionImage.setImageResource(R.drawable.deposit_icon);
+                break;
+            case "Withdraw":
+                holder.transactionCurrency.setTextColor(ContextCompat.getColor(holder.transactionCurrency.getContext(), R.color.red));
+                holder.transactionAmount.setTextColor(ContextCompat.getColor(holder.transactionAmount.getContext(), R.color.red));
+                holder.transactionImage.setImageResource(R.drawable.withdraw_icon);
+                break;
+            case "Send":
+                holder.transactionImage.setImageResource(R.drawable.sent_icon);
+                break;
+        }
+
     }
 
     @Override
@@ -48,13 +69,13 @@ public class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapte
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
+        ImageView transactionImage;
         TextView transactionType, transactionDate, transactionCurrency, transactionAmount;
-        //ImageView transactionImage;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            //transactionImage = itemView.findViewById(R.id.transaction_icon);
+            transactionImage = itemView.findViewById(R.id.transaction_icon);
             transactionType = itemView.findViewById(R.id.transaction_type);
             transactionDate = itemView.findViewById(R.id.transaction_date);
             transactionCurrency = itemView.findViewById(R.id.transaction_currency);

@@ -47,7 +47,12 @@ public class ReviewTransaction extends AppCompatActivity {
     FirebaseDatabase database;
 
     TextView amountText, amountToPayText, numberText, providerText, transactionFeeText;
-    String provider, phoneNumber, amount, transactionFee, amountToPay, userEmail, date;
+    String provider;
+    String phoneNumber;
+    String amount;
+    String transactionFee;
+    String amountToPay;
+    String userEmail;
     Double amountDouble;
     ImageView back;
     MaterialButton deposit;
