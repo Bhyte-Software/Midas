@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.airbnb.lottie.LottieAnimationView;
 import com.bhyte.midas.Database.ReadWriteAllTransactions;
 import com.bhyte.midas.R;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -51,6 +53,8 @@ public class ReviewTransaction extends AppCompatActivity {
     Double amountDouble;
     ImageView back;
     MaterialButton deposit;
+
+    BottomSheetDialog depositConfirmationBottomSheet;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -141,132 +145,10 @@ public class ReviewTransaction extends AppCompatActivity {
 
         // Deposit Button
         deposit.setOnClickListener(v -> {
-
-            depositAnimation.setVisibility(View.VISIBLE);
-            depositAnimation.playAnimation();
-            deposit.setText("");
-
-            new Thread(() -> {
-                // Api Request(Long Operation)
-
-                // Initialize http client
-                OkHttpClient client = new OkHttpClient();
-
-                MediaType mediaType = MediaType.parse("application/json");
-                JSONObject actualData = new JSONObject();
-                JSONObject mobileMoney = new JSONObject();
-
-                try {
-                    mobileMoney.put("phone", "0551234987");
-                    mobileMoney.put("provider", "mtn");
-
-                    actualData.put("amount", (int) (amountToPayDouble * 100));
-                    actualData.put("email", "femke@gmail.com");
-                    actualData.put("currency", "GHS");
-                    actualData.put("mobile_money", mobileMoney);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                RequestBody body = RequestBody.create(actualData.toString(), mediaType);
-                Request request = new Request.Builder()
-                        .url("https://api.paystack.co/charge")
-                        .post(body)
-                        .addHeader("content-type", "application/json")
-                        .addHeader("Authorization", "Bearer sk_test_c87485f78655da06ffdd385fcda8f0a53bfa9f86")
-                        .build();
-                try {
-                    Response response = client.newCall(request).execute();
-
-                    System.out.println(Objects.requireNonNull(response.body()).string());// This prints the response body to the console
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                // TODO All this should be for when the deposit works/goes through
-
-                // Set has Transactions to true
-                String transaction = "True";
-
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-                assert firebaseUser != null;
-                // Get user main balance and add the deposit amount to it
-                databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addListenerForSingleValueEvent(new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String currentBalance = snapshot.getValue(String.class);
-                        assert currentBalance != null;
-
-                        // The amount deposited plus the current balance
-                        double amountToAdd = Double.parseDouble(currentBalance) + Double.parseDouble(amount);
-                        String newBalance = Double.toString(Double.parseDouble(df.format(amountToAdd)));
-
-                        // Write the new balance to the database
-                        databaseReference.child(firebaseUser.getUid()).child("userMainBalance").setValue(newBalance).addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                startActivity(new Intent(getApplicationContext(), DepositSuccessPage.class));
-                                finish();
-                            } else {
-                                // Print an error message
-                                System.out.println("Error updating user main balance: " + task.getException());
-                                // It could be a page that says; "There was a problem making a deposit, please try again"
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        // Print an error message
-                        System.out.println("Error retrieving user main balance: " + error.getMessage());
-                    }
-                });
-
-                // Transaction Preferences
-                String transactionCurrency = "GH₵";
-                // Transaction Type
-                String transactionType = "Deposit";
-                // Transaction Amount
-                String transactionAmount = "+ " + amount;
-
-                // Generate Date in Wed, 4 Jul 2001 12:08 Format
-                @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm");
-                String transactionDate = dateFormat.format(Calendar.getInstance().getTime());
-
-                // Write deposit amount to users database, as a Deposit Transaction
-                databaseReference.child(firebaseUser.getUid()).child("transactions").child("depositTransactions").child(firebaseUser.getUid()).child("amount").setValue(amount);
-
-                /* Write deposit amount to transactions database */
-                // Get a reference to the "transactions" collection
-                DatabaseReference transactionsRef = database.getReference("Transactions");
-
-                // Get a reference to the "withdrawalTransactions" sub-collection
-                DatabaseReference depositTransactionsRef = transactionsRef.child("depositTransactions");
-
-                // Generate a unique ID for the new transaction
-                String transactionUID = depositTransactionsRef.push().getKey();
-
-                // Set transaction to True
-                databaseReference.child(firebaseUser.getUid()).child("transaction").setValue(transaction);
-
-                // Save to all transactions
-                ReadWriteAllTransactions readWriteAllTransactions = new ReadWriteAllTransactions(transactionType, transactionDate, transactionCurrency, transactionAmount);
-                DatabaseReference allTransactionsRef = database.getReference("Users");
-                assert transactionUID != null;
-                allTransactionsRef.child(firebaseUser.getUid()).child("All Transactions").child(transactionUID).setValue(readWriteAllTransactions);
-
-
-                // Add the new transaction to the "withdrawalTransactions" sub-collection
-                depositTransactionsRef.child(transactionUID).child("amount").setValue(amount);
-                try{
-                    runOnUiThread(() -> {
-                        depositAnimation.setVisibility(View.GONE);
-                        depositAnimation.pauseAnimation();
-                        deposit.setText("Deposit");
-                    });
-                } catch (final Exception exception){
-                    Log.i("---", "Exception in thread");
-                }
-            }).start();
+            depositConfirmationBottomSheet = new BottomSheetDialog(ReviewTransaction.this, R.style.BottomSheetTheme);
+            View depositSheetView = LayoutInflater.from(this).inflate(R.layout.deposit_comfirmation_sheet, null);
+            setContentView(depositSheetView);
+            depositConfirmationBottomSheet.show();
         });
     }
 }

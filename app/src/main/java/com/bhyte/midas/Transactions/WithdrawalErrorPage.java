@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.bhyte.midas.R;
-
-public class DepositErrorPage extends AppCompatActivity {
+public class WithdrawalErrorPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deposit_error_page);
+        setContentView(R.layout.activity_withdrawal_error_page);
     }
 }

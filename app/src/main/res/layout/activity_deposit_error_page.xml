@@ -6,4 +6,62 @@
     android:layout_height="match_parent"
     tools:context=".Transactions.DepositErrorPage">
 
+    <ImageView
+        android:id="@+id/error_deposit_icon_id"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_35"
+        android:src="@drawable/error_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/error_deposit_text_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/error"
+        android:textSize="@dimen/dimen_30_sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/error_deposit_icon_id" />
+
+    <TextView
+        android:id="@+id/error_deposit_detail_text_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:gravity="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/error_deposit_text_id"
+        tools:text="We encountered an error depositing GHC20 into your account." />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/deposit_error_page_retry_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="@dimen/dimen_30"
+        android:layout_marginEnd="@dimen/dimen_30"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/retry"
+        android:textAllCaps="false"
+        app:cornerRadius="@dimen/dimen_25"
+        app:layout_constraintBottom_toTopOf="@id/deposit_error_page_back_btn_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/deposit_error_page_back_btn_id"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

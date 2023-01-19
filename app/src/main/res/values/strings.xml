@@ -117,6 +117,7 @@
     <string name="cancel">Cancel</string>
     <string name="sign_out_title">Sign out from\nMidas</string>
     <string name="logout_confirmation">Are you sure you would like to sign out of your account?</string>
+    <string name="deposit_confirmation_detail">Are you sure you would like to deposit GHC20 into your account</string>
     <!-- USER -->
 
     <!-- BOTTOM NAVIGATION -->
@@ -184,7 +185,7 @@
     <string name="creation_fee_gift_card">$2.00 creation fee</string>
 
     <string name="success_from_success_page">Cool, You\'ve deposited successfully!</string>
-    <string name="great">Great</string>
+
     <!-- Transactions -->
 
     <!-- Card Features -->
@@ -542,5 +543,14 @@
     <string name="plus_icon">plus icon</string>
     <string name="cedi_sign">GH₵</string>
     <string name="transactions">Transactions</string>
+    <string name="successful_text_page">Successful!</string>
+    <string name="error">Error</string>
+    <string name="great">Great!</string>
+    <string name="back">Back</string>
+    <string name="retry">Retry</string>
+    <string name="confirm_deposit">Confirm Deposit</string>
+    <string name="confirm">Confirm</string>
+    <string name="confirm_withdrawal">Confirm Withdrawal</string>
+    <string name="are_you_sure_you_would_like_to_withdraw_20_ghc_from_your_account">Are you sure you would like to withdraw 20 GHC from your account</string>
 
 </resources>
