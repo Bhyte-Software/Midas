@@ -93,7 +93,7 @@ public class SignUpEnterOTP extends AppCompatActivity {
                 // The verification Code
                 String code = pinView.getText().toString().trim();
 
-                //Verifying code gotten from Termii
+                //Verifying code gotten from Termii Client
                 // Initialize http client
                 OkHttpClient client = new OkHttpClient();
 
