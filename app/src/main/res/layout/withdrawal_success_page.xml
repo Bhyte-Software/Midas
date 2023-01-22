@@ -2,25 +2,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="center"
     android:background="@color/bg"
-    android:gravity="center"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/withdraw_success"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/success_icon_id"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_bold"
-        android:textColor="@color/main_text"
-        android:textSize="27sp" />
+        android:layout_marginTop="@dimen/dimen_35"
+        android:layout_gravity="center"
+        android:src="@drawable/successful_icon" />
+
+
+    <TextView
+        android:id="@+id/withdraw_success_text_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/successful_text_page"
+        android:textSize="@dimen/dimen_30_sp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/withdraw_success_detail_text_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:layout_marginTop="@dimen/dimen_10"
+        tools:text="You've successfully deposited GHC20 into your account."/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/great_next_button"
+        android:id="@+id/withdraw_great_next_button"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginStart="@dimen/dimen_50"
+        android:layout_marginEnd="@dimen/dimen_50"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/great"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        app:cornerRadius="@dimen/dimen_25" />
 
 </LinearLayout>

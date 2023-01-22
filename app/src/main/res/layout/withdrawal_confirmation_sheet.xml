@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/dimen_5">
+    android:padding="@dimen/dimen_5"
+    android:id="@+id/withdrawal_confirmation_sheet_id"
+    android:background="@drawable/bottom_sheet_background"
+    android:theme="@style/Theme.MaterialComponents.Light">
 
     <View
         android:id="@+id/view_id"

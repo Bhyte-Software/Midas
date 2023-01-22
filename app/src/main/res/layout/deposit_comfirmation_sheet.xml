@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/deposit_confirmation_sheet_id"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/dimen_5">
+    android:background="@drawable/bottom_sheet_background"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dimen_10"
+    android:theme="@style/Theme.MaterialComponents.Light">
 
     <View
         android:id="@+id/view_id"
@@ -47,9 +51,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginStart="@dimen/dimen_20"
+        android:layout_marginEnd="@dimen/dimen_20"
         android:fontFamily="@font/roboto_regular"
         android:padding="@dimen/dimen_10"
-        android:text="@string/deposit_confirmation_detail"
+        tools:text="@string/deposit_confirmation_detail"
         android:textAlignment="center"
         android:textColor="@color/secondary_text"
         android:textSize="18sp"
@@ -63,7 +69,7 @@
         android:layout_marginStart="@dimen/dimen_50"
         android:layout_marginTop="@dimen/dimen_20"
         android:layout_marginEnd="@dimen/dimen_50"
-        android:layout_marginBottom="@dimen/dimen_25"
+        android:layout_marginBottom="@dimen/dimen_50"
         app:layout_constraintTop_toBottomOf="@id/deposit_message_id">
 
         <com.google.android.material.button.MaterialButton

@@ -3,7 +3,6 @@ package com.bhyte.midas.Transactions;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.bhyte.midas.Database.ReadWriteAllTransactions;
 import com.bhyte.midas.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
@@ -25,21 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.text.DateFormat;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Objects;
-
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class ReviewTransaction extends AppCompatActivity {
 
@@ -48,13 +32,13 @@ public class ReviewTransaction extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseDatabase database;
 
-    TextView amountText, amountToPayText, numberText, providerText, transactionFeeText;
+    TextView amountText, amountToPayText, numberText, providerText, transactionFeeText, depositConfirmationDetails;
     String provider, phoneNumber, amount, transactionFee, amountToPay, userEmail, date;
     Double amountDouble;
     ImageView back;
     MaterialButton deposit;
 
-    BottomSheetDialog depositConfirmationBottomSheet;
+    BottomSheetDialog sendMoneyConfirmationBottomSheet;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -145,10 +129,25 @@ public class ReviewTransaction extends AppCompatActivity {
 
         // Deposit Button
         deposit.setOnClickListener(v -> {
-            depositConfirmationBottomSheet = new BottomSheetDialog(ReviewTransaction.this, R.style.BottomSheetTheme);
-            View depositSheetView = LayoutInflater.from(this).inflate(R.layout.deposit_comfirmation_sheet, null);
-            setContentView(depositSheetView);
-            depositConfirmationBottomSheet.show();
+            sendMoneyConfirmationBottomSheet = new BottomSheetDialog(ReviewTransaction.this, R.style.BottomSheetTheme);
+            View sendMoneySheetView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.deposit_comfirmation_sheet, findViewById(R.id.deposit_confirmation_sheet_id));
+            sendMoneyConfirmationBottomSheet.setContentView(sendMoneySheetView);
+            MaterialButton confirmBottomBtn = sendMoneySheetView.findViewById(R.id.confirm_btn);
+            MaterialButton cancelBottomBtn = sendMoneySheetView.findViewById(R.id.cancel_btn);
+
+            depositConfirmationDetails = sendMoneySheetView.findViewById(R.id.deposit_message_id);
+            depositConfirmationDetails.setText("Are you sure you would like to deposit GHS" + amountToPay + " into your account");
+
+            sendMoneyConfirmationBottomSheet.show();
+
+            confirmBottomBtn.setOnClickListener(v1 -> {
+                Intent intent = new Intent(ReviewTransaction.this, DepositSuccessPage.class);
+                startActivity(intent);
+            });
+
+            cancelBottomBtn.setOnClickListener(v2 -> {
+                sendMoneyConfirmationBottomSheet.dismiss();
+            });
         });
     }
 }

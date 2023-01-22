@@ -39,8 +39,8 @@ public class WithdrawalSuccessPage extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
-        greatNextButton = findViewById(R.id.great_next_button);
-        withdrawSuccessText = findViewById(R.id.withdraw_success);
+        greatNextButton = findViewById(R.id.withdraw_great_next_button);
+        withdrawSuccessText = findViewById(R.id.withdraw_success_detail_text_id);
 
         //Get withdrawn amount from database
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");

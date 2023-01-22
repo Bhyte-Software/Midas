@@ -3,26 +3,18 @@ package com.bhyte.midas.Transactions;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.PorterDuff;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.style.StyleSpan;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
-import com.bhyte.midas.AccountCreation.GetStarted;
 import com.bhyte.midas.Database.ReadWriteAllTransactions;
 import com.bhyte.midas.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -52,7 +44,7 @@ public class WithdrawMoney extends AppCompatActivity {
     MaterialButton withdrawButton;
     ImageView backspace, back;
     TextView amount, currentBalanceText, currency, one, two, three, four, five, six, seven, eight, nine, zero, dot;
-    String phoneNumber;
+    String phoneNumber, userInputAmount;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -96,7 +88,7 @@ public class WithdrawMoney extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String currentBalance = snapshot.getValue(String.class);
                 assert currentBalance != null;
-                currentBalanceText.setText("GH₵"+ currentBalance + " AVAILABLE");
+                currentBalanceText.setText("GH₵" + currentBalance + " AVAILABLE");
             }
 
             @Override
@@ -141,10 +133,10 @@ public class WithdrawMoney extends AppCompatActivity {
              */
 
             // This gets the user input
-            String userInputAmount = amount.getText().toString();
+            userInputAmount = amount.getText().toString();
 
             if (userInputAmount.equals("") || userInputAmount.equals("0")) {
-                Toast.makeText(getApplicationContext(),"Please enter an amount",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Please enter an amount", Toast.LENGTH_SHORT).show();
             } else {
                 userAmountDouble = Double.parseDouble(userInputAmount);
 
@@ -156,10 +148,10 @@ public class WithdrawMoney extends AppCompatActivity {
                         double currentBalanceDouble = Double.parseDouble(currentBalance);
 
                         if (userAmountDouble > currentBalanceDouble) {
-                            Toast.makeText(getApplicationContext(),"Insufficient Balance",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Insufficient Balance", Toast.LENGTH_SHORT).show();
                         } else {
                             selectMobileMoney.setText(spannableString);
-                            withdrawButtonBottom.setText("Withdraw GH₵"+ userInputAmount);
+                            withdrawButtonBottom.setText("Withdraw GH₵" + userInputAmount);
                             bottomSheetDialog.show();
                         }
                     }
@@ -174,71 +166,86 @@ public class WithdrawMoney extends AppCompatActivity {
 
             // When the second withdraw button is pressed
             withdrawButtonBottom.setOnClickListener(w -> {
-                // TODO FINGERPRINT VERIFICATION BEFORE ANY OF THIS
+                bottomSheetDialog = new BottomSheetDialog(WithdrawMoney.this, R.style.BottomSheetTheme);
+                View withdrawalConfirmationSheetView = LayoutInflater.from(context).inflate(R.layout.withdrawal_confirmation_sheet, findViewById(R.id.withdrawal_confirmation_sheet_id));
+                bottomSheetDialog.setContentView(withdrawalConfirmationSheetView);
+                bottomSheetDialog.show();
 
-                assert firebaseUser != null;
-                databaseReference.child(firebaseUser.getUid()).child("transactions").child("withdrawalTransactions").child(Objects.requireNonNull(databaseReference.push().getKey())).child("amount").setValue(userInputAmount);
+                MaterialButton confirmWithdrawBtn = withdrawalConfirmationSheetView.findViewById(R.id.withdraw_confirm_btn);
+                MaterialButton cancelWithdrawBtn = withdrawalConfirmationSheetView.findViewById(R.id.withdraw_cancel_btn);
 
-                // Get a reference to the "transactions" collection
-                DatabaseReference transactionsRef = database.getReference("Transactions");
+                TextView withdrawTextDetail = withdrawalConfirmationSheetView.findViewById(R.id.withdraw_message_id);
+                withdrawTextDetail.setText("Are you sure you would like to withdraw " + userInputAmount + "GHC from your account");
+                confirmWithdrawBtn.setOnClickListener(v1 -> {
+                    // TODO FINGERPRINT VERIFICATION BEFORE ANY OF THIS
 
-                // Get a reference to the "withdrawalTransactions" sub-collection
-                DatabaseReference withdrawalTransactionsRef = transactionsRef.child("withdrawalTransactions");
+                    assert firebaseUser != null;
+                    databaseReference.child(firebaseUser.getUid()).child("transactions").child("withdrawalTransactions").child(Objects.requireNonNull(databaseReference.push().getKey())).child("amount").setValue(userInputAmount);
 
-                // Generate a unique ID for the new transaction
-                String transactionUID = withdrawalTransactionsRef.push().getKey();
+                    // Get a reference to the "transactions" collection
+                    DatabaseReference transactionsRef = database.getReference("Transactions");
 
-                // Add the new transaction to the "withdrawalTransactions" sub-collection
-                assert transactionUID != null;
-                withdrawalTransactionsRef.child(transactionUID).child("amount").setValue(userInputAmount);
+                    // Get a reference to the "withdrawalTransactions" sub-collection
+                    DatabaseReference withdrawalTransactionsRef = transactionsRef.child("withdrawalTransactions");
 
-                // Transaction Preferences
-                String transactionCurrency = "GH₵";
-                // Transaction Type
-                String transactionType = "Withdraw";
-                // Transaction Amount
-                String transactionAmount = "- " + userInputAmount;
+                    // Generate a unique ID for the new transaction
+                    String transactionUID = withdrawalTransactionsRef.push().getKey();
 
-                // Generate Date in Wed, 4 Jul 2001 12:08 Format
-                @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm");
-                String transactionDate = dateFormat.format(Calendar.getInstance().getTime());
+                    // Add the new transaction to the "withdrawalTransactions" sub-collection
+                    assert transactionUID != null;
+                    withdrawalTransactionsRef.child(transactionUID).child("amount").setValue(userInputAmount);
 
-                // Save to all transactions
-                ReadWriteAllTransactions readWriteAllTransactions = new ReadWriteAllTransactions(transactionType, transactionDate, transactionCurrency, transactionAmount);
-                DatabaseReference allTransactionsRef = database.getReference("Users");
-                allTransactionsRef.child(firebaseUser.getUid()).child("All Transactions").child(transactionUID).setValue(readWriteAllTransactions);
+                    // Transaction Preferences
+                    String transactionCurrency = "GH₵";
+                    // Transaction Type
+                    String transactionType = "Withdraw";
+                    // Transaction Amount
+                    String transactionAmount = "- " + userInputAmount;
+
+                    // Generate Date in Wed, 4 Jul 2001 12:08 Format
+                    @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm");
+                    String transactionDate = dateFormat.format(Calendar.getInstance().getTime());
+
+                    // Save to all transactions
+                    ReadWriteAllTransactions readWriteAllTransactions = new ReadWriteAllTransactions(transactionType, transactionDate, transactionCurrency, transactionAmount);
+                    DatabaseReference allTransactionsRef = database.getReference("Users");
+                    allTransactionsRef.child(firebaseUser.getUid()).child("All Transactions").child(transactionUID).setValue(readWriteAllTransactions);
 
 
-                // Get current balance to be subtracted from
-                databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addListenerForSingleValueEvent(new ValueEventListener() {
+                    // Get current balance to be subtracted from
+                    databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addListenerForSingleValueEvent(new ValueEventListener() {
 
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String currentBalance = snapshot.getValue(String.class);
-                        DecimalFormat df = new DecimalFormat("0.00");
-                        assert currentBalance != null;
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String currentBalance = snapshot.getValue(String.class);
+                            DecimalFormat df = new DecimalFormat("0.00");
+                            assert currentBalance != null;
 
-                        // The current balance minus the amount withdrawn
-                        double amountToSubtract = Double.parseDouble(currentBalance) - Double.parseDouble(userInputAmount);
-                        String newBalance = Double.toString(Double.parseDouble(df.format(amountToSubtract)));
+                            // The current balance minus the amount withdrawn
+                            double amountToSubtract = Double.parseDouble(currentBalance) - Double.parseDouble(userInputAmount);
+                            String newBalance = Double.toString(Double.parseDouble(df.format(amountToSubtract)));
 
-                        // Write the new balance to the database
-                        databaseReference.child(firebaseUser.getUid()).child("userMainBalance").setValue(newBalance).addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                startActivity(new Intent(context, WithdrawalSuccessPage.class));
-                                finish();
-                            } else {
-                                // Print an error message
-                                System.out.println("Error updating user main balance: " + task.getException());
-                            }
-                        });
-                    }
+                            // Write the new balance to the database
+                            databaseReference.child(firebaseUser.getUid()).child("userMainBalance").setValue(newBalance).addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    startActivity(new Intent(context, WithdrawalSuccessPage.class));
+                                    finish();
+                                } else {
+                                    // Print an error message
+                                    System.out.println("Error updating user main balance: " + task.getException());
+                                }
+                            });
+                        }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        // Print an error message
-                        System.out.println("Error retrieving user main balance: " + error.getMessage());
-                    }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            // Print an error message
+                            System.out.println("Error retrieving user main balance: " + error.getMessage());
+                        }
+                    });
+                });
+                cancelWithdrawBtn.setOnClickListener(v2 -> {
+                    bottomSheetDialog.dismiss();
                 });
             });
         });
