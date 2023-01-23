@@ -1,55 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/dimen_25"
-    xmlns:tools="http://schemas.android.com/tools">
+    tools:context=".Transactions.DepositErrorPage">
 
     <ImageView
-        android:id="@+id/success_icon_id"
+        android:id="@+id/withdraw_error_icon"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_35"
-        android:src="@drawable/successful_icon"
+        android:src="@drawable/error_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/success_text_id"
+        android:id="@+id/withdraw_error_text_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/successful_text_page"
+        android:text="@string/error"
         android:textSize="@dimen/dimen_30_sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/success_icon_id" />
+        app:layout_constraintTop_toBottomOf="@id/withdraw_error_icon" />
 
     <TextView
-        android:id="@+id/success_detail_text_id"
+        android:id="@+id/withdraw_error_detail_text_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10"
         android:gravity="center"
         android:textSize="18sp"
-        android:layout_marginTop="@dimen/dimen_10"
-        app:layout_constraintTop_toBottomOf="@id/success_text_id"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="You've successfully deposited GHC20 into your account."/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/withdraw_error_text_id"
+        tools:text="We encountered an error withdrawing GHC20 from your account." />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/great_next_button"
+        android:id="@+id/withdraw_error_retry_button"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginStart="@dimen/dimen_30"
+        android:layout_marginEnd="@dimen/dimen_30"
         android:fontFamily="@font/roboto_medium"
-        android:text="@string/great"
+        android:text="@string/retry"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:cornerRadius="@dimen/dimen_25"
+        app:layout_constraintBottom_toTopOf="@id/withdraw_error_back_btn_id"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="@dimen/dimen_30"
-        app:cornerRadius="@dimen/dimen_25"/>
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/withdraw_error_back_btn_id"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

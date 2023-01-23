@@ -43,7 +43,6 @@ public class GetStarted extends AppCompatActivity {
 
         this.context = getApplicationContext();
 
-
         // Hooks
         signInButtonAnimation = findViewById(R.id.sign_in_button_animation);
         createAccountButton = findViewById(R.id.create_account_button);

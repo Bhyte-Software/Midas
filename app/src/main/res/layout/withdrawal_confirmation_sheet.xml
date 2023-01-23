@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dimen_5"
+    android:id="@+id/withdrawal_confirmation_sheet_id"
+    android:background="@drawable/bottom_sheet_background"
+    android:theme="@style/Theme.MaterialComponents.Light">
+
+    <View
+        android:id="@+id/view_id"
+        android:layout_width="40dp"
+        android:layout_height="5dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_15"
+        android:background="@drawable/bottom_sheet_handle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/withdraw_confirmation_icon_animation"
+        android:layout_width="@dimen/dimen_150"
+        android:layout_height="@dimen/dimen_150"
+        android:layout_margin="@dimen/dimen_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_id"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/withdraw_anim" />
+
+    <TextView
+        android:id="@+id/confirm_withdraw_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:gravity="center"
+        android:text="@string/confirm_withdrawal"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/withdraw_confirmation_icon_animation" />
+
+    <TextView
+        android:id="@+id/withdraw_message_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:fontFamily="@font/roboto_regular"
+        android:padding="@dimen/dimen_15"
+        android:textAlignment="center"
+        android:textColor="@color/secondary_text"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/confirm_withdraw_tv"
+        tools:text="@string/are_you_sure_you_would_like_to_withdraw_20_ghc_from_your_account" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_50"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:layout_marginEnd="@dimen/dimen_50"
+        android:layout_marginBottom="@dimen/dimen_25"
+        app:layout_constraintTop_toBottomOf="@id/withdraw_message_id">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/withdraw_cancel_btn"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue_200"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            app:cornerRadius="35dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/withdraw_confirm_btn"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_gravity="end"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/confirm"
+            android:textAllCaps="false"
+            app:cornerRadius="35dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

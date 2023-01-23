@@ -24,6 +24,20 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".WithdrawalErrorPage"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".DepositErrorPage"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".InviteFriends"
             android:exported="false" />
         <activity
@@ -42,8 +56,8 @@
             android:name=".Transactions.ReviewTransaction"
             android:exported="false" />
         <activity
-        android:name=".Transactions.DepositSuccessPage"
-        android:exported="false" />
+            android:name=".Transactions.DepositSuccessPage"
+            android:exported="false" />
         <activity
             android:name=".Transactions.AddMoneyChooseProvider"
             android:exported="false" />
@@ -64,10 +78,10 @@
             android:exported="false" />
         <activity
             android:name=".Transactions.SendReceiver"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".Transactions.SendReceiverSuccessPage"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".AccountCreation.EnterOTPNigeria"
             android:exported="false" />
@@ -201,8 +215,8 @@
         <activity
             android:name=".AccountCreation.SignUpEnterNumber"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".AccountCreation.GetStarted"
             android:exported="false"
