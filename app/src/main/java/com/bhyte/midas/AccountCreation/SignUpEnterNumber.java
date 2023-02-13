@@ -152,7 +152,7 @@ public class SignUpEnterNumber extends AppCompatActivity {
             JSONObject apiData = new JSONObject();
 
             try {
-                apiData.put("api_key", "TLFFfMS22bquNxA0cDHLrEkX7h0zbcZvD0fTmw0nWEiRWokOAykqlnQXnI3ds2");
+                apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
                 apiData.put("message_type", "NUMERIC");
                 apiData.put("to", fullPhoneNumber);
                 apiData.put("from", "Midas Inc");

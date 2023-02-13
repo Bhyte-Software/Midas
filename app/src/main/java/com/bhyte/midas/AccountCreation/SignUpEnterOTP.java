@@ -98,7 +98,7 @@ public class SignUpEnterOTP extends AppCompatActivity {
                 JSONObject apiData = new JSONObject();
 
                 try {
-                    apiData.put("api_key", "TLFFfMS22bquNxA0cDHLrEkX7h0zbcZvD0fTmw0nWEiRWokOAykqlnQXnI3ds2");
+                    apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
                     apiData.put("pin_id", pinId);
                     apiData.put("pin", code);
                 } catch (JSONException e) {
@@ -118,7 +118,8 @@ public class SignUpEnterOTP extends AppCompatActivity {
                         // Send to SignUpCredentials page
                         startActivity(new Intent(getApplicationContext(), SignUpCredentials.class));
                     } else {
-                        System.out.println("That ain't it bub");
+                        //Show a toast
+                        Toast.makeText(getApplicationContext(),"This code seems to be incorrect",Toast.LENGTH_SHORT).show();
                     }
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
