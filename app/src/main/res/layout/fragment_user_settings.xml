@@ -110,7 +110,6 @@
                 android:contentDescription="@string/sign_out_icon" />
 
             <TextView
-                android:id="@+id/sign_out"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -155,7 +154,6 @@
                 android:contentDescription="@string/app_theme_icon" />
 
             <TextView
-                android:id="@+id/theme_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -199,7 +197,6 @@
                 android:src="@drawable/download_icon" />
 
             <TextView
-                android:id="@+id/download_statement"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -243,7 +240,6 @@
                 android:contentDescription="@string/faq_icon" />
 
             <TextView
-                android:id="@+id/faq_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -276,7 +272,6 @@
                 android:contentDescription="@string/contact_support_icon" />
 
             <TextView
-                android:id="@+id/contact_support_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -309,7 +304,6 @@
                 android:contentDescription="@string/terms_icon_content_description" />
 
             <TextView
-                android:id="@+id/terms_and_conditions_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -343,7 +337,6 @@
                 android:contentDescription="@string/about_icon_content_description" />
 
             <TextView
-                android:id="@+id/about_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"

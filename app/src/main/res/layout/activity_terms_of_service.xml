@@ -26,7 +26,6 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/title1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
@@ -47,7 +46,6 @@
 
             <TextView
                 android:textColor="@color/secondary_text"
-                android:id="@+id/warning"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/date"
@@ -77,7 +75,6 @@
             android:paddingEnd="@dimen/dimen_15">
 
             <TextView
-                android:id="@+id/title2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -90,13 +87,11 @@
             <TextView
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/secondary_text"
-                android:id="@+id/desc1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/conditions_of_use" />
 
             <TextView
-                android:id="@+id/title3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -108,13 +103,11 @@
             <TextView
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/secondary_text"
-                android:id="@+id/desc2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/privacy_policy" />
 
             <TextView
-                android:id="@+id/title4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -126,13 +119,11 @@
             <TextView
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/secondary_text"
-                android:id="@+id/desc3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/age_restriction" />
 
             <TextView
-                android:id="@+id/title5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -144,13 +135,11 @@
             <TextView
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/secondary_text"
-                android:id="@+id/desc4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/intellectual_property" />
 
             <TextView
-                android:id="@+id/title6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -162,13 +151,11 @@
             <TextView
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/secondary_text"
-                android:id="@+id/desc5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/user_accounts" />
 
             <TextView
-                android:id="@+id/title7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -180,13 +167,11 @@
             <TextView
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/secondary_text"
-                android:id="@+id/desc6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/applicable_law" />
 
             <TextView
-                android:id="@+id/title8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -198,13 +183,11 @@
             <TextView
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/secondary_text"
-                android:id="@+id/desc7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/disputes" />
 
             <TextView
-                android:id="@+id/title9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -216,13 +199,11 @@
             <TextView
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/secondary_text"
-                android:id="@+id/desc8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/indemnification" />
 
             <TextView
-                android:id="@+id/title10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -235,7 +216,6 @@
                 android:layout_marginBottom="@dimen/dimen_50"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/secondary_text"
-                android:id="@+id/desc9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/limitation_on_liability" />

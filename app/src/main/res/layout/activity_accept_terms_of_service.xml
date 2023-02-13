@@ -27,7 +27,6 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/title1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/darker_grotesque_black"
@@ -47,7 +46,6 @@
                 android:textColor="@color/blue_200" />
 
             <TextView
-                android:id="@+id/warning"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/date"
@@ -79,7 +77,6 @@
             android:paddingEnd="@dimen/dimen_15">
 
             <TextView
-                android:id="@+id/title2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -90,7 +87,6 @@
 
 
             <TextView
-                android:id="@+id/desc1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/darker_grotesque"
@@ -98,7 +94,6 @@
                 android:textColor="@color/secondary_text" />
 
             <TextView
-                android:id="@+id/title3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -108,7 +103,6 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/desc2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/darker_grotesque"
@@ -116,7 +110,6 @@
                 android:textColor="@color/secondary_text" />
 
             <TextView
-                android:id="@+id/title4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -126,7 +119,6 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/desc3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/darker_grotesque"
@@ -134,7 +126,6 @@
                 android:textColor="@color/secondary_text" />
 
             <TextView
-                android:id="@+id/title5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -144,7 +135,6 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/desc4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/darker_grotesque"
@@ -152,7 +142,6 @@
                 android:textColor="@color/secondary_text" />
 
             <TextView
-                android:id="@+id/title6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -162,7 +151,6 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/desc5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/darker_grotesque"
@@ -170,7 +158,6 @@
                 android:textColor="@color/secondary_text" />
 
             <TextView
-                android:id="@+id/title7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -180,7 +167,6 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/desc6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/darker_grotesque"
@@ -188,7 +174,6 @@
                 android:textColor="@color/secondary_text" />
 
             <TextView
-                android:id="@+id/title8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -198,7 +183,6 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/desc7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/darker_grotesque"
@@ -206,7 +190,6 @@
                 android:textColor="@color/secondary_text" />
 
             <TextView
-                android:id="@+id/title9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -216,7 +199,6 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/desc8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/darker_grotesque"
@@ -224,7 +206,6 @@
                 android:textColor="@color/secondary_text" />
 
             <TextView
-                android:id="@+id/title10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20"
@@ -234,7 +215,6 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/desc9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/darker_grotesque"
@@ -265,7 +245,6 @@
                     app:strokeWidth="1dp" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/accept_button"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_marginStart="@dimen/dimen_10"

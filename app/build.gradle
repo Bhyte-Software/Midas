@@ -4,7 +4,15 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
+    namespace 'com.bhyte.midas'
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
 
     packagingOptions{
         resources.excludes.add("META-INF/*")
@@ -13,9 +21,9 @@ android {
     defaultConfig {
         applicationId "com.bhyte.midas"
         minSdk 27
-        targetSdk 32
+        targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -35,8 +43,8 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.6.0'
+    implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
@@ -44,8 +52,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:20.1.0'
     implementation 'com.google.firebase:firebase-analytics:21.2.0'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // OkHttp
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
@@ -55,9 +63,6 @@ dependencies {
 
     // Lottie
     implementation 'com.airbnb.android:lottie:5.2.0'
-
-    // Material Design
-    implementation 'com.google.android.material:material:1.7.0'
 
     // Onboarding
     implementation 'me.relex:circleindicator:2.1.6@aar'
@@ -94,7 +99,7 @@ dependencies {
     implementation 'com.android.volley:volley:1.2.1'
 
     // Ads
-    implementation 'com.google.android.gms:play-services-ads:21.3.0'
+    implementation 'com.google.android.gms:play-services-ads:21.5.0'
     implementation project(':nativetemplates')
 
     // Shimmer
@@ -105,5 +110,8 @@ dependencies {
     implementation 'com.wajahatkarim:EasyFlipView:3.0.3'
 
     implementation 'com.android.volley:volley:1.2.1'
+
+    // New splash API
+    implementation 'androidx.core:core-splashscreen:1.0.0'
 
 }

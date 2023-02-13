@@ -99,7 +99,6 @@
         </RelativeLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/create_button"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="@dimen/dimen_25"

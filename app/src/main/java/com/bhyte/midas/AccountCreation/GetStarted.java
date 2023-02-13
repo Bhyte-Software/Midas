@@ -2,8 +2,10 @@ package com.bhyte.midas.AccountCreation;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -14,9 +16,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.splashscreen.SplashScreen;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.bhyte.midas.Common.NoInternet;
+import com.bhyte.midas.Common.OnBoarding;
 import com.bhyte.midas.R;
 import com.bhyte.midas.Util.CheckInternetConnection;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -24,6 +28,10 @@ import com.google.android.material.button.MaterialButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class GetStarted extends AppCompatActivity {
+
+
+    private static final int SPLASH_TIMER = 1;
+    SharedPreferences onBoardingScreen;
 
     LottieAnimationView signInButtonAnimation;
     MaterialButton createAccountButton, signInButton;
@@ -34,15 +42,40 @@ public class GetStarted extends AppCompatActivity {
     Context context;
     private long pressedTime;
 
+
+    private boolean keep = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
+        this.context = getApplicationContext();
         // Analytics
         firebaseAnalytics = FirebaseAnalytics.getInstance(this);
         setContentView(R.layout.activity_get_started);
 
-        this.context = getApplicationContext();
+        // Keep returning false to Should Keep On Screen until ready to begin.
+        splashScreen.setKeepOnScreenCondition(() -> keep);
 
+        // Splash
+        new Handler().postDelayed(() -> {
+            onBoardingScreen = getSharedPreferences("onBoardingScreen", MODE_PRIVATE);
+            boolean isFirstTime = onBoardingScreen.getBoolean("firstTime", true);
+
+            // Check if it's users first time
+            if (isFirstTime) {
+                SharedPreferences.Editor editor = onBoardingScreen.edit();
+                editor.putBoolean("firstTime", false);
+                editor.apply();
+
+                Intent intent = new Intent(getApplicationContext(), OnBoarding.class);
+                keep = false;
+                startActivity(intent);
+                finish();
+            } else {
+                keep = false;
+            }
+        }, SPLASH_TIMER);
         // Hooks
         signInButtonAnimation = findViewById(R.id.sign_in_button_animation);
         createAccountButton = findViewById(R.id.create_account_button);
@@ -61,7 +94,6 @@ public class GetStarted extends AppCompatActivity {
             signInButton.setText("");
 
 
-
             new Thread(() -> {
                 boolean isConnected = CheckInternetConnection.isConnected(getApplicationContext());
 
@@ -71,13 +103,13 @@ public class GetStarted extends AppCompatActivity {
                         signInButtonAnimation.setVisibility(View.GONE);
                         signInButtonAnimation.pauseAnimation();
                         signInButton.setText(R.string.sign_in);
-                        if (isConnected){
+                        if (isConnected) {
                             startActivity(new Intent(getApplicationContext(), SignIn.class));
                         } else {
                             startActivity(new Intent(getApplicationContext(), NoInternet.class));
                         }
                     });
-                } catch (final Exception exception){
+                } catch (final Exception exception) {
                     Log.i("---", "Exception in thread");
                 }
             }).start();

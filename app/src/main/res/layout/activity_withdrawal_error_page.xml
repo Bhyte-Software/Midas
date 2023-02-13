@@ -29,7 +29,6 @@
         app:layout_constraintTop_toBottomOf="@id/withdraw_error_icon" />
 
     <TextView
-        android:id="@+id/withdraw_error_detail_text_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_10"
@@ -41,7 +40,6 @@
         tools:text="We encountered an error withdrawing GHC20 from your account." />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/withdraw_error_retry_button"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="@dimen/dimen_30"

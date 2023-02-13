@@ -110,7 +110,7 @@ public class SignIn extends AppCompatActivity {
 
     private boolean validateEmail() {
         String val = emailField.getText().toString().trim();
-        String check_email = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        String check_email = "[a-zA-Z\\d._-]+@[a-z]+\\.+[a-z]+";
 
         if (val.isEmpty()) {
             emailField.setError("Field cannot be empty!");

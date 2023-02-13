@@ -17,7 +17,6 @@
         android:src="@drawable/deposit_icon" />
 
     <LinearLayout
-        android:id="@+id/view_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"

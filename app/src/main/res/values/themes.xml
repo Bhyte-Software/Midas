@@ -19,13 +19,6 @@
 
     </style>
 
-    <style name="customRoundedImageView" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">0dp</item>
-        <item name="cornerSizeBottomLeft">@dimen/dimen_20</item>
-        <item name="cornerSizeBottomRight">@dimen/dimen_20</item>
-    </style>
-
     <style name="Theme.Midas.BottomNavTheme">
         <item name="colorPrimary">@color/blue_200</item>
         <item name="colorOnPrimary">@color/black</item>

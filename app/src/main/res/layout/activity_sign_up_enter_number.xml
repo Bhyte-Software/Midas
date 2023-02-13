@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    android:id="@+id/main_layout"
     android:focusable="true"
     android:focusableInTouchMode="true"
     tools:context=".AccountCreation.SignUpEnterNumber">
@@ -45,7 +44,6 @@
         android:textSize="20sp" />
 
     <RelativeLayout
-        android:id="@+id/ripple"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

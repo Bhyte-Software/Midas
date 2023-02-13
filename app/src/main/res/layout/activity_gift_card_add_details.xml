@@ -81,7 +81,6 @@
             android:autofillHints="Email" />
 
         <EditText
-            android:id="@+id/title_input_layout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_60"
             android:layout_marginStart="@dimen/dimen_15"
@@ -100,7 +99,6 @@
             android:autofillHints="Title" />
 
         <EditText
-            android:id="@+id/message_input_layout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_60"
             android:layout_marginStart="@dimen/dimen_15"

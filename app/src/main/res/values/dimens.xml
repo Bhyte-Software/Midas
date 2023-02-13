@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="dimen_1">1dp</dimen>
     <dimen name="dimen_3">3dp</dimen>
-    <dimen name="dimen_4">4dp</dimen>
     <dimen name="dimen_5">5dp</dimen>
-    <dimen name="dimen_7">7dp</dimen>
     <dimen name="dimen_10">10dp</dimen>
     <dimen name="dimen_15">15dp</dimen>
     <dimen name="dimen_20">20dp</dimen>
@@ -22,10 +19,6 @@
     <dimen name="dimen_120">120dp</dimen>
     <dimen name="dimen_55">55dp</dimen>
 
-    <dimen name="translationX">6dp</dimen>
-    <dimen name="translationY">30dp</dimen>
-    <dimen name="translation2Y">60dp</dimen>
-    <dimen name="translationYMax">45dp</dimen>
     <dimen name="dimen_35">35dp</dimen>
     <dimen name="dimen_150">150dp</dimen>
     <dimen name="dimen_65">65dp</dimen>

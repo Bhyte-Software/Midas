@@ -129,7 +129,6 @@
                     </RelativeLayout>
 
                     <TextView
-                        android:id="@+id/txt2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/linear"
@@ -189,7 +188,6 @@
                         </RelativeLayout>
 
                         <TextView
-                            android:id="@+id/txt3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -202,7 +200,6 @@
                             android:textSize="22sp" />
 
                         <RelativeLayout
-                            android:id="@+id/optional"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
@@ -229,7 +226,6 @@
                     </RelativeLayout>
 
                     <TextView
-                        android:id="@+id/txt4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/linear2"

@@ -16,9 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_centerInParent="true"
-        android:padding="5dp"
-        android:id="@+id/background"
-        >
+        android:padding="5dp">
 
       <com.google.android.gms.ads.nativead.MediaView
           android:id="@+id/media_view"

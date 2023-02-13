@@ -122,12 +122,12 @@ public class ReviewTransaction extends AppCompatActivity {
         // Calculations
         // Transaction Fee
         double transactionFeeInt = 0.009 * amountDouble;
-        transactionFee = String.valueOf(df.format(transactionFeeInt));
+        transactionFee = df.format(transactionFeeInt);
 
 
         // Amount you will have to pay
         double amountToPayDouble = amountDouble + transactionFeeInt; // The amount to pay displayed as a double
-        amountToPay = String.valueOf(df.format(amountToPayDouble));
+        amountToPay = df.format(amountToPayDouble);
 
         // Set TextView Texts
         providerText.setText(provider);
@@ -137,12 +137,7 @@ public class ReviewTransaction extends AppCompatActivity {
 
         // Click Listeners
         // Back Button
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        back.setOnClickListener(v -> finish());
 
         // Deposit Button
         deposit.setOnClickListener(v -> {
@@ -262,6 +257,7 @@ public class ReviewTransaction extends AppCompatActivity {
 
                 // Add the new transaction to the "withdrawalTransactions" sub-collection
                 depositTransactionsRef.child(transactionUID).child("amount").setValue(amount);
+
                 try{
                     runOnUiThread(() -> {
                         depositAnimation.setVisibility(View.GONE);

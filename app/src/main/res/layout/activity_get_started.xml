@@ -94,9 +94,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:text="My Name is Warris"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
 </LinearLayout>

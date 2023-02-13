@@ -106,7 +106,6 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/min_max"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/amount_section"
@@ -310,7 +309,6 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/row4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/row3"
