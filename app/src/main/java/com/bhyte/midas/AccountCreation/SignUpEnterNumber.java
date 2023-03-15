@@ -25,10 +25,23 @@ import com.bhyte.midas.R;
 import com.bhyte.midas.Util.CheckInternetConnection;
 import com.bhyte.midas.Util.Common;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.Objects;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class SignUpEnterNumber extends AppCompatActivity {
     public static String fullPhoneNumber;
     public static String completeNumber;
     public static String country;
+    public static String pinID;
     public String countryCode;
     public String phoneNumber;
     public int lengthOfVal;
@@ -125,6 +138,45 @@ public class SignUpEnterNumber extends AppCompatActivity {
             fullPhoneNumber = "+" + countryCode + completeNumber;
 
             country = "Ghana";
+
+            // Initialize http client
+            OkHttpClient client = new OkHttpClient();
+
+            MediaType mediaType = MediaType.parse("application/json");
+            JSONObject apiData = new JSONObject();
+
+            try {
+                apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
+                apiData.put("message_type", "NUMERIC");
+                apiData.put("to", fullPhoneNumber);
+                apiData.put("from", "Midas Inc");
+                apiData.put("channel", "generic");
+                apiData.put("pin_attempts", "1");
+                apiData.put("pin_time_to_live", "5");
+                apiData.put("pin_length", "6");
+                apiData.put("pin_placeholder", "< 1234 >");
+                apiData.put("message_text", "Your Midas verification code is: < 1234 > Do not share it with anyone.");
+                apiData.put("pin_type", "NUMERIC");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            RequestBody body = RequestBody.create(apiData.toString(), mediaType);
+            Request request = new Request.Builder()
+                    .url("https://api.ng.termii.com/api/sms/otp/send")
+                    .post(body)
+                    .addHeader("Content-Type", "application/json")
+                    .build();
+            try {
+                Response response = client.newCall(request).execute();
+
+                JSONObject json = new JSONObject(Objects.requireNonNull(response.body()).string());
+                pinID = json.getString("pinId");
+
+                //System.out.println(Objects.requireNonNull(response.body()).string());
+                //System.out.println(pinID);
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
 
             startActivity(new Intent(getApplicationContext(), SignUpEnterOTP.class));
             finish();
