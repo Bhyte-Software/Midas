@@ -86,7 +86,7 @@ public class SignUpEnterNumber extends AppCompatActivity {
                         textView.setText(R.string.get_code);
                     });
                 } catch (final Exception exception){
-                    Log.i("---", "Exception in thread");
+                    Log.i("---", "Exception in threads");
                 }
             }).start();
         });
