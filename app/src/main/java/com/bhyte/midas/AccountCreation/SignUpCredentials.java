@@ -70,7 +70,7 @@ public class SignUpCredentials extends AppCompatActivity {
 
     private void createUser() {
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-            // Save Data & Go to next page
+            // Save Data & move to next page
             saveData();
         });
                /* .addOnFailureListener(e -> {
