@@ -1,9 +1,12 @@
 package com.bhyte.midas.AccountCreation;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -29,6 +32,11 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class GetStarted extends AppCompatActivity {
 
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
     private static final int SPLASH_TIMER = 1;
     SharedPreferences onBoardingScreen;
@@ -83,19 +91,20 @@ public class GetStarted extends AppCompatActivity {
 
         // Initialize Bottom Sheet
         countryBottomSheet = new BottomSheetDialog(GetStarted.this, R.style.BottomSheetTheme);
-        View sheetView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.country_bottom_sheet, findViewById(R.id.country_sheet));
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) View sheetView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.country_bottom_sheet, findViewById(R.id.country_sheet));
         countryBottomSheet.setContentView(sheetView);
+
+
 
         // Click Listeners
         signInButton.setOnClickListener(v -> {
-
             signInButtonAnimation.setVisibility(View.VISIBLE);
             signInButtonAnimation.playAnimation();
             signInButton.setText("");
 
 
             new Thread(() -> {
-                boolean isConnected = CheckInternetConnection.isConnected(getApplicationContext());
+                boolean isConnected = isNetworkAvailable(getApplicationContext());
 
                 try {
                     Thread.sleep(1000);
