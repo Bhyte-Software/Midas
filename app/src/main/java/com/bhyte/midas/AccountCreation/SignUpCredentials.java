@@ -47,26 +47,26 @@ public class SignUpCredentials extends AppCompatActivity {
     }
 
     public void callAuthentication(View view) {
+        boolean isFullNameValid = validateFullName();
+        boolean isEmailValid = validateEmail();
+        boolean isPasswordValid = validatePassword();
 
-        validateFullName();
-        validateEmail();
-        validatePassword();
+        if (isFullNameValid && isEmailValid && isPasswordValid) {
+            // Get Data from Edit Text Fields
+            fullName = fullNameField.getText().toString();
+            email = emailField.getText().toString();
+            password = passwordField.getText().toString();
 
+            completeNumber = phoneNumber.substring(1);
+            newPhoneNumber = "+" + "233" + completeNumber;
+            newUserMainBalance = "0";
+            transaction = "False";
 
-        // Get Data from Edit Text Fields
-        fullName = fullNameField.getText().toString();
-        email = emailField.getText().toString();
-        password = passwordField.getText().toString();
-
-        completeNumber = phoneNumber.substring(1);
-        newPhoneNumber = "+" + "233" + completeNumber;
-        newUserMainBalance = "0";
-        transaction = "False";
-
-        // Create User
-        createUser();
-
+            // Create User
+            createUser();
+        }
     }
+
 
     private void createUser() {
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
@@ -120,51 +120,59 @@ public class SignUpCredentials extends AppCompatActivity {
         });
     }
 
-    private void validateFullName() {
+    private boolean validateFullName() {
         String val = fullNameField.getText().toString().trim();
         String check_spaces = "\\A\\w{1,20}\\z";
 
         if (val.isEmpty()) {
             fullNameField.setError("FullName cannot be empty!");
-
+            return false;
         } else if (val.matches(check_spaces)) {
             fullNameField.setError("Enter your full name!");
+            return false;
         } else {
             fullNameField.setError(null);
+            return true;
         }
     }
 
-    private void validateEmail() {
+    private boolean validateEmail() {
         String val = emailField.getText().toString().trim();
         String check_email = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
         if (val.isEmpty()) {
             emailField.setError("Field cannot be empty!");
+            return false;
         } else if (!val.matches(check_email)) {
             emailField.setError("Invalid Email!");
+            return false;
         } else {
             emailField.setError(null);
+            return true;
         }
     }
 
-    private void validatePassword() {
+    private boolean validatePassword() {
         String val = passwordField.getText().toString().trim();
         String check_password = "^" +
                 //"(?=.*[0-9])" +   // at least 1 digit
                 //"(?=.*[a-z])" +   // at least 1 lower case letter
                 //"(?=.*[A-Z])" +   // at least 1 upper case letter
                 "(?=.*[a-zA-Z])" + // any letter
-                "(?=.*[@#$%^&+=])" + // at least one special character
+                "(?=.*[!@#$%^&*()_+-=/?.>,<;:'{}`~])" + // at least one special character
                 "(?=\\S+$)" + // no white spaces
                 ".{8,}" + //at least 8 characters
                 "$";
 
         if (val.isEmpty()) {
             passwordField.setError("Password cannot be empty!");
+            return false;
         } else if (!val.matches(check_password)) {
-            passwordField.setError("Password should contain 8 characters!");
+            passwordField.setError("Password should be at least 8 characters long, include at least one letter, one special character, and have no white spaces.");
+            return false;
         } else {
             passwordField.setError(null);
+            return true;
         }
     }
 
