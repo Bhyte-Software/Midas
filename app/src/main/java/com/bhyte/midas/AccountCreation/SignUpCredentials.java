@@ -159,7 +159,7 @@ public class SignUpCredentials extends AppCompatActivity {
                 //"(?=.*[a-z])" +   // at least 1 lower case letter
                 //"(?=.*[A-Z])" +   // at least 1 upper case letter
                 "(?=.*[a-zA-Z])" + // any letter
-                "(?=.*[!@#$%^&*()_+-=/?.>,<;:'{}`~])" + // at least one special character
+                "(?=.*[!@#$%^&*()_+-=/?.>,<;:'{}`~0])" + // at least one special character
                 "(?=\\S+$)" + // no white spaces
                 ".{8,}" + //at least 8 characters
                 "$";
