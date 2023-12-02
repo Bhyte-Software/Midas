@@ -27,11 +27,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Objects;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 
 public class WithdrawMoney extends AppCompatActivity {
     FirebaseUser firebaseUser;
@@ -229,6 +240,78 @@ public class WithdrawMoney extends AppCompatActivity {
                             databaseReference.child(firebaseUser.getUid()).child("userMainBalance").setValue(newBalance).addOnCompleteListener(task -> {
                                 if (task.isSuccessful()) {
                                     startActivity(new Intent(context, WithdrawalSuccessPage.class));
+
+
+                                    // Withdraw SMS notification
+                                    new Thread(() -> {
+                                        OkHttpClient client = new OkHttpClient();
+
+                                        MediaType mediaType = MediaType.parse("application/json");
+                                        JSONObject apiData = new JSONObject();
+
+                                        try {
+                                            apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
+                                            apiData.put("to", "+233240369071"); // variable
+                                            apiData.put("from", "Midas Inc");
+                                            apiData.put("sms", "Great, " + userAmountDouble + " GHS is on it's way to your mobile money account!"); //variable
+                                            apiData.put("type", "plain");
+                                            apiData.put("channel", "generic");
+                                            apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                        RequestBody body = RequestBody.create(apiData.toString(), mediaType);
+                                        Request request = new Request.Builder()
+                                                .url("https://api.ng.termii.com/api/sms/send")
+                                                .post(body)
+                                                .addHeader("Content-Type", "application/json")
+                                                .build();
+
+                                        try {
+                                            Response response = client.newCall(request).execute();
+                                            assert response.body() != null;
+                                            System.out.println(response.body().string()); // This prints the response body to the console
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }).start();
+
+
+
+                                    // Paystack Transfer API - Withdraw to user
+                                    new Thread(() -> {
+                                        OkHttpClient client = new OkHttpClient();
+
+                                        MediaType mediaType = MediaType.parse("application/json");
+                                        JSONObject params = new JSONObject();
+
+                                        try {
+                                            params.put("source", "balance");
+                                            params.put("reason", "Android Test");
+                                            params.put("amount", (int) (userAmountDouble * 100));
+                                            params.put("recipient", "RCP_bcepcgbk3klxipe");
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+
+                                        RequestBody body = RequestBody.create(params.toString(), mediaType);
+                                        Request request = new Request.Builder()
+                                                .url("https://api.paystack.co/transfer")
+                                                .post(body)
+                                                .addHeader("Content-Type", "application/json")
+                                                .addHeader("Authorization", "Bearer sk_test_c87485f78655da06ffdd385fcda8f0a53bfa9f86")
+                                                .build();
+
+                                        try {
+                                            Response response = client.newCall(request).execute();
+                                            assert response.body() != null;
+                                            //System.out.println(response.body().string()); // This prints the response body to the console
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }).start();
+
+
                                     finish();
                                 } else {
                                     // Print an error message

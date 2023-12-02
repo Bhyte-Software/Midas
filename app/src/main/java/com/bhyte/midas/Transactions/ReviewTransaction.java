@@ -146,6 +146,14 @@ public class ReviewTransaction extends AppCompatActivity {
             depositAnimation.playAnimation();
             deposit.setText("");
 
+<<<<<<< HEAD
+=======
+            // Deposit SMS Notifications
+            new Thread(() -> {
+
+            });
+
+>>>>>>> afadb7b (new init)
             new Thread(() -> {
                 // Api Request(Long Operation)
 
