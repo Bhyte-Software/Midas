@@ -1,5 +1,7 @@
 package com.bhyte.midas.AccountCreation;
 
+import static com.bhyte.midas.AccountCreation.GetStarted.isNetworkAvailable;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
@@ -74,7 +76,9 @@ public class SignUpEnterNumber extends AppCompatActivity {
             textView.setText("");
             new Thread(() -> {
                 // Check Internet Connection (Long Operation)
-                if (CheckInternetConnection.isConnected(SignUpEnterNumber.this)) {
+                boolean isConnected = isNetworkAvailable(getApplicationContext());
+
+                if (isConnected) {
                     getCode();
                 } else {
                     startActivity(new Intent(getApplicationContext(), NoInternet.class));

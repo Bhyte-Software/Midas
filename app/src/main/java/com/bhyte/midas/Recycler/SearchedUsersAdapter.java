@@ -1,7 +1,6 @@
 package com.bhyte.midas.Recycler;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.graphics.Color;
 import android.view.ViewGroup;
 
@@ -17,13 +16,8 @@ import java.util.ArrayList;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.bhyte.midas.R;
 import com.bhyte.midas.Transactions.SendReceiverSuccessPage;
 import com.google.android.material.button.MaterialButton;
 
@@ -33,10 +27,14 @@ public class SearchedUsersAdapter extends RecyclerView.Adapter<SearchedUsersAdap
     private MaterialButton finalSendButton;
     private SearchView searchView;
 
-    public SearchedUsersAdapter(ArrayList<SearchedUsersModel> searchedUsers, MaterialButton finalSendButton, SearchView searchView) {
+    private OnUserSelectedListener listener;
+
+
+    public SearchedUsersAdapter(ArrayList<SearchedUsersModel> searchedUsers, MaterialButton finalSendButton, SearchView searchView, OnUserSelectedListener listener) {
         this.searchedUsers = searchedUsers;
         this.finalSendButton = finalSendButton;
         this.searchView = searchView;
+        this.listener = listener;
     }
 
     @NonNull
@@ -59,18 +57,28 @@ public class SearchedUsersAdapter extends RecyclerView.Adapter<SearchedUsersAdap
         ArrayList<SearchedUsersModel> selectedItems = new ArrayList<>(searchedUsers);
 
         holder.clLayout.setOnClickListener(view -> {
+            // Invoke the listener when a user is selected
+            if(listener != null) {
+                listener.onUserSelected(searchedUsersModel.getName());
+            }
+
             // Reset the selected flag for all items in the selectedItems list
             for (SearchedUsersModel item : selectedItems) {
                 item.setSelected(false);
             }
+
             // Clear the selectedItems list
             selectedItems.clear();
+
             // Add the current item to the selectedItems list
             selectedItems.add(searchedUsersModel);
+
             // Set the selected flag for the current item
             searchedUsersModel.setSelected(true);
+
             // Notify the adapter that the data has changed
             notifyDataSetChanged();
+
             // Enable the send money button if selected
             finalSendButton.setEnabled(true);
 
@@ -116,4 +124,10 @@ public class SearchedUsersAdapter extends RecyclerView.Adapter<SearchedUsersAdap
     public interface OnNoteListener{
         void onNoteClick(int position);
     }
+
+    //An interface to pass the selected users name
+    public interface OnUserSelectedListener {
+        void onUserSelected(String userName);
+    }
+
 }
