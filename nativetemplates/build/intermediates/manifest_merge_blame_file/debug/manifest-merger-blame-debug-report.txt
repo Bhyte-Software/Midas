@@ -4,23 +4,13 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="27"
-<<<<<<< HEAD
-6-->G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml
+6-->G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml
 7        android:targetSdkVersion="31" />
-7-->G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml
+7-->G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml
 8
 9    <application android:supportsRtl="true" >
-9-->G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml:2:3-4:17
-9-->G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml:2:16-42
-=======
-6-->G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml
-7        android:targetSdkVersion="31" />
-7-->G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml
-8
-9    <application android:supportsRtl="true" >
-9-->G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml:2:3-4:17
-9-->G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml:2:16-42
->>>>>>> afadb7b (new init)
+9-->G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml:2:3-4:17
+9-->G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml:2:16-42
 10    </application>
 11
 12</manifest>

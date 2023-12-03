@@ -23,6 +23,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -30,7 +34,20 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Objects;
 
-public class SendReceiver extends AppCompatActivity{
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+public class SendReceiver extends AppCompatActivity implements SearchedUsersAdapter.OnUserSelectedListener{
+    private String selectedUserName;
+
+    @Override
+    public void onUserSelected(String userName) {
+        this.selectedUserName = userName;
+        // Now you can use selectedUserName in your SMS message
+    }
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
     FirebaseDatabase database;
@@ -133,6 +150,40 @@ public class SendReceiver extends AppCompatActivity{
 
             finish();
             startActivity(new Intent(getApplicationContext(), SendReceiverSuccessPage.class));
+
+            // Send SMS Notifications
+            new Thread(() -> {
+
+                OkHttpClient client = new OkHttpClient();
+
+                MediaType mediaType = MediaType.parse("application/json");
+                JSONObject apiData = new JSONObject();
+
+                try {
+                    apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
+                    apiData.put("to", "+233240369071"); // variable
+                    apiData.put("from", "Midas Inc");
+                    apiData.put("sms", userInputAmount + " GHS has been sent to " + selectedUserName); //variable
+                    apiData.put("type", "plain");
+                    apiData.put("channel", "generic");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                RequestBody body = RequestBody.create(apiData.toString(), mediaType);
+                Request request = new Request.Builder()
+                        .url("https://api.ng.termii.com/api/sms/send")
+                        .post(body)
+                        .addHeader("Content-Type", "application/json")
+                        .build();
+
+                try {
+                    Response response = client.newCall(request).execute();
+                    assert response.body() != null;
+                    //System.out.println(response.body().string()); // This prints the response body to the console
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }).start();
         });
 
         // Connect to the database
@@ -185,7 +236,7 @@ public class SendReceiver extends AppCompatActivity{
                                                     myList.add(object);
                                                 }
                                             }
-                                            SearchedUsersAdapter searchedUsersAdapter = new SearchedUsersAdapter(myList, finalSendBtn, svSearch);
+                                            SearchedUsersAdapter searchedUsersAdapter = new SearchedUsersAdapter(myList, finalSendBtn, svSearch, SendReceiver.this);
                                             searchedUsersRecycler.setAdapter(searchedUsersAdapter);
                                         }
                                     }
@@ -198,7 +249,7 @@ public class SendReceiver extends AppCompatActivity{
                             } else {
                                 // Clear the data from the RecyclerView
                                 searchedUsersModel = new ArrayList<>();
-                                SearchedUsersAdapter searchedUsersAdapterClass = new SearchedUsersAdapter(searchedUsersModel, finalSendBtn, svSearch);
+                                SearchedUsersAdapter searchedUsersAdapterClass = new SearchedUsersAdapter(searchedUsersModel, finalSendBtn, svSearch, SendReceiver.this);
                                 searchedUsersRecycler.setAdapter(searchedUsersAdapterClass);
 
                                 //Set button to disabled

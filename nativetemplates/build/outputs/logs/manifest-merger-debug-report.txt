@@ -1,59 +1,29 @@
 -- Merging decision tree log ---
 manifest
-<<<<<<< HEAD
-ADDED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml:1:1-5:12
-INJECTED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml:1:1-5:12
-INJECTED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml:1:1-5:12
+ADDED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml:1:1-5:12
+INJECTED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml:1:1-5:12
+INJECTED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml:1:1-5:12
 	package
-		INJECTED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml
-		ADDED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml:1:1-5:12
-		INJECTED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml
+		INJECTED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml
+		ADDED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml:1:1-5:12
+		INJECTED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml:1:11-69
+		ADDED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml:1:11-69
 application
-ADDED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml:2:3-4:17
+ADDED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml:2:3-4:17
 	android:supportsRtl
-		ADDED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml:2:16-42
+		ADDED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml:2:16-42
 uses-sdk
-INJECTED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml
-INJECTED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml
-INJECTED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml
-INJECTED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml
+INJECTED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml
+INJECTED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml
+INJECTED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml
+INJECTED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml
-		ADDED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml
-		INJECTED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml
+		INJECTED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml
+		ADDED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml
+		INJECTED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml
-		ADDED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml
-		INJECTED from G:\AndroidStudioProjects\MidasOctober\nativetemplates\src\main\AndroidManifest.xml
-=======
-ADDED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml:1:1-5:12
-INJECTED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml:1:1-5:12
-INJECTED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml:1:1-5:12
-	package
-		INJECTED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml
-		ADDED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml:1:1-5:12
-		INJECTED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml
-	xmlns:android
-		ADDED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml:1:11-69
-application
-ADDED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml:2:3-4:17
-	android:supportsRtl
-		ADDED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml:2:16-42
-uses-sdk
-INJECTED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml
-INJECTED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml
-INJECTED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml
-INJECTED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml
-	android:targetSdkVersion
-		INJECTED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml
-		ADDED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml
-		INJECTED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml
-	android:minSdkVersion
-		INJECTED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml
-		ADDED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml
-		INJECTED from G:\AndroidStudioProjects\Midas-master\nativetemplates\src\main\AndroidManifest.xml
->>>>>>> afadb7b (new init)
+		INJECTED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml
+		ADDED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml
+		INJECTED from G:\AndroidStudioProjects\MidasNovember\nativetemplates\src\main\AndroidManifest.xml

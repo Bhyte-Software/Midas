@@ -256,7 +256,6 @@ public class WithdrawMoney extends AppCompatActivity {
                                             apiData.put("sms", "Great, " + userAmountDouble + " GHS is on it's way to your mobile money account!"); //variable
                                             apiData.put("type", "plain");
                                             apiData.put("channel", "generic");
-                                            apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
                                         } catch (JSONException e) {
                                             e.printStackTrace();
                                         }
@@ -270,7 +269,7 @@ public class WithdrawMoney extends AppCompatActivity {
                                         try {
                                             Response response = client.newCall(request).execute();
                                             assert response.body() != null;
-                                            System.out.println(response.body().string()); // This prints the response body to the console
+                                            //System.out.println(response.body().string()); // This prints the response body to the console
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }

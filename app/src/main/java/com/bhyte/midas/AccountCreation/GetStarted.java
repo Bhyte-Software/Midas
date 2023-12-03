@@ -175,7 +175,7 @@ public class GetStarted extends AppCompatActivity {
 
             countryGhana.setOnClickListener(v12 -> {
 
-                boolean isConnected = CheckInternetConnection.isConnected(getApplicationContext());
+                boolean isConnected = isNetworkAvailable(getApplicationContext());
 
                 if (isConnected) {
                     // Do something here
@@ -187,20 +187,20 @@ public class GetStarted extends AppCompatActivity {
                 }
             });
             countryNigeria.setOnClickListener(v1 -> {
-                countryBottomSheet.dismiss();
-                // Custom Toast
-                Toast toast = Toast.makeText(GetStarted.this, R.string.no_available_ng, Toast.LENGTH_SHORT);
-                View view1 = toast.getView();
-
-                //Gets the actual oval background of the Toast then sets the colour filter
-                view1.getBackground().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.red), PorterDuff.Mode.SRC_IN);
-
-                //Gets the TextView from the Toast so it can be edited
-                TextView text = view1.findViewById(android.R.id.message);
-                text.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
-
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
-                toast.show();
+//                countryBottomSheet.dismiss();
+//                // Custom Toast
+//                Toast toast = Toast.makeText(GetStarted.this, R.string.no_available_ng, Toast.LENGTH_SHORT);
+//                View view1 = toast.getView();
+//
+//                //Gets the actual oval background of the Toast then sets the colour filter
+//                view1.getBackground().setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.red), PorterDuff.Mode.SRC_IN);
+//
+//                //Gets the TextView from the Toast so it can be edited
+//                TextView text = view1.findViewById(android.R.id.message);
+//                text.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+//
+//                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 15);
+//                toast.show();
             });
             closeLayout.setOnClickListener(v13 -> countryBottomSheet.dismiss());
         });

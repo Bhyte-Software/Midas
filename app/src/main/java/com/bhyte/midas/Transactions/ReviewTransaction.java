@@ -146,14 +146,39 @@ public class ReviewTransaction extends AppCompatActivity {
             depositAnimation.playAnimation();
             deposit.setText("");
 
-<<<<<<< HEAD
-=======
             // Deposit SMS Notifications
             new Thread(() -> {
+                OkHttpClient client = new OkHttpClient();
 
-            });
+                MediaType mediaType = MediaType.parse("application/json");
+                JSONObject apiData = new JSONObject();
 
->>>>>>> afadb7b (new init)
+                try {
+                    apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
+                    apiData.put("to", "+233240369071"); // variable
+                    apiData.put("from", "Midas Inc");
+                    apiData.put("sms", "Great news, " + amount + " GHS has been added to your Midas balance"); //variable
+                    apiData.put("type", "plain");
+                    apiData.put("channel", "generic");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                RequestBody body = RequestBody.create(apiData.toString(), mediaType);
+                Request request = new Request.Builder()
+                        .url("https://api.ng.termii.com/api/sms/send")
+                        .post(body)
+                        .addHeader("Content-Type", "application/json")
+                        .build();
+
+                try {
+                    Response response = client.newCall(request).execute();
+                    assert response.body() != null;
+                    //System.out.println(response.body().string()); // This prints the response body to the console
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+
             new Thread(() -> {
                 // Api Request(Long Operation)
 
