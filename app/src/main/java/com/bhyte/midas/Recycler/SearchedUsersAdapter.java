@@ -26,7 +26,6 @@ public class SearchedUsersAdapter extends RecyclerView.Adapter<SearchedUsersAdap
     ArrayList<SearchedUsersModel> searchedUsers;
     private MaterialButton finalSendButton;
     private SearchView searchView;
-
     private OnUserSelectedListener listener;
 
 
@@ -59,7 +58,7 @@ public class SearchedUsersAdapter extends RecyclerView.Adapter<SearchedUsersAdap
         holder.clLayout.setOnClickListener(view -> {
             // Invoke the listener when a user is selected
             if(listener != null) {
-                listener.onUserSelected(searchedUsersModel.getName());
+                listener.onUserSelected(searchedUsersModel.getName(), searchedUsersModel.getPhoneNumber());
             }
 
             // Reset the selected flag for all items in the selectedItems list
@@ -127,7 +126,7 @@ public class SearchedUsersAdapter extends RecyclerView.Adapter<SearchedUsersAdap
 
     //An interface to pass the selected users name
     public interface OnUserSelectedListener {
-        void onUserSelected(String userName);
+        void onUserSelected(String userName, String phoneNumber);
     }
 
 }

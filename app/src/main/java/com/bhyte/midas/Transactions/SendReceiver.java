@@ -1,5 +1,7 @@
 package com.bhyte.midas.Transactions;
 
+import static com.bhyte.midas.Transactions.SendReceiverSuccessPage.usersName;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -42,12 +44,15 @@ import okhttp3.Response;
 
 public class SendReceiver extends AppCompatActivity implements SearchedUsersAdapter.OnUserSelectedListener{
     private String selectedUserName;
+    private String selectedUserPhoneNumber;
+    private String theSendersName;
 
     @Override
-    public void onUserSelected(String userName) {
+    public void onUserSelected(String userName, String phoneNumber) {
         this.selectedUserName = userName;
-        // Now you can use selectedUserName in your SMS message
+        this.selectedUserPhoneNumber = phoneNumber;
     }
+
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
     FirebaseDatabase database;
@@ -71,6 +76,7 @@ public class SendReceiver extends AppCompatActivity implements SearchedUsersAdap
         String userInputAmount = intent.getStringExtra("USER_INPUT_AMOUNT");
 
         this.context = getApplicationContext();
+        getCurrentUserName();
 
         // Instance of FirebaseAuth and Database
         firebaseAuth = FirebaseAuth.getInstance();
@@ -151,7 +157,11 @@ public class SendReceiver extends AppCompatActivity implements SearchedUsersAdap
             finish();
             startActivity(new Intent(getApplicationContext(), SendReceiverSuccessPage.class));
 
-            // Send SMS Notifications
+            // Send SMS' after a successful transaction
+            sendSmsToRecipient("+233240369071", userInputAmount, theSendersName);
+            //sendSmsToCurrentUser(selectedUsername, amountSent);
+
+            // Send SMS Notification
             new Thread(() -> {
 
                 OkHttpClient client = new OkHttpClient();
@@ -185,6 +195,7 @@ public class SendReceiver extends AppCompatActivity implements SearchedUsersAdap
                 }
             }).start();
         });
+
 
         // Connect to the database
         if (svSearch != null) {
@@ -265,4 +276,70 @@ public class SendReceiver extends AppCompatActivity implements SearchedUsersAdap
             });
         }
     }
+
+    //Method for sending SMS to recipient
+    private void sendSmsToRecipient(String phoneNumber, String amount, String senderName) {
+        new Thread(() -> {
+            OkHttpClient client = new OkHttpClient();
+            MediaType mediaType = MediaType.parse("application/json");
+            JSONObject apiData = new JSONObject();
+
+            try {
+                apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
+                apiData.put("to", phoneNumber);
+                apiData.put("from", "Midas Inc");
+                apiData.put("sms", "You've received " + amount + " GHS from " + senderName);
+                apiData.put("type", "plain");
+                apiData.put("channel", "generic");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            RequestBody body = RequestBody.create(apiData.toString(), mediaType);
+            Request request = new Request.Builder()
+                    .url("https://api.ng.termii.com/api/sms/send")
+                    .post(body)
+                    .addHeader("Content-Type", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                // Handle the response
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    // This is a method to instantly retrieve the UserID and Name from Firebase
+    private void getCurrentUserName() {
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("name");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String fullName = snapshot.getValue(String.class);
+                if (fullName != null && !fullName.isEmpty()) {
+                    theSendersName = (fullName);
+                    // Now you can use theSendersName where needed
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //Handle the error
+            }
+        });
+    }
+
+    //Formatting the users name to eg: Name N.
+    private String formatName(String fullName) {
+        String[] parts = fullName.split(" ");
+        if (parts.length > 1) {
+            // If the name has more than one part, format it to "First L."
+            return parts[0] + " " + parts[1].charAt(0) + ".";
+        }
+        return fullName; // Return the full name if it's a single word
+    }
+
 }
