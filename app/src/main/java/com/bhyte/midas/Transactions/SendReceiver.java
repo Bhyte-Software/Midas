@@ -173,7 +173,7 @@ public class SendReceiver extends AppCompatActivity implements SearchedUsersAdap
                     apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
                     apiData.put("to", "+233240369071"); // variable
                     apiData.put("from", "Midas Inc");
-                    apiData.put("sms", userInputAmount + " GHS has been sent to " + selectedUserName); //variable
+                    apiData.put("sms", userInputAmount + " GHS has been sent to " + selectedUserName);
                     apiData.put("type", "plain");
                     apiData.put("channel", "generic");
                 } catch (JSONException e) {

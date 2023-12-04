@@ -253,7 +253,7 @@ public class WithdrawMoney extends AppCompatActivity {
                                             apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
                                             apiData.put("to", "+233240369071"); // variable
                                             apiData.put("from", "Midas Inc");
-                                            apiData.put("sms", "Great, " + userAmountDouble + " GHS is on it's way to your mobile money account!"); //variable
+                                            apiData.put("sms", "Great, " + userAmountDouble + " GHS is on it's way to your mobile money account!");
                                             apiData.put("type", "plain");
                                             apiData.put("channel", "generic");
                                         } catch (JSONException e) {
@@ -269,7 +269,7 @@ public class WithdrawMoney extends AppCompatActivity {
                                         try {
                                             Response response = client.newCall(request).execute();
                                             assert response.body() != null;
-                                            //System.out.println(response.body().string()); // This prints the response body to the console
+                                            //System.out.println(getUserPhoneNumber()); // This prints the response body to the console
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }
@@ -440,5 +440,10 @@ public class WithdrawMoney extends AppCompatActivity {
                 amount.setText(amount.getText().toString().substring(0, amount.getText().length() - 1));
             }
         });
+    }
+
+    // This is a method to instantly retrieve the users phone number
+    private void getUserPhoneNumber() {
+        //
     }
 }
