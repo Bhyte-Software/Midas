@@ -96,7 +96,7 @@ public class SignUpCredentials extends AppCompatActivity {
 
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-        ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(newPhoneNumber, fullName, email, newUserMainBalance, transaction);
+        ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(phoneNumber, fullName, email, newUserMainBalance, transaction);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         assert firebaseUser != null;
         databaseReference.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(task -> {

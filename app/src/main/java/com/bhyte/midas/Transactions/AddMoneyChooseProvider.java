@@ -78,7 +78,7 @@ public class AddMoneyChooseProvider extends AppCompatActivity implements Adapter
                     assert phoneNumber != null;
                     phoneNumber = phoneNumber.substring(4);
                     if (!(autoPhoneNumber == null)) {
-                        phoneNumber = "+"+ phoneNumber;
+                        phoneNumber = "+" + "233" + phoneNumber;
                         autoPhoneNumber.setText(phoneNumber);
                     }
                 }

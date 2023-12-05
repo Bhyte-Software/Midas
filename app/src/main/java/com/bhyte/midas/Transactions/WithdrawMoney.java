@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bhyte.midas.AccountCreation.SignUpEnterNumber;
 import com.bhyte.midas.Database.ReadWriteAllTransactions;
 import com.bhyte.midas.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -55,7 +56,7 @@ public class WithdrawMoney extends AppCompatActivity {
     MaterialButton withdrawButton;
     ImageView backspace, back;
     TextView amount, currentBalanceText, currency, one, two, three, four, five, six, seven, eight, nine, zero, dot;
-    String phoneNumber, userInputAmount;
+    String phoneNumber ,userInputAmount;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -106,19 +107,6 @@ public class WithdrawMoney extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 // Print an error message
                 System.out.println("Error retrieving user main balance: " + error.getMessage());
-            }
-        });
-
-        DatabaseReference databasePhoneReference = database.getReference("Users").child(firebaseUser.getUid()).child("phone");
-        databasePhoneReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                phoneNumber = snapshot.getValue(String.class);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
@@ -223,6 +211,24 @@ public class WithdrawMoney extends AppCompatActivity {
                     allTransactionsRef.child(firebaseUser.getUid()).child("All Transactions").child(transactionUID).setValue(readWriteAllTransactions);
 
 
+                    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                    if (firebaseUser != null) {
+                        DatabaseReference databasePhoneReference = database.getReference("Users").child(firebaseUser.getUid()).child("phone");
+                        databasePhoneReference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                phoneNumber = snapshot.getValue(String.class);
+                                assert phoneNumber != null;
+                                phoneNumber = phoneNumber.substring(4);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+
                     // Get current balance to be subtracted from
                     databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -251,7 +257,7 @@ public class WithdrawMoney extends AppCompatActivity {
 
                                         try {
                                             apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
-                                            apiData.put("to", "+233240369071"); // variable
+                                            apiData.put("to", phoneNumber);
                                             apiData.put("from", "Midas Inc");
                                             apiData.put("sms", "Great, " + userAmountDouble + " GHS is on it's way to your mobile money account!");
                                             apiData.put("type", "plain");
@@ -269,7 +275,7 @@ public class WithdrawMoney extends AppCompatActivity {
                                         try {
                                             Response response = client.newCall(request).execute();
                                             assert response.body() != null;
-                                            //System.out.println(getUserPhoneNumber()); // This prints the response body to the console
+                                            System.out.println(phoneNumber); // This prints the response body to the console
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }
@@ -440,10 +446,5 @@ public class WithdrawMoney extends AppCompatActivity {
                 amount.setText(amount.getText().toString().substring(0, amount.getText().length() - 1));
             }
         });
-    }
-
-    // This is a method to instantly retrieve the users phone number
-    private void getUserPhoneNumber() {
-        //
     }
 }
