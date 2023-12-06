@@ -4,18 +4,18 @@ public class SearchedUsersModel {
     private String id;
     private String name;
     private String mail;
-    private String phoneNumber;
+    private String phone;
     private Boolean selected = false;
 
     public SearchedUsersModel() {
         // Default constructor required for calls to DataSnapshot.getValue(Students.class)
     }
 
-    public SearchedUsersModel(String id, String name, String mail, String phoneNumber) {
+    public SearchedUsersModel(String id, String name, String mail, String phone) {
         this.id = id;
         this.name = name;
         this.mail = mail;
-        this.phoneNumber = phoneNumber;
+        this.phone = phone;
     }
 
     public String getId() {
@@ -40,12 +40,12 @@ public class SearchedUsersModel {
         this.mail = mail;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     // Flag to check whether is selected

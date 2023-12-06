@@ -165,10 +165,14 @@ public class SendReceiver extends AppCompatActivity implements SearchedUsersAdap
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         phoneNumber = snapshot.getValue(String.class);
+                        String userOrSendersPhoneNumber = phoneNumber;
 
                         // Send SMS' after a successful transaction
-                        sendSmsToRecipient(phoneNumber, userInputAmount, theSendersName);
-                        sendConfirmationSmsToSender(phoneNumber, userInputAmount, selectedUserName);
+                        sendSmsToRecipient(selectedUserPhoneNumber, userInputAmount, theSendersName);
+                        //System.out.println("Selected Users Number: " + selectedUserPhoneNumber);
+
+                        sendConfirmationSmsToSender(userOrSendersPhoneNumber, userInputAmount, selectedUserName);
+                        //System.out.println("My Number: " + userOrSendersPhoneNumber);
                     }
 
                     @Override
@@ -292,7 +296,7 @@ public class SendReceiver extends AppCompatActivity implements SearchedUsersAdap
             try {
                 Response response = client.newCall(request).execute();
                 assert response.body() != null;
-                //System.out.println(phoneNumber); // This prints the response body to the console
+                 // This prints the response body to the console
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -343,7 +347,6 @@ public class SendReceiver extends AppCompatActivity implements SearchedUsersAdap
                 String fullName = snapshot.getValue(String.class);
                 if (fullName != null && !fullName.isEmpty()) {
                     theSendersName = (fullName);
-                    // Now you can use theSendersName where needed
                 }
             }
 

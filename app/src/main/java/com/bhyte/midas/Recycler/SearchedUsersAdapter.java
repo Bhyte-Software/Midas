@@ -58,7 +58,7 @@ public class SearchedUsersAdapter extends RecyclerView.Adapter<SearchedUsersAdap
         holder.clLayout.setOnClickListener(view -> {
             // Invoke the listener when a user is selected
             if(listener != null) {
-                listener.onUserSelected(searchedUsersModel.getName(), searchedUsersModel.getPhoneNumber());
+                listener.onUserSelected(searchedUsersModel.getName(), searchedUsersModel.getPhone());
             }
 
             // Reset the selected flag for all items in the selectedItems list
