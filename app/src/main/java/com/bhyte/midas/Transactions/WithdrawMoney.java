@@ -211,6 +211,7 @@ public class WithdrawMoney extends AppCompatActivity {
                     allTransactionsRef.child(firebaseUser.getUid()).child("All Transactions").child(transactionUID).setValue(readWriteAllTransactions);
 
 
+                    // Get the users current phone number
                     FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                     if (firebaseUser != null) {
                         DatabaseReference databasePhoneReference = database.getReference("Users").child(firebaseUser.getUid()).child("phone");
@@ -220,6 +221,7 @@ public class WithdrawMoney extends AppCompatActivity {
                                 phoneNumber = snapshot.getValue(String.class);
                                 assert phoneNumber != null;
                                 phoneNumber = phoneNumber.substring(4);
+                                phoneNumber = "+" + "233" + phoneNumber;
                             }
 
                             @Override
@@ -275,7 +277,7 @@ public class WithdrawMoney extends AppCompatActivity {
                                         try {
                                             Response response = client.newCall(request).execute();
                                             assert response.body() != null;
-                                            System.out.println(phoneNumber); // This prints the response body to the console
+                                            //System.out.println(phoneNumber); // This prints the response body to the console
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }

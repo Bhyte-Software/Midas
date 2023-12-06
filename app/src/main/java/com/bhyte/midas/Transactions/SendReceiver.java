@@ -63,6 +63,7 @@ public class SendReceiver extends AppCompatActivity implements SearchedUsersAdap
     RecyclerView searchedUsersRecycler;
     SearchView svSearch;
     MaterialButton finalSendBtn;
+    String phoneNumber;
 
 
     @SuppressLint("SetTextI18n")
@@ -123,6 +124,9 @@ public class SendReceiver extends AppCompatActivity implements SearchedUsersAdap
             DatabaseReference allTransactionsRef = database.getReference("Users");
             allTransactionsRef.child(firebaseUser.getUid()).child("All Transactions").child(transactionUID).setValue(readWriteAllTransactions);
 
+            // Get the users current phone number
+
+
             // This deducts the same amount from the current users main balance
             databaseReference.child(firebaseUser.getUid()).child("userMainBalance").addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -154,46 +158,28 @@ public class SendReceiver extends AppCompatActivity implements SearchedUsersAdap
                 }
             });
 
+            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+            if (firebaseUser != null) {
+                DatabaseReference databasePhoneReference = database.getReference("Users").child(firebaseUser.getUid()).child("phone");
+                databasePhoneReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        phoneNumber = snapshot.getValue(String.class);
+
+                        // Send SMS' after a successful transaction
+                        sendSmsToRecipient(phoneNumber, userInputAmount, theSendersName);
+                        sendConfirmationSmsToSender(phoneNumber, userInputAmount, selectedUserName);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+
             finish();
             startActivity(new Intent(getApplicationContext(), SendReceiverSuccessPage.class));
-
-            // Send SMS' after a successful transaction
-            sendSmsToRecipient("+233240369071", userInputAmount, theSendersName);
-            //sendSmsToCurrentUser(selectedUsername, amountSent);
-
-            // Send SMS Notification
-            new Thread(() -> {
-
-                OkHttpClient client = new OkHttpClient();
-
-                MediaType mediaType = MediaType.parse("application/json");
-                JSONObject apiData = new JSONObject();
-
-                try {
-                    apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
-                    apiData.put("to", "+233240369071"); // variable
-                    apiData.put("from", "Midas Inc");
-                    apiData.put("sms", userInputAmount + " GHS has been sent to " + selectedUserName);
-                    apiData.put("type", "plain");
-                    apiData.put("channel", "generic");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                RequestBody body = RequestBody.create(apiData.toString(), mediaType);
-                Request request = new Request.Builder()
-                        .url("https://api.ng.termii.com/api/sms/send")
-                        .post(body)
-                        .addHeader("Content-Type", "application/json")
-                        .build();
-
-                try {
-                    Response response = client.newCall(request).execute();
-                    assert response.body() != null;
-                    //System.out.println(response.body().string()); // This prints the response body to the console
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }).start();
         });
 
 
@@ -277,8 +263,44 @@ public class SendReceiver extends AppCompatActivity implements SearchedUsersAdap
         }
     }
 
+    //Method for sending SMS to user when money is sent
+    private  void sendConfirmationSmsToSender(String senderPhoneNumber, String amount, String selectedUserToSendTo) {
+        new Thread(() -> {
+
+            OkHttpClient client = new OkHttpClient();
+
+            MediaType mediaType = MediaType.parse("application/json");
+            JSONObject apiData = new JSONObject();
+
+            try {
+                apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
+                apiData.put("to", senderPhoneNumber);
+                apiData.put("from", "Midas Inc");
+                apiData.put("sms", amount + " GHS has been sent to " + selectedUserToSendTo);
+                apiData.put("type", "plain");
+                apiData.put("channel", "generic");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            RequestBody body = RequestBody.create(apiData.toString(), mediaType);
+            Request request = new Request.Builder()
+                    .url("https://api.ng.termii.com/api/sms/send")
+                    .post(body)
+                    .addHeader("Content-Type", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                assert response.body() != null;
+                //System.out.println(phoneNumber); // This prints the response body to the console
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    };
+
     //Method for sending SMS to recipient
-    private void sendSmsToRecipient(String phoneNumber, String amount, String senderName) {
+    private void sendSmsToRecipient(String recipientPhoneNumber, String amount, String senderName) {
         new Thread(() -> {
             OkHttpClient client = new OkHttpClient();
             MediaType mediaType = MediaType.parse("application/json");
@@ -286,7 +308,7 @@ public class SendReceiver extends AppCompatActivity implements SearchedUsersAdap
 
             try {
                 apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
-                apiData.put("to", phoneNumber);
+                apiData.put("to", recipientPhoneNumber);
                 apiData.put("from", "Midas Inc");
                 apiData.put("sms", "You've received " + amount + " GHS from " + senderName);
                 apiData.put("type", "plain");
