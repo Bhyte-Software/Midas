@@ -155,7 +155,7 @@ public class ReviewTransaction extends AppCompatActivity {
 
                 try {
                     apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
-                    apiData.put("to", "+233240369071"); // variable
+                    apiData.put("to", phoneNumber);
                     apiData.put("from", "Midas Inc");
                     apiData.put("sms", "Great news, " + amount + " GHS has been added to your Midas balance"); //variable
                     apiData.put("type", "plain");
@@ -173,7 +173,7 @@ public class ReviewTransaction extends AppCompatActivity {
                 try {
                     Response response = client.newCall(request).execute();
                     assert response.body() != null;
-                    //System.out.println(response.body().string()); // This prints the response body to the console
+                    System.out.println(phoneNumber); // This prints the response body to the console
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -210,7 +210,7 @@ public class ReviewTransaction extends AppCompatActivity {
                 try {
                     Response response = client.newCall(request).execute();
 
-                    System.out.println(Objects.requireNonNull(response.body()).string());// This prints the response body to the console
+                    //System.out.println(Objects.requireNonNull(response.body()).string());// This prints the response body to the console
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

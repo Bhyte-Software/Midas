@@ -129,7 +129,7 @@
     <!-- FRAGMENT -->
 
     <!-- Cards -->
-    <string name="no_cards">You currently have no cards!</string>
+    <string name="no_cards">You currently have no cards</string>
     <string name="no_cards_description">Create a new card to start exploring your boundaries with Midas</string>
     <string name="create_new_card">Create New Card</string>
     <string name="virtual_card">Midas Virtual Debit\nCard</string>
