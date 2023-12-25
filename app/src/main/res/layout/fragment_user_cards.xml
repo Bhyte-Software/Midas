@@ -96,7 +96,7 @@
         android:layout_marginStart="@dimen/dimen_25"
         android:layout_marginEnd="@dimen/dimen_25"
         android:layout_marginBottom="@dimen/dimen_90"
-        android:text="@string/create_new_card"
+        android:text="@string/go_to_homepage"
         android:textAllCaps="false"
         app:cornerRadius="35dp"
         tools:ignore="TextContrastCheck" />

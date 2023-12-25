@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -74,7 +76,17 @@ public class UserCardsFragment extends Fragment implements CardsAdapter.OnNoteLi
 
         // Click Listeners
         floatingActionButton.setOnClickListener(view -> createCard());
-        createCardButton.setOnClickListener(v -> createCard());
+
+        //
+        createCardButton.setOnClickListener(v -> {
+            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            UserHomeFragment userHomeFragment = new UserHomeFragment();
+            fragmentTransaction.replace(R.id.container, userHomeFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        });
+
 
         enableSwipeToDeleteAndUndo();
 
