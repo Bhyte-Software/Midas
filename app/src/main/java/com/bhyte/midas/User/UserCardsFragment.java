@@ -77,7 +77,7 @@ public class UserCardsFragment extends Fragment implements CardsAdapter.OnNoteLi
         // Click Listeners
         floatingActionButton.setOnClickListener(view -> createCard());
 
-        //
+        // Button takes you back home
         createCardButton.setOnClickListener(v -> {
             FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
