@@ -306,7 +306,7 @@ public class WithdrawMoney extends AppCompatActivity {
                                                 .url("https://api.paystack.co/transfer")
                                                 .post(body)
                                                 .addHeader("Content-Type", "application/json")
-                                                .addHeader("Authorization", "Bearer sk_test_c87485f78655da06ffdd385fcda8f0a53bfa9f86")
+                                                .addHeader("Authorization", "Bearer pk_live_406be5b6cd14a2897d865666a5060a177257050a")
                                                 .build();
 
                                         try {

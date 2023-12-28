@@ -173,7 +173,7 @@ public class ReviewTransaction extends AppCompatActivity {
                 try {
                     Response response = client.newCall(request).execute();
                     assert response.body() != null;
-                    System.out.println(phoneNumber); // This prints the response body to the console
+                    //System.out.println(phoneNumber); // This prints the response body to the console
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -190,11 +190,11 @@ public class ReviewTransaction extends AppCompatActivity {
                 JSONObject mobileMoney = new JSONObject();
 
                 try {
-                    mobileMoney.put("phone", "0551234987");
+                    mobileMoney.put("phone", phoneNumber);
                     mobileMoney.put("provider", "mtn");
 
                     actualData.put("amount", (int) (amountToPayDouble * 100));
-                    actualData.put("email", "femke@gmail.com");
+                    actualData.put("email", userEmail);
                     actualData.put("currency", "GHS");
                     actualData.put("mobile_money", mobileMoney);
                 } catch (JSONException e) {
@@ -205,12 +205,12 @@ public class ReviewTransaction extends AppCompatActivity {
                         .url("https://api.paystack.co/charge")
                         .post(body)
                         .addHeader("content-type", "application/json")
-                        .addHeader("Authorization", "Bearer sk_test_c87485f78655da06ffdd385fcda8f0a53bfa9f86")
+                        .addHeader("Authorization", "Bearer sk_live_95295f9cf3433e9918b9387b8b93a3acdee920c6")
                         .build();
                 try {
                     Response response = client.newCall(request).execute();
 
-                    //System.out.println(Objects.requireNonNull(response.body()).string());// This prints the response body to the console
+                    System.out.println(Objects.requireNonNull(response.body()).string());// This prints the response body to the console
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
