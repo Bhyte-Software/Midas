@@ -146,38 +146,9 @@ public class ReviewTransaction extends AppCompatActivity {
             depositAnimation.playAnimation();
             deposit.setText("");
 
-            // Deposit SMS Notifications
-            new Thread(() -> {
-                OkHttpClient client = new OkHttpClient();
+            //sendDepositSmsNotification();  // Call to send SMS notification
 
-                MediaType mediaType = MediaType.parse("application/json");
-                JSONObject apiData = new JSONObject();
 
-                try {
-                    apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
-                    apiData.put("to", phoneNumber);
-                    apiData.put("from", "Midas Inc");
-                    apiData.put("sms", "Great news, " + amount + " GHS has been added to your Midas balance"); //variable
-                    apiData.put("type", "plain");
-                    apiData.put("channel", "generic");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                RequestBody body = RequestBody.create(apiData.toString(), mediaType);
-                Request request = new Request.Builder()
-                        .url("https://api.ng.termii.com/api/sms/send")
-                        .post(body)
-                        .addHeader("Content-Type", "application/json")
-                        .build();
-
-                try {
-                    Response response = client.newCall(request).execute();
-                    assert response.body() != null;
-                    //System.out.println(phoneNumber); // This prints the response body to the console
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }).start();
 
             new Thread(() -> {
                 // Api Request(Long Operation)
@@ -190,8 +161,8 @@ public class ReviewTransaction extends AppCompatActivity {
                 JSONObject mobileMoney = new JSONObject();
 
                 try {
-                    mobileMoney.put("phone", phoneNumber);
-                    mobileMoney.put("provider", "mtn");
+                    mobileMoney.put("phone", phoneNumber.replaceFirst("\\+233", "0"));
+                    mobileMoney.put("provider", "MTN");
 
                     actualData.put("amount", (int) (amountToPayDouble * 100));
                     actualData.put("email", userEmail);
@@ -216,8 +187,7 @@ public class ReviewTransaction extends AppCompatActivity {
                 }
 
                 // TODO All this should be for when the deposit works/goes through
-
-                // Set has Transactions to true
+                // This needs webhook, deposit validation work
                 String transaction = "True";
 
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
@@ -268,8 +238,7 @@ public class ReviewTransaction extends AppCompatActivity {
                 // Write deposit amount to users database, as a Deposit Transaction
                 databaseReference.child(firebaseUser.getUid()).child("transactions").child("depositTransactions").child(firebaseUser.getUid()).child("amount").setValue(amount);
 
-                /* Write deposit amount to transactions database */
-                // Get a reference to the "transactions" collection
+
                 DatabaseReference transactionsRef = database.getReference("Transactions");
 
                 // Get a reference to the "withdrawalTransactions" sub-collection
@@ -300,7 +269,43 @@ public class ReviewTransaction extends AppCompatActivity {
                 } catch (final Exception exception){
                     Log.i("---", "Exception in thread");
                 }
+
             }).start();
         });
+    }
+
+    // Deposit SMS Notifications
+    private void sendDepositSmsNotification() {
+            new Thread(() -> {
+                OkHttpClient client = new OkHttpClient();
+
+                MediaType mediaType = MediaType.parse("application/json");
+                JSONObject apiData = new JSONObject();
+
+                try {
+                    apiData.put("api_key", "TLfITehl1SkhCoNHowco4ww1HvmLX2a2ovWbtqAu0UBv7F9UGOH2RtNoBOlJue");
+                    apiData.put("to", phoneNumber);
+                    apiData.put("from", "Midas Inc");
+                    apiData.put("sms", "Great news, " + amount + " GHS has been added to your Midas balance"); //variable
+                    apiData.put("type", "plain");
+                    apiData.put("channel", "generic");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                RequestBody body = RequestBody.create(apiData.toString(), mediaType);
+                Request request = new Request.Builder()
+                        .url("https://api.ng.termii.com/api/sms/send")
+                        .post(body)
+                        .addHeader("Content-Type", "application/json")
+                        .build();
+
+                try {
+                    Response response = client.newCall(request).execute();
+                    assert response.body() != null;
+                    //System.out.println(phoneNumber); // This prints the response body to the console
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }).start();
     }
 }
